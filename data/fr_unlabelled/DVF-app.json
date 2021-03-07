@@ -1,0 +1,522 @@
+[
+    {
+        "title": "parcelles cadastrales Suresnes (92150)",
+        "body": "Bonjour,\r\nplusieurs parcelles cadastrales qui \u00e9taient disponibles il y a 6 mois, et o\u00f9 des achat/vente ont toujours lieu ont disparu, notamment les D, I, M, R, W, AC, AE, AM, AP...\r\npourriez-vous les remettre en ligne?\r\nmerci d'avance",
+        "labels": null
+    },
+    {
+        "title": "Bug Rives-du-Loir-en-Anjou",
+        "body": "Bonjour, Il y a un bug depuis plusieurs mois sur les parcelles de Soucelles Rives-du-Loir-en-Anjou 49140. Serait-il possible d'y rem\u00e9dier ? Merci d'avance.",
+        "labels": null
+    },
+    {
+        "title": "Certaines parcelles cadastrales n'apparaissent plus (Hauts de Seine)",
+        "body": "Bonjour,\r\nCertaines parcelles cadastrales, qui \u00e9taient accessibles avant la derni\u00e8re mise \u00e0 jour, n'apparaissent plus. Par exemple, les parcelles D et AM \u00e0 Suresnes (92) ou AL \u00e0 Rueil Malmaison (92). Pourtant, des transactions sont bien pr\u00e9sentes dans les donn\u00e9es brutes.\r\nBonne journ\u00e9e",
+        "labels": null
+    },
+    {
+        "title": "Asni\u00e8res sur seine",
+        "body": "Bonjour\r\nla planche de section cadastrale \" T \" est inaccessible. \r\nMerci",
+        "labels": null
+    },
+    {
+        "title": "Mauvais code Insee commune saint Martin",
+        "body": "Bonjour \r\ndans mes analyses je constate que le code insee de saint Martin, d\u00e9partement 971 est encore de **97127** (ancien) dans les fichiers, alors qu'il a chang\u00e9 et que c'est maintenant **97801** (nouveau) .\r\nMerci",
+        "labels": null
+    },
+    {
+        "title": "Mise a jour de octobre 2020 ?",
+        "body": "Bonjour,\r\n\r\nLa MAJ est sortie le : _Publi\u00e9e le 26 octobre 2020 17:23_\r\nSavez-vous dans combien de temps elle sera disponible sur app.dvf.etalab.gouv.fr ?\r\n\r\nEn vous remerciant,\r\nCordialement.",
+        "labels": null
+    },
+    {
+        "title": "Impossible de s\u00e9lectionner une commune",
+        "body": "Apr\u00e8s avoir choisi le d\u00e9partement, aucune commune n'est propos\u00e9e...:\r\nUncaught (in promise) TypeError: Cannot read property 'setData' of undefined\r\n    at afficherCommunesDepartement (index.js?v=1:517)\r\n\r\nMerci.",
+        "labels": null
+    },
+    {
+        "title": "lien cass\u00e9",
+        "body": "Une API d\u00e9velopp\u00e9e par Christian Quest est disponible ici, avec sa documentation.\r\n\r\nle premier lien est cass\u00e9.",
+        "labels": null
+    },
+    {
+        "title": "P\u00e9rim\u00e8tre + crit\u00e8res de recherche (cf. PATRIM)",
+        "body": "Bonjour,\r\nSerait-il possible via l'interface de faire une extraction, comme sur l'ancienne base PATRIM, permettant une recherche autour d'une adresse donn\u00e9e pour un ou plusieurs types de bien (nombre de pi\u00e8ces), et dans une fourchette de surfaces donn\u00e9e ?\r\nUne restitution en tableau .xls ou .csv permettrait d'exploiter le r\u00e9sultat.\r\nLa cerise sur le gateau (donc dispensable) serait une localisation des occurrences retenues sur la map, comme ci-dessous.\r\n\r\nBien cordialement,\r\n\r\n![Patrim-1](https://user-images.githubusercontent.com/69908010/90643766-3692f980-e234-11ea-92bc-8fb12d98fe70.jpg)\r\n![Patrim-2](https://user-images.githubusercontent.com/69908010/90643768-372b9000-e234-11ea-8699-6119de226bf8.jpg)\r\n![Patrim-3](https://user-images.githubusercontent.com/69908010/90643771-37c42680-e234-11ea-98f1-d446e64483eb.jpg)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[FEATURE] : G\u00e9olocalisation",
+        "body": "Bonjour,\r\n\r\nEst-il envisageable d'ajouter une fonction li\u00e9e \u00e0 la g\u00e9olocalisation ?\r\n\r\nSc\u00e9nario : je suis en vacances \u00e0 tel endroit, je veux faire le curieux, j'ouvre DVF-app, je me g\u00e9olocalise, et j'arrive directement sur la section cadastrale correspondante.",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me de jointure cadastrale pour la commune d'Opio",
+        "body": "Des transactions sont disponibles pour la commune d'Opio (code insee : 06089) mais n'apparaissent pas sur l'application. Sans doute \u00e0 cause d'un changement de num\u00e9rotation des parcelles d'Opio.",
+        "labels": null
+    },
+    {
+        "title": "dvf wordpress",
+        "body": "bonjour\r\nest ce que on peut int\u00e9grer DVF dans wordpress? si oui comment?\r\nmerci",
+        "labels": null
+    },
+    {
+        "title": "Remove option \"maxDate\" in date range picker",
+        "body": "Remove the line https://github.com/etalab/DVF-app/blob/be42/static/js/index.js#L603 because it currently makes it impossible to view recent transactions.",
+        "labels": null
+    },
+    {
+        "title": "Prix au m\u00b2",
+        "body": "Bonjour,\r\nEn tant que d\u00e9veloppeur premi\u00e8rement **merci** et **bravo** pour cette appli !\r\nSerait-il possible d'avoir le prix au m\u00b2 ? Car pour l'instant je suis oblig\u00e9 de faire \u00e0 chaque fois une division par exemple 172 750 \u20ac et 83m\u00b2 : 172 750\u00f783=181\u20ac/m\u00b2\r\nMerci !",
+        "labels": null
+    },
+    {
+        "title": "An error occurred \"section_prefix\"",
+        "body": "Good afternoon. \r\n\r\nWhen I import data for 2019 ( add to previously imported data from 2014 to 2018, script import here line 26 https://github.com/etalab/DVF-app/blob/master/db/build_db.sh ) in postgresql on MacBook Pro (installed OS latest version) error occurs-missing data for column \"section_prefixe\". Please specify how you can fix it and correctly import data. The error log is given below:\r\n\r\nERROR:  missing data for column \"section_prefixe\"\r\nCONTEXT:  COPY dvf, line 2: \"2019-1,2019-01-11,000001,Vente,84000,552,,AV DE LYON,0260,01960,01289,P\u00e9ronnas,01,,,01289000AD0226,...\"\r\n\r\nid_mutation,date_mutation,numero_disposition,nature_mutation,valeur_fonciere,adresse_numero,adresse_suffixe,adresse_nom_voie,adresse_code_voie,code_postal,code_commune,nom_commune,code_departement,ancien_code_commune,ancien_nom_commune,id_parcelle,ancien_id_parcelle,numero_volume,lot1_numero,lot1_surface_carrez,lot2_numero,lot2_surface_carrez,lot3_numero,lot3_surface_carrez,lot4_numero,lot4_surface_carrez,lot5_numero,lot5_surface_carrez,nombre_lots,code_type_local,type_local,surface_reelle_bati,nombre_pieces_principales,code_nature_culture,nature_culture,code_nature_culture_speciale,nature_culture_speciale,surface_terrain,longitude,latitude\r\n2019-1,2019-01-11,000001,Vente,84000,552,,AV DE LYON,0260,01960,01289,P\u00e9ronnas,01,,,01289000AD0226,,,44,,,,,,,,,,1,3,D\u00e9pendance,,0,,,,,,5.208543,46.187709\r\n2019-1,2019-01-11,000001,Vente,84000,552,,AV DE LYON,0260,01960,01289,P\u00e9ronnas,01,,,01289000AD0226,,,1,,36,67.08,,,,,,,2,2,Appartement,67,3,,,,,,5.208543,46.187709\r\n2019-2,2019-02-08,000001,Vente,210000,5189,,LE METRILLOT,B041,01250,01254,Montagnat,01,,,01254000BB0023,,,,,,,,,,,,,0,1,Maison,118,4,AG,terrains d'agr\u00e9ment,PARC,Parc,913,5.270659,46.164406\r\n2019-2,2019-02-08,000001,Vente,210000,5189,,LE METRILLOT,B041,01250,01254,Montagnat,01,,,01254000BB0023,,,,,,,,,,,,,0,1,Maison,118,4,S,sols,,,1000,5.270659,46.164406\r\n2019-3,2019-04-04,000001,Vente,36000,40,,PL DE LA FONTAINE,0090,01560,01367,Saint-Julien-sur-Reyssouze,01,,,013670000A0138,,,,,,,,,,,,,0,1,Maison,60,3,S,sols,,,96,5.110259,46.400996\r\n2019-4,2019-05-28,000003,Vente,600000,17,,AV ARSENE D ARSONVAL,0015,01000,01053,Bourg-en-Bresse,01,,,01053000BO0552,,,,,,,,,,,,,0,,,,,S,sols,,,1,5.218298,46.218864\r\n2019-4,2019-05-28,000003,Vente,600000,17,B,AV ARSENE D ARSONVAL,0015,01000,01053,Bourg-en-Bresse,01,,,01053000BO0553,,,,,,,,,,,,,0,4,Local industriel. commercial ou assimil\u00e9,900,0,S,sols,,,8912,5.218055,46.219114\r\n2019-4,2019-05-28,000003,Vente,600000,17,B,AV ARSENE D ARSONVAL,0015,01000,01053,Bourg-en-Bresse,01,,,01053000BO0553,,,,,,,,,,,,,0,4,Local industriel. commercial ou assimil\u00e9,800,0,S,sols,,,8912,5.218055,46.219114\r\n2019-5,2019-01-08,000001,Vente,84920,25,,RUE DE LA COMMUNE 1871,0246,01500,01004,Amb\u00e9rieu-en-Bugey,01,,,01004000AP0963,,,2,39.42,,,,,,,,,1,2,Appartement,39,2,,,,,,5.350335,45.969487",
+        "labels": null
+    },
+    {
+        "title": "MISE A JOUR DES DONN\u00c9ES DVF",
+        "body": "Bonjour, il \u00e9tait - me semble t'il - pr\u00e9vu une mise \u00e0 jour des donn\u00e9es DVF et cela 2 fois par an en Avril et Octobre, quelqu'un saurait-il quand la mise \u00e0 jour d'Octobre aura lieu et comment nous serons pr\u00e9venus que les nouvelles donn\u00e9es immobili\u00e8res ont \u00e9t\u00e9 mises \u00e0 jour?\r\nPar avance merci,\r\nGilles.",
+        "labels": null
+    },
+    {
+        "title": "Site HS aujourdhui ?",
+        "body": "Bonjour,\r\n\r\nSemble ne pas fonctionne aujourd'hui la m\u00eame chose chez vous ?\r\nToutes les inputs du menu ne sont pas accessible. Pas de carte au centre.\r\n\r\nChrome Version 76.0.3809.100 + Windows 10.",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me lorsque l'on change le menu d\u00e9roulant",
+        "body": "Bonjour,\r\nIl me semble que lorsqu'on change simplement dans le menu d\u00e9roulant la section cadastrale ou la commune, la page n'est pas charg\u00e9e comme il faut. Je m'explique : je fais une premi\u00e8re recherche sur une section cadastrale particuli\u00e8re. Je change ensuite la section cadastrale, le plan cadastral s'affiche mais aucune transaction n'apparait... Alors que si je recharge la page web compl\u00e8tement et que je v\u00e9rifie le r\u00e9sultat pour la deuxi\u00e8me section cadastrale que je voulais consulter, il y a effectivement des transactions qui s'affiche pour cette deuxi\u00e8me section cadastrale.\r\nMerci et bonne journ\u00e9e et bravo pour le d\u00e9veloppement de cet outil hyper pratique !\r\nC\u00e9cile",
+        "labels": null
+    },
+    {
+        "title": "Tri sur les mutations",
+        "body": "L'affichage par date d\u00e9croissante des mutations a saut\u00e9 lors de la pr cataclysme",
+        "labels": null
+    },
+    {
+        "title": "Failed to initialize WebGL",
+        "body": "Pour information depuis le commit **replace-leaflet** 2720ba80cd9bb4d3347f80facacbd2790e1ce9f6 WebGL est obligatoire.\r\n\r\nCela implique que l'on perd une partie des utilisateurs ayant un mat\u00e9riel ne supportant pas cette fonctionnalit\u00e9.\r\n\r\n![Screenshot from 2019-05-17 09-21-29](https://user-images.githubusercontent.com/3259059/57910322-4f6c6c80-7885-11e9-9b12-54a7c899e2ff.png)\r\n\r\n@tmerlier Est-ce envisageable d'avoir une r\u00e9trocompatibilit\u00e9 avec leaflet dans le cas ou WebGL ne fonctionnerait pas ?\r\n\r\nBien cordialement,\r\n",
+        "labels": null
+    },
+    {
+        "title": "Impossible de faire d\u00e9filer la page \"A propos\"",
+        "body": "Cette anomalie avait d\u00e9j\u00e0 \u00e9t\u00e9 corrig\u00e9e dans le pass\u00e9, voir ici : https://github.com/etalab/DVF-app/commit/da418ea6aaf6c3994fe7e9de863beadcea2c666a",
+        "labels": null
+    },
+    {
+        "title": "Couleur des parcelles avec transaction",
+        "body": "Sur certains terrains, c'est particuli\u00e8rement dur de reconna\u00eetre le bleu du \"il y a une transaction ici\". Par exemple\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57583569-e9bd6080-74d1-11e9-854f-743f6a375f0b.png)\r\n\r\nEst-ce qu'on pourrait avoir une couleur plus flash ?",
+        "labels": null
+    },
+    {
+        "title": "Pas d'affichage informations",
+        "body": "Bonjour,\r\n\r\nMerci pour le travail r\u00e9alis\u00e9.\r\n\r\nIl doit y avoir des probl\u00e8mes li\u00e9s aux nouvelles communes : \r\nPar exemple 89 Montholon 473ZN\r\n\r\nPas d'affichage de l'information concernant la vente si clic sur une parcelle bleue.\r\n\r\nCordialement.",
+        "labels": null
+    },
+    {
+        "title": "Fen\u00eatre trop grande sur iPhone 6s",
+        "body": "Lorsque je charge la page sur mon iPhone 6s (Safari), la fen\u00eatre est trop haute et scrollable.\r\nCela ne permet pas de voir facilement le bas de la page, et donc les attributions OSM.\r\n\r\nPour la PR #54 cela va devenir probl\u00e9matique.\r\n\r\n![Image from iOS (1)](https://user-images.githubusercontent.com/1231232/57485863-13497280-72ad-11e9-8f64-b040519353e2.jpg)",
+        "labels": null
+    },
+    {
+        "title": "Liens profonds",
+        "body": "Actuellement l'application ne dispose que d'une seule URL, ce qui ne permet pas de pointer facilement du contenu lorsqu'on \u00e9change avec quelqu'un.\r\n\r\nJe veux par exemple pointer les transactions sur une parcelle proche d'un bien convoit\u00e9 par un ami et lui transmettre via une messagerie instantan\u00e9e.\r\nOu alors je suis un agent immobilier et je veux illustrer un \u00e9change avec un client par email avec des \u00e9l\u00e9ments chiffr\u00e9s \"officiels\".\r\n\r\nDans un premier temps je propose de mettre en place ces nouvelles URL :\r\n- https://app.dvf.etalab.gouv.fr/DD => lien vers le d\u00e9partement `DD`\r\n- https://app.dvf.etalab.gouv.fr/DDCCC => lien vers la commune `DDCCC`\r\n- https://app.dvf.etalab.gouv.fr/DDCCCSSSSS => lien vers la section `DDCCCSSSSS`\r\n- https://app.dvf.etalab.gouv.fr/DDCCCSSSSSPPPP => lien vers la parcelle `DDCCCSSSSSPPPP`\r\n\r\nQu'en pensez-vous ?",
+        "labels": null
+    },
+    {
+        "title": "Vend\u00e9e - Les Sables-d'Olonne - Erreur 400",
+        "body": "Quand on choisit **85 - Vend\u00e9e**, puis **Les Sables-d'Olonne**, rien ne se passe. La console affiche\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57483334-e5f9c600-72a6-11e9-8c19-af41fe6cae96.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Ajouter le prix au m\u00b2",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Le javascript m\u00e9lange toutes les mutations d'une parcelle",
+        "body": "Lorsqu'on s\u00e9lectionne une parcelle avec plusieurs mutations diff\u00e9rentes (dans le cas d'une copropri\u00e9t\u00e9 par exemple), chaque mutation se voit affecter tous les lots de toutes les mutations. Ainsi le contenu des toutes les mutations est identique et comprends tous les lots (seuls les valeurs fonci\u00e8res et date de mutation diff\u00e8rent).\r\n\r\nA priori l'erreur est dans la partie javascript, car les donn\u00e9es retourn\u00e9es par l'API semblent correctes (id_mutation diff\u00e9rents). Par exemple, un appel \u00e0 https://app.dvf.etalab.gouv.fr/api/mutations2/75107/000BM/from=01-01-2014&to=31-12-2018 puis un filtre sur la parcelle 0037 montre bien des mutations diff\u00e9rentes alors que le site liste les m\u00eame lots pour chaque mutation.",
+        "labels": null
+    },
+    {
+        "title": "Menu du haut pour t\u00e9l\u00e9phones \u00e9troits",
+        "body": "Actuellement, si on a un t\u00e9l\u00e9phone de poche, le menu du haut est tr\u00e8s encombrant\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57161457-f106af00-6deb-11e9-8670-a93dc448ae92.png)\r\n\r\nSerait-il possible de le condenser, par exemple comme ci-dessous (en plus joli) ?\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57161478-01b72500-6dec-11e9-973c-3d3afca6230d.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Filtrage sur les dates en JS ?",
+        "body": "Quitte \u00e0 continuer \u00e0 optimiser le nombre de requ\u00eates servies par le cache Nginx, pourquoi ne pas retirer les param\u00e8tres de plage temporelle de la route `/api/mutations2/` et laisser le client JavaScript faire lui-m\u00eame le filtrage ?",
+        "labels": null
+    },
+    {
+        "title": "Barres de d\u00e9filement",
+        "body": "Depuis la mise en production du correctif pour la barre de d\u00e9filement \u00e0 droite, mon navigateur m'affiche deux barres inutiles (une dans le menu de gauche et une sur la page enti\u00e8re). Voir la capture ci-dessous.\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57160141-375a0f00-6de8-11e9-9c25-2c8406d77e6f.png)\r\n\r\nPour reproduire : d\u00e9marrer l'application sans rien faire.\r\n\r\nWindows 7 / Chrome Version 74.0.3729.131 (Build officiel) (64 bits) / Toutes tailles de fen\u00eatre",
+        "labels": null
+    },
+    {
+        "title": "Ajouter to-do list/roadmap du projet dans le readme",
+        "body": "Bonjour,\r\n\r\nTout d'abord super initiative et outil agr\u00e9able \u00e0 utiliser ! \r\n\r\nJ'ai vu d'en un commentaire sur une autre issue qu'il y avait une roadmap, est il possible de la mettre public dans le readme ?\r\n\r\nMerci d'avance !",
+        "labels": null
+    },
+    {
+        "title": "Etage de l'appartement",
+        "body": "Bonjour,\r\n\r\nBravo pour la volont\u00e9 de rendre ce projet opensource !\r\n\r\nSur le site des imp\u00f4ts, Patrim, on avait acc\u00e8s au num\u00e9ro d'\u00e9tage des appartements. C'est une information essentielle sans quoi les donn\u00e9es sont peu exploitables.\r\n\r\nEst-ce qu'il est pr\u00e9vu de rajouter cette information ?\r\n\r\nD'avance je vous en remercie.",
+        "labels": null
+    },
+    {
+        "title": "Use integer when possible in database",
+        "body": "Bonjour,\r\n\r\nCertains champs sont toujours des entiers. Il serait donc judicieux de les d\u00e9clarer en tant que tel lors de la cr\u00e9ation de la table.\r\n\r\nCela permettrait de faire des requ\u00eates sur les valeurs et surfaces des lots.\r\n\r\n```diff\r\n\r\n--- create_table.sql\t2019-04-28 21:45:30.079744401 +0200\r\n+++ create_table2.sql\t2019-05-01 23:01:07.760996864 +0200\r\n@@ -14,7 +14,7 @@\r\n \t\"No disposition\" character varying,\r\n \t\"Date mutation\" date,\r\n \t\"Nature mutation\" character varying,\r\n-\t\"Valeur fonciere\" character varying,\r\n+\t\"Valeur fonciere\" bigint,\r\n \t\"No voie\" character varying,\r\n \t\"B/T/Q\" character varying,\r\n \t\"Type de voie\" character varying,\r\n@@ -29,15 +29,15 @@\r\n \t\"No plan\" character varying,\r\n \t\"No Volume\" character varying,\r\n \t\"1er lot\" character varying,\r\n-\t\"Surface Carrez du 1er lot\" character varying,\r\n+\t\"Surface Carrez du 1er lot\" integer,\r\n \t\"2eme lot\" character varying,\r\n-\t\"Surface Carrez du 2eme lot\" character varying,\r\n+\t\"Surface Carrez du 2eme lot\" integer,\r\n \t\"3eme lot\" character varying,\r\n-\t\"Surface Carrez du 3eme lot\" character varying,\r\n+\t\"Surface Carrez du 3eme lot\" integer,\r\n \t\"4eme lot\" character varying,\r\n-\t\"Surface Carrez du 4eme lot\" character varying,\r\n+\t\"Surface Carrez du 4eme lot\" integer,\r\n \t\"5eme lot\" character varying,\r\n-\t\"Surface Carrez du 5eme lot\" character varying,\r\n+\t\"Surface Carrez du 5eme lot\" integer,\r\n \t\"Nombre de lots\" integer,\r\n \t\"Code type local\" integer,\r\n \t\"Type local\" character varying,\r\n```",
+        "labels": null
+    },
+    {
+        "title": "Recherche par adresse",
+        "body": "Est-il possible d'ajouter une recherche par adresse ?\r\nPas toujours facile de trouver la parcelle qu'on cherche !",
+        "labels": null
+    },
+    {
+        "title": "Sols en \" nan m\u00b2 \"",
+        "body": "La parcelle \u00e0 Vaires-sur-Marne (77360) N\u00b077479000AM0004 affiche pour les appartements un sols dont la valeur est \"nan m\u00b2\"",
+        "labels": null
+    },
+    {
+        "title": "Copropri\u00e9t\u00e9 sans donn\u00e9es ?",
+        "body": "La parcelle \u00e0 Vaires-sur-Marne (77360) N\u00b077479000AR0092 est une copropri\u00e9t\u00e9 de 600 appartements. Elle devrait avoir des transactions, et m\u00eame quelques dizaines de transactions. Est-ce une absence de donn\u00e9es ?",
+        "labels": null
+    },
+    {
+        "title": "Menu Parcelle cadastrale avec uniquement les parcelles-transactions",
+        "body": "Pourrions-nous afficher dans le menu d\u00e9roulant des parcelles cadastrales uniquement les parcelles ayant un ou plusieurs transactions ? (et non la totalit\u00e9 des parcelles)",
+        "labels": null
+    },
+    {
+        "title": "quid des mutations sur plusieurs sections",
+        "body": "Bonjour,\r\nDans le d\u00e9coupage, il semblerait que les mutations sont cloisonn\u00e9es par d\u00e9partement, commune, section. Mais je crois qu'une mutation peut concerner plusieurs sections. est-ce bien pris en compte par l'outil ?",
+        "labels": null
+    },
+    {
+        "title": "Erreur javascript - compatibilit\u00e9",
+        "body": "Rien \u00e0 faire l'appli ne fonctionne pas sur ma machine.\r\nFEDORA 29\r\nChrome Version 74.0.3729.108 (Build officiel) (64 bits)\r\n\r\nSi **etalab** est un service de l'\u00e9tat il se doit d'\u00eatre accessible.\r\n\r\n**Object.keys(json[0])**\r\n\r\n```\r\nUncaught TypeError: Cannot convert undefined or null to object\r\n    at Function.keys (<anonymous>)\r\n    at exportCSV (index.js?version=1:125)\r\n    at HTMLAnchorElement.onclick ((index):1)\r\n```\r\n\r\n```\r\nfunction exportCSV(el, data, fileName) {\r\n\t\r\n\tvar json = data;\r\n\tvar fields = Object.keys(json[0])\r\n\tvar replacer = function(key, value) { return value === null ? '' : value } \r\n\tvar csv = json.map(function(row){\r\n\t  return fields.map(function(fieldName){\r\n\t\treturn JSON.stringify(row[fieldName], replacer)\r\n\t  }).join(';')\r\n\t})\r\n\tcsv.unshift(fields.join(';')); // add header column\r\n\tcsv = csv.join('\\r\\n');\r\n\t\r\n\tel.setAttribute(\"href\", \"data:text/csv;charset=utf-8,\" + encodeURIComponent(csv));\r\n\tel.setAttribute(\"download\", fileName);\r\n}\r\n```\r\n\r\n**Je vois \u00e9galement des console.log train\u00e9s un peu pas partout, il me semble que \u00e7a casse la compatibilit\u00e9 avec certain navigateur.** ",
+        "labels": null
+    },
+    {
+        "title": "Panneau lat\u00e9ral droit des informations cache les lignes cadastrales",
+        "body": "Sur mobile le panneau lat\u00e9ral droit des informations meme s\u2019il n\u2019est pas affich\u00e9 cache les parcelles et il ne reste qu\u2019un seul petit bandeau \u00e0 gauche pour pouvoir visualiser les parcelles.\r\n![5487C916-BC1E-4364-BA91-A6D927E19973](https://user-images.githubusercontent.com/4654408/56861134-77f7f980-699e-11e9-9b57-50d1deace5b1.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "minor fix in README",
+        "body": "Juste une correction mineure dans le README: ce n'est pas seulement l'Alsace qui manque,\r\nmais aussi la Moselle il me semble.\r\n\r\nMerci pour cette tres belle appli !\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Remplissage SQL \u00e0 partir des donn\u00e9es DGFIP",
+        "body": "Les donn\u00e9es DVF sont livr\u00e9es dans un format texte, mais l'application semble parler \u00e0 une base SQL. Avez-vous pr\u00e9vu de publier  le script qui cr\u00e9e la base SQL \u00e0 partir des  donn\u00e9es source ?",
+        "labels": null
+    },
+    {
+        "title": "Alsace manquante ",
+        "body": "Merci pour ce super boulot !\r\nJ'ai diffus\u00e9 en interne l'outil et on m'a signal\u00e9 que l'Alsace manquait. (on a bien les parcelles cadastrales mais pas de valeurs fonci\u00e8res derri\u00e8re) \r\n\r\nMais je ne sais pas si le jeu de donn\u00e9es initial comporte ces donn\u00e9es ",
+        "labels": null
+    },
+    {
+        "title": "Les donn\u00e9es de Mayotte ainsi que de l'Alsace sont manquantes.",
+        "body": "Bonjour,\r\n\r\nY-a-t-il une explication concernant le fait que \"Les donn\u00e9es de Mayotte ainsi que de l'Alsace sont manquantes.\" ?\r\n\r\nMerci.",
+        "labels": null
+    },
+    {
+        "title": "DVF pour les dates ant\u00e9rieures \u00e0 2014",
+        "body": "Bonjour,\r\n\r\nFantastique initiative ! \r\nCe n'est probablement pas une \"issue\", mais j'ai remarqu\u00e9 que les donn\u00e9es n'\u00e9taient pas disponible avant 2014. \r\nEst-il pr\u00e9vu de les ajouter ? \r\n\r\nOlivier",
+        "labels": null
+    },
+    {
+        "title": "Pas de date de mutation pour 2018",
+        "body": "Bonjour,\r\n\r\nPour une commune comme Orchies (59), sur plusieurs sections de cadastre, je n'ai aucune date de mutation pour 2018 (jusque fin juin pour cette ann\u00e9e-l\u00e0), tout s'arr\u00eate \u00e0 fin 2017...\r\nEst-ce normal ? Les donn\u00e9es sont-elles manquantes ou ne sont pas remont\u00e9es par \"l'app\" ?\r\nMerci.\r\nCordialement",
+        "labels": null
+    },
+    {
+        "title": "Une API est-elle pr\u00e9vue?",
+        "body": "Bonjour,\r\n\r\nCet \"issue\" n'en est pas une.\r\nJe voudrais juste savoir si une API est pr\u00e9vue?\r\nMerci.\r\n\r\nFran\u00e7ois",
+        "labels": null
+    },
+    {
+        "title": "Boutton A propos non fonctionnel",
+        "body": "Bonjour,\r\n\r\nLe bouton _A propos_ dans le bandeau d\u2019ent\u00eate ne fonctionne pas.\r\nQuand on le clique l'URL change en `https://app.dvf.etalab.gouv.fr/#about` mais rien n\u2019appara\u00eet.\r\nTest\u00e9 sous Firefox 66 et Chrome 73.\r\n\r\nCordialement,\r\n\r\nGuillaume",
+        "labels": null
+    },
+    {
+        "title": "Mettre une licence",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Ajouter l'URL https://app.dvf.etalab.gouv.fr dans GitHub",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me d'affichage de ventes multiples pour une parcelle",
+        "body": "Lors de la s\u00e9lection d'une parcelle ayant eu plusieurs vente sur la p\u00e9riode donn\u00e9e, toutes les ventes s'affichent avec les m\u00eames valeur en prix d'achat et date de vente. Les surfaces des biens semblent correctes quand il y a diff\u00e9rents bien vendus dans cette parcelle.",
+        "labels": null
+    },
+    {
+        "title": "parcelles cadastrales Suresnes (92150)",
+        "body": "Bonjour,\r\nplusieurs parcelles cadastrales qui \u00e9taient disponibles il y a 6 mois, et o\u00f9 des achat/vente ont toujours lieu ont disparu, notamment les D, I, M, R, W, AC, AE, AM, AP...\r\npourriez-vous les remettre en ligne?\r\nmerci d'avance",
+        "labels": null
+    },
+    {
+        "title": "Bug Rives-du-Loir-en-Anjou",
+        "body": "Bonjour, Il y a un bug depuis plusieurs mois sur les parcelles de Soucelles Rives-du-Loir-en-Anjou 49140. Serait-il possible d'y rem\u00e9dier ? Merci d'avance.",
+        "labels": null
+    },
+    {
+        "title": "Certaines parcelles cadastrales n'apparaissent plus (Hauts de Seine)",
+        "body": "Bonjour,\r\nCertaines parcelles cadastrales, qui \u00e9taient accessibles avant la derni\u00e8re mise \u00e0 jour, n'apparaissent plus. Par exemple, les parcelles D et AM \u00e0 Suresnes (92) ou AL \u00e0 Rueil Malmaison (92). Pourtant, des transactions sont bien pr\u00e9sentes dans les donn\u00e9es brutes.\r\nBonne journ\u00e9e",
+        "labels": null
+    },
+    {
+        "title": "Asni\u00e8res sur seine",
+        "body": "Bonjour\r\nla planche de section cadastrale \" T \" est inaccessible. \r\nMerci",
+        "labels": null
+    },
+    {
+        "title": "Mauvais code Insee commune saint Martin",
+        "body": "Bonjour \r\ndans mes analyses je constate que le code insee de saint Martin, d\u00e9partement 971 est encore de **97127** (ancien) dans les fichiers, alors qu'il a chang\u00e9 et que c'est maintenant **97801** (nouveau) .\r\nMerci",
+        "labels": null
+    },
+    {
+        "title": "Mise a jour de octobre 2020 ?",
+        "body": "Bonjour,\r\n\r\nLa MAJ est sortie le : _Publi\u00e9e le 26 octobre 2020 17:23_\r\nSavez-vous dans combien de temps elle sera disponible sur app.dvf.etalab.gouv.fr ?\r\n\r\nEn vous remerciant,\r\nCordialement.",
+        "labels": null
+    },
+    {
+        "title": "Impossible de s\u00e9lectionner une commune",
+        "body": "Apr\u00e8s avoir choisi le d\u00e9partement, aucune commune n'est propos\u00e9e...:\r\nUncaught (in promise) TypeError: Cannot read property 'setData' of undefined\r\n    at afficherCommunesDepartement (index.js?v=1:517)\r\n\r\nMerci.",
+        "labels": null
+    },
+    {
+        "title": "lien cass\u00e9",
+        "body": "Une API d\u00e9velopp\u00e9e par Christian Quest est disponible ici, avec sa documentation.\r\n\r\nle premier lien est cass\u00e9.",
+        "labels": null
+    },
+    {
+        "title": "P\u00e9rim\u00e8tre + crit\u00e8res de recherche (cf. PATRIM)",
+        "body": "Bonjour,\r\nSerait-il possible via l'interface de faire une extraction, comme sur l'ancienne base PATRIM, permettant une recherche autour d'une adresse donn\u00e9e pour un ou plusieurs types de bien (nombre de pi\u00e8ces), et dans une fourchette de surfaces donn\u00e9e ?\r\nUne restitution en tableau .xls ou .csv permettrait d'exploiter le r\u00e9sultat.\r\nLa cerise sur le gateau (donc dispensable) serait une localisation des occurrences retenues sur la map, comme ci-dessous.\r\n\r\nBien cordialement,\r\n\r\n![Patrim-1](https://user-images.githubusercontent.com/69908010/90643766-3692f980-e234-11ea-92bc-8fb12d98fe70.jpg)\r\n![Patrim-2](https://user-images.githubusercontent.com/69908010/90643768-372b9000-e234-11ea-8699-6119de226bf8.jpg)\r\n![Patrim-3](https://user-images.githubusercontent.com/69908010/90643771-37c42680-e234-11ea-98f1-d446e64483eb.jpg)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[FEATURE] : G\u00e9olocalisation",
+        "body": "Bonjour,\r\n\r\nEst-il envisageable d'ajouter une fonction li\u00e9e \u00e0 la g\u00e9olocalisation ?\r\n\r\nSc\u00e9nario : je suis en vacances \u00e0 tel endroit, je veux faire le curieux, j'ouvre DVF-app, je me g\u00e9olocalise, et j'arrive directement sur la section cadastrale correspondante.",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me de jointure cadastrale pour la commune d'Opio",
+        "body": "Des transactions sont disponibles pour la commune d'Opio (code insee : 06089) mais n'apparaissent pas sur l'application. Sans doute \u00e0 cause d'un changement de num\u00e9rotation des parcelles d'Opio.",
+        "labels": null
+    },
+    {
+        "title": "dvf wordpress",
+        "body": "bonjour\r\nest ce que on peut int\u00e9grer DVF dans wordpress? si oui comment?\r\nmerci",
+        "labels": null
+    },
+    {
+        "title": "Remove option \"maxDate\" in date range picker",
+        "body": "Remove the line https://github.com/etalab/DVF-app/blob/be42/static/js/index.js#L603 because it currently makes it impossible to view recent transactions.",
+        "labels": null
+    },
+    {
+        "title": "Prix au m\u00b2",
+        "body": "Bonjour,\r\nEn tant que d\u00e9veloppeur premi\u00e8rement **merci** et **bravo** pour cette appli !\r\nSerait-il possible d'avoir le prix au m\u00b2 ? Car pour l'instant je suis oblig\u00e9 de faire \u00e0 chaque fois une division par exemple 172 750 \u20ac et 83m\u00b2 : 172 750\u00f783=181\u20ac/m\u00b2\r\nMerci !",
+        "labels": null
+    },
+    {
+        "title": "An error occurred \"section_prefix\"",
+        "body": "Good afternoon. \r\n\r\nWhen I import data for 2019 ( add to previously imported data from 2014 to 2018, script import here line 26 https://github.com/etalab/DVF-app/blob/master/db/build_db.sh ) in postgresql on MacBook Pro (installed OS latest version) error occurs-missing data for column \"section_prefixe\". Please specify how you can fix it and correctly import data. The error log is given below:\r\n\r\nERROR:  missing data for column \"section_prefixe\"\r\nCONTEXT:  COPY dvf, line 2: \"2019-1,2019-01-11,000001,Vente,84000,552,,AV DE LYON,0260,01960,01289,P\u00e9ronnas,01,,,01289000AD0226,...\"\r\n\r\nid_mutation,date_mutation,numero_disposition,nature_mutation,valeur_fonciere,adresse_numero,adresse_suffixe,adresse_nom_voie,adresse_code_voie,code_postal,code_commune,nom_commune,code_departement,ancien_code_commune,ancien_nom_commune,id_parcelle,ancien_id_parcelle,numero_volume,lot1_numero,lot1_surface_carrez,lot2_numero,lot2_surface_carrez,lot3_numero,lot3_surface_carrez,lot4_numero,lot4_surface_carrez,lot5_numero,lot5_surface_carrez,nombre_lots,code_type_local,type_local,surface_reelle_bati,nombre_pieces_principales,code_nature_culture,nature_culture,code_nature_culture_speciale,nature_culture_speciale,surface_terrain,longitude,latitude\r\n2019-1,2019-01-11,000001,Vente,84000,552,,AV DE LYON,0260,01960,01289,P\u00e9ronnas,01,,,01289000AD0226,,,44,,,,,,,,,,1,3,D\u00e9pendance,,0,,,,,,5.208543,46.187709\r\n2019-1,2019-01-11,000001,Vente,84000,552,,AV DE LYON,0260,01960,01289,P\u00e9ronnas,01,,,01289000AD0226,,,1,,36,67.08,,,,,,,2,2,Appartement,67,3,,,,,,5.208543,46.187709\r\n2019-2,2019-02-08,000001,Vente,210000,5189,,LE METRILLOT,B041,01250,01254,Montagnat,01,,,01254000BB0023,,,,,,,,,,,,,0,1,Maison,118,4,AG,terrains d'agr\u00e9ment,PARC,Parc,913,5.270659,46.164406\r\n2019-2,2019-02-08,000001,Vente,210000,5189,,LE METRILLOT,B041,01250,01254,Montagnat,01,,,01254000BB0023,,,,,,,,,,,,,0,1,Maison,118,4,S,sols,,,1000,5.270659,46.164406\r\n2019-3,2019-04-04,000001,Vente,36000,40,,PL DE LA FONTAINE,0090,01560,01367,Saint-Julien-sur-Reyssouze,01,,,013670000A0138,,,,,,,,,,,,,0,1,Maison,60,3,S,sols,,,96,5.110259,46.400996\r\n2019-4,2019-05-28,000003,Vente,600000,17,,AV ARSENE D ARSONVAL,0015,01000,01053,Bourg-en-Bresse,01,,,01053000BO0552,,,,,,,,,,,,,0,,,,,S,sols,,,1,5.218298,46.218864\r\n2019-4,2019-05-28,000003,Vente,600000,17,B,AV ARSENE D ARSONVAL,0015,01000,01053,Bourg-en-Bresse,01,,,01053000BO0553,,,,,,,,,,,,,0,4,Local industriel. commercial ou assimil\u00e9,900,0,S,sols,,,8912,5.218055,46.219114\r\n2019-4,2019-05-28,000003,Vente,600000,17,B,AV ARSENE D ARSONVAL,0015,01000,01053,Bourg-en-Bresse,01,,,01053000BO0553,,,,,,,,,,,,,0,4,Local industriel. commercial ou assimil\u00e9,800,0,S,sols,,,8912,5.218055,46.219114\r\n2019-5,2019-01-08,000001,Vente,84920,25,,RUE DE LA COMMUNE 1871,0246,01500,01004,Amb\u00e9rieu-en-Bugey,01,,,01004000AP0963,,,2,39.42,,,,,,,,,1,2,Appartement,39,2,,,,,,5.350335,45.969487",
+        "labels": null
+    },
+    {
+        "title": "MISE A JOUR DES DONN\u00c9ES DVF",
+        "body": "Bonjour, il \u00e9tait - me semble t'il - pr\u00e9vu une mise \u00e0 jour des donn\u00e9es DVF et cela 2 fois par an en Avril et Octobre, quelqu'un saurait-il quand la mise \u00e0 jour d'Octobre aura lieu et comment nous serons pr\u00e9venus que les nouvelles donn\u00e9es immobili\u00e8res ont \u00e9t\u00e9 mises \u00e0 jour?\r\nPar avance merci,\r\nGilles.",
+        "labels": null
+    },
+    {
+        "title": "Site HS aujourdhui ?",
+        "body": "Bonjour,\r\n\r\nSemble ne pas fonctionne aujourd'hui la m\u00eame chose chez vous ?\r\nToutes les inputs du menu ne sont pas accessible. Pas de carte au centre.\r\n\r\nChrome Version 76.0.3809.100 + Windows 10.",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me lorsque l'on change le menu d\u00e9roulant",
+        "body": "Bonjour,\r\nIl me semble que lorsqu'on change simplement dans le menu d\u00e9roulant la section cadastrale ou la commune, la page n'est pas charg\u00e9e comme il faut. Je m'explique : je fais une premi\u00e8re recherche sur une section cadastrale particuli\u00e8re. Je change ensuite la section cadastrale, le plan cadastral s'affiche mais aucune transaction n'apparait... Alors que si je recharge la page web compl\u00e8tement et que je v\u00e9rifie le r\u00e9sultat pour la deuxi\u00e8me section cadastrale que je voulais consulter, il y a effectivement des transactions qui s'affiche pour cette deuxi\u00e8me section cadastrale.\r\nMerci et bonne journ\u00e9e et bravo pour le d\u00e9veloppement de cet outil hyper pratique !\r\nC\u00e9cile",
+        "labels": null
+    },
+    {
+        "title": "Tri sur les mutations",
+        "body": "L'affichage par date d\u00e9croissante des mutations a saut\u00e9 lors de la pr cataclysme",
+        "labels": null
+    },
+    {
+        "title": "Failed to initialize WebGL",
+        "body": "Pour information depuis le commit **replace-leaflet** 2720ba80cd9bb4d3347f80facacbd2790e1ce9f6 WebGL est obligatoire.\r\n\r\nCela implique que l'on perd une partie des utilisateurs ayant un mat\u00e9riel ne supportant pas cette fonctionnalit\u00e9.\r\n\r\n![Screenshot from 2019-05-17 09-21-29](https://user-images.githubusercontent.com/3259059/57910322-4f6c6c80-7885-11e9-9b12-54a7c899e2ff.png)\r\n\r\n@tmerlier Est-ce envisageable d'avoir une r\u00e9trocompatibilit\u00e9 avec leaflet dans le cas ou WebGL ne fonctionnerait pas ?\r\n\r\nBien cordialement,\r\n",
+        "labels": null
+    },
+    {
+        "title": "Impossible de faire d\u00e9filer la page \"A propos\"",
+        "body": "Cette anomalie avait d\u00e9j\u00e0 \u00e9t\u00e9 corrig\u00e9e dans le pass\u00e9, voir ici : https://github.com/etalab/DVF-app/commit/da418ea6aaf6c3994fe7e9de863beadcea2c666a",
+        "labels": null
+    },
+    {
+        "title": "Couleur des parcelles avec transaction",
+        "body": "Sur certains terrains, c'est particuli\u00e8rement dur de reconna\u00eetre le bleu du \"il y a une transaction ici\". Par exemple\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57583569-e9bd6080-74d1-11e9-854f-743f6a375f0b.png)\r\n\r\nEst-ce qu'on pourrait avoir une couleur plus flash ?",
+        "labels": null
+    },
+    {
+        "title": "Pas d'affichage informations",
+        "body": "Bonjour,\r\n\r\nMerci pour le travail r\u00e9alis\u00e9.\r\n\r\nIl doit y avoir des probl\u00e8mes li\u00e9s aux nouvelles communes : \r\nPar exemple 89 Montholon 473ZN\r\n\r\nPas d'affichage de l'information concernant la vente si clic sur une parcelle bleue.\r\n\r\nCordialement.",
+        "labels": null
+    },
+    {
+        "title": "Fen\u00eatre trop grande sur iPhone 6s",
+        "body": "Lorsque je charge la page sur mon iPhone 6s (Safari), la fen\u00eatre est trop haute et scrollable.\r\nCela ne permet pas de voir facilement le bas de la page, et donc les attributions OSM.\r\n\r\nPour la PR #54 cela va devenir probl\u00e9matique.\r\n\r\n![Image from iOS (1)](https://user-images.githubusercontent.com/1231232/57485863-13497280-72ad-11e9-8f64-b040519353e2.jpg)",
+        "labels": null
+    },
+    {
+        "title": "Liens profonds",
+        "body": "Actuellement l'application ne dispose que d'une seule URL, ce qui ne permet pas de pointer facilement du contenu lorsqu'on \u00e9change avec quelqu'un.\r\n\r\nJe veux par exemple pointer les transactions sur une parcelle proche d'un bien convoit\u00e9 par un ami et lui transmettre via une messagerie instantan\u00e9e.\r\nOu alors je suis un agent immobilier et je veux illustrer un \u00e9change avec un client par email avec des \u00e9l\u00e9ments chiffr\u00e9s \"officiels\".\r\n\r\nDans un premier temps je propose de mettre en place ces nouvelles URL :\r\n- https://app.dvf.etalab.gouv.fr/DD => lien vers le d\u00e9partement `DD`\r\n- https://app.dvf.etalab.gouv.fr/DDCCC => lien vers la commune `DDCCC`\r\n- https://app.dvf.etalab.gouv.fr/DDCCCSSSSS => lien vers la section `DDCCCSSSSS`\r\n- https://app.dvf.etalab.gouv.fr/DDCCCSSSSSPPPP => lien vers la parcelle `DDCCCSSSSSPPPP`\r\n\r\nQu'en pensez-vous ?",
+        "labels": null
+    },
+    {
+        "title": "Vend\u00e9e - Les Sables-d'Olonne - Erreur 400",
+        "body": "Quand on choisit **85 - Vend\u00e9e**, puis **Les Sables-d'Olonne**, rien ne se passe. La console affiche\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57483334-e5f9c600-72a6-11e9-8c19-af41fe6cae96.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Ajouter le prix au m\u00b2",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Le javascript m\u00e9lange toutes les mutations d'une parcelle",
+        "body": "Lorsqu'on s\u00e9lectionne une parcelle avec plusieurs mutations diff\u00e9rentes (dans le cas d'une copropri\u00e9t\u00e9 par exemple), chaque mutation se voit affecter tous les lots de toutes les mutations. Ainsi le contenu des toutes les mutations est identique et comprends tous les lots (seuls les valeurs fonci\u00e8res et date de mutation diff\u00e8rent).\r\n\r\nA priori l'erreur est dans la partie javascript, car les donn\u00e9es retourn\u00e9es par l'API semblent correctes (id_mutation diff\u00e9rents). Par exemple, un appel \u00e0 https://app.dvf.etalab.gouv.fr/api/mutations2/75107/000BM/from=01-01-2014&to=31-12-2018 puis un filtre sur la parcelle 0037 montre bien des mutations diff\u00e9rentes alors que le site liste les m\u00eame lots pour chaque mutation.",
+        "labels": null
+    },
+    {
+        "title": "Menu du haut pour t\u00e9l\u00e9phones \u00e9troits",
+        "body": "Actuellement, si on a un t\u00e9l\u00e9phone de poche, le menu du haut est tr\u00e8s encombrant\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57161457-f106af00-6deb-11e9-8670-a93dc448ae92.png)\r\n\r\nSerait-il possible de le condenser, par exemple comme ci-dessous (en plus joli) ?\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57161478-01b72500-6dec-11e9-973c-3d3afca6230d.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Filtrage sur les dates en JS ?",
+        "body": "Quitte \u00e0 continuer \u00e0 optimiser le nombre de requ\u00eates servies par le cache Nginx, pourquoi ne pas retirer les param\u00e8tres de plage temporelle de la route `/api/mutations2/` et laisser le client JavaScript faire lui-m\u00eame le filtrage ?",
+        "labels": null
+    },
+    {
+        "title": "Barres de d\u00e9filement",
+        "body": "Depuis la mise en production du correctif pour la barre de d\u00e9filement \u00e0 droite, mon navigateur m'affiche deux barres inutiles (une dans le menu de gauche et une sur la page enti\u00e8re). Voir la capture ci-dessous.\r\n\r\n![image](https://user-images.githubusercontent.com/47399735/57160141-375a0f00-6de8-11e9-9c25-2c8406d77e6f.png)\r\n\r\nPour reproduire : d\u00e9marrer l'application sans rien faire.\r\n\r\nWindows 7 / Chrome Version 74.0.3729.131 (Build officiel) (64 bits) / Toutes tailles de fen\u00eatre",
+        "labels": null
+    },
+    {
+        "title": "Ajouter to-do list/roadmap du projet dans le readme",
+        "body": "Bonjour,\r\n\r\nTout d'abord super initiative et outil agr\u00e9able \u00e0 utiliser ! \r\n\r\nJ'ai vu d'en un commentaire sur une autre issue qu'il y avait une roadmap, est il possible de la mettre public dans le readme ?\r\n\r\nMerci d'avance !",
+        "labels": null
+    },
+    {
+        "title": "Etage de l'appartement",
+        "body": "Bonjour,\r\n\r\nBravo pour la volont\u00e9 de rendre ce projet opensource !\r\n\r\nSur le site des imp\u00f4ts, Patrim, on avait acc\u00e8s au num\u00e9ro d'\u00e9tage des appartements. C'est une information essentielle sans quoi les donn\u00e9es sont peu exploitables.\r\n\r\nEst-ce qu'il est pr\u00e9vu de rajouter cette information ?\r\n\r\nD'avance je vous en remercie.",
+        "labels": null
+    },
+    {
+        "title": "Use integer when possible in database",
+        "body": "Bonjour,\r\n\r\nCertains champs sont toujours des entiers. Il serait donc judicieux de les d\u00e9clarer en tant que tel lors de la cr\u00e9ation de la table.\r\n\r\nCela permettrait de faire des requ\u00eates sur les valeurs et surfaces des lots.\r\n\r\n```diff\r\n\r\n--- create_table.sql\t2019-04-28 21:45:30.079744401 +0200\r\n+++ create_table2.sql\t2019-05-01 23:01:07.760996864 +0200\r\n@@ -14,7 +14,7 @@\r\n \t\"No disposition\" character varying,\r\n \t\"Date mutation\" date,\r\n \t\"Nature mutation\" character varying,\r\n-\t\"Valeur fonciere\" character varying,\r\n+\t\"Valeur fonciere\" bigint,\r\n \t\"No voie\" character varying,\r\n \t\"B/T/Q\" character varying,\r\n \t\"Type de voie\" character varying,\r\n@@ -29,15 +29,15 @@\r\n \t\"No plan\" character varying,\r\n \t\"No Volume\" character varying,\r\n \t\"1er lot\" character varying,\r\n-\t\"Surface Carrez du 1er lot\" character varying,\r\n+\t\"Surface Carrez du 1er lot\" integer,\r\n \t\"2eme lot\" character varying,\r\n-\t\"Surface Carrez du 2eme lot\" character varying,\r\n+\t\"Surface Carrez du 2eme lot\" integer,\r\n \t\"3eme lot\" character varying,\r\n-\t\"Surface Carrez du 3eme lot\" character varying,\r\n+\t\"Surface Carrez du 3eme lot\" integer,\r\n \t\"4eme lot\" character varying,\r\n-\t\"Surface Carrez du 4eme lot\" character varying,\r\n+\t\"Surface Carrez du 4eme lot\" integer,\r\n \t\"5eme lot\" character varying,\r\n-\t\"Surface Carrez du 5eme lot\" character varying,\r\n+\t\"Surface Carrez du 5eme lot\" integer,\r\n \t\"Nombre de lots\" integer,\r\n \t\"Code type local\" integer,\r\n \t\"Type local\" character varying,\r\n```",
+        "labels": null
+    },
+    {
+        "title": "Recherche par adresse",
+        "body": "Est-il possible d'ajouter une recherche par adresse ?\r\nPas toujours facile de trouver la parcelle qu'on cherche !",
+        "labels": null
+    },
+    {
+        "title": "Sols en \" nan m\u00b2 \"",
+        "body": "La parcelle \u00e0 Vaires-sur-Marne (77360) N\u00b077479000AM0004 affiche pour les appartements un sols dont la valeur est \"nan m\u00b2\"",
+        "labels": null
+    },
+    {
+        "title": "Copropri\u00e9t\u00e9 sans donn\u00e9es ?",
+        "body": "La parcelle \u00e0 Vaires-sur-Marne (77360) N\u00b077479000AR0092 est une copropri\u00e9t\u00e9 de 600 appartements. Elle devrait avoir des transactions, et m\u00eame quelques dizaines de transactions. Est-ce une absence de donn\u00e9es ?",
+        "labels": null
+    },
+    {
+        "title": "Menu Parcelle cadastrale avec uniquement les parcelles-transactions",
+        "body": "Pourrions-nous afficher dans le menu d\u00e9roulant des parcelles cadastrales uniquement les parcelles ayant un ou plusieurs transactions ? (et non la totalit\u00e9 des parcelles)",
+        "labels": null
+    },
+    {
+        "title": "quid des mutations sur plusieurs sections",
+        "body": "Bonjour,\r\nDans le d\u00e9coupage, il semblerait que les mutations sont cloisonn\u00e9es par d\u00e9partement, commune, section. Mais je crois qu'une mutation peut concerner plusieurs sections. est-ce bien pris en compte par l'outil ?",
+        "labels": null
+    },
+    {
+        "title": "Erreur javascript - compatibilit\u00e9",
+        "body": "Rien \u00e0 faire l'appli ne fonctionne pas sur ma machine.\r\nFEDORA 29\r\nChrome Version 74.0.3729.108 (Build officiel) (64 bits)\r\n\r\nSi **etalab** est un service de l'\u00e9tat il se doit d'\u00eatre accessible.\r\n\r\n**Object.keys(json[0])**\r\n\r\n```\r\nUncaught TypeError: Cannot convert undefined or null to object\r\n    at Function.keys (<anonymous>)\r\n    at exportCSV (index.js?version=1:125)\r\n    at HTMLAnchorElement.onclick ((index):1)\r\n```\r\n\r\n```\r\nfunction exportCSV(el, data, fileName) {\r\n\t\r\n\tvar json = data;\r\n\tvar fields = Object.keys(json[0])\r\n\tvar replacer = function(key, value) { return value === null ? '' : value } \r\n\tvar csv = json.map(function(row){\r\n\t  return fields.map(function(fieldName){\r\n\t\treturn JSON.stringify(row[fieldName], replacer)\r\n\t  }).join(';')\r\n\t})\r\n\tcsv.unshift(fields.join(';')); // add header column\r\n\tcsv = csv.join('\\r\\n');\r\n\t\r\n\tel.setAttribute(\"href\", \"data:text/csv;charset=utf-8,\" + encodeURIComponent(csv));\r\n\tel.setAttribute(\"download\", fileName);\r\n}\r\n```\r\n\r\n**Je vois \u00e9galement des console.log train\u00e9s un peu pas partout, il me semble que \u00e7a casse la compatibilit\u00e9 avec certain navigateur.** ",
+        "labels": null
+    },
+    {
+        "title": "Panneau lat\u00e9ral droit des informations cache les lignes cadastrales",
+        "body": "Sur mobile le panneau lat\u00e9ral droit des informations meme s\u2019il n\u2019est pas affich\u00e9 cache les parcelles et il ne reste qu\u2019un seul petit bandeau \u00e0 gauche pour pouvoir visualiser les parcelles.\r\n![5487C916-BC1E-4364-BA91-A6D927E19973](https://user-images.githubusercontent.com/4654408/56861134-77f7f980-699e-11e9-9b57-50d1deace5b1.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "minor fix in README",
+        "body": "Juste une correction mineure dans le README: ce n'est pas seulement l'Alsace qui manque,\r\nmais aussi la Moselle il me semble.\r\n\r\nMerci pour cette tres belle appli !\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Remplissage SQL \u00e0 partir des donn\u00e9es DGFIP",
+        "body": "Les donn\u00e9es DVF sont livr\u00e9es dans un format texte, mais l'application semble parler \u00e0 une base SQL. Avez-vous pr\u00e9vu de publier  le script qui cr\u00e9e la base SQL \u00e0 partir des  donn\u00e9es source ?",
+        "labels": null
+    },
+    {
+        "title": "Alsace manquante ",
+        "body": "Merci pour ce super boulot !\r\nJ'ai diffus\u00e9 en interne l'outil et on m'a signal\u00e9 que l'Alsace manquait. (on a bien les parcelles cadastrales mais pas de valeurs fonci\u00e8res derri\u00e8re) \r\n\r\nMais je ne sais pas si le jeu de donn\u00e9es initial comporte ces donn\u00e9es ",
+        "labels": null
+    },
+    {
+        "title": "Les donn\u00e9es de Mayotte ainsi que de l'Alsace sont manquantes.",
+        "body": "Bonjour,\r\n\r\nY-a-t-il une explication concernant le fait que \"Les donn\u00e9es de Mayotte ainsi que de l'Alsace sont manquantes.\" ?\r\n\r\nMerci.",
+        "labels": null
+    },
+    {
+        "title": "DVF pour les dates ant\u00e9rieures \u00e0 2014",
+        "body": "Bonjour,\r\n\r\nFantastique initiative ! \r\nCe n'est probablement pas une \"issue\", mais j'ai remarqu\u00e9 que les donn\u00e9es n'\u00e9taient pas disponible avant 2014. \r\nEst-il pr\u00e9vu de les ajouter ? \r\n\r\nOlivier",
+        "labels": null
+    },
+    {
+        "title": "Pas de date de mutation pour 2018",
+        "body": "Bonjour,\r\n\r\nPour une commune comme Orchies (59), sur plusieurs sections de cadastre, je n'ai aucune date de mutation pour 2018 (jusque fin juin pour cette ann\u00e9e-l\u00e0), tout s'arr\u00eate \u00e0 fin 2017...\r\nEst-ce normal ? Les donn\u00e9es sont-elles manquantes ou ne sont pas remont\u00e9es par \"l'app\" ?\r\nMerci.\r\nCordialement",
+        "labels": null
+    },
+    {
+        "title": "Une API est-elle pr\u00e9vue?",
+        "body": "Bonjour,\r\n\r\nCet \"issue\" n'en est pas une.\r\nJe voudrais juste savoir si une API est pr\u00e9vue?\r\nMerci.\r\n\r\nFran\u00e7ois",
+        "labels": null
+    },
+    {
+        "title": "Boutton A propos non fonctionnel",
+        "body": "Bonjour,\r\n\r\nLe bouton _A propos_ dans le bandeau d\u2019ent\u00eate ne fonctionne pas.\r\nQuand on le clique l'URL change en `https://app.dvf.etalab.gouv.fr/#about` mais rien n\u2019appara\u00eet.\r\nTest\u00e9 sous Firefox 66 et Chrome 73.\r\n\r\nCordialement,\r\n\r\nGuillaume",
+        "labels": null
+    },
+    {
+        "title": "Mettre une licence",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Ajouter l'URL https://app.dvf.etalab.gouv.fr dans GitHub",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me d'affichage de ventes multiples pour une parcelle",
+        "body": "Lors de la s\u00e9lection d'une parcelle ayant eu plusieurs vente sur la p\u00e9riode donn\u00e9e, toutes les ventes s'affichent avec les m\u00eames valeur en prix d'achat et date de vente. Les surfaces des biens semblent correctes quand il y a diff\u00e9rents bien vendus dans cette parcelle.",
+        "labels": null
+    }
+]

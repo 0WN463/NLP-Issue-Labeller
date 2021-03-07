@@ -1,0 +1,962 @@
+[
+    {
+        "title": "Impfzahlen werden nicht mehr komplett angezeigt ",
+        "body": "Hallo,\r\n\r\ndie Impfzahlen auf dem iPhone SE werden nicht mehr ganz angezeigt, wenn diese im BL gr\u00f6\u00dfer 1 Millionen sind:\r\n\r\n![8E5F39C6-530E-4519-A057-8B0B6B04BBC2](https://user-images.githubusercontent.com/23194902/110235621-751ea600-7f31-11eb-9cfb-7e5ca8552ae2.jpeg)\r\n\r\n\r\nKann man da was machen?",
+        "labels": null
+    },
+    {
+        "title": "Dark Mode \u00fcber config.json erzwingbar?",
+        "body": "Hi, danke f\u00fcr das tolle Widget! Nutze es schon seit Monaten!\r\n\r\nIst der \u201eDark Mode\u201c \u00fcber `config.json` erzwingbar?\r\n\r\nGru\u00df Nico\r\n",
+        "labels": null
+    },
+    {
+        "title": "Gelbe Inzidenz-Farbe nicht lesbar",
+        "body": "Servus,\r\n\r\nbei mir ist die gelbe Inzidenz-Farbe nicht gut lesbar\u2026\r\n![2691D784-0F01-49DD-82F3-7343ADA11832](https://user-images.githubusercontent.com/22658487/108123838-bf390800-70a6-11eb-888a-96401dfa4d8d.jpeg)\r\n\r\nHab diese nun mit der hier (F8F602) - ist besser lesbar.\r\n\r\n![CBA83223-D591-4280-B1E6-B52D781291D1](https://user-images.githubusercontent.com/22658487/108124110-16d77380-70a7-11eb-8437-f7c02c5f8966.jpeg)\r\n\r\n\r\nK\u00f6nnte man vll. einflie\u00dfen lassen. Danke :)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Neue F\u00e4lle BY / D bei 0 ?!?",
+        "body": "Ich habe bei mir des \u00d6fteren das Problem das beim Medium Widget der Wert der Neuinfektionen BY / D bei 0 ist und nicht aktualisiert wird.. wenn ich das Widget anklicke und es somit \u00fcber Scriptable aktualisiere dauert es bisschen und dann werden die Zahlen korrigiert. Komischerweise wird der D Wert wenn die Zahlen bei 0 sind nach oben verfrachtet und BY unten doppelt angezeigt.\r\n\r\nin der Cofig Datei habe ich folgendes eingetragen:  {\"showVaccineInMedium\": true}\r\n\r\n![39B897CC-28ED-4F01-BEE2-65C7DD5E2826](https://user-images.githubusercontent.com/76473844/106272373-4118dc80-6231-11eb-8fdf-a3012fe62215.jpeg)\r\n\r\n![9428E621-E4CB-4AAC-97D4-F9BAB9C22C64](https://user-images.githubusercontent.com/76473844/106272396-4a09ae00-6231-11eb-8b8e-cf54440f1030.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Live-Incidence Value and Error on Line 915:25 TypeError: undefined is not an object",
+        "body": "Guten Morgen Raphael,\n\nich habe heute Morgen  einen Fehler im Widget (s. Screenshot) unter Verwendung des folgenden Parameters: \"0,53.45,9.80;1,53.48,12.41\".\nDas h\u00e4ngt sicherlich mit diversen Korrekturen heute Nacht beim RKI zusammen. Da kommen aus der API m\u00f6glicher Weise unerwartete Werte. \n\nIch m\u00f6chte auch noch einmal auf eine Unsch\u00e4rfe in der Live-Inzidenz hinweisen, wenn die RKI-API f\u00fcr heute null liefert, nimmst Du die Live-Inzidenz von vorgestern und nicht von gestern. (s. Screenshot / Parameter: \"0,53.4709,9.7198;1,53.5503945,9.9924518\")\nIch stimme mit Dir bei allen Live-Inzidenzwerten \u00fcberein. Hamburg, Niedersachsen, Deutschland die auch abweichend zum RKI sind. Nur f\u00fcr Stade passt es nicht. Das m\u00fcsste imho die Live-Inzidenz 42,5 sein. \n\nGru\u00df Andr\u00e9\n\n![image](https://user-images.githubusercontent.com/74063738/106098788-ea7ca700-6139-11eb-9ed6-e880af13c218.jpeg)\n\n![image](https://user-images.githubusercontent.com/74063738/106098879-126c0a80-613a-11eb-8d09-099146ccf7a5.png)",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz Trend (Pfeil) nicht korrekt",
+        "body": "Trotz leicht steigender Inzidenz von 59,x auf 65,x zeigt der Pfeil in gr\u00fcn nach unten.",
+        "labels": null
+    },
+    {
+        "title": "Anzeige fehlerhaft, wenn Systemschrift fett",
+        "body": "![image](https://user-images.githubusercontent.com/77704168/105616429-2381e800-5dd7-11eb-8d52-fe5675e7aa60.png)",
+        "labels": null
+    },
+    {
+        "title": "+ - neue Infektionen",
+        "body": "Hey bei mir steht + - 138 und der Balken ist wei\u00df. Ist so ein Fehler schon bekannt? Liegt war. am RKI aber ich wollte es mal teilen.. \n![image](https://user-images.githubusercontent.com/47744797/105331995-6627a280-5bd4-11eb-9a96-988d5c71ca82.jpeg)\n\nParameter:\n0,48.1351,11.5819,Stadt M\u00fcnchen;1,48.0782,11.6392,Universit\u00e4t",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung....?????",
+        "body": "![Bildschirmfoto 2021-01-14 um 16 55 29](https://user-images.githubusercontent.com/8932465/104615309-6af6ce80-5689-11eb-9e17-610dbfc3eaef.jpg)\r\n...ich habe jetzt diese hier...\r\nParameter: 0,49.38,11.35,N\u00dcRNBERGER LAND;1,49.44,11.08\r\n\r\n...???",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung",
+        "body": "Hi, vorab sch\u00f6nen Dank f\u00fcr das super Script\ud83d\udc4d\ud83c\udffb\r\n\r\nSeit Heute habe ich aber eine Fehlermeldung im Script. Hatte schon den Script neu gelesen, ist aber dabei geblieben. \r\n\r\n![2E720D00-094E-4F89-86F7-4DDA1B1F4A34](https://user-images.githubusercontent.com/77447889/104603079-5d871780-567c-11eb-93af-c97c3ac30c66.jpeg)\r\n\r\nWas hat dieses zu bedeuten und was kann ich machen damit es wieder reibungslos funktioniert\u2753\r\nVllt kannst Du den Fehler begeben....\r\n\r\nBesten Dank f\u00fcr deine Hilfe. ",
+        "labels": null
+    },
+    {
+        "title": "Scriptable - Exception occured - RKI Api nicht verf\u00fcgbar, Fehlermeldung,...",
+        "body": "Folgende Fehlermeldung erhalte ich in Scriptable:\r\n\r\n```\r\n[timestamp]: SyntaxError: JSON Parse error: Expected '}'\r\n[timestamp]: Error on line 785:79: TypeError: undefined is not an object (evaluating 'response.data.features[0].attributes')\r\n```\r\n\r\nWoran liegt dies? Konnten Daten nicht geladen werden?",
+        "labels": null
+    },
+    {
+        "title": "...falsche Inzidenzwerte seit heute....???",
+        "body": "Hallo,\r\n\r\nleider zeigt das Widget seit heute falsche Inzidenzwerte an. Hier:\r\n\u201eN\u00fcrnberg\u201c und \u201eN\u00fcrnberger Land\u201c\r\n![948DD565-283F-4FE6-9F88-D2AFEE4F58A0](https://user-images.githubusercontent.com/8932465/104118417-31406380-5329-11eb-94e5-4f201c07b3e2.jpeg)\r\n\r\n\r\n...???\r\n![3AAACA65-32D8-4E98-95E5-0D5479B50E75](https://user-images.githubusercontent.com/8932465/104118388-05bd7900-5329-11eb-9fe2-a07f24921f73.jpeg)\r\n![Uploading 1DAFDF77-F8D8-4D27-96FF-752D87D81E48.jpeg\u2026]()\r\n\r\n ",
+        "labels": null
+    },
+    {
+        "title": "Nachkommastelle macht Inzidenz kaputt ",
+        "body": "Hi, mir ist heute aufgefallen, dass im Medium Widget eine Nachkommastelle angezeigt wird und dadurch kann die gesamte Inzidenz nicht angezeigt werden. Hat jemand eine Idee wie ich die Nachkommastellen komplett rauswerfen kann? Eigentlich wird ja schon immer entsprechend gerundet. Scheinbar tritt der Fehler nur bei ,0 auf.\r\n![AD94E1A9-0D21-430D-AAEF-8FC18986D5A6](https://user-images.githubusercontent.com/46962619/103986978-fe149d80-518b-11eb-8750-646a621b2962.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Darstellung",
+        "body": "Inzidenz kann seit heute nicht mehr korrekt dargestellt werden. \r\n![3772F98A-0FD6-4245-BD6D-6D271DE1F8AA](https://user-images.githubusercontent.com/74397552/103926140-d33d3180-5118-11eb-9474-962b34b896e6.jpeg)\r\nVielleicht ist das Problem aber auch schon bekannt. ",
+        "labels": null
+    },
+    {
+        "title": "Todeszahlen",
+        "body": "K\u00f6nnte man (zumindest im Medium-Size Widget) noch die Todeszahlen f\u00fcr den aktuellen Zeitraum anzeigen? Neben dem Namen des Bezirkes w\u00e4re ja zum Beispiel noch Platz.",
+        "labels": null
+    },
+    {
+        "title": "DNA-Strang durch Spritze ersetzen / Whitespace beim mittleren Widget",
+        "body": "Hallo,\nWas h\u00e4ltst Du davon, bei den Impfungen das Icon DNA-Strang \ud83e\uddec durch die Spritze \ud83d\udc89 zu ersetzen?\nPasst meiner Meinung nach etwas besser.\n\nVielleicht f\u00e4llt Dir auch noch eine schlaue Idee ein, gerade beim mittleren Widget, den oberen Whitespace zu reduzieren, um die restlichen Elemente nicht ganz so gedr\u00fcckt darzustellen.\n\nIch k\u00f6nnte mir vorstellen:\nIcon und R-Faktor links, Icon gleiche Gr\u00f6\u00dfe wie R-Faktor\nDatum in aktueller Gr\u00f6\u00dfe rechts ausgerichtet.\n\nHierdurch gewinnt man einige Pixel, was dem Platz f\u00fcr die restlichen Elemente zu Gute kommt.\n\nViele Gr\u00fc\u00dfe\nThomas",
+        "labels": null
+    },
+    {
+        "title": "Eigene Hintergrundfarbe",
+        "body": "Hallo,\r\nich benutze dieses Widget sehr gerne und es funktioniert super. Klasse Arbeit !\r\nIch w\u00fcrde gerne die Hintergrundfarbe schwarz \u00e4ndern. Ist das m\u00f6glich ?\r\n\r\nViele Gr\u00fc\u00dfe! \r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Aktuelle Version zeigt falschen Inzidenzwert an",
+        "body": "Ich verwende die aktuelle Version aus dem Git Repo. Es zeigt f\u00fcr meinen Landkreis Ebersberg seit 2 Tagen nicht den aktuellen Inzidenzwert an. ",
+        "labels": null
+    },
+    {
+        "title": "Impfzahlen ins Widget einbauen?",
+        "body": "Hi,\nfinde dein Widget sehr gut und heute habe ich entdeckt, dass jetzt auch die Anzahl der Impfungen an das RKI gemeldet werden. W\u00e4re nice wenn du das mit ins Widget \u00fcbernehmen k\u00f6nntest.\n\nhttps://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquoten-Tab.html",
+        "labels": null
+    },
+    {
+        "title": "Daten f\u00fcr Main-Kinzig-Kreis falsch",
+        "body": "Hallo,\r\n\r\nworan kann es liegen, dass die Daten f\u00fcr MKK nicht stimmen. Version aus Autoupdate und auch aktuelle Version aus Internet weisen Fehler auf.\r\n\r\n![FCE280EC-BEAD-4D2F-8F56-E070DE43DCCF](https://user-images.githubusercontent.com/5464553/103284110-a41d1680-49da-11eb-875b-02714ce436e5.jpeg)\r\n\r\n![4655A90A-C26D-44F0-9AC1-8D6A380A47A0](https://user-images.githubusercontent.com/5464553/103284178-d169c480-49da-11eb-9925-36d9efb74a7f.png)\r\n\r\nLG\r\nUwe Loyal",
+        "labels": null
+    },
+    {
+        "title": "Error on line 828",
+        "body": "Bei mir meldest Scriptable mit der aktuellen Version folgenden Fehler:\n![image](https://user-images.githubusercontent.com/66299704/103050849-a6741080-4595-11eb-9e50-b4c454f1086a.jpeg)\n\nDass jetzt pl\u00f6tzlich ein Error aufgetreten ist, wundert mich, da das Widget, so wie es jetzt ist, gestern noch lief.",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz Werte sind nicht korrekt",
+        "body": "Hallo,\r\ndeine Widget ist echt Super! Leider stimmen die Werte bei mir nicht \u00fcberein...\r\nich habe noch eine \"alte\" Version eines coronaWidget das auch von der RKI api ihre Daten holt.\r\nLeider Weichen die Zahlen ab. Ein Vergleich der Zahlen deines Widget mit dem RKI Dashboard decken sich leider nicht.\r\nEbenso der Trend der \u00fcber die iCloud ermittelt wird ist nicht korrekt.\r\nWas l\u00e4uft bei mir falsch? Ich habe 5 deiner Widgets am laufen unterschiedlichste Standorte.\r\nParameter beginnt immer mit 0, dann GEO Position zB 47.904, 10.636 fertig.\r\nF\u00fcr das Beispiel des LK OAL bekomme ich mit Stand von Heute (23.12.2020 07:53) 197 Trend steigend.\r\nDie RKI Zahl 148 Trend fallend. nur f\u00fcr den Standort 0, 48.13, 11.56 (M\u00fcnchen) und Landsberg am Lech passen die Werte mit 237 bzw 154 nur der Trend ist bei dir nicht korrekt.\r\nEs w\u00fcrde mich sehr freuen wenn ich einen Tipp bekommen k\u00f6nnte was hier nicht richtig l\u00e4uft.\r\n![IMG_5604CBBBCD9F-1](https://user-images.githubusercontent.com/73383563/102973821-bd672400-44fd-11eb-8717-e5460b974bf1.jpeg)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Tendenz Pfeil Falsch",
+        "body": "Leider ist trotz gestiegener Zahl im Vergleich zum Vortag der Tendenz Pfeil falsch... er m\u00fcsste nach oben gehen und nicht nach unten...\r\n\r\n\r\n![746E2B19-0E33-42AD-9338-F74E857F7F98](https://user-images.githubusercontent.com/76473844/102873752-d4484080-4441-11eb-8018-47f8168e4e6d.jpeg)\r\n\r\n![07CC8131-BBA2-422F-9E85-9EDD44A9E728](https://user-images.githubusercontent.com/76473844/102873783-dca07b80-4441-11eb-92dd-2951b886fa1c.jpeg)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Graph f\u00fcr Cases wird nicht \u00fcbernommen bei Autoupdate",
+        "body": "Wenn graphShowValue den Wert 'c' hat und scriptSelfUpdate auf true eingestellt ist, wird der Wert von graphShowValue wieder auf 'i' gesetzt.",
+        "labels": null
+    },
+    {
+        "title": "Inzidenzwert vom Vortag ",
+        "body": "Der 7Tage Inzidenz Wert f\u00fcr die statistisch gew\u00e4hlte Stadt wird vom Vortag angezeigt. Die Api liefert allerdings den aktuellen Wert.",
+        "labels": null
+    },
+    {
+        "title": "RKI API nicht erreichbar",
+        "body": "Seit heute (16.12.2020) scheint es ein neues Update gegeben zu haben:\r\n\r\nDie Arcgis7 Seite ist zwar zu erreichen, aber man bekommt keine Daten zur\u00fcck!\r\n\r\n{\"error\":{\"code\":400,\"message\":\"Invalid URL\",\"details\":[\"Invalid URL\"]}}\r\n\r\nIch habe aktuell noch keinen Workaround gefunden. Arbeite aber gerade an einer L\u00f6sung.\r\n\r\nGetestet mit mehreren randomisierten Standorten.\r\n![IMG_E2F88BA3F08D-1](https://user-images.githubusercontent.com/48281381/102329966-4673dd80-3f89-11eb-9f3e-855d1e8f0652.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Undefined is not a function",
+        "body": "Hallo, ich habe im \"kleinen\" Widget seit gestern die Fehlermeldung. ![image](https://user-images.githubusercontent.com/73854505/102327304-d1eb6f80-3f85-11eb-94e5-7536a022d979.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Pfeil von Inzidenzwert auf Lkr-Ebene falsch",
+        "body": "Hallo,\r\nLeidet scheint der Pfeil, der die Tendenz des Inzidenzwerts auf Landkreisebene angibt, wieder nicht zu stimmen. Beispiel Lkr Rottal-Inn: Vorgestern 150, gestern 184, heute 201 - trotzdem ist der Pfeil immer noch gr\u00fcn und zeigt nach unten.\r\n\r\nW\u00e4re sch\u00f6n, wenn das gefixxt wird :)",
+        "labels": null
+    },
+    {
+        "title": "Optik......",
+        "body": "...h\u00e4tte noch ein paar optische Kleinigkeiten ...weiss nicht ob es machbar oder viel Aufwand w\u00e4re.....denke w\u00e4re aber optisch (noch) etwas \u201eaufger\u00e4umter\u201c und \u201elogischer\u201c ....sorry....ich bin ein \u201eSymmetriefan\u201c .....\r\n\r\n\r\n\r\n...\r\n![D8535585-F151-4F31-89A1-A97083A805F1](https://user-images.githubusercontent.com/8932465/101992412-4aff7400-3cb3-11eb-93c1-cf004061ecd8.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Text oder Pfeil Offset ",
+        "body": "Hallo Raphael.\r\nNochmal vielen Dank f\u00fcr das tolle Widget.\r\nWas mir seit dem letzten Update auff\u00e4llt ist, dass der Trendpfeil und/ oder die Inzidenz Vertikal nicht mittig angeordnet sind.\r\nKann es sein, dass es an meinem iPhone liegt (iOS 14.3 auf nem iPhone X), denn in deinem Screenshot sieht es sehr gut angeordnet.\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Seit gestern wird das Datum und die Zahlen nicht aktualisiert ",
+        "body": "Seit gestern wird das Datum und die Zahlen nicht aktualisiert \r\nDas neuste Repository habe ich schon r\u00fcber kopiert. \r\n![2A80B55D-79A9-4D3E-988A-FB08C6821267](https://user-images.githubusercontent.com/73196506/101783305-62473180-3afa-11eb-9332-bb67e24c9413.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Medium Widget keine Werte f\u00fcr den zweiten Standort",
+        "body": "![image](https://user-images.githubusercontent.com/6563221/101749194-c3a4db80-3acd-11eb-88c4-7a9027781c33.jpeg)\n\nHi, ich habe seit heute pl\u00f6tzlich keine Werte mehr f\u00fcr den zweiten Standort im Medium Widget. \n\nHier die Parameter:\n0,52.396149,13.058540,Potsdam;1,52.514560,13.498310,Work",
+        "labels": null
+    },
+    {
+        "title": "Standortdaten konnten nicht geladen werden. Kein Cache verf\u00fcgbar.",
+        "body": "Guten Morgen,\r\n\r\nBeim starten deines Scriptes bekomme ich oben genannte Fehlermeldung. Ich stehe gerade auf dem Schlauch. Was ist Falsch ?\r\n\r\nMit freundlichen Gr\u00fc\u00dfen\r\nOliver",
+        "labels": null
+    },
+    {
+        "title": "Tendenzpfeil f\u00fcr R-Wert ",
+        "body": "Hallo,\r\n\r\nvielen Dank f\u00fcr das tolle Widget. Wie w\u00e4re, wenn du dem R-Wert noch einen Tendenzpfeil spendieren w\u00fcrdest? Dann m\u00fcsste man nicht immer selbst \u00fcberlegen, ob der jetzt gestiegen oder gefallen ist im Vergleich zum Wert davor. \r\n\r\nDanke, jnhll ",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung",
+        "body": "Seit heute Morgen erhalte ich beim Ausf\u00fchren des Scripts eine Fehlermeldung und das Widget funktioniert nicht mehr:\r\n\r\n2020-12-07 06:48:51: Error on line 773:49: TypeError: undefined is not a function",
+        "labels": null
+    },
+    {
+        "title": "R\u00fcckfrage zu den Koordinaten",
+        "body": "Hi Zusammen,\r\n\r\nich bin leider kein \"Pro\" in Sachen Code. Deswegen entschuldigt die vielleicht bl\u00f6de Frage. Aber in welcher Zeile f\u00fcge ich den die Koordinaten ein f\u00fcr meinen SK?\r\n\r\nVielen Dank schonmal!\r\n\r\nLiebe Gr\u00fc\u00dfe\r\nPaul",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz Wert ",
+        "body": "![3747A6D5-E4ED-4DC9-B892-B3615DD6C6F7](https://user-images.githubusercontent.com/73780730/100975178-e3705880-353d-11eb-8b24-0fda9bfd2ba1.jpeg)\r\n\r\nWie k\u00f6nnen die Werte zwischen den beiden Versionen abweichen? Laut RKI ist der niedrigere Wert der alten Version richtig. ",
+        "labels": null
+    },
+    {
+        "title": "Medium widget",
+        "body": "\nDa fehlt was. \nOder k\u00f6nnte es daran liegen, dass ich Medium gerade erst eingestellt habe?",
+        "labels": null
+    },
+    {
+        "title": "Alle Tendenz-Pfeile seit letztem Update gr\u00fcn und nach unten zeigend...",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Formatierungs Fehler",
+        "body": "Meine Parameter: 0,48.1351,11.5819,Stadt M\u00fcnchen;1,48.0782,11.6392, Neubiberg\n\n![image](https://user-images.githubusercontent.com/47744797/100831159-6f628180-3465-11eb-865d-d65360bcf97a.jpeg)\n\nVolle verf\u00fcgbare Breite kann f\u00fcr den String \"Stadt M\u00fcnchen\" nicht genutzt werden.",
+        "labels": null
+    },
+    {
+        "title": "Darstellungsformen ",
+        "body": "Schau mal hier: \r\n\r\n![E34EFA5D-76F5-4CAA-9E75-AA7FD9EB4404](https://user-images.githubusercontent.com/73339863/100595271-fba46580-32fa-11eb-88e9-140171fbf909.jpeg)\r\n\r\nWas kann ich hier machen? ",
+        "labels": null
+    },
+    {
+        "title": "Oben neben dem Logo steht n/v und der Balken mit dem Inzidenzwert ist nicht mittig",
+        "body": "![IMG_5913](https://user-images.githubusercontent.com/48152632/100555940-0f21e300-329f-11eb-9001-b0d2be1d5d45.PNG)\r\n\r\nIch nutze das iPhone 8\r\n\r\nOben neben dem Logo steht n/v und der Balken mit dem Inzidenzwert ist nicht mittig.\r\n\r\n\r\nVielen Dank schonmal f\u00fcr die Hilfe! :)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Keine Ver\u00e4nderung der Farbe bei Inzidenzwert < 50 etc.",
+        "body": "M\u00f6glicherweise lagen wir auch schon lange nicht mehr unter 50. Daher meine Frage, ob hier ein Bug vorliegt. ![image](https://user-images.githubusercontent.com/75040651/100414048-2089a600-3079-11eb-94ad-34157e71b985.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Abweichung von RKI",
+        "body": "Warum weichen die Werte des Main-Kinzig-Kreis ab, die des Wetteraukreises aber nicht?\r\n\r\n![00AE631A-804D-4295-911F-85F65C201145](https://user-images.githubusercontent.com/5464553/100348556-5aaa6780-2fe7-11eb-8e33-ca6a8660ae0c.png)\r\n![7DB23309-166E-4084-B441-3748C3598E42](https://user-images.githubusercontent.com/5464553/100348585-66962980-2fe7-11eb-8ecc-7462115cb3be.png)\r\n![65C3D29B-442B-4A07-AB6F-235D408621E1](https://user-images.githubusercontent.com/5464553/100348593-68f88380-2fe7-11eb-8b8a-676d8f4dd6db.png)\r\n\r\nGru\u00df\r\nUwe Loyal\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "...sorry...nochmal wegen dem Darkmode\"....",
+        "body": "...sieht bei mir immer noch so aus.....zwar ein kleines bisschen heller aber immer noch kaum erkennbar.......\r\n\r\n....etwas hellere \"4 Felder\" so wie das 1. Feld (bei mir \"N\u00dcRNBERG LAND\" w\u00e4r sch\u00f6ner und besser zu erkennen.... finde ich.....\r\n![IMG_90E21ECE1BDB-1](https://user-images.githubusercontent.com/8932465/100312085-962a3f00-2fb1-11eb-8519-3943c576bd3a.jpeg)\r\n\r\n_Originally posted by @STJIKA in https://github.com/rphl/corona-widget/issues/72#issuecomment-734085423_",
+        "labels": null
+    },
+    {
+        "title": "Chart verschoben",
+        "body": "![image](https://user-images.githubusercontent.com/13360352/100278105-96501d80-2f64-11eb-9d71-66bff76aa242.png)\r\nWenn ein Inzidenzwert < 100 ist, rutscht die statistik nach links.\r\nGgf. weil mit Komma l\u00e4nger.",
+        "labels": null
+    },
+    {
+        "title": "Error on line 384:34: Expected value of type string but got value of type undefined.",
+        "body": "Ich bekomm eine Fehlermeldung seit dem Update. \n\n![image](https://user-images.githubusercontent.com/6563221/100250928-7f96d000-2f3e-11eb-8602-7aa0625dfb12.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Andere Daten im Chart anzeigen?",
+        "body": "aktuell zeigt der chart ja die neuen f\u00e4lle an. dies ist aber keine anzeige f\u00fcr mich, wie sich die pandemie bei mir im landkreis entwickelt. ich w\u00fcrde im chart einfach gleich die inzidenz anzeigen. der wert der neuen f\u00e4lle sagt ja nix \u00fcber das geschehen aus. wenn dann m\u00fcsste man meiner meinung nach die differenz zwischen neuen und genesenen f\u00e4llen im chart anzeigen. denn wenn mal l\u00e4nger keine neuen f\u00e4lle da sind zeigt der graph dann ja immer 0 an. das sagt mir dann aber nix \u00fcber das geschehen. kann ja sein, das keine neuen f\u00e4lle dazu kommen, aber auch keiner gesund wird. oder ob eben jeden tag welche gesund werden, und keine neuen f\u00e4lle dazu kommen. f\u00fcr die beiden f\u00e4lle w\u00fcrde der chart die gleichen werte anzeigen, aber es h\u00e4tte keine aussage, ob es \"besser\" wird oder eben nicht.",
+        "labels": null
+    },
+    {
+        "title": "Region bei Small Widget ignoriert",
+        "body": "Hallo! Super Widget, ich finde es super!\r\n\r\nIch habe das Problem bereits identifiziert, aber das fixen ist nur eine Zeile, deshalb kein Pull-Request.\r\n\r\n**Problem:** Bei einem kleinen Widget wird die Region immer als 'KS' angezeigt.\r\n**Ursache:** [Zeile 222 hat den IBZ Wert fest auf '40' stehen](https://github.com/rphl/corona-widget/blob/e6cf258980b02254a8d44b23ba985ae1908050a6/incidence.js#L222):  ```UIComp.areaIcon(bb3, 40)```\r\n**L\u00f6sung:**: Und hier kenn ich mich mit Scriptable nicht gut genug aus. F\u00fcr mich funktioniert es wenn ich auf die IBZ des Cache 0 zugreife: ```UIComp.areaIcon(bb3, ENV.cache[0].meta.IBZ)```\r\n\r\nIch hoffe das hilft dir! ",
+        "labels": null
+    },
+    {
+        "title": "Aufnahme der \"Aktiven F\u00e4lle\" m\u00f6glich....?",
+        "body": "W\u00e4re es evtl. m\u00f6glich wie \"tzschies\" die \"Aktiven F\u00e4lle\" mit aufzunehmen....\r\n\r\n![IMG_FD0A748C88A9-1](https://user-images.githubusercontent.com/8932465/100222458-667c2800-2f1a-11eb-8789-5675c8f87123.jpeg)\r\n ",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung",
+        "body": "..bei  den Parametern: \"0,49.0134,12.1016;1,51.51,7.465\"bekomme ich siehe Bild als Fehlermeldung.......????\r\n![IMG_B12A6028A133-1](https://user-images.githubusercontent.com/8932465/100213624-22cff100-2f0f-11eb-8244-668e56ab3a5d.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Darkmode",
+        "body": "1) Optik: K\u00f6nntest Du im Medium -Widget den Hintergrund f\u00fcr die Felder BL und D auch wie im kleinen Widget leicht grau machen.....\r\n\r\n2) Inzidenz: ...ich habe auch das Problem mit der abweichenden Inzidenz in N\u00fcrnberg... (Parameter: \"0,49.38,11.35,N\u00dcRNBERG LAND;1,49.44,11.08)\r\n\r\nDanke und VG",
+        "labels": null
+    },
+    {
+        "title": "Seit Update von gerade falscher Inzidenzwert",
+        "body": "Gerade das Update gemacht und pl\u00f6tzlich hat z.B. N\u00fcrnberg einen viel h\u00f6heren Wert als vorher bzw. auf dem RKI Dashboard.",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "\ud83d\ude80 Update Roadmap",
+        "body": "**Grobe Roadmap f\u00fcrs n\u00e4chste Update:**\r\nKommentare bitte im jeweiligen Ticket. Fehlt was? Ticket ;-)\r\n\r\n_Durchgestriche Tickets sind fertig. K\u00f6nnen, m\u00fcssen aber nicht im Develop Branch verf\u00fcgbar sein. \r\nDevelop kann, muss aber nicht defekt sein. Also Vorsicht ;-)_\r\n\r\n* [x] ~~Code refactoring~~\r\n* [x] ~~AutoUpdate (Install) Funktion / Selfupdate #24~~\r\n* [x] ~~Split Cache Files into Local/State/Country~~\r\n* [x] ~~Abruf Historischer Daten via Api + Caching #66~~\r\n* [x] ~~Location Caching f\u00fcr Widget ohne Parameter #64~~\r\n* [x] ~~MediumWidget doppelte BL Daten ersetzten... #26~~",
+        "labels": null
+    },
+    {
+        "title": "R-Faktor mit altem Wert",
+        "body": "R-Faktor\r\nLetzter Stand 13.11. laut Link\r\n\r\nhttps://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Projekte_RKI/Nowcasting_Zahlen_csv.csv?__blob=publicationFile\r\n\r\nLink falsch, oder fehlende RKI Daten?",
+        "labels": null
+    },
+    {
+        "title": "Caching suboptimal meiner Meinung nach",
+        "body": "Hi.\r\nDas mit dem Caching ist meiner Meinung nach leider nicht die beste Idee.\r\nWenn ich am WE nicht in der Arbeit bin, kann dort der aktuell Wert nicht abgeholt werden und dann am Montag morgen, stimmen die berechneten Pfeile nicht und es fehlen die Werte eben vom Wochenende.\r\nAuch in Landkreisen in denen ich nicht so oft bin, haben keine \"alten\" Daten.\r\nDa finde ich mittlerweile die Idee von https://github.com/tzschies/incidence besser, da er sich die alten Daten holt.\r\nKannst du mal schauen, ob man das nicht einbauen kann, dann spart man sich das Caching und alle Probleme die damit einhergehen.\r\nEuch f\u00fcr Leute die das Widget neu nutzen haben den Vorteil, sofort alle Daten der letzten 14 Tage zu sehen.\r\nDas finde ich daher mittlerweile die elegantere L\u00f6sung.\r\nVon der Art und Weise wie du die Daten anzeigst, finde ich deine Version aber definitiv die sch\u00f6nere.\r\nDanke",
+        "labels": null
+    },
+    {
+        "title": "Location Caching f\u00fcr Widget ohne Parameter",
+        "body": "Ohne eingestellte Parameter sehe ich sehr oft die Fehlermeldung. Mein Vorschlag w\u00e4re ein standardm\u00e4\u00dfig deaktivierter \u201eLocation Cache\u201c, der - wenn aktiviert - eine Datei anlegt, die die cacheid, der letzten erfolgreichen Abfrage zwischenspeichert, und dann, wenn kein gps vorhanden ist, erst versucht auf diese datei und dann auf die verkn\u00fcpfe cacheid Datei zuzugreifen, um das Widget zu erzeugen.\r\n\r\nHab mal das Location caching eingebaut. Funktioniert soweit ganz gut. Es wird die dataID nur f\u00fcr eine abfrage gecached, die keine parameter im Widget definiert hat. Wenn also kein Widget ohne Parameter eingerichtet ist, wird auch nichts gecached. [incidence.zip](https://github.com/rphl/corona-widget/files/5546791/incidence.zip)\r\n\r\n_Originally posted by @holyjohan in https://github.com/rphl/corona-widget/issues/6#issuecomment-727636434_",
+        "labels": null
+    },
+    {
+        "title": "Darker colors too dark for dark mode",
+        "body": "When using dark mode, the darker red colors are too dark to read:\r\n\r\n![IMG_7254](https://user-images.githubusercontent.com/1202880/99193332-96883600-2778-11eb-808b-5f4acce9eac6.jpg)",
+        "labels": null
+    },
+    {
+        "title": "Dunkeldunkelrot erst bei > 250 laut RKI",
+        "body": "Hi. \r\nVon mir kam ja das dunkeldunkelrot bei Inzidenz > 200. \r\nHab heute gesehen, das das nur bei uns in Bayern beim LGL so ist. \r\nAuf der Seite vom RKI, wenn man sich das PDF zum R-Wert durchliest ist dunkeldunkelrot erst bei \u00fcber 250. \r\nKannst du das vielleicht anpassen?\r\nDanke\r\n\r\nLGL:\r\nhttps://www.lgl.bayern.de/gesundheit/infektionsschutz/infektionskrankheiten_a_z/coronavirus/karte_coronavirus/\r\n\r\nRKI:\r\nhttps://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/Nov_2020/2020-11-15-de.pdf?__blob=publicationFile",
+        "labels": null
+    },
+    {
+        "title": "14 tage Diagram ",
+        "body": "Der 14 Tage trend funktioniert nicht \r\n![IMG_8451](https://user-images.githubusercontent.com/73420542/99152641-43907f00-26a3-11eb-830b-d361d0e62f26.jpg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "R-Wert nur noch 0,00",
+        "body": "Seit zwei Tagen wird bei mir nur noch ein R-Wert von 0,00 angezeigt.\r\n![IMG_9161](https://user-images.githubusercontent.com/74456101/99147146-cfdc7b00-267e-11eb-9a7d-8d296b34010c.jpg)\r\n\r\nKann ich das irgendwie selber beheben, oder an was liegt das?\r\n",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz-Wert \u00e4ndert sich nicht",
+        "body": "Hi,\r\n\r\nwarum auch immer bleibt bei meinem Widget der Inzedenz-Wert seit Tagen bei 0,93...\r\nLaut anderen Apps w\u00e4re der bei 0,79...\r\n\r\n\r\nHabe auch schon das Script nochmals zur sicherheit aktualisiert - hat das sonst noch jemand?",
+        "labels": null
+    },
+    {
+        "title": "Lesbarkeit - Dunkeldunkel Rot bei > 200 optimieren",
+        "body": "Zahlen sind nicht lesbar aktuell\r\n![D2DBA50E-F749-46EF-9F2C-72EDA508A3F3](https://user-images.githubusercontent.com/74397552/99036083-5317a700-2581-11eb-8996-f4691749ac85.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Open RKI deaktivieren",
+        "body": "Bei mir `CONFIG_OPEN_URL = false` funktioniert nicht. \r\nMuss ich noch etwas umstellen um das Widget nicht mehr der RKI Website aufmacht?",
+        "labels": null
+    },
+    {
+        "title": "Auf kleinem Display nicht lesbar",
+        "body": "Nach dem letzten Update (wohl Nachkomma eingef\u00fchrt?) ist das Widget auf einem iPhone SE nicht mehr lesbar\r\n\r\n![IMG_5183](https://user-images.githubusercontent.com/73590285/98933181-940baf00-24e0-11eb-9c8c-4edf1addd38a.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Dunkel-Dunkel-Rot bei Inzidenz \u00fcber 200 w\u00e4re super",
+        "body": "Hi.\r\nBei uns in Bayern gibt es jetzt zu Dunkelrot auch noch Dunkel-Dunkel-Rot, falls die Inzidenz \u00fcber 200 ist.\r\nKannst du das einbauen?\r\nDanke\r\n\r\nHier sieht man es auf der Karte\r\nhttps://www.lgl.bayern.de/gesundheit/infektionsschutz/infektionskrankheiten_a_z/coronavirus/karte_coronavirus/",
+        "labels": null
+    },
+    {
+        "title": "Widget f\u00fcr Schweiz",
+        "body": "Ich habe noch kein Widget f\u00fcr die Schweiz gefunden, hat jemand von euch einen Tipp?",
+        "labels": null
+    },
+    {
+        "title": "letztes Update Heute 09.11.2020",
+        "body": "Hey, nach dem Update von heute Mittag bekomme ich folgenden Fehler....??????\r\n![IMG_00EB7BA25180-1](https://user-images.githubusercontent.com/8932465/98537663-df785000-2289-11eb-9b92-45df839a44c5.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Tippen auf a Widget leitet auf leere Seite",
+        "body": "Beim tippen auf das Widget wird man auf eine leere Webseite geleitet, ist das richtig?\r\n\r\n\r\n(https://raw.githubusercontent.com/rphl/corona-widget/master/info.png)\r\n\r\nLG\r\nUwe Loyal ",
+        "labels": null
+    },
+    {
+        "title": "Anzeige des Ortes oder Landkreises ist ungenau",
+        "body": "Hi zusammen,\n\nDanke f\u00fcr das super Widget und die tolle Weiterentwicklung.\nMir ist hier noch folgendes aufgefallen, bzw. korrigiere ich das in jeder Version immer noch selbst.\n\nIn den Daten des RKI kommt es wohl im Feld areaName welches unter dem Inzidenz Wert liegt zu \"Ungenauigkeiten\". Hier bei mir z.B. der im Umland von M\u00fcnchen wohnt. Bei der Anzeige \u00fcber Standortermittlung steht hier M\u00dcNCHEN. F\u00fcr das Stadtgebiet wird ebenfalls der gleiche Wert angezeigt.\nHabe in den RKI Daten nun das Feld county ermittelt und in meiner lokalen Kopie des Script immer wieder angepasst.\nDann steht hier\nLK M\u00fcnchen f\u00fcr den Landkreis\nSK M\u00fcnchen f\u00fcr die Stadt\n\nVielleicht w\u00e4re das ja hier auch etwas f\u00fcr einen offiziellen Fix.\n\nViele Gr\u00fc\u00dfe",
+        "labels": null
+    },
+    {
+        "title": "add Help",
+        "body": "    async createWidget() {\r\n        const list = new ListWidget()\r\n        // call Help\r\n        list.url = \"https://raw.githubusercontent.com/rphl/corona-widget/master/info.png\";\r\n\r\nMit dem Aufruf von einer Hilfeseite kann man einige Missverst\u00e4ndnisse und R\u00fcckfragen vermeiden.\r\n\r\nLG\r\nUwe Loyal ",
+        "labels": null
+    },
+    {
+        "title": "Eingabe von zwei festen Orten ",
+        "body": "Hallo, ich bekomme es einfach nicht hin, das ich zwei feste St\u00e4dte habe. Es wird immer nur die aktuelle Stadt per gps bei mir Viersen angezeigt.\r\n\r\nIch bekomme einfach die Eingabe nicht hin und wo muss das eingetragen werden.\r\nHabe es die ganzen Abend probiert und egal was ich mache geht es nicht.\r\n\r\nSorry f\u00fcr die Frage, das ist absolutes Neuland f\u00fcr mich ",
+        "labels": null
+    },
+    {
+        "title": "Bei den 14-Tage-Diagrammen steht nur n/v",
+        "body": "Fehler, oder m\u00fcssen sich erst die Daten \u00fcber die Tage ansammeln?",
+        "labels": null
+    },
+    {
+        "title": "Wie kann ich zwei Werte nebeneinander anzeigen",
+        "body": "Bekomme es nicht hin, zwei verschiedene Werte/St\u00e4dte nebeneinander anzuzeigen. L\u00e4ngen und Breitengrad habe ich jeweils als Parameter angegeben. \r\n![25616F53-1A23-45A9-8E52-432E744EA983](https://user-images.githubusercontent.com/74073430/98410148-67850c80-2074-11eb-87be-2fa3eb6c8926.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "R Werte unterscheiden sich zw. Code vom 5. und 6. November",
+        "body": "Zu allererst ein gro\u00dfes Lob f\u00fcr dieses tolle Widget. \r\nIrgendwie verwirrt mich die Darstellung des R-Wertes:\r\n![830D3790-9703-4A69-A0BE-01448AB50864](https://user-images.githubusercontent.com/46352622/98405203-238e0980-206c-11eb-8601-06a5003e0d9d.jpeg)\r\n![F1A4CEEF-12A7-4AE0-8695-F394F98ADB45](https://user-images.githubusercontent.com/46352622/98405206-24bf3680-206c-11eb-946e-b007a28a54e8.jpeg)\r\nAnbei Screenshots des Widgets in einer Version vom 5.11. und 6.11. erstellt innerhalb einer Minute am gleichen Ort. Wie kann es sein, dass der R Wert unterschiedlich ist. Welcher ist richtig bzw. entspricht dem des RKI?\r\n\r\nAdd on Frage: die Inzidenz wird ohne Nachkommastelle angezeigt obwohl diese laut Code auf eine Nachkommastelle gerundet werden soll (zumindest soweit ich den Code verstehe). \r\n\r\nNochmals danke f\u00fcr dieses Widget und die Zeit die du da investierst\r\n\r\n\r\nPs: runs on iPhone X and iOS 14.2",
+        "labels": null
+    },
+    {
+        "title": "Corona",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "\u2139\ufe0f HINWEIS! Version in Gallery ist aktuell defekt. Die aktuelle aus dem Repo hier nehmen!",
+        "body": "Hello. Wie einige festgestellt haben ist die Version in der Scriptable Gallery leider defekt. \ud83d\ude2c\r\n\r\nBitte am besten die Version aus dem Repo hier nehme.\r\n\r\n\r\n**Update in der Scriptable Gallery is angefragt!**",
+        "labels": null
+    },
+    {
+        "title": "Balken fehlen, R-Wert falsch",
+        "body": "Hallo...\r\n\r\nSeitdem ich am gestrigen Abend den Code vom 5. November verwende, werden bei mir im unteren Bereich des Widgets keine Balken mehr angezeigt.\r\nAu\u00dferdem gibt das Widget einen R-Wert von 1,02 aus, obwohl er laut andere Quellen bereits seit Tagen unter 1 liegt.\r\n\r\n![0615C997-A37F-45AD-B481-27C19DA72775](https://user-images.githubusercontent.com/74044561/98344114-10028480-2013-11eb-8325-8960f719f298.jpeg)\r\n\r\n... da ich allerdings gerade meine ersten Erfahrungen \u00fcberhaupt in diesem Bereich mache, ist es durchaus m\u00f6glich, dass sich der Fehler vor dem Bildschirm befindet. ;)\r\n\r\nEventuell notwendige Zusatzinformation:\r\niPhone 11, iOS 14.2",
+        "labels": null
+    },
+    {
+        "title": "Cache ID",
+        "body": "Servus ,\nIch bekomme immer Fehler .\nWo muss ich diese Cache if setzen ?\nWo finde ich diese id?\nUnd im Widget Parameter habe ich ja nur ein Feld wo man die lokalen Koordinaten eingibt \n\n2020-11-06 07:28:17: No cache id in \"WidgetParameter\" found. See readme.\n\n![image](https://user-images.githubusercontent.com/36126491/98333983-2a803200-2002-11eb-833e-acf7ee28c3f0.png)\n\n![image](https://user-images.githubusercontent.com/36126491/98334036-4552a680-2002-11eb-9238-7e6c8d421472.png)\n\n![image](https://user-images.githubusercontent.com/36126491/98334056-56031c80-2002-11eb-8ba8-7d0567dc939c.png)",
+        "labels": null
+    },
+    {
+        "title": "Widget wird nicht korrekt angezeigt",
+        "body": "Hallo lieber Entwickler bei mir wird auf meinem IPhone (IPhone SE 1st Generation) das Widget nicht korrekt angezeigt und manche Sachen garnicht. Was muss ich tun? Anbei noch ein Screenshot \n![image](https://user-images.githubusercontent.com/54439458/98311041-b2e4df80-1fce-11eb-8c24-88fc52dfd63e.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Ich verstehe nicht wie man es einstellt",
+        "body": "Hallo lieber Entwickler ich verstehe nicht wie man das Widget einrichtet also wie man den Landkreis usw. festlegt. K\u00f6nnten sie mir dabei helfen?",
+        "labels": null
+    },
+    {
+        "title": "Fehler - Daten konnten nicht geladen werden...",
+        "body": "Hi, hab mir den Script grade \u00fcber Scriptable geladen leider zeigt er immer nur Fehler an ?? \r\nReload was da steht bringt nix.. \r\n![4914B74C-CC6D-4085-B07C-A1AE7798AC71](https://user-images.githubusercontent.com/74021417/98291384-59b78480-1fab-11eb-879a-912ed4b93590.jpeg)\r\nBitte um Hilfe ?!",
+        "labels": null
+    },
+    {
+        "title": "R-Wert am iPhone 8 verschoben....",
+        "body": "![IMG_3034517200A6-1](https://user-images.githubusercontent.com/8932465/98230424-68764b00-1f5b-11eb-9b88-8d8b602731a7.jpeg)\r\n...sieht super aus...danke ...am iPad 12,9 passt es ...am iPhone 8 ist der R-Wert etwas verrutscht......???",
+        "labels": null
+    },
+    {
+        "title": "Impfzahlen werden nicht mehr komplett angezeigt ",
+        "body": "Hallo,\r\n\r\ndie Impfzahlen auf dem iPhone SE werden nicht mehr ganz angezeigt, wenn diese im BL gr\u00f6\u00dfer 1 Millionen sind:\r\n\r\n![8E5F39C6-530E-4519-A057-8B0B6B04BBC2](https://user-images.githubusercontent.com/23194902/110235621-751ea600-7f31-11eb-9cfb-7e5ca8552ae2.jpeg)\r\n\r\n\r\nKann man da was machen?",
+        "labels": null
+    },
+    {
+        "title": "Dark Mode \u00fcber config.json erzwingbar?",
+        "body": "Hi, danke f\u00fcr das tolle Widget! Nutze es schon seit Monaten!\r\n\r\nIst der \u201eDark Mode\u201c \u00fcber `config.json` erzwingbar?\r\n\r\nGru\u00df Nico\r\n",
+        "labels": null
+    },
+    {
+        "title": "Gelbe Inzidenz-Farbe nicht lesbar",
+        "body": "Servus,\r\n\r\nbei mir ist die gelbe Inzidenz-Farbe nicht gut lesbar\u2026\r\n![2691D784-0F01-49DD-82F3-7343ADA11832](https://user-images.githubusercontent.com/22658487/108123838-bf390800-70a6-11eb-888a-96401dfa4d8d.jpeg)\r\n\r\nHab diese nun mit der hier (F8F602) - ist besser lesbar.\r\n\r\n![CBA83223-D591-4280-B1E6-B52D781291D1](https://user-images.githubusercontent.com/22658487/108124110-16d77380-70a7-11eb-8437-f7c02c5f8966.jpeg)\r\n\r\n\r\nK\u00f6nnte man vll. einflie\u00dfen lassen. Danke :)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Neue F\u00e4lle BY / D bei 0 ?!?",
+        "body": "Ich habe bei mir des \u00d6fteren das Problem das beim Medium Widget der Wert der Neuinfektionen BY / D bei 0 ist und nicht aktualisiert wird.. wenn ich das Widget anklicke und es somit \u00fcber Scriptable aktualisiere dauert es bisschen und dann werden die Zahlen korrigiert. Komischerweise wird der D Wert wenn die Zahlen bei 0 sind nach oben verfrachtet und BY unten doppelt angezeigt.\r\n\r\nin der Cofig Datei habe ich folgendes eingetragen:  {\"showVaccineInMedium\": true}\r\n\r\n![39B897CC-28ED-4F01-BEE2-65C7DD5E2826](https://user-images.githubusercontent.com/76473844/106272373-4118dc80-6231-11eb-8fdf-a3012fe62215.jpeg)\r\n\r\n![9428E621-E4CB-4AAC-97D4-F9BAB9C22C64](https://user-images.githubusercontent.com/76473844/106272396-4a09ae00-6231-11eb-8b8e-cf54440f1030.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Live-Incidence Value and Error on Line 915:25 TypeError: undefined is not an object",
+        "body": "Guten Morgen Raphael,\n\nich habe heute Morgen  einen Fehler im Widget (s. Screenshot) unter Verwendung des folgenden Parameters: \"0,53.45,9.80;1,53.48,12.41\".\nDas h\u00e4ngt sicherlich mit diversen Korrekturen heute Nacht beim RKI zusammen. Da kommen aus der API m\u00f6glicher Weise unerwartete Werte. \n\nIch m\u00f6chte auch noch einmal auf eine Unsch\u00e4rfe in der Live-Inzidenz hinweisen, wenn die RKI-API f\u00fcr heute null liefert, nimmst Du die Live-Inzidenz von vorgestern und nicht von gestern. (s. Screenshot / Parameter: \"0,53.4709,9.7198;1,53.5503945,9.9924518\")\nIch stimme mit Dir bei allen Live-Inzidenzwerten \u00fcberein. Hamburg, Niedersachsen, Deutschland die auch abweichend zum RKI sind. Nur f\u00fcr Stade passt es nicht. Das m\u00fcsste imho die Live-Inzidenz 42,5 sein. \n\nGru\u00df Andr\u00e9\n\n![image](https://user-images.githubusercontent.com/74063738/106098788-ea7ca700-6139-11eb-9ed6-e880af13c218.jpeg)\n\n![image](https://user-images.githubusercontent.com/74063738/106098879-126c0a80-613a-11eb-8d09-099146ccf7a5.png)",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz Trend (Pfeil) nicht korrekt",
+        "body": "Trotz leicht steigender Inzidenz von 59,x auf 65,x zeigt der Pfeil in gr\u00fcn nach unten.",
+        "labels": null
+    },
+    {
+        "title": "Anzeige fehlerhaft, wenn Systemschrift fett",
+        "body": "![image](https://user-images.githubusercontent.com/77704168/105616429-2381e800-5dd7-11eb-8d52-fe5675e7aa60.png)",
+        "labels": null
+    },
+    {
+        "title": "+ - neue Infektionen",
+        "body": "Hey bei mir steht + - 138 und der Balken ist wei\u00df. Ist so ein Fehler schon bekannt? Liegt war. am RKI aber ich wollte es mal teilen.. \n![image](https://user-images.githubusercontent.com/47744797/105331995-6627a280-5bd4-11eb-9a96-988d5c71ca82.jpeg)\n\nParameter:\n0,48.1351,11.5819,Stadt M\u00fcnchen;1,48.0782,11.6392,Universit\u00e4t",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung....?????",
+        "body": "![Bildschirmfoto 2021-01-14 um 16 55 29](https://user-images.githubusercontent.com/8932465/104615309-6af6ce80-5689-11eb-9e17-610dbfc3eaef.jpg)\r\n...ich habe jetzt diese hier...\r\nParameter: 0,49.38,11.35,N\u00dcRNBERGER LAND;1,49.44,11.08\r\n\r\n...???",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung",
+        "body": "Hi, vorab sch\u00f6nen Dank f\u00fcr das super Script\ud83d\udc4d\ud83c\udffb\r\n\r\nSeit Heute habe ich aber eine Fehlermeldung im Script. Hatte schon den Script neu gelesen, ist aber dabei geblieben. \r\n\r\n![2E720D00-094E-4F89-86F7-4DDA1B1F4A34](https://user-images.githubusercontent.com/77447889/104603079-5d871780-567c-11eb-93af-c97c3ac30c66.jpeg)\r\n\r\nWas hat dieses zu bedeuten und was kann ich machen damit es wieder reibungslos funktioniert\u2753\r\nVllt kannst Du den Fehler begeben....\r\n\r\nBesten Dank f\u00fcr deine Hilfe. ",
+        "labels": null
+    },
+    {
+        "title": "Scriptable - Exception occured - RKI Api nicht verf\u00fcgbar, Fehlermeldung,...",
+        "body": "Folgende Fehlermeldung erhalte ich in Scriptable:\r\n\r\n```\r\n[timestamp]: SyntaxError: JSON Parse error: Expected '}'\r\n[timestamp]: Error on line 785:79: TypeError: undefined is not an object (evaluating 'response.data.features[0].attributes')\r\n```\r\n\r\nWoran liegt dies? Konnten Daten nicht geladen werden?",
+        "labels": null
+    },
+    {
+        "title": "...falsche Inzidenzwerte seit heute....???",
+        "body": "Hallo,\r\n\r\nleider zeigt das Widget seit heute falsche Inzidenzwerte an. Hier:\r\n\u201eN\u00fcrnberg\u201c und \u201eN\u00fcrnberger Land\u201c\r\n![948DD565-283F-4FE6-9F88-D2AFEE4F58A0](https://user-images.githubusercontent.com/8932465/104118417-31406380-5329-11eb-94e5-4f201c07b3e2.jpeg)\r\n\r\n\r\n...???\r\n![3AAACA65-32D8-4E98-95E5-0D5479B50E75](https://user-images.githubusercontent.com/8932465/104118388-05bd7900-5329-11eb-9fe2-a07f24921f73.jpeg)\r\n![Uploading 1DAFDF77-F8D8-4D27-96FF-752D87D81E48.jpeg\u2026]()\r\n\r\n ",
+        "labels": null
+    },
+    {
+        "title": "Nachkommastelle macht Inzidenz kaputt ",
+        "body": "Hi, mir ist heute aufgefallen, dass im Medium Widget eine Nachkommastelle angezeigt wird und dadurch kann die gesamte Inzidenz nicht angezeigt werden. Hat jemand eine Idee wie ich die Nachkommastellen komplett rauswerfen kann? Eigentlich wird ja schon immer entsprechend gerundet. Scheinbar tritt der Fehler nur bei ,0 auf.\r\n![AD94E1A9-0D21-430D-AAEF-8FC18986D5A6](https://user-images.githubusercontent.com/46962619/103986978-fe149d80-518b-11eb-8750-646a621b2962.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Darstellung",
+        "body": "Inzidenz kann seit heute nicht mehr korrekt dargestellt werden. \r\n![3772F98A-0FD6-4245-BD6D-6D271DE1F8AA](https://user-images.githubusercontent.com/74397552/103926140-d33d3180-5118-11eb-9474-962b34b896e6.jpeg)\r\nVielleicht ist das Problem aber auch schon bekannt. ",
+        "labels": null
+    },
+    {
+        "title": "Todeszahlen",
+        "body": "K\u00f6nnte man (zumindest im Medium-Size Widget) noch die Todeszahlen f\u00fcr den aktuellen Zeitraum anzeigen? Neben dem Namen des Bezirkes w\u00e4re ja zum Beispiel noch Platz.",
+        "labels": null
+    },
+    {
+        "title": "DNA-Strang durch Spritze ersetzen / Whitespace beim mittleren Widget",
+        "body": "Hallo,\nWas h\u00e4ltst Du davon, bei den Impfungen das Icon DNA-Strang \ud83e\uddec durch die Spritze \ud83d\udc89 zu ersetzen?\nPasst meiner Meinung nach etwas besser.\n\nVielleicht f\u00e4llt Dir auch noch eine schlaue Idee ein, gerade beim mittleren Widget, den oberen Whitespace zu reduzieren, um die restlichen Elemente nicht ganz so gedr\u00fcckt darzustellen.\n\nIch k\u00f6nnte mir vorstellen:\nIcon und R-Faktor links, Icon gleiche Gr\u00f6\u00dfe wie R-Faktor\nDatum in aktueller Gr\u00f6\u00dfe rechts ausgerichtet.\n\nHierdurch gewinnt man einige Pixel, was dem Platz f\u00fcr die restlichen Elemente zu Gute kommt.\n\nViele Gr\u00fc\u00dfe\nThomas",
+        "labels": null
+    },
+    {
+        "title": "Eigene Hintergrundfarbe",
+        "body": "Hallo,\r\nich benutze dieses Widget sehr gerne und es funktioniert super. Klasse Arbeit !\r\nIch w\u00fcrde gerne die Hintergrundfarbe schwarz \u00e4ndern. Ist das m\u00f6glich ?\r\n\r\nViele Gr\u00fc\u00dfe! \r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Aktuelle Version zeigt falschen Inzidenzwert an",
+        "body": "Ich verwende die aktuelle Version aus dem Git Repo. Es zeigt f\u00fcr meinen Landkreis Ebersberg seit 2 Tagen nicht den aktuellen Inzidenzwert an. ",
+        "labels": null
+    },
+    {
+        "title": "Impfzahlen ins Widget einbauen?",
+        "body": "Hi,\nfinde dein Widget sehr gut und heute habe ich entdeckt, dass jetzt auch die Anzahl der Impfungen an das RKI gemeldet werden. W\u00e4re nice wenn du das mit ins Widget \u00fcbernehmen k\u00f6nntest.\n\nhttps://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquoten-Tab.html",
+        "labels": null
+    },
+    {
+        "title": "Daten f\u00fcr Main-Kinzig-Kreis falsch",
+        "body": "Hallo,\r\n\r\nworan kann es liegen, dass die Daten f\u00fcr MKK nicht stimmen. Version aus Autoupdate und auch aktuelle Version aus Internet weisen Fehler auf.\r\n\r\n![FCE280EC-BEAD-4D2F-8F56-E070DE43DCCF](https://user-images.githubusercontent.com/5464553/103284110-a41d1680-49da-11eb-875b-02714ce436e5.jpeg)\r\n\r\n![4655A90A-C26D-44F0-9AC1-8D6A380A47A0](https://user-images.githubusercontent.com/5464553/103284178-d169c480-49da-11eb-9925-36d9efb74a7f.png)\r\n\r\nLG\r\nUwe Loyal",
+        "labels": null
+    },
+    {
+        "title": "Error on line 828",
+        "body": "Bei mir meldest Scriptable mit der aktuellen Version folgenden Fehler:\n![image](https://user-images.githubusercontent.com/66299704/103050849-a6741080-4595-11eb-9e50-b4c454f1086a.jpeg)\n\nDass jetzt pl\u00f6tzlich ein Error aufgetreten ist, wundert mich, da das Widget, so wie es jetzt ist, gestern noch lief.",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz Werte sind nicht korrekt",
+        "body": "Hallo,\r\ndeine Widget ist echt Super! Leider stimmen die Werte bei mir nicht \u00fcberein...\r\nich habe noch eine \"alte\" Version eines coronaWidget das auch von der RKI api ihre Daten holt.\r\nLeider Weichen die Zahlen ab. Ein Vergleich der Zahlen deines Widget mit dem RKI Dashboard decken sich leider nicht.\r\nEbenso der Trend der \u00fcber die iCloud ermittelt wird ist nicht korrekt.\r\nWas l\u00e4uft bei mir falsch? Ich habe 5 deiner Widgets am laufen unterschiedlichste Standorte.\r\nParameter beginnt immer mit 0, dann GEO Position zB 47.904, 10.636 fertig.\r\nF\u00fcr das Beispiel des LK OAL bekomme ich mit Stand von Heute (23.12.2020 07:53) 197 Trend steigend.\r\nDie RKI Zahl 148 Trend fallend. nur f\u00fcr den Standort 0, 48.13, 11.56 (M\u00fcnchen) und Landsberg am Lech passen die Werte mit 237 bzw 154 nur der Trend ist bei dir nicht korrekt.\r\nEs w\u00fcrde mich sehr freuen wenn ich einen Tipp bekommen k\u00f6nnte was hier nicht richtig l\u00e4uft.\r\n![IMG_5604CBBBCD9F-1](https://user-images.githubusercontent.com/73383563/102973821-bd672400-44fd-11eb-8717-e5460b974bf1.jpeg)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Tendenz Pfeil Falsch",
+        "body": "Leider ist trotz gestiegener Zahl im Vergleich zum Vortag der Tendenz Pfeil falsch... er m\u00fcsste nach oben gehen und nicht nach unten...\r\n\r\n\r\n![746E2B19-0E33-42AD-9338-F74E857F7F98](https://user-images.githubusercontent.com/76473844/102873752-d4484080-4441-11eb-8018-47f8168e4e6d.jpeg)\r\n\r\n![07CC8131-BBA2-422F-9E85-9EDD44A9E728](https://user-images.githubusercontent.com/76473844/102873783-dca07b80-4441-11eb-92dd-2951b886fa1c.jpeg)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Graph f\u00fcr Cases wird nicht \u00fcbernommen bei Autoupdate",
+        "body": "Wenn graphShowValue den Wert 'c' hat und scriptSelfUpdate auf true eingestellt ist, wird der Wert von graphShowValue wieder auf 'i' gesetzt.",
+        "labels": null
+    },
+    {
+        "title": "Inzidenzwert vom Vortag ",
+        "body": "Der 7Tage Inzidenz Wert f\u00fcr die statistisch gew\u00e4hlte Stadt wird vom Vortag angezeigt. Die Api liefert allerdings den aktuellen Wert.",
+        "labels": null
+    },
+    {
+        "title": "RKI API nicht erreichbar",
+        "body": "Seit heute (16.12.2020) scheint es ein neues Update gegeben zu haben:\r\n\r\nDie Arcgis7 Seite ist zwar zu erreichen, aber man bekommt keine Daten zur\u00fcck!\r\n\r\n{\"error\":{\"code\":400,\"message\":\"Invalid URL\",\"details\":[\"Invalid URL\"]}}\r\n\r\nIch habe aktuell noch keinen Workaround gefunden. Arbeite aber gerade an einer L\u00f6sung.\r\n\r\nGetestet mit mehreren randomisierten Standorten.\r\n![IMG_E2F88BA3F08D-1](https://user-images.githubusercontent.com/48281381/102329966-4673dd80-3f89-11eb-9f3e-855d1e8f0652.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Undefined is not a function",
+        "body": "Hallo, ich habe im \"kleinen\" Widget seit gestern die Fehlermeldung. ![image](https://user-images.githubusercontent.com/73854505/102327304-d1eb6f80-3f85-11eb-94e5-7536a022d979.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Pfeil von Inzidenzwert auf Lkr-Ebene falsch",
+        "body": "Hallo,\r\nLeidet scheint der Pfeil, der die Tendenz des Inzidenzwerts auf Landkreisebene angibt, wieder nicht zu stimmen. Beispiel Lkr Rottal-Inn: Vorgestern 150, gestern 184, heute 201 - trotzdem ist der Pfeil immer noch gr\u00fcn und zeigt nach unten.\r\n\r\nW\u00e4re sch\u00f6n, wenn das gefixxt wird :)",
+        "labels": null
+    },
+    {
+        "title": "Optik......",
+        "body": "...h\u00e4tte noch ein paar optische Kleinigkeiten ...weiss nicht ob es machbar oder viel Aufwand w\u00e4re.....denke w\u00e4re aber optisch (noch) etwas \u201eaufger\u00e4umter\u201c und \u201elogischer\u201c ....sorry....ich bin ein \u201eSymmetriefan\u201c .....\r\n\r\n\r\n\r\n...\r\n![D8535585-F151-4F31-89A1-A97083A805F1](https://user-images.githubusercontent.com/8932465/101992412-4aff7400-3cb3-11eb-93c1-cf004061ecd8.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Text oder Pfeil Offset ",
+        "body": "Hallo Raphael.\r\nNochmal vielen Dank f\u00fcr das tolle Widget.\r\nWas mir seit dem letzten Update auff\u00e4llt ist, dass der Trendpfeil und/ oder die Inzidenz Vertikal nicht mittig angeordnet sind.\r\nKann es sein, dass es an meinem iPhone liegt (iOS 14.3 auf nem iPhone X), denn in deinem Screenshot sieht es sehr gut angeordnet.\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Seit gestern wird das Datum und die Zahlen nicht aktualisiert ",
+        "body": "Seit gestern wird das Datum und die Zahlen nicht aktualisiert \r\nDas neuste Repository habe ich schon r\u00fcber kopiert. \r\n![2A80B55D-79A9-4D3E-988A-FB08C6821267](https://user-images.githubusercontent.com/73196506/101783305-62473180-3afa-11eb-9332-bb67e24c9413.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Medium Widget keine Werte f\u00fcr den zweiten Standort",
+        "body": "![image](https://user-images.githubusercontent.com/6563221/101749194-c3a4db80-3acd-11eb-88c4-7a9027781c33.jpeg)\n\nHi, ich habe seit heute pl\u00f6tzlich keine Werte mehr f\u00fcr den zweiten Standort im Medium Widget. \n\nHier die Parameter:\n0,52.396149,13.058540,Potsdam;1,52.514560,13.498310,Work",
+        "labels": null
+    },
+    {
+        "title": "Standortdaten konnten nicht geladen werden. Kein Cache verf\u00fcgbar.",
+        "body": "Guten Morgen,\r\n\r\nBeim starten deines Scriptes bekomme ich oben genannte Fehlermeldung. Ich stehe gerade auf dem Schlauch. Was ist Falsch ?\r\n\r\nMit freundlichen Gr\u00fc\u00dfen\r\nOliver",
+        "labels": null
+    },
+    {
+        "title": "Tendenzpfeil f\u00fcr R-Wert ",
+        "body": "Hallo,\r\n\r\nvielen Dank f\u00fcr das tolle Widget. Wie w\u00e4re, wenn du dem R-Wert noch einen Tendenzpfeil spendieren w\u00fcrdest? Dann m\u00fcsste man nicht immer selbst \u00fcberlegen, ob der jetzt gestiegen oder gefallen ist im Vergleich zum Wert davor. \r\n\r\nDanke, jnhll ",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung",
+        "body": "Seit heute Morgen erhalte ich beim Ausf\u00fchren des Scripts eine Fehlermeldung und das Widget funktioniert nicht mehr:\r\n\r\n2020-12-07 06:48:51: Error on line 773:49: TypeError: undefined is not a function",
+        "labels": null
+    },
+    {
+        "title": "R\u00fcckfrage zu den Koordinaten",
+        "body": "Hi Zusammen,\r\n\r\nich bin leider kein \"Pro\" in Sachen Code. Deswegen entschuldigt die vielleicht bl\u00f6de Frage. Aber in welcher Zeile f\u00fcge ich den die Koordinaten ein f\u00fcr meinen SK?\r\n\r\nVielen Dank schonmal!\r\n\r\nLiebe Gr\u00fc\u00dfe\r\nPaul",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz Wert ",
+        "body": "![3747A6D5-E4ED-4DC9-B892-B3615DD6C6F7](https://user-images.githubusercontent.com/73780730/100975178-e3705880-353d-11eb-8b24-0fda9bfd2ba1.jpeg)\r\n\r\nWie k\u00f6nnen die Werte zwischen den beiden Versionen abweichen? Laut RKI ist der niedrigere Wert der alten Version richtig. ",
+        "labels": null
+    },
+    {
+        "title": "Medium widget",
+        "body": "\nDa fehlt was. \nOder k\u00f6nnte es daran liegen, dass ich Medium gerade erst eingestellt habe?",
+        "labels": null
+    },
+    {
+        "title": "Alle Tendenz-Pfeile seit letztem Update gr\u00fcn und nach unten zeigend...",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Formatierungs Fehler",
+        "body": "Meine Parameter: 0,48.1351,11.5819,Stadt M\u00fcnchen;1,48.0782,11.6392, Neubiberg\n\n![image](https://user-images.githubusercontent.com/47744797/100831159-6f628180-3465-11eb-865d-d65360bcf97a.jpeg)\n\nVolle verf\u00fcgbare Breite kann f\u00fcr den String \"Stadt M\u00fcnchen\" nicht genutzt werden.",
+        "labels": null
+    },
+    {
+        "title": "Darstellungsformen ",
+        "body": "Schau mal hier: \r\n\r\n![E34EFA5D-76F5-4CAA-9E75-AA7FD9EB4404](https://user-images.githubusercontent.com/73339863/100595271-fba46580-32fa-11eb-88e9-140171fbf909.jpeg)\r\n\r\nWas kann ich hier machen? ",
+        "labels": null
+    },
+    {
+        "title": "Oben neben dem Logo steht n/v und der Balken mit dem Inzidenzwert ist nicht mittig",
+        "body": "![IMG_5913](https://user-images.githubusercontent.com/48152632/100555940-0f21e300-329f-11eb-9001-b0d2be1d5d45.PNG)\r\n\r\nIch nutze das iPhone 8\r\n\r\nOben neben dem Logo steht n/v und der Balken mit dem Inzidenzwert ist nicht mittig.\r\n\r\n\r\nVielen Dank schonmal f\u00fcr die Hilfe! :)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Keine Ver\u00e4nderung der Farbe bei Inzidenzwert < 50 etc.",
+        "body": "M\u00f6glicherweise lagen wir auch schon lange nicht mehr unter 50. Daher meine Frage, ob hier ein Bug vorliegt. ![image](https://user-images.githubusercontent.com/75040651/100414048-2089a600-3079-11eb-94ad-34157e71b985.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Abweichung von RKI",
+        "body": "Warum weichen die Werte des Main-Kinzig-Kreis ab, die des Wetteraukreises aber nicht?\r\n\r\n![00AE631A-804D-4295-911F-85F65C201145](https://user-images.githubusercontent.com/5464553/100348556-5aaa6780-2fe7-11eb-8e33-ca6a8660ae0c.png)\r\n![7DB23309-166E-4084-B441-3748C3598E42](https://user-images.githubusercontent.com/5464553/100348585-66962980-2fe7-11eb-8ecc-7462115cb3be.png)\r\n![65C3D29B-442B-4A07-AB6F-235D408621E1](https://user-images.githubusercontent.com/5464553/100348593-68f88380-2fe7-11eb-8b8a-676d8f4dd6db.png)\r\n\r\nGru\u00df\r\nUwe Loyal\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "...sorry...nochmal wegen dem Darkmode\"....",
+        "body": "...sieht bei mir immer noch so aus.....zwar ein kleines bisschen heller aber immer noch kaum erkennbar.......\r\n\r\n....etwas hellere \"4 Felder\" so wie das 1. Feld (bei mir \"N\u00dcRNBERG LAND\" w\u00e4r sch\u00f6ner und besser zu erkennen.... finde ich.....\r\n![IMG_90E21ECE1BDB-1](https://user-images.githubusercontent.com/8932465/100312085-962a3f00-2fb1-11eb-8519-3943c576bd3a.jpeg)\r\n\r\n_Originally posted by @STJIKA in https://github.com/rphl/corona-widget/issues/72#issuecomment-734085423_",
+        "labels": null
+    },
+    {
+        "title": "Chart verschoben",
+        "body": "![image](https://user-images.githubusercontent.com/13360352/100278105-96501d80-2f64-11eb-9d71-66bff76aa242.png)\r\nWenn ein Inzidenzwert < 100 ist, rutscht die statistik nach links.\r\nGgf. weil mit Komma l\u00e4nger.",
+        "labels": null
+    },
+    {
+        "title": "Error on line 384:34: Expected value of type string but got value of type undefined.",
+        "body": "Ich bekomm eine Fehlermeldung seit dem Update. \n\n![image](https://user-images.githubusercontent.com/6563221/100250928-7f96d000-2f3e-11eb-8602-7aa0625dfb12.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Andere Daten im Chart anzeigen?",
+        "body": "aktuell zeigt der chart ja die neuen f\u00e4lle an. dies ist aber keine anzeige f\u00fcr mich, wie sich die pandemie bei mir im landkreis entwickelt. ich w\u00fcrde im chart einfach gleich die inzidenz anzeigen. der wert der neuen f\u00e4lle sagt ja nix \u00fcber das geschehen aus. wenn dann m\u00fcsste man meiner meinung nach die differenz zwischen neuen und genesenen f\u00e4llen im chart anzeigen. denn wenn mal l\u00e4nger keine neuen f\u00e4lle da sind zeigt der graph dann ja immer 0 an. das sagt mir dann aber nix \u00fcber das geschehen. kann ja sein, das keine neuen f\u00e4lle dazu kommen, aber auch keiner gesund wird. oder ob eben jeden tag welche gesund werden, und keine neuen f\u00e4lle dazu kommen. f\u00fcr die beiden f\u00e4lle w\u00fcrde der chart die gleichen werte anzeigen, aber es h\u00e4tte keine aussage, ob es \"besser\" wird oder eben nicht.",
+        "labels": null
+    },
+    {
+        "title": "Region bei Small Widget ignoriert",
+        "body": "Hallo! Super Widget, ich finde es super!\r\n\r\nIch habe das Problem bereits identifiziert, aber das fixen ist nur eine Zeile, deshalb kein Pull-Request.\r\n\r\n**Problem:** Bei einem kleinen Widget wird die Region immer als 'KS' angezeigt.\r\n**Ursache:** [Zeile 222 hat den IBZ Wert fest auf '40' stehen](https://github.com/rphl/corona-widget/blob/e6cf258980b02254a8d44b23ba985ae1908050a6/incidence.js#L222):  ```UIComp.areaIcon(bb3, 40)```\r\n**L\u00f6sung:**: Und hier kenn ich mich mit Scriptable nicht gut genug aus. F\u00fcr mich funktioniert es wenn ich auf die IBZ des Cache 0 zugreife: ```UIComp.areaIcon(bb3, ENV.cache[0].meta.IBZ)```\r\n\r\nIch hoffe das hilft dir! ",
+        "labels": null
+    },
+    {
+        "title": "Aufnahme der \"Aktiven F\u00e4lle\" m\u00f6glich....?",
+        "body": "W\u00e4re es evtl. m\u00f6glich wie \"tzschies\" die \"Aktiven F\u00e4lle\" mit aufzunehmen....\r\n\r\n![IMG_FD0A748C88A9-1](https://user-images.githubusercontent.com/8932465/100222458-667c2800-2f1a-11eb-8789-5675c8f87123.jpeg)\r\n ",
+        "labels": null
+    },
+    {
+        "title": "Fehlermeldung",
+        "body": "..bei  den Parametern: \"0,49.0134,12.1016;1,51.51,7.465\"bekomme ich siehe Bild als Fehlermeldung.......????\r\n![IMG_B12A6028A133-1](https://user-images.githubusercontent.com/8932465/100213624-22cff100-2f0f-11eb-8244-668e56ab3a5d.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Darkmode",
+        "body": "1) Optik: K\u00f6nntest Du im Medium -Widget den Hintergrund f\u00fcr die Felder BL und D auch wie im kleinen Widget leicht grau machen.....\r\n\r\n2) Inzidenz: ...ich habe auch das Problem mit der abweichenden Inzidenz in N\u00fcrnberg... (Parameter: \"0,49.38,11.35,N\u00dcRNBERG LAND;1,49.44,11.08)\r\n\r\nDanke und VG",
+        "labels": null
+    },
+    {
+        "title": "Seit Update von gerade falscher Inzidenzwert",
+        "body": "Gerade das Update gemacht und pl\u00f6tzlich hat z.B. N\u00fcrnberg einen viel h\u00f6heren Wert als vorher bzw. auf dem RKI Dashboard.",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "\ud83d\ude80 Update Roadmap",
+        "body": "**Grobe Roadmap f\u00fcrs n\u00e4chste Update:**\r\nKommentare bitte im jeweiligen Ticket. Fehlt was? Ticket ;-)\r\n\r\n_Durchgestriche Tickets sind fertig. K\u00f6nnen, m\u00fcssen aber nicht im Develop Branch verf\u00fcgbar sein. \r\nDevelop kann, muss aber nicht defekt sein. Also Vorsicht ;-)_\r\n\r\n* [x] ~~Code refactoring~~\r\n* [x] ~~AutoUpdate (Install) Funktion / Selfupdate #24~~\r\n* [x] ~~Split Cache Files into Local/State/Country~~\r\n* [x] ~~Abruf Historischer Daten via Api + Caching #66~~\r\n* [x] ~~Location Caching f\u00fcr Widget ohne Parameter #64~~\r\n* [x] ~~MediumWidget doppelte BL Daten ersetzten... #26~~",
+        "labels": null
+    },
+    {
+        "title": "R-Faktor mit altem Wert",
+        "body": "R-Faktor\r\nLetzter Stand 13.11. laut Link\r\n\r\nhttps://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Projekte_RKI/Nowcasting_Zahlen_csv.csv?__blob=publicationFile\r\n\r\nLink falsch, oder fehlende RKI Daten?",
+        "labels": null
+    },
+    {
+        "title": "Caching suboptimal meiner Meinung nach",
+        "body": "Hi.\r\nDas mit dem Caching ist meiner Meinung nach leider nicht die beste Idee.\r\nWenn ich am WE nicht in der Arbeit bin, kann dort der aktuell Wert nicht abgeholt werden und dann am Montag morgen, stimmen die berechneten Pfeile nicht und es fehlen die Werte eben vom Wochenende.\r\nAuch in Landkreisen in denen ich nicht so oft bin, haben keine \"alten\" Daten.\r\nDa finde ich mittlerweile die Idee von https://github.com/tzschies/incidence besser, da er sich die alten Daten holt.\r\nKannst du mal schauen, ob man das nicht einbauen kann, dann spart man sich das Caching und alle Probleme die damit einhergehen.\r\nEuch f\u00fcr Leute die das Widget neu nutzen haben den Vorteil, sofort alle Daten der letzten 14 Tage zu sehen.\r\nDas finde ich daher mittlerweile die elegantere L\u00f6sung.\r\nVon der Art und Weise wie du die Daten anzeigst, finde ich deine Version aber definitiv die sch\u00f6nere.\r\nDanke",
+        "labels": null
+    },
+    {
+        "title": "Location Caching f\u00fcr Widget ohne Parameter",
+        "body": "Ohne eingestellte Parameter sehe ich sehr oft die Fehlermeldung. Mein Vorschlag w\u00e4re ein standardm\u00e4\u00dfig deaktivierter \u201eLocation Cache\u201c, der - wenn aktiviert - eine Datei anlegt, die die cacheid, der letzten erfolgreichen Abfrage zwischenspeichert, und dann, wenn kein gps vorhanden ist, erst versucht auf diese datei und dann auf die verkn\u00fcpfe cacheid Datei zuzugreifen, um das Widget zu erzeugen.\r\n\r\nHab mal das Location caching eingebaut. Funktioniert soweit ganz gut. Es wird die dataID nur f\u00fcr eine abfrage gecached, die keine parameter im Widget definiert hat. Wenn also kein Widget ohne Parameter eingerichtet ist, wird auch nichts gecached. [incidence.zip](https://github.com/rphl/corona-widget/files/5546791/incidence.zip)\r\n\r\n_Originally posted by @holyjohan in https://github.com/rphl/corona-widget/issues/6#issuecomment-727636434_",
+        "labels": null
+    },
+    {
+        "title": "Darker colors too dark for dark mode",
+        "body": "When using dark mode, the darker red colors are too dark to read:\r\n\r\n![IMG_7254](https://user-images.githubusercontent.com/1202880/99193332-96883600-2778-11eb-808b-5f4acce9eac6.jpg)",
+        "labels": null
+    },
+    {
+        "title": "Dunkeldunkelrot erst bei > 250 laut RKI",
+        "body": "Hi. \r\nVon mir kam ja das dunkeldunkelrot bei Inzidenz > 200. \r\nHab heute gesehen, das das nur bei uns in Bayern beim LGL so ist. \r\nAuf der Seite vom RKI, wenn man sich das PDF zum R-Wert durchliest ist dunkeldunkelrot erst bei \u00fcber 250. \r\nKannst du das vielleicht anpassen?\r\nDanke\r\n\r\nLGL:\r\nhttps://www.lgl.bayern.de/gesundheit/infektionsschutz/infektionskrankheiten_a_z/coronavirus/karte_coronavirus/\r\n\r\nRKI:\r\nhttps://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/Nov_2020/2020-11-15-de.pdf?__blob=publicationFile",
+        "labels": null
+    },
+    {
+        "title": "14 tage Diagram ",
+        "body": "Der 14 Tage trend funktioniert nicht \r\n![IMG_8451](https://user-images.githubusercontent.com/73420542/99152641-43907f00-26a3-11eb-830b-d361d0e62f26.jpg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "R-Wert nur noch 0,00",
+        "body": "Seit zwei Tagen wird bei mir nur noch ein R-Wert von 0,00 angezeigt.\r\n![IMG_9161](https://user-images.githubusercontent.com/74456101/99147146-cfdc7b00-267e-11eb-9a7d-8d296b34010c.jpg)\r\n\r\nKann ich das irgendwie selber beheben, oder an was liegt das?\r\n",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz-Wert \u00e4ndert sich nicht",
+        "body": "Hi,\r\n\r\nwarum auch immer bleibt bei meinem Widget der Inzedenz-Wert seit Tagen bei 0,93...\r\nLaut anderen Apps w\u00e4re der bei 0,79...\r\n\r\n\r\nHabe auch schon das Script nochmals zur sicherheit aktualisiert - hat das sonst noch jemand?",
+        "labels": null
+    },
+    {
+        "title": "Lesbarkeit - Dunkeldunkel Rot bei > 200 optimieren",
+        "body": "Zahlen sind nicht lesbar aktuell\r\n![D2DBA50E-F749-46EF-9F2C-72EDA508A3F3](https://user-images.githubusercontent.com/74397552/99036083-5317a700-2581-11eb-8996-f4691749ac85.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Open RKI deaktivieren",
+        "body": "Bei mir `CONFIG_OPEN_URL = false` funktioniert nicht. \r\nMuss ich noch etwas umstellen um das Widget nicht mehr der RKI Website aufmacht?",
+        "labels": null
+    },
+    {
+        "title": "Auf kleinem Display nicht lesbar",
+        "body": "Nach dem letzten Update (wohl Nachkomma eingef\u00fchrt?) ist das Widget auf einem iPhone SE nicht mehr lesbar\r\n\r\n![IMG_5183](https://user-images.githubusercontent.com/73590285/98933181-940baf00-24e0-11eb-9c8c-4edf1addd38a.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Dunkel-Dunkel-Rot bei Inzidenz \u00fcber 200 w\u00e4re super",
+        "body": "Hi.\r\nBei uns in Bayern gibt es jetzt zu Dunkelrot auch noch Dunkel-Dunkel-Rot, falls die Inzidenz \u00fcber 200 ist.\r\nKannst du das einbauen?\r\nDanke\r\n\r\nHier sieht man es auf der Karte\r\nhttps://www.lgl.bayern.de/gesundheit/infektionsschutz/infektionskrankheiten_a_z/coronavirus/karte_coronavirus/",
+        "labels": null
+    },
+    {
+        "title": "Widget f\u00fcr Schweiz",
+        "body": "Ich habe noch kein Widget f\u00fcr die Schweiz gefunden, hat jemand von euch einen Tipp?",
+        "labels": null
+    },
+    {
+        "title": "letztes Update Heute 09.11.2020",
+        "body": "Hey, nach dem Update von heute Mittag bekomme ich folgenden Fehler....??????\r\n![IMG_00EB7BA25180-1](https://user-images.githubusercontent.com/8932465/98537663-df785000-2289-11eb-9b92-45df839a44c5.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Tippen auf a Widget leitet auf leere Seite",
+        "body": "Beim tippen auf das Widget wird man auf eine leere Webseite geleitet, ist das richtig?\r\n\r\n\r\n(https://raw.githubusercontent.com/rphl/corona-widget/master/info.png)\r\n\r\nLG\r\nUwe Loyal ",
+        "labels": null
+    },
+    {
+        "title": "Anzeige des Ortes oder Landkreises ist ungenau",
+        "body": "Hi zusammen,\n\nDanke f\u00fcr das super Widget und die tolle Weiterentwicklung.\nMir ist hier noch folgendes aufgefallen, bzw. korrigiere ich das in jeder Version immer noch selbst.\n\nIn den Daten des RKI kommt es wohl im Feld areaName welches unter dem Inzidenz Wert liegt zu \"Ungenauigkeiten\". Hier bei mir z.B. der im Umland von M\u00fcnchen wohnt. Bei der Anzeige \u00fcber Standortermittlung steht hier M\u00dcNCHEN. F\u00fcr das Stadtgebiet wird ebenfalls der gleiche Wert angezeigt.\nHabe in den RKI Daten nun das Feld county ermittelt und in meiner lokalen Kopie des Script immer wieder angepasst.\nDann steht hier\nLK M\u00fcnchen f\u00fcr den Landkreis\nSK M\u00fcnchen f\u00fcr die Stadt\n\nVielleicht w\u00e4re das ja hier auch etwas f\u00fcr einen offiziellen Fix.\n\nViele Gr\u00fc\u00dfe",
+        "labels": null
+    },
+    {
+        "title": "add Help",
+        "body": "    async createWidget() {\r\n        const list = new ListWidget()\r\n        // call Help\r\n        list.url = \"https://raw.githubusercontent.com/rphl/corona-widget/master/info.png\";\r\n\r\nMit dem Aufruf von einer Hilfeseite kann man einige Missverst\u00e4ndnisse und R\u00fcckfragen vermeiden.\r\n\r\nLG\r\nUwe Loyal ",
+        "labels": null
+    },
+    {
+        "title": "Eingabe von zwei festen Orten ",
+        "body": "Hallo, ich bekomme es einfach nicht hin, das ich zwei feste St\u00e4dte habe. Es wird immer nur die aktuelle Stadt per gps bei mir Viersen angezeigt.\r\n\r\nIch bekomme einfach die Eingabe nicht hin und wo muss das eingetragen werden.\r\nHabe es die ganzen Abend probiert und egal was ich mache geht es nicht.\r\n\r\nSorry f\u00fcr die Frage, das ist absolutes Neuland f\u00fcr mich ",
+        "labels": null
+    },
+    {
+        "title": "Bei den 14-Tage-Diagrammen steht nur n/v",
+        "body": "Fehler, oder m\u00fcssen sich erst die Daten \u00fcber die Tage ansammeln?",
+        "labels": null
+    },
+    {
+        "title": "Wie kann ich zwei Werte nebeneinander anzeigen",
+        "body": "Bekomme es nicht hin, zwei verschiedene Werte/St\u00e4dte nebeneinander anzuzeigen. L\u00e4ngen und Breitengrad habe ich jeweils als Parameter angegeben. \r\n![25616F53-1A23-45A9-8E52-432E744EA983](https://user-images.githubusercontent.com/74073430/98410148-67850c80-2074-11eb-87be-2fa3eb6c8926.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "R Werte unterscheiden sich zw. Code vom 5. und 6. November",
+        "body": "Zu allererst ein gro\u00dfes Lob f\u00fcr dieses tolle Widget. \r\nIrgendwie verwirrt mich die Darstellung des R-Wertes:\r\n![830D3790-9703-4A69-A0BE-01448AB50864](https://user-images.githubusercontent.com/46352622/98405203-238e0980-206c-11eb-8601-06a5003e0d9d.jpeg)\r\n![F1A4CEEF-12A7-4AE0-8695-F394F98ADB45](https://user-images.githubusercontent.com/46352622/98405206-24bf3680-206c-11eb-946e-b007a28a54e8.jpeg)\r\nAnbei Screenshots des Widgets in einer Version vom 5.11. und 6.11. erstellt innerhalb einer Minute am gleichen Ort. Wie kann es sein, dass der R Wert unterschiedlich ist. Welcher ist richtig bzw. entspricht dem des RKI?\r\n\r\nAdd on Frage: die Inzidenz wird ohne Nachkommastelle angezeigt obwohl diese laut Code auf eine Nachkommastelle gerundet werden soll (zumindest soweit ich den Code verstehe). \r\n\r\nNochmals danke f\u00fcr dieses Widget und die Zeit die du da investierst\r\n\r\n\r\nPs: runs on iPhone X and iOS 14.2",
+        "labels": null
+    },
+    {
+        "title": "Corona",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "\u2139\ufe0f HINWEIS! Version in Gallery ist aktuell defekt. Die aktuelle aus dem Repo hier nehmen!",
+        "body": "Hello. Wie einige festgestellt haben ist die Version in der Scriptable Gallery leider defekt. \ud83d\ude2c\r\n\r\nBitte am besten die Version aus dem Repo hier nehme.\r\n\r\n\r\n**Update in der Scriptable Gallery is angefragt!**",
+        "labels": null
+    },
+    {
+        "title": "Balken fehlen, R-Wert falsch",
+        "body": "Hallo...\r\n\r\nSeitdem ich am gestrigen Abend den Code vom 5. November verwende, werden bei mir im unteren Bereich des Widgets keine Balken mehr angezeigt.\r\nAu\u00dferdem gibt das Widget einen R-Wert von 1,02 aus, obwohl er laut andere Quellen bereits seit Tagen unter 1 liegt.\r\n\r\n![0615C997-A37F-45AD-B481-27C19DA72775](https://user-images.githubusercontent.com/74044561/98344114-10028480-2013-11eb-8325-8960f719f298.jpeg)\r\n\r\n... da ich allerdings gerade meine ersten Erfahrungen \u00fcberhaupt in diesem Bereich mache, ist es durchaus m\u00f6glich, dass sich der Fehler vor dem Bildschirm befindet. ;)\r\n\r\nEventuell notwendige Zusatzinformation:\r\niPhone 11, iOS 14.2",
+        "labels": null
+    },
+    {
+        "title": "Cache ID",
+        "body": "Servus ,\nIch bekomme immer Fehler .\nWo muss ich diese Cache if setzen ?\nWo finde ich diese id?\nUnd im Widget Parameter habe ich ja nur ein Feld wo man die lokalen Koordinaten eingibt \n\n2020-11-06 07:28:17: No cache id in \"WidgetParameter\" found. See readme.\n\n![image](https://user-images.githubusercontent.com/36126491/98333983-2a803200-2002-11eb-833e-acf7ee28c3f0.png)\n\n![image](https://user-images.githubusercontent.com/36126491/98334036-4552a680-2002-11eb-9238-7e6c8d421472.png)\n\n![image](https://user-images.githubusercontent.com/36126491/98334056-56031c80-2002-11eb-8ba8-7d0567dc939c.png)",
+        "labels": null
+    },
+    {
+        "title": "Widget wird nicht korrekt angezeigt",
+        "body": "Hallo lieber Entwickler bei mir wird auf meinem IPhone (IPhone SE 1st Generation) das Widget nicht korrekt angezeigt und manche Sachen garnicht. Was muss ich tun? Anbei noch ein Screenshot \n![image](https://user-images.githubusercontent.com/54439458/98311041-b2e4df80-1fce-11eb-8c24-88fc52dfd63e.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Ich verstehe nicht wie man es einstellt",
+        "body": "Hallo lieber Entwickler ich verstehe nicht wie man das Widget einrichtet also wie man den Landkreis usw. festlegt. K\u00f6nnten sie mir dabei helfen?",
+        "labels": null
+    },
+    {
+        "title": "Fehler - Daten konnten nicht geladen werden...",
+        "body": "Hi, hab mir den Script grade \u00fcber Scriptable geladen leider zeigt er immer nur Fehler an ?? \r\nReload was da steht bringt nix.. \r\n![4914B74C-CC6D-4085-B07C-A1AE7798AC71](https://user-images.githubusercontent.com/74021417/98291384-59b78480-1fab-11eb-879a-912ed4b93590.jpeg)\r\nBitte um Hilfe ?!",
+        "labels": null
+    },
+    {
+        "title": "R-Wert am iPhone 8 verschoben....",
+        "body": "![IMG_3034517200A6-1](https://user-images.githubusercontent.com/8932465/98230424-68764b00-1f5b-11eb-9b88-8d8b602731a7.jpeg)\r\n...sieht super aus...danke ...am iPad 12,9 passt es ...am iPhone 8 ist der R-Wert etwas verrutscht......???",
+        "labels": null
+    },
+    {
+        "title": "Anzeige keine Darstellung ",
+        "body": "Hallo, ich habe das Widget installiert aber irgendwie zeigt er mir nicht die Daten an die er laut deinem Screenshot anzeigen soll. \r\n![F362230B-3627-4F70-8B0A-187490E8FE3B](https://user-images.githubusercontent.com/73926233/98072591-a776a480-1e66-11eb-8a27-19b49c2e7e08.jpeg)\r\n\r\n\r\nDanke schon mal\r\nGru\u00df \r\nKermit",
+        "labels": null
+    },
+    {
+        "title": "Anzeige Inzidenzwert ",
+        "body": "Hey, \r\n\r\nSchau mal dieses Skript an:\r\n![C9837A3C-BC4E-46D5-8D6C-77BE0BC9DEAA](https://user-images.githubusercontent.com/73339863/98007469-b6703f00-1df3-11eb-82af-67801103e0f2.jpeg)\r\n\r\nHier ist der inzidenzwert der letzten 3 Wochen glaub ich abgebildet. Kannst du das auch erweitern? Derzeit werden ja die letzten 7 Tage abgebildet. Platztechnisch k\u00f6nnte man 14 Tage problemlos abbilden.\r\n\r\nKann ich das selbst einstellen? \r\n",
+        "labels": null
+    },
+    {
+        "title": "Vorschlag: JSONs in Unterorderner / MediumWidget doppelte BL Daten ersetzten...",
+        "body": "Hallo und vielen Dank f\u00fcr die tolle Arbeit! \r\n1. Die json files k\u00f6nnten vielleicht in einem Unterordner landen? W\u00e4re etwas \u00fcbersichtlicher, aufger\u00e4umter!\r\n2. Beim Medium-size Widget k\u00f6nnte man Zahl der F\u00e4lle (im Screenshot \"5396\") vielleicht nur einmal anzeigen, anstatt auf beiden Seiten? Daf\u00fcr vielleicht den R-Wert runterziehen? \r\nDanke & Gr\u00fc\u00dfe!",
+        "labels": null
+    },
+    {
+        "title": "Widget Gallery",
+        "body": "Der scriptable Entwickler bringt eine Widget Gallery, \u00e4hnlich Apples Gallery f\u00fcr Kurzbefehle mit dem n\u00e4chsten Update. Damit erreicht man ein mio Publikum.  \n\nEr hat ein online Formular, in dem man sein Widget einreichen kann. \n\nEdit, link korrigiert\n\nhttps://www.iphone-ticker.de/scriptable-app-mit-galerie-einfacher-zum-eigenen-widget-165478/",
+        "labels": null
+    },
+    {
+        "title": "AutoUpdate (Install) Funktion",
+        "body": "M\u00f6glichkeiten f\u00fcr AutoUpdate (Install) des Skriptes checken.\r\n\r\n> Ich finde die Idee von @dennerforen irgendwie recht praktisch. \ud83d\ude09\r\n> Mich nervt es auch ein wenig, nich den ganzen Quellcode kopieren zu k\u00f6nnen. Ich benutze am iPhone entweder die GitHub > App oder Microsoft Edge und in beiden gibt beim markieren die Option \"Alles\" nicht.\r\n> Hier ist das Intensivbettenwidget, das den eigentlichen Code erst beim Aufruf oder aktualisieren l\u00e4dt:\r\n> https://github.com/Keyes/its-beds-widget\r\n> [](https://github.com/Keyes/its-beds-widget)\r\n> Vielleicht w\u00e4re das ja auch ne Option.\r\n\r\n_Originally posted by @firebowl in https://github.com/rphl/corona-widget/issues/6#issuecomment-720270166_",
+        "labels": null
+    },
+    {
+        "title": "Erl\u00e4uterung was die Zahlen und Balken bedeuten",
+        "body": "Sehr hilfreich w\u00e4re noch eine Erl\u00e4uterung zu den Zahlen und Balken:\r\n\r\nAm Beispiel des Screenshots:\r\n140 Inzidenz pro 100.000 Einwohner rollender Durchschnitt der letzten 7 Tage?\r\n+72 Anzahl der F\u00e4lle in D\u00fcsseldorf gestern innerhalb der letzten 7 Tage?\r\n+3.678 Anzahl neuer der F\u00e4lle in NRW Summe der letzten 7 Tage?\r\n+11.###\r\n\r\nIch weiss ehrlich gesagt nicht was die unteren Balken und Zahlen darstellen, daher oben nur ein Beispiel wie man es erl\u00e4utern k\u00f6nnte",
+        "labels": null
+    },
+    {
+        "title": "Trend Pfeil im Widget falsch?",
+        "body": "Die Trend Pfeile im unteren Teil des Widgets sind meiner Ansicht nach falsch.\r\n![6B0ADB44-6C53-47DD-9EFC-DB87F26B9A25](https://user-images.githubusercontent.com/5464553/97809591-0e7d3900-1c6e-11eb-9ed0-271eb87367c2.jpeg)\r\nBei +60 m\u00fcsste der Pfeil nach oben sein!\r\nOder soll hier der Pfeil nach unten eine Verschlechterung bedeuten?\r\nDann ist der Pfeil bei Gesamtwert rechts oben aber entgegen der Logik.\r\n\r\nLG\r\nUwe Loyal\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Diagramm f\u00fcr ganz DE",
+        "body": "M\u00fcsste der Balken f\u00fcr heute (1.11.) nicht kleiner sein als der von gestern 31.10?\r\n\r\nBei mir ist der gr\u00f6\u00dfer. ",
+        "labels": null
+    },
+    {
+        "title": "Klick auf Widget \u00f6ffnet URL",
+        "body": "Guten Morgen. Beim Klicken auf das Medium Widget \u00f6ffnet sich immer Safari und \u00f6ffnet den Link: https://experience.arcgis.com/experience/... \n\nIm Widget ist RunScript angegeben. Ist das Verhalten gew\u00fcnscht oder ein Bug? Falls gew\u00fcnscht kann man das wieder \u00e4ndern, sodass das Skript per Klick ausgef\u00fchrt wird?",
+        "labels": null
+    },
+    {
+        "title": "Updatedatum fehlt im widget",
+        "body": "Sehe kein Update Datum im widget\r\n\r\n![3EC25606-1A61-49DE-82CE-E89193E332D9](https://user-images.githubusercontent.com/6056918/97796687-83705480-1c15-11eb-83b3-1ba1823da1b5.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Inzidenzwert f\u00fcr Bundesland falsch",
+        "body": "Hi \r\nDer Inzidenzwert f\u00fcr das Bundesland ist falsch. \r\nEs wird der Wert von gestern angezeigt. \r\n\r\n![DAEA6E51-2C4C-4C38-9729-4A85A7B5C908](https://user-images.githubusercontent.com/6056918/97796546-76526600-1c13-11eb-815f-d25949eb5d74.jpeg)\r\n\r\nDaten der json Datei \r\n\r\n{\"26.10.2020\":{\"incidence\":58.6,\"incidenceBL\":87.2,\"areaName\":\"Erding\",\"areaCases\":1021,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"26.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":36.332041106519,\"cases\":6777},{\"BL\":\"HH\",\"incidence\":74.8137910724736,\"cases\":11514},{\"BL\":\"NI\",\"incidence\":51.3785514626186,\"cases\":30476},{\"BL\":\"HB\",\"incidence\":121.25624998165,\"cases\":4407},{\"BL\":\"NRW\",\"incidence\":104.796168721609,\"cases\":110516},{\"BL\":\"HE\",\"incidence\":108.983982392082,\"cases\":32852},{\"BL\":\"RP\",\"incidence\":65.3654959582579,\"cases\":16549},{\"BL\":\"BW\",\"incidence\":80.5196644371362,\"cases\":69601},{\"BL\":\"BY\",\"incidence\":87.2169857575051,\"cases\":91569},{\"BL\":\"SL\",\"incidence\":91.2971799202948,\"cases\":5321},{\"BL\":\"BE\",\"incidence\":122.605560280704,\"cases\":26094},{\"BL\":\"BB\",\"incidence\":35.568519362241,\"cases\":6515},{\"BL\":\"MV\",\"incidence\":28.0448568468626,\"cases\":2165},{\"BL\":\"SN\",\"incidence\":71.2185818612166,\"cases\":13653},{\"BL\":\"ST\",\"incidence\":30.5725124408711,\"cases\":3994},{\"BL\":\"TH\",\"incidence\":42.6084828848896,\"cases\":5863}],\"averageIncidence\":72,\"cases\":8685},\"27.10.2020\":{\"incidence\":73.8,\"incidenceBL\":92.2,\"areaName\":\"Erding\",\"areaCases\":1052,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"27.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":36.6075447357627,\"cases\":6942},{\"BL\":\"HH\",\"incidence\":83.6918386382374,\"cases\":11853},{\"BL\":\"NI\",\"incidence\":53.9931405192749,\"cases\":31038},{\"BL\":\"HB\",\"incidence\":126.834624678142,\"cases\":4495},{\"BL\":\"NRW\",\"incidence\":116.83145819623,\"cases\":114194},{\"BL\":\"HE\",\"incidence\":119.464128955102,\"cases\":34200},{\"BL\":\"RP\",\"incidence\":72.2782147012277,\"cases\":17090},{\"BL\":\"BW\",\"incidence\":84.5465485279171,\"cases\":70792},{\"BL\":\"BY\",\"incidence\":92.1618467478625,\"cases\":93290},{\"BL\":\"SL\",\"incidence\":99.9101214222094,\"cases\":5455},{\"BL\":\"BE\",\"incidence\":126.693320681261,\"cases\":27024},{\"BL\":\"BB\",\"incidence\":34.2996312690507,\"cases\":6599},{\"BL\":\"MV\",\"incidence\":29.2885312081426,\"cases\":2200},{\"BL\":\"SN\",\"incidence\":72.7657441568223,\"cases\":14001},{\"BL\":\"ST\",\"incidence\":34.4908970458114,\"cases\":4166},{\"BL\":\"TH\",\"incidence\":43.1240970892172,\"cases\":5936}],\"averageIncidence\":76.7,\"cases\":11409},\"28.10.2020\":{\"incidence\":82.5,\"incidenceBL\":105,\"areaName\":\"Erding\",\"areaCases\":1075,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"28.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":41.8076757377385,\"cases\":7218},{\"BL\":\"HH\",\"incidence\":87.6977869301065,\"cases\":12153},{\"BL\":\"NI\",\"incidence\":61.7743577118117,\"cases\":32244},{\"BL\":\"HB\",\"incidence\":142.982551431147,\"cases\":4689},{\"BL\":\"NRW\",\"incidence\":121.768155638135,\"cases\":117278},{\"BL\":\"HE\",\"incidence\":129.180926451317,\"cases\":35688},{\"BL\":\"RP\",\"incidence\":80.3145555720299,\"cases\":17789},{\"BL\":\"BW\",\"incidence\":91.1138829846941,\"cases\":72884},{\"BL\":\"BY\",\"incidence\":104.962103240621,\"cases\":96420},{\"BL\":\"SL\",\"incidence\":96.8702597156513,\"cases\":5576},{\"BL\":\"BE\",\"incidence\":130.50856372178,\"cases\":28064},{\"BL\":\"BB\",\"incidence\":40.2475442058803,\"cases\":6957},{\"BL\":\"MV\",\"incidence\":31.2784101861905,\"cases\":2328},{\"BL\":\"SN\",\"incidence\":68.3452804550917,\"cases\":14409},{\"BL\":\"ST\",\"incidence\":39.5939095545708,\"cases\":4342},{\"BL\":\"TH\",\"incidence\":50.0614518383521,\"cases\":6200}],\"averageIncidence\":82.4,\"cases\":14964},\"29.10.2020\":{\"incidence\":87.6,\"incidenceBL\":107.8,\"areaName\":\"Erding\",\"areaCases\":1109,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"29.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":45.9746681300501,\"cases\":7499},{\"BL\":\"HH\",\"incidence\":92.4616173312481,\"cases\":12557},{\"BL\":\"NI\",\"incidence\":60.448298190254,\"cases\":32980},{\"BL\":\"HB\",\"incidence\":152.230909480595,\"cases\":4891},{\"BL\":\"NRW\",\"incidence\":131.524540763163,\"cases\":122051},{\"BL\":\"HE\",\"incidence\":137.005254386077,\"cases\":37385},{\"BL\":\"RP\",\"incidence\":82.7083592356731,\"cases\":18420},{\"BL\":\"BW\",\"incidence\":95.9245230394525,\"cases\":75164},{\"BL\":\"BY\",\"incidence\":107.758349748265,\"cases\":98998},{\"BL\":\"SL\",\"incidence\":101.227394828385,\"cases\":5806},{\"BL\":\"BE\",\"incidence\":139.801405699047,\"cases\":29225},{\"BL\":\"BB\",\"incidence\":42.9042786509975,\"cases\":7208},{\"BL\":\"MV\",\"incidence\":35.9421890409903,\"cases\":2484},{\"BL\":\"SN\",\"incidence\":78.1685331256043,\"cases\":15380},{\"BL\":\"ST\",\"incidence\":43.1933558777136,\"cases\":4582},{\"BL\":\"TH\",\"incidence\":51.233302302733,\"cases\":6383}],\"averageIncidence\":87.4,\"cases\":7229},\"30.10.2020\":{\"incidence\":102,\"incidenceBL\":114.1,\"areaName\":\"Erding\",\"areaCases\":1146,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"30.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":46.1468578983275,\"cases\":7716},{\"BL\":\"HH\",\"incidence\":93.3819027496504,\"cases\":12947},{\"BL\":\"NI\",\"incidence\":64.4264767549272,\"cases\":34228},{\"BL\":\"HB\",\"incidence\":160.304872857097,\"cases\":5100},{\"BL\":\"NRW\",\"incidence\":139.960387181949,\"cases\":127447},{\"BL\":\"HE\",\"incidence\":145.751962443226,\"cases\":39093},{\"BL\":\"RP\",\"incidence\":85.9815193471853,\"cases\":19108},{\"BL\":\"BW\",\"incidence\":99.0955816523269,\"cases\":77477},{\"BL\":\"BY\",\"incidence\":114.074666791418,\"cases\":102074},{\"BL\":\"SL\",\"incidence\":116.528032084727,\"cases\":6142},{\"BL\":\"BE\",\"incidence\":146.096556715904,\"cases\":30356},{\"BL\":\"BB\",\"incidence\":43.2611534272073,\"cases\":7468},{\"BL\":\"MV\",\"incidence\":37.8698843009742,\"cases\":2616},{\"BL\":\"SN\",\"incidence\":89.9318781985432,\"cases\":16493},{\"BL\":\"ST\",\"incidence\":49.6176841253482,\"cases\":4804},{\"BL\":\"TH\",\"incidence\":54.8426017330262,\"cases\":6625}],\"averageIncidence\":93,\"cases\":18681},\"31.10.2020\":{\"incidence\":110,\"incidenceBL\":118.5,\"areaName\":\"Erding\",\"areaCases\":1177,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"31.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":50.1416605223618,\"cases\":8028},{\"BL\":\"HH\",\"incidence\":92.9488272586376,\"cases\":13357},{\"BL\":\"NI\",\"incidence\":76.2859524760283,\"cases\":35942},{\"BL\":\"HB\",\"incidence\":175.71880293951,\"cases\":5331},{\"BL\":\"NRW\",\"incidence\":146.574224499715,\"cases\":132479},{\"BL\":\"HE\",\"incidence\":150.968181066399,\"cases\":40998},{\"BL\":\"RP\",\"incidence\":96.6070764256017,\"cases\":20103},{\"BL\":\"BW\",\"incidence\":106.572793722457,\"cases\":80233},{\"BL\":\"BY\",\"incidence\":118.501422161831,\"cases\":104764},{\"BL\":\"SL\",\"incidence\":105.483201217566,\"cases\":6249},{\"BL\":\"BE\",\"incidence\":150.238820588469,\"cases\":31440},{\"BL\":\"BB\",\"incidence\":48.8918443407393,\"cases\":7831},{\"BL\":\"MV\",\"incidence\":42.9067654641579,\"cases\":2782},{\"BL\":\"SN\",\"incidence\":92.4859238928764,\"cases\":17196},{\"BL\":\"ST\",\"incidence\":50.4378111356845,\"cases\":5067},{\"BL\":\"TH\",\"incidence\":60.7018540549307,\"cases\":6953}],\"averageIncidence\":97.8,\"cases\":19059,\"r\":1.19,\"blockPosition\":1},\"01.11.2020\":{\"incidence\":110,\"incidenceBL\":123.2,\"areaName\":\"Erding\",\"areaCases\":1177,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"01.11.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":53.8609595171523,\"cases\":8293},{\"BL\":\"HH\",\"incidence\":100.744186096869,\"cases\":13753},{\"BL\":\"NI\",\"incidence\":78.3125717448241,\"cases\":36949},{\"BL\":\"HB\",\"incidence\":176.746398278337,\"cases\":5522},{\"BL\":\"NRW\",\"incidence\":147.265139265851,\"cases\":136116},{\"BL\":\"HE\",\"incidence\":148.868971132683,\"cases\":42072},{\"BL\":\"RP\",\"incidence\":96.9734749455471,\"cases\":20574},{\"BL\":\"BW\",\"incidence\":113.374354099503,\"cases\":82334},{\"BL\":\"BY\",\"incidence\":123.240564744269,\"cases\":107044},{\"BL\":\"SL\",\"incidence\":143.177486378886,\"cases\":6740},{\"BL\":\"BE\",\"incidence\":164.191709422369,\"cases\":32231},{\"BL\":\"BB\",\"incidence\":52.857119631959,\"cases\":8088},{\"BL\":\"MV\",\"incidence\":43.9638886712459,\"cases\":2865},{\"BL\":\"SN\",\"incidence\":97.0046201213123,\"cases\":17974},{\"BL\":\"ST\",\"incidence\":53.0348800017496,\"cases\":5204},{\"BL\":\"TH\",\"incidence\":61.4049643335593,\"cases\":7171}],\"averageIncidence\":103.4,\"cases\":14177,\"r\":1.19,\"blockPosition\":1}}",
+        "labels": null
+    },
+    {
+        "title": "Trendpfeil neben Inzidenzwert f\u00fcr den Landkreis zeigt nach oben, obwohl der Wert zu gestern gleich geblieben ist",
+        "body": "Hi. \r\nDer Trendpfeil neben Inzidenzwert f\u00fcr Landkreis zeigt nach oben, obwohl der Wert zu gestern gleich geblieben ist. \r\nKann das sein?\r\nAnbei das json. \r\nDanke\r\n\r\n\r\n{\"26.10.2020\":{\"incidence\":58.6,\"incidenceBL\":87.2,\"areaName\":\"Erding\",\"areaCases\":1021,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"26.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":36.332041106519,\"cases\":6777},{\"BL\":\"HH\",\"incidence\":74.8137910724736,\"cases\":11514},{\"BL\":\"NI\",\"incidence\":51.3785514626186,\"cases\":30476},{\"BL\":\"HB\",\"incidence\":121.25624998165,\"cases\":4407},{\"BL\":\"NRW\",\"incidence\":104.796168721609,\"cases\":110516},{\"BL\":\"HE\",\"incidence\":108.983982392082,\"cases\":32852},{\"BL\":\"RP\",\"incidence\":65.3654959582579,\"cases\":16549},{\"BL\":\"BW\",\"incidence\":80.5196644371362,\"cases\":69601},{\"BL\":\"BY\",\"incidence\":87.2169857575051,\"cases\":91569},{\"BL\":\"SL\",\"incidence\":91.2971799202948,\"cases\":5321},{\"BL\":\"BE\",\"incidence\":122.605560280704,\"cases\":26094},{\"BL\":\"BB\",\"incidence\":35.568519362241,\"cases\":6515},{\"BL\":\"MV\",\"incidence\":28.0448568468626,\"cases\":2165},{\"BL\":\"SN\",\"incidence\":71.2185818612166,\"cases\":13653},{\"BL\":\"ST\",\"incidence\":30.5725124408711,\"cases\":3994},{\"BL\":\"TH\",\"incidence\":42.6084828848896,\"cases\":5863}],\"averageIncidence\":72,\"cases\":8685},\"27.10.2020\":{\"incidence\":73.8,\"incidenceBL\":92.2,\"areaName\":\"Erding\",\"areaCases\":1052,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"27.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":36.6075447357627,\"cases\":6942},{\"BL\":\"HH\",\"incidence\":83.6918386382374,\"cases\":11853},{\"BL\":\"NI\",\"incidence\":53.9931405192749,\"cases\":31038},{\"BL\":\"HB\",\"incidence\":126.834624678142,\"cases\":4495},{\"BL\":\"NRW\",\"incidence\":116.83145819623,\"cases\":114194},{\"BL\":\"HE\",\"incidence\":119.464128955102,\"cases\":34200},{\"BL\":\"RP\",\"incidence\":72.2782147012277,\"cases\":17090},{\"BL\":\"BW\",\"incidence\":84.5465485279171,\"cases\":70792},{\"BL\":\"BY\",\"incidence\":92.1618467478625,\"cases\":93290},{\"BL\":\"SL\",\"incidence\":99.9101214222094,\"cases\":5455},{\"BL\":\"BE\",\"incidence\":126.693320681261,\"cases\":27024},{\"BL\":\"BB\",\"incidence\":34.2996312690507,\"cases\":6599},{\"BL\":\"MV\",\"incidence\":29.2885312081426,\"cases\":2200},{\"BL\":\"SN\",\"incidence\":72.7657441568223,\"cases\":14001},{\"BL\":\"ST\",\"incidence\":34.4908970458114,\"cases\":4166},{\"BL\":\"TH\",\"incidence\":43.1240970892172,\"cases\":5936}],\"averageIncidence\":76.7,\"cases\":11409},\"28.10.2020\":{\"incidence\":82.5,\"incidenceBL\":105,\"areaName\":\"Erding\",\"areaCases\":1075,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"28.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":41.8076757377385,\"cases\":7218},{\"BL\":\"HH\",\"incidence\":87.6977869301065,\"cases\":12153},{\"BL\":\"NI\",\"incidence\":61.7743577118117,\"cases\":32244},{\"BL\":\"HB\",\"incidence\":142.982551431147,\"cases\":4689},{\"BL\":\"NRW\",\"incidence\":121.768155638135,\"cases\":117278},{\"BL\":\"HE\",\"incidence\":129.180926451317,\"cases\":35688},{\"BL\":\"RP\",\"incidence\":80.3145555720299,\"cases\":17789},{\"BL\":\"BW\",\"incidence\":91.1138829846941,\"cases\":72884},{\"BL\":\"BY\",\"incidence\":104.962103240621,\"cases\":96420},{\"BL\":\"SL\",\"incidence\":96.8702597156513,\"cases\":5576},{\"BL\":\"BE\",\"incidence\":130.50856372178,\"cases\":28064},{\"BL\":\"BB\",\"incidence\":40.2475442058803,\"cases\":6957},{\"BL\":\"MV\",\"incidence\":31.2784101861905,\"cases\":2328},{\"BL\":\"SN\",\"incidence\":68.3452804550917,\"cases\":14409},{\"BL\":\"ST\",\"incidence\":39.5939095545708,\"cases\":4342},{\"BL\":\"TH\",\"incidence\":50.0614518383521,\"cases\":6200}],\"averageIncidence\":82.4,\"cases\":14964},\"29.10.2020\":{\"incidence\":87.6,\"incidenceBL\":107.8,\"areaName\":\"Erding\",\"areaCases\":1109,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"29.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":45.9746681300501,\"cases\":7499},{\"BL\":\"HH\",\"incidence\":92.4616173312481,\"cases\":12557},{\"BL\":\"NI\",\"incidence\":60.448298190254,\"cases\":32980},{\"BL\":\"HB\",\"incidence\":152.230909480595,\"cases\":4891},{\"BL\":\"NRW\",\"incidence\":131.524540763163,\"cases\":122051},{\"BL\":\"HE\",\"incidence\":137.005254386077,\"cases\":37385},{\"BL\":\"RP\",\"incidence\":82.7083592356731,\"cases\":18420},{\"BL\":\"BW\",\"incidence\":95.9245230394525,\"cases\":75164},{\"BL\":\"BY\",\"incidence\":107.758349748265,\"cases\":98998},{\"BL\":\"SL\",\"incidence\":101.227394828385,\"cases\":5806},{\"BL\":\"BE\",\"incidence\":139.801405699047,\"cases\":29225},{\"BL\":\"BB\",\"incidence\":42.9042786509975,\"cases\":7208},{\"BL\":\"MV\",\"incidence\":35.9421890409903,\"cases\":2484},{\"BL\":\"SN\",\"incidence\":78.1685331256043,\"cases\":15380},{\"BL\":\"ST\",\"incidence\":43.1933558777136,\"cases\":4582},{\"BL\":\"TH\",\"incidence\":51.233302302733,\"cases\":6383}],\"averageIncidence\":87.4,\"cases\":7229},\"30.10.2020\":{\"incidence\":102,\"incidenceBL\":114.1,\"areaName\":\"Erding\",\"areaCases\":1146,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"30.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":46.1468578983275,\"cases\":7716},{\"BL\":\"HH\",\"incidence\":93.3819027496504,\"cases\":12947},{\"BL\":\"NI\",\"incidence\":64.4264767549272,\"cases\":34228},{\"BL\":\"HB\",\"incidence\":160.304872857097,\"cases\":5100},{\"BL\":\"NRW\",\"incidence\":139.960387181949,\"cases\":127447},{\"BL\":\"HE\",\"incidence\":145.751962443226,\"cases\":39093},{\"BL\":\"RP\",\"incidence\":85.9815193471853,\"cases\":19108},{\"BL\":\"BW\",\"incidence\":99.0955816523269,\"cases\":77477},{\"BL\":\"BY\",\"incidence\":114.074666791418,\"cases\":102074},{\"BL\":\"SL\",\"incidence\":116.528032084727,\"cases\":6142},{\"BL\":\"BE\",\"incidence\":146.096556715904,\"cases\":30356},{\"BL\":\"BB\",\"incidence\":43.2611534272073,\"cases\":7468},{\"BL\":\"MV\",\"incidence\":37.8698843009742,\"cases\":2616},{\"BL\":\"SN\",\"incidence\":89.9318781985432,\"cases\":16493},{\"BL\":\"ST\",\"incidence\":49.6176841253482,\"cases\":4804},{\"BL\":\"TH\",\"incidence\":54.8426017330262,\"cases\":6625}],\"averageIncidence\":93,\"cases\":18681},\"31.10.2020\":{\"incidence\":110,\"incidenceBL\":118.5,\"areaName\":\"Erding\",\"areaCases\":1177,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"31.10.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":50.1416605223618,\"cases\":8028},{\"BL\":\"HH\",\"incidence\":92.9488272586376,\"cases\":13357},{\"BL\":\"NI\",\"incidence\":76.2859524760283,\"cases\":35942},{\"BL\":\"HB\",\"incidence\":175.71880293951,\"cases\":5331},{\"BL\":\"NRW\",\"incidence\":146.574224499715,\"cases\":132479},{\"BL\":\"HE\",\"incidence\":150.968181066399,\"cases\":40998},{\"BL\":\"RP\",\"incidence\":96.6070764256017,\"cases\":20103},{\"BL\":\"BW\",\"incidence\":106.572793722457,\"cases\":80233},{\"BL\":\"BY\",\"incidence\":118.501422161831,\"cases\":104764},{\"BL\":\"SL\",\"incidence\":105.483201217566,\"cases\":6249},{\"BL\":\"BE\",\"incidence\":150.238820588469,\"cases\":31440},{\"BL\":\"BB\",\"incidence\":48.8918443407393,\"cases\":7831},{\"BL\":\"MV\",\"incidence\":42.9067654641579,\"cases\":2782},{\"BL\":\"SN\",\"incidence\":92.4859238928764,\"cases\":17196},{\"BL\":\"ST\",\"incidence\":50.4378111356845,\"cases\":5067},{\"BL\":\"TH\",\"incidence\":60.7018540549307,\"cases\":6953}],\"averageIncidence\":97.8,\"cases\":19059,\"r\":1.19,\"blockPosition\":1},\"01.11.2020\":{\"incidence\":110,\"incidenceBL\":123.2,\"areaName\":\"Erding\",\"areaCases\":1177,\"nameBL\":\"BY\",\"shouldCache\":true,\"updated\":\"01.11.2020, 00:00 Uhr\",\"incidencePerState\":[{\"BL\":\"SH\",\"incidence\":53.8609595171523,\"cases\":8293},{\"BL\":\"HH\",\"incidence\":100.744186096869,\"cases\":13753},{\"BL\":\"NI\",\"incidence\":78.3125717448241,\"cases\":36949},{\"BL\":\"HB\",\"incidence\":176.746398278337,\"cases\":5522},{\"BL\":\"NRW\",\"incidence\":147.265139265851,\"cases\":136116},{\"BL\":\"HE\",\"incidence\":148.868971132683,\"cases\":42072},{\"BL\":\"RP\",\"incidence\":96.9734749455471,\"cases\":20574},{\"BL\":\"BW\",\"incidence\":113.374354099503,\"cases\":82334},{\"BL\":\"BY\",\"incidence\":123.240564744269,\"cases\":107044},{\"BL\":\"SL\",\"incidence\":143.177486378886,\"cases\":6740},{\"BL\":\"BE\",\"incidence\":164.191709422369,\"cases\":32231},{\"BL\":\"BB\",\"incidence\":52.857119631959,\"cases\":8088},{\"BL\":\"MV\",\"incidence\":43.9638886712459,\"cases\":2865},{\"BL\":\"SN\",\"incidence\":97.0046201213123,\"cases\":17974},{\"BL\":\"ST\",\"incidence\":53.0348800017496,\"cases\":5204},{\"BL\":\"TH\",\"incidence\":61.4049643335593,\"cases\":7171}],\"averageIncidence\":103.4,\"cases\":14177,\"r\":1.19,\"blockPosition\":0}}",
+        "labels": null
+    },
+    {
+        "title": "work einstellen ?",
+        "body": "hallo!\r\n\r\nwie stelle ich home und work ein ?",
+        "labels": null
+    },
+    {
+        "title": "R wert mit , nicht mit .",
+        "body": "Der R wert wird ja aktuell als \r\nx.xx\r\nangezeigt.  \r\nDer . ist aber sonst im Widget das 1000er Trennzeichen. \r\nSomit w\u00e4re es meiner Meinung nach sauberere, den R wert als \r\nx,xx\r\nanzuzeigen. \r\n",
+        "labels": null
+    },
+    {
+        "title": "Trend f\u00fcr die Gesamtzahl",
+        "body": "Bei den Gesamtzahlen wird aktuell nur zum Vortag Vergleich, sprich der Pfeil geht heute hoch. \r\n\r\nWenn man allerdings den Trend der letzten Tage vergleicht, m\u00fcsste der Pfeil runter gehen. \r\n\r\nKannst du dort den Trend so einbauen wie bei den andern beiden?",
+        "labels": null
+    },
+    {
+        "title": "\u201eAbgeschittener\u201c LK-Name.....",
+        "body": "![61FD3015-9DFC-45F4-AD95-F6341DA3650A](https://user-images.githubusercontent.com/8932465/97773673-11830700-1b52-11eb-8422-d3ab7e8fd169.jpeg)\r\n\r\n....k\u00f6nntest Du bitte nochmal nmach dem LK-Namen schauen...wenn er so lange ist wie bei mir.......\r\n\r\nGr\u00fc\u00dfe und vielen Dank!!!!!",
+        "labels": null
+    },
+    {
+        "title": "Gesamtinzidenz falsch",
+        "body": "Der Trendbalken scheint ok, der Wert -25, stimmt definitiv nicht:\n\n![image](https://user-images.githubusercontent.com/24975901/97771619-bdbaf280-1b3e-11eb-91e3-486056d38065.jpeg)",
+        "labels": null
+    },
+    {
+        "title": "Inzidenz wird abgeschnitten",
+        "body": "Nabend ;)\n\nHab mir gerade die neue Version vom genialen Script mit den Neuerungen reinkopiert. Aber leider wird jetzt der Inzidenzwert abgeschnitten:\n\n![image](https://user-images.githubusercontent.com/73432625/97764327-83396180-1b0e-11eb-9276-360650f782ad.jpeg)\n\nZumindest bei mir auf dem iPhone 12 Pro. \n\nHab ich etwas \u00fcbersehen?\n\nViele Gr\u00fc\u00dfe",
+        "labels": null
+    },
+    {
+        "title": "Diagrammauswertung fehlerhaft bei kreisfreien St\u00e4dten und Landkreisen mit gleichem Namen",
+        "body": "Bei der Auswertung der Fallzahlen der letzten 7 Tage gibt es ein Problem, sobald man versucht eine kreisfreie Stadt und einen Landkreis mit gleichem Namen auszuwerten. \r\nIn meinem Fall handelt es sich um die Stadt und den Landkreis M\u00fcnchen. \r\nVermutlich bedingt dadurch, dass die f\u00fcr die Auswertung ben\u00f6tigte json-Dateiein sich lediglich im St\u00e4dte/Landkreisnamen unterscheidet, wird in meinem Beispiel f\u00fcr die Stadt und den Landkreis M\u00fcnchen nur eine dieser Dateien angelegt. Somit stimmen sp\u00e4testens am zweiten Tag die Vergleichswerte f\u00fcr einen der beiden Bereiche nicht mehr.\r\n\r\nDieser Fehler m\u00fcsste aber bei weitaus mehr St\u00e4dten/Landkreisen auftreten. (M\u00fcnchen, Rosenheim, Landshut, Regensburg, Augsburg, Ansbach, Bamberg, Schweinfurt, Coburg, Osnabr\u00fcck, usw.",
+        "labels": null
+    },
+    {
+        "title": "\u2049\ufe0f Fragen, Feedback, etc.",
+        "body": "* F\u00fcr Fragen zur Konfiguration siehe auch **Readme:** https://github.com/rphl/corona-widget/blob/master/README.md#konfiguration\r\n* **Bei Fehlern bitte am besten direkt die WidgetParameter oder groben Standort posten.** Sonst l\u00e4sst sich das Problem evtl. nicht/nur schwer l\u00f6sen.\r\n* \u203c\ufe0f \u2049\ufe0f **Vor Fragen zur (LIVE)-Inzidenz, siehe \"Quelle/Datenbasis\" in der README!**",
+        "labels": null
+    },
+    {
+        "title": "Top",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "R Wert",
+        "body": "Danke f\u00fcr das R Wert Widget.",
+        "labels": null
+    },
+    {
+        "title": "Falsches \"runden\" bei Inzidenzwerten >100",
+        "body": "Wenn die Werte f\u00fcr die Inzidenz gr\u00f6\u00dfer als 100 sind, l\u00e4sst du die Nachkommastellen ja weg.\r\n`Math.floor`\r\nDamit wird aber aus einem Wert von z.B. 108,7 eine 108.\r\nW\u00fcrdest du aber\r\n`Math.round`\r\nnehmen w\u00fcrde aus den 108,7 eine 109 werden.\r\nDas w\u00e4re meiner Meinung nach der sauberere Weg.",
+        "labels": null
+    },
+    {
+        "title": "Trendplot f\u00fcr ganz Deutschland im Mediumwidget fehlt",
+        "body": "gibt es eine M\u00f6glichkeit, beim breiten widget auch den Trend f\u00fcr ganz Deutschland anzuzeigen? Dieser ist ja bisher nur im schmalen Widget zu sehen",
+        "labels": null
+    }
+]

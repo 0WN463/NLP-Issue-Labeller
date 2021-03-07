@@ -1,0 +1,1567 @@
+[
+    {
+        "title": "Petit bug CSS",
+        "body": "Petit bug CSS au niveau du text dans la navbar :\r\n\r\n![2021_03_01_19_58_22_Formation_D\u00e9boguer_son_code_JavaScript_Grafikart_et_7_pages_de_plus_Personne](https://user-images.githubusercontent.com/70549774/109545161-c7db0680-7ac8-11eb-87ea-f5da9c97a392.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Un tutoriel hors ligne devrait \u00eatre d\u00e9sindex\u00e9 de la recherche",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Date d'un sujet quand un message est supprim\u00e9.",
+        "body": "Quand un message est supprim\u00e9 la date du sujet devrait revenir au dernier message.",
+        "labels": null
+    },
+    {
+        "title": "Technologies sans aucun tutoriels ni ic\u00f4ne (et autres)",
+        "body": "Bonjour,\r\n\r\nEn me *baladant* sur le site, j'ai pu remarquer que certaines technologies n'ont pas de tutoriels ni d\u2019ic\u00f4ne. Voici certaines que j'ai remarqu\u00e9es :\r\n- [ungit](https://grafikart.fr/tutoriels/ungit) (aucun tutoriel ni d'ic\u00f4ne)\r\n- [Debian](https://grafikart.fr/tutoriels/debian) (aucun tutoriel)\r\n- [MySQL Workbench](https://grafikart.fr/tutoriels/mysql-workbench) (aucun tutoriel)\r\n- [MariaDB](https://grafikart.fr/tutoriels/mariadb) (aucun tutoriel)\r\n- [XDebug](https://grafikart.fr/tutoriels/xdebug) (pas d'ic\u00f4ne)\r\n- [Titanium](https://grafikart.fr/tutoriels/titanium) (pas d'ic\u00f4ne)\r\n- [Babel](https://grafikart.fr/tutoriels/babel) (aucun tutoriel)\r\n- [PHPStorm](https://grafikart.fr/tutoriels/phpstorm) (une formation mais pas de tutoriels)\r\n- [Twig](https://grafikart.fr/tutoriels/twig) (pas d'ic\u00f4ne)\r\n- [WordPlate](https://grafikart.fr/tutoriels/wordplate) (pas d'ic\u00f4ne)\r\n- [SVG](https://grafikart.fr/tutoriels/svg) (pas d'ic\u00f4ne)\r\n\r\nLa m\u00eame mais pour les formations :\r\n- [CakePHP 2](https://grafikart.fr/formations/cakephp) (pas d'ic\u00f4ne)\r\n\r\nJ'ai aussi remarqu\u00e9 certains tutoriels sans technologies :\r\n- [La programmation fonctionnelle](https://grafikart.fr/tutoriels/programmation-fonctionnelle-878)\r\n\r\nAu passage d'autres tutoriels auquels il manque des technologies :\r\n- [Carte interactive en SVG](https://grafikart.fr/tutoriels/carte-interactive-791) (il manque [SVG](https://grafikart.fr/tutoriels/svg))\r\n- [Jest](https://grafikart.fr/tutoriels/jest-test-framework-1202) (il manque [Jest](https://grafikart.fr/tutoriels/jest))\r\n\r\nVoil\u00e0, j'esp\u00e8re que \u00e7a aidera @Grafikart et la communaut\u00e9 !",
+        "labels": null
+    },
+    {
+        "title": "[Bug:Forum] Message non valid\u00e9",
+        "body": "En r\u00e9pondant sur le forum, la validation n'est pas prise en compte et il donc possible d'avoir un message vide",
+        "labels": null
+    },
+    {
+        "title": "compte reste bloqu\u00e9 apr\u00e8s reset du mot de passse",
+        "body": "apr\u00e8s trois tentative de connexion mon compte est bloqu\u00e9 alors je reset mon mot de passe parce que je me rends compte que je l'ai oubli\u00e9 mais mon compte est toujours bloqu\u00e9, \r\n\u00e7a serait aussi cool d'envoyer un mail pour d\u00e9bloquer le compte au cas ou c'est une autre personne qui me joue un sale tour",
+        "labels": null
+    },
+    {
+        "title": "Post marquer comme vu suite message perso",
+        "body": "Bonsoir\r\nLe post n'est pas marqu\u00e9 comme vu quand on vient d'\u00e9crire un message.\r\nIl faut revenir dessus pour qu'il soit marquer comme vu",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9sabonnement d'une sujet du forum",
+        "body": "Bonsoir,\r\nOn ne peux \"plus\" se d\u00e9sabonner d'un sujet afin de ne plus recevoir de notification",
+        "labels": null
+    },
+    {
+        "title": "Mise en place d'un champs libre pour ajouter des infos de facturation.",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "content en param filter",
+        "body": "Bonjour,\r\n\r\nDans l'operation _GET /api/comments_ ,dans _swagger_, il manque le parameter Filter content.\r\n\r\nExemple de code qui l'ajoute dans swagger : \r\n\r\n```php\r\n/**\r\n * @ApiResource(\r\n * )\r\n * @ApiFilter(CommentFilter::class, properties={\"content\"})\r\n */\r\nclass CommentResource extends CommentData\r\n{\r\n}\r\n```\r\n\r\n```php\r\n<?php\r\n\r\nnamespace App\\Http\\Api\\Filter;\r\n\r\nuse ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\AbstractFilter;\r\nuse ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Util\\QueryNameGeneratorInterface;\r\nuse Doctrine\\ORM\\QueryBuilder;\r\nuse Doctrine\\Persistence\\ManagerRegistry;\r\nuse Symfony\\Component\\Serializer\\NameConverter\\NameConverterInterface;\r\n\r\nclass CommentFilter extends AbstractFilter\r\n{\r\n    public function __construct(ManagerRegistry $managerRegistry, array $properties = [], NameConverterInterface $nameConverter = null)\r\n    {\r\n        parent::__construct($managerRegistry, null, null, $properties, $nameConverter);\r\n    }\r\n\r\n    protected function filterProperty(string $property, $value, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)\r\n    {\r\n    }\r\n\r\n    public function getDescription(string $resourceClass): array\r\n    {\r\n        if (!$this->properties) {\r\n            return [];\r\n        }\r\n\r\n        return [\r\n            'content' => [\r\n                'property' => 'content',\r\n                'type' => 'string',\r\n                'required' => true,\r\n                'openapi' => [\r\n                    'description' => 'Content id',\r\n                ],\r\n            ],\r\n        ];\r\n    }\r\n}\r\n```",
+        "labels": null
+    },
+    {
+        "title": "Acc\u00e8s \u00e0 l'API Plateform sur le site de Prod",
+        "body": "Nous avons acc\u00e8s \u00e0 l'API Plateform sur le site de Prod, et ainsi lister toutes les API existantes \r\n![2021-02-21 12_57_12-Window](https://user-images.githubusercontent.com/70549774/108624317-7f767580-7444-11eb-8a9a-7ec560bfe0b4.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Bug bulle notifications",
+        "body": "Lorsque nous sommes sur un fond de couleur (exemple sur le Blog), un contour blanc apparait :\r\n\r\n![2021-02-21 12_53_57-Window](https://user-images.githubusercontent.com/70549774/108624249-0d059580-7444-11eb-8b50-42c3fb1eff6e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Bouton \u00ab Marquer comme vue \u00bb - Tutoriel",
+        "body": "Bonjour,\r\n\r\nL\u2019id\u00e9e serait d\u2019ajouter un bouton \u00ab\u00a0marquer comme vue\u00a0\u00bb sous les vid\u00e9os tutoriels pour le suivi dans l\u2019historique et l\u2019effet visuel dans la liste des tutoriels disponible. En effet je regarde souvent sur l\u2019application YouTube (grace aux notifications) et du coup j\u2019ai pas mon suivi d\u2019avancement quand je reviens sur le site. \r\n\r\nBon courage, Thomas",
+        "labels": null
+    },
+    {
+        "title": "Bouton \"close\" de la banni\u00e8re \"Plus de vid\u00e9os\" se trouve sur le bouton de l'incrustation vid\u00e9o",
+        "body": "A chaque fois que tu mets en pause la vid\u00e9o une banni\u00e8re  proposant d'autres vid\u00e9os apparait.\r\nSon bouton pour la ferm\u00e9e est situ\u00e9 au m\u00eame niveau que le bouton de l'incrustation vid\u00e9o, en cas de clique cela active l'incrustation vid\u00e9o mais \u00e7a ne ferme pas la banni\u00e8re.\r\n\r\n<img width=\"966\" alt=\"Capture d\u2019e\u0301cran 2021-02-20 a\u0300 19 23 18\" src=\"https://user-images.githubusercontent.com/60188728/108604920-1bef3800-73b1-11eb-97d5-426e952261d2.png\">\r\n\r\n(On ne voit pas le bouton incustation vid\u00e9o sur le screenshot car il faut bouger la souris pour qu'il apparaisse)\r\n\r\n<img width=\"1433\" alt=\"Capture d\u2019e\u0301cran 2021-02-20 a\u0300 19 14 58\" src=\"https://user-images.githubusercontent.com/60188728/108604970-51942100-73b1-11eb-98e8-94716feea338.png\">\r\n\r\nEn cas de clique voila ce que \u00e7a donne.\r\nDu coup je sugg\u00e8re de r\u00e9duire la hauteur de cette banni\u00e8re.",
+        "labels": null
+    },
+    {
+        "title": "Suite homog\u00e9n\u00e9isation du design des pages Grafikart.fr",
+        "body": "Suite \u00e0 l'issue #250, pourquoi pas mettre le m\u00eame design de la page des tutoriels pour la page Formations, Premium, Blog et Forum ?\r\nCela apportera une coh\u00e9rence entre toutes les pages (au lieu d'avoir un style diff\u00e9rent pour chaque page) ;)",
+        "labels": null
+    },
+    {
+        "title": "Clic sur \" Voir les X r\u00e9sultats \" nous renvoie vers la page techno lorsqu'on cherche une techno",
+        "body": "![image](https://user-images.githubusercontent.com/24484284/108532173-dc085200-72d7-11eb-8656-bed4748eb140.png)\r\n<=\r\n\r\nSi je clique sur \" Voir les 7 r\u00e9sultats \", je suis redirig\u00e9 vers https://grafikart.fr/tutoriels/capistrano. Il faudrait juste rajouter un param\u00e8tre GET pour annuler la redirection.",
+        "labels": null
+    },
+    {
+        "title": "Usurpation de compte",
+        "body": "## Description\r\nIl est possible de se faire passer pour un autre compte en usurpant avatar et pseudo sur le blog\r\n\r\n- se rendre sur /blog en tant qu'utilisateur _**non connect\u00e9**_\r\n- cliquer pour poster un commentaire\r\n- renseigner pseudo et email qu'on veut usurper\r\n- poster le commentaire\r\n\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/108326076-1be11380-71ca-11eb-9729-394de76fdf19.mp4\r\n\r\n\r\n## Misc\r\nTest\u00e9 en local, j'ose pas tester sur la prod pour voir si le bug est pr\u00e9sent...",
+        "labels": null
+    },
+    {
+        "title": "Eviter le recul de la progression",
+        "body": "Normalement lorsque je termine un chapitre, si je reviens au milieu de vid\u00e9o apr\u00e8s un jour par exemple il ne faut pas qu'il deviens non termin\u00e9.",
+        "labels": null
+    },
+    {
+        "title": "Le dernier tuto ne s'affiche pas dans la page d'accueil.",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": " Trie dans la page historique -> Les nouveaux en haut.",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Cr\u00e9er une page de rapport financier ",
+        "body": "Pour la comptabilit\u00e9, il faudrait cr\u00e9er une page pour avoir le rapport mensuel des transactions stripes / paypal.",
+        "labels": null
+    },
+    {
+        "title": "Progression absente sur le player youtube pour les vid\u00e9os sans formation.",
+        "body": "Pour les vid\u00e9os sans formation par ex [celle-ci](https://grafikart.fr/tutoriels/distance-levenshtein-1372) la progression est absente lorsqu'on lance la vid\u00e9o youtube alors qu'elle est bien enregistr\u00e9e (et visible dans \"Mon Profil\").\r\n\r\nLe probl\u00e8me n'est pas pr\u00e9sent pour les vid\u00e9os avec formation.",
+        "labels": null
+    },
+    {
+        "title": "Cr\u00e9er une page pour lister les r\u00e9vision en cours sur le profil",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Connexion : Sensibilit\u00e9 \u00e0 la casse au niveau de l'adresse email",
+        "body": "Lors de la connexion il y'a une sensibilit\u00e9 \u00e0 la casse pour le champ adresse email.\r\nPar example: \r\nSi je me suis inscrit avec oza@grafikart.fr et que j'essaie de me connecter avec Oza@grafikart.fr j'ai une erreur \"Identifiant invalide.\"\r\n",
+        "labels": null
+    },
+    {
+        "title": "Le pop up de f\u00e9licitation peu \u00eatre r\u00e9p\u00e9t\u00e9 \u00e0 l'infini",
+        "body": "*Comportement non d\u00e9sir\u00e9*\r\nLorsqu'une vid\u00e9o se termine, pop \u00e0 l'\u00e9cran des f\u00e9licitations. L'action peu \u00eatre r\u00e9p\u00e9t\u00e9e ind\u00e9finiment, si la vid\u00e9o se termine \u00e0 nouveau. (possible uniquement lors d'une lecture Fullscreen)\r\n\r\nL'utilisateur doit alors fermer l'ensemble des pop-up de f\u00e9licitations avant de pouvoir \u00e0 nouveau interagir avec le reste de l'interface.",
+        "labels": null
+    },
+    {
+        "title": "Indicateur de live actif",
+        "body": "Ajouter un petit indicateur dans la navbar quand un live est actuellement en cours",
+        "labels": null
+    },
+    {
+        "title": "Mettre \u00e0 jour le libell\u00e9 \" Aucune r\u00e9ponse \" et supprimer le bouton \" Signaler le message \" (quand on poste soit-m\u00eame le message)",
+        "body": "Salut :)\r\n\r\n![image](https://user-images.githubusercontent.com/24484284/107186845-4e7a5780-69e5-11eb-90f4-c1cd83afcd94.png)\r\n\r\n- Bug \" Aucune r\u00e9ponse \"\r\nDans la capture, une r\u00e9ponse a \u00e9t\u00e9 apport\u00e9e mais on ne voit \" Aucune r\u00e9ponse \". Il faut r\u00e9actualiser la page pour que ce libell\u00e9 soit mise \u00e0 jour.\r\n\r\n- Bug \" Signaler le message \"\r\nJe pense qu'on peut supprimer le bouton \" Signaler le message \" pour l'utilisateur courant.",
+        "labels": null
+    },
+    {
+        "title": "Il y a  pas des contenu  sur la card",
+        "body": "![image](https://user-images.githubusercontent.com/34010260/107146890-85a02880-6953-11eb-8f2c-b43ec3cc323a.png)\r\nApres une connexion, j'ai constater  qu'il y a pas des contenues  dans la carde  et  il y avait  un cursus que  j'avait  finit  et  je  n'arrive plus a  retrouver  cela  sur la list des  cursus  finit\r\n",
+        "labels": null
+    },
+    {
+        "title": "CSS, switch theme sur ios",
+        "body": "## Description\r\nSur iOS 14.5 (plus de batterie dans les autres tel \u00e0 l'heure actuelle pour tester sur d'autres versions), le switch pour passer du th\u00e8me sombre \u00e0 clair marche sur toutes les pages SAUF /tutoriels\r\n\r\n## Demo\r\nhttps://user-images.githubusercontent.com/25200594/107100507-db21eb80-6814-11eb-83fd-eb472d56213c.mp4\r\n\r\n\r\n## \u00c9tapes\r\n- Utiliser safari sur iOS\r\n- Se rendre sur / (constater que le switch marche)\r\n- Se rendre sur /tutoriels (constater que le style ne marche pas et que la lune est en haut de page)\r\n\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Accessibilit\u00e9 : contraste",
+        "body": "Bonjour, \r\n\r\nGlobalement le th\u00e8me clair \u00e0 des probl\u00e8mes de contraste. \r\nPar exemple le switch pour changer de th\u00e8me est peu visible (jaune tr\u00e8s claire sur blanc, avec bordure quasiment blanche). \r\nLes niveaux de tuto souffre aussi de ce probl\u00e8me, amateur en jaune sur fond blanc, d\u00e9butant en vers tr\u00e8s clair. \r\nidem pour \"Les derni\u00e8res formations\" ou \"Tous les lives\" sur la home page etc.\r\n\r\nEn gros le texte jaune / gris clair / vert clair sur fond blanc ce n'est pas / peu lisible. \r\n\r\nPar exemple pour le jaune il faut utiliser une couleur comme #AA6700 pour respecter le niveau AA et #804D00 pour AAA (var --yellow). \r\n\r\n#AA6700 sur l\u2019ic\u00f4ne du theme switcher reste esth\u00e9tique, mais sur la bordure un peu moins. \r\nIdem sur \"Amateur\" c'est un peu terne. \r\n\r\nC'est une action complexe a r\u00e9aliser sachant que cela impact pas mal l'identit\u00e9 du site. \r\n",
+        "labels": null
+    },
+    {
+        "title": "[Zoom windows 125%] Scrolling horizontal page tutoriel",
+        "body": "Hello !\r\n\r\nSur mon laptop, il y a un scrolling horizontal sur la page tutoriel ce qui fait que certains elements ne sont pas visibles, de plus la scrollbar n'est elle m\u00eame pas visible :\r\n\r\n![image](https://user-images.githubusercontent.com/6690149/107072533-836c8b80-67e6-11eb-951d-8198c226905c.png)\r\n\r\nOS : windows\r\nBrowser : Chrome derni\u00e8re version\r\nNiveau de zoom Chrome: 100%\r\nR\u00e9solution : 1920 * 1080\r\nNiveau de zoom windows : 125 % (**Je pense que c'est ce qui pose le soucis)**\r\n\r\nEDIT : j'ai \u00e9dit\u00e9 le titre, c'est bel et bien le niveau de zoom \u00e0 125% de windows qui provoque le soucis. Sur l'ancienne UI de Grafikart ce n'\u00e9tait pas pr\u00e9sent et c'est vraiment n\u00e9cessaire en terme d'accessibilit\u00e9 pour moi sinon je n'arrive pas bien \u00e0 lire et je sais que nous sommes nombreux \u00e0 avoir le zoom windows ou chrome \u00e0 125 % par d\u00e9faut :\r\n\r\n![image](https://user-images.githubusercontent.com/6690149/107073645-e7438400-67e7-11eb-8832-d23a17d3b13f.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Th\u00e8me switcher variable --contrast-light non d\u00e9finie. ",
+        "body": "Bonjour,\r\n\r\nLa variable --contrast-light utilis\u00e9e dans assets/css/modules/_themeswitcher.scss (ligne 16) n'existe pas. \r\n\r\nA priori --color-inverted devrait faire l'affaire ?",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me taille des cours sans texte",
+        "body": "Bonjour,\r\n\r\nIl y a un probl\u00e8me de taille (card) sur les vid\u00e9os qui non pas de description dans les derniers tuto en cours sur la page d'accueil.\r\n\r\nCordialement,\r\n\r\n![bugTutoSansTexte](https://user-images.githubusercontent.com/19495834/107041464-d3385c00-67c0-11eb-9e3f-adc30268aa83.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Signaler des commentaires",
+        "body": "Il faudrait peut-\u00eatre ajouter une option pour signaler les commentaires sous les tutoriels.\r\n\r\n( ex: https://grafikart.fr/tutoriels/nextjs-react-1892#c51709 ) \r\n\r\n\r\n![image](https://user-images.githubusercontent.com/10907922/107009342-33190d80-6795-11eb-8568-d832125e1139.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": " Ajouter les balises OpenGraph pour les tutos & articles",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Probleme d'affichage du footer sur les formations \"Symfony 2.4: cr\u00e9er un e-commerce\" et \"Tester sur Symfony\"",
+        "body": "Salut Jonathan, \r\n\r\nje suis tomb\u00e9 sur un petit probl\u00e8me d'affichage du footer sur 2 formations Symfony (peut-\u00eatre plus je n'ai pas tout v\u00e9rifi\u00e9). \r\n\r\nIl y a un lien vers training.sensiolab qui vient se mettre avant et dans la premi\u00e8re colonne \"Me retrouver\". Ce qui d\u00e9cale toutes les colonnes de 1.\r\n\r\nTu trouveras deux captures qui illustrent le probl\u00e8me.\r\n\r\nTitouan\r\n\r\n![Screenshot_2021-02-03 Formation Symfony 2 4 Cr\u00e9ation d'un e-commerce Grafikart](https://user-images.githubusercontent.com/45697224/106745006-d399f100-6620-11eb-84ed-24f1d44fde09.png)\r\n\r\n![sensiolab link](https://user-images.githubusercontent.com/45697224/106745056-e57b9400-6620-11eb-8180-eae6d1ebe21c.JPG)\r\n\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Connexion FB/Google/Github",
+        "body": "Hello hello, juste pour signaler que la connexion via les r\u00e9seaux ne fonctionne plus\r\n\r\nErreur 400 : redirect_uri_mismatch\r\nThe redirect URI in the request, https://grafikart.fr/index.php/oauth/check/google, does not match the ones authorized for the OAuth client. To update the authorized redirect URIs, visit: https://console.developers.google.com/apis/credentials/oauthclient/${your_client_id}?project=${your_project_number}",
+        "labels": null
+    },
+    {
+        "title": "Pagination recherche",
+        "body": "La pagination est foireuse lorsque que l'on fait une recherche sur le site (exemple : https://grafikart.fr/recherche?q=a&page=104)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8mes d'overflow et de responsive dans le forum",
+        "body": "Hey, \r\nJ'ai trouv\u00e9 trois probl\u00e8mes dans le forum, sur la liste des sujets.\r\n - S'il y a trop de tag pour un sujet, une scrollbar apparait, mais elle n'est pas actionnable. \r\n![image](https://user-images.githubusercontent.com/64503329/106384901-aa355700-63cd-11eb-8368-8751afd2d31d.png)\r\n\r\n- Si le navigateur est compris entre 1000px et 800px, un titre trop long ne va pas revenir \u00e0 la ligne et va d\u00e9border sur les tags.\r\n![image](https://user-images.githubusercontent.com/64503329/106385019-56773d80-63ce-11eb-9816-edb6147142ff.png)\r\n\r\n- A 800px exactement, le design est explos\u00e9.\r\n![image](https://user-images.githubusercontent.com/64503329/106385057-81619180-63ce-11eb-8bef-0e89d66fbee5.png)\r\n\r\n\r\ntest\u00e9 sur Microsoft Edge, Google Chrome et Firefox",
+        "labels": null
+    },
+    {
+        "title": "Mode dark s'annule lorsqu'on se connecte",
+        "body": "Hello\r\nJ'ai active le mode sombre\r\nApres je me connecte, et je nai plus le mode sombre\r\nPareil que si j'active le mode sombre lorsque je suis connecte, et que je desactive\r\nA la deconnexion, le mode sombre revient.\r\n\r\nJe propose d'avoir le mode sombre dans les params de l'utilisateur a null des le depart.\r\nSi c'est set a true a false avant qu'on ecrase les params du navigateur. Sinon on utilise ceux du Navigateur.\r\nEt pourquoi pas pousser plus loin en mettant \u00e0 jour les donnees du navigateur (cookie) lorsque l'utilisateur change de mode",
+        "labels": null
+    },
+    {
+        "title": "declaration service FailedJobsService",
+        "body": "Bonjour,\r\n\r\nIl y a une erreur de d\u00e9claration du service FailedJobsService soulign\u00e9 par PHPStorm et affich\u00e9e avec la commande :\r\n\r\n```\r\nI have no name!@f1ddbf3f7a98:/var/www$ bin/console lint:container\r\n\r\n                                                                                                    \r\n [ERROR] Invalid definition for service \"App\\Infrastructure\\Queue\\FailedJobsService\": argument 1 of \r\n         \"App\\Infrastructure\\Queue\\FailedJobsService::__construct()\" accepts                        \r\n         \"Symfony\\Component\\Messenger\\Transport\\Receiver\\ListableReceiverInterface\",                \r\n         \"Symfony\\Component\\Messenger\\Transport\\TransportInterface\" passed.                         \r\n                                                                                                    \r\n```",
+        "labels": null
+    },
+    {
+        "title": "progression sur Grafikart ",
+        "body": "Bonjour Grafikart,\r\n\r\nje pense qu'il y a  un probl\u00e8me niveau de la barre de progression des buttons sur le site. Qd on finis la vid\u00e9o d'un tuto, la bar de la progression de button se finis pas, ca veut dire ca strock-dashbord se compl\u00e8te pas. je sais pas si je m'explique bien ou non. \r\n",
+        "labels": null
+    },
+    {
+        "title": "Pas d'authentification d\u00e9tect\u00e9e sur certaines 404",
+        "body": "Hello,\r\n\r\nIl y a un petit soucis sur certaines 404.\r\n\r\nSur la plus part tout vas bien, mais certaines, le th\u00e8me black n'est plus pr\u00e9sent par d\u00e9faut, et on est d\u00e9tect\u00e9 comme non authentifier.\r\n\r\n- https://grafikart.fr/forum/454545454545 => Tout va bien\r\n- https://grafikart.fr/forum/-42 => plus de th\u00e8me et plus \"auth\"",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me de logo sur la page Apprendre l'HTML",
+        "body": "Quand on est sur la page https://grafikart.fr/cursus il y a un logo pour la partie html et un autre pour la partie css et quand on va sur la page https://grafikart.fr/formations/html c'est le logo utiliser sur la page css qui est affich\u00e9",
+        "labels": null
+    },
+    {
+        "title": "Am\u00e9lioration de l'inscription",
+        "body": "Bonjour,\r\n\r\nLors de l'inscription d'un nouvel utilisateur (demande de login, mot de passe), lors que l'on clique sur le bouton s'inscrire, une petite boite apparait pour expliquer \u00e0 l'utilisateur qu'un mail lui \u00e0 \u00e9t\u00e9 envoy\u00e9, cependant, le formulaire d'inscription reste, ce qui est un peu perturbant. Cela donne l'impression que quelque chose ne se passe pas bien.\r\n\r\n![Capture d\u2019e\u0301cran 2021-01-28 a\u0300 08 43 58](https://user-images.githubusercontent.com/7392958/106106167-6a5c3e80-6145-11eb-8b48-4bd69a83e22e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "PWA",
+        "body": "Render le site grafikart.fr installable avec progressive web app",
+        "labels": null
+    },
+    {
+        "title": "Authentification via Google Acount",
+        "body": "Lors d'une tentative de connexion avec un compte Google j'ai eu le retour suivant :\r\nInvalid state parameter passed in callback URL\r\n![IMG_0548](https://user-images.githubusercontent.com/2023884/105990407-b3a78200-60a2-11eb-93d6-87f741f92342.PNG)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Uncaught (in promise) TypeError: this.player.cueVideoById is not a function",
+        "body": "In live page https://grafikart.fr/live/2019 \r\nWhen you try to change the current playing Live, you got this error\r\n\r\nUncaught (in promise) TypeError: this.player.cueVideoById is not a function",
+        "labels": null
+    },
+    {
+        "title": "Le menu premium n'est pas actif",
+        "body": "Quand nous allons sur la page premium, le menu ne se colore pas en bleu comme les autres menus :\r\n![image](https://user-images.githubusercontent.com/33806646/105872981-4ab8ff00-5ffb-11eb-9888-a86fe8fedd2c.png)\r\n![image](https://user-images.githubusercontent.com/33806646/105873015-54426700-5ffb-11eb-8dcd-81db3621eba7.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "S\u00e9curit\u00e9: Gestion des tokens",
+        "body": "Salut @Grafikart, en regardant le code, j'ai remarqu\u00e9 que les tokens g\u00e9n\u00e9r\u00e9s, sont bas\u00e9s sur un m\u00e9canisme al\u00e9atoire. \r\nJe te propose donc une \u00e9volution pour un syst\u00e8me plus pouss\u00e9, bas\u00e9 sur des tokens cryptographiques comme des JWT par exemple. \r\n\u00e7a te permettrait nativement de g\u00e9n\u00e9rer des tokens \u00e0 expiration, mais aussi de ne pas sauvegarder les tokens g\u00e9n\u00e9r\u00e9s dans ta base de donn\u00e9es. \r\nAvant de distribuer les jetons, tu peux m\u00eame proc\u00e9der \u00e0 un chiffrement AES, ce qui rends les jetons difficilement \"devinable\". \r\n\r\nCela reste une proposition. \r\n\r\n\r\nBonne journ\u00e9e \u00e0 toi. ",
+        "labels": null
+    },
+    {
+        "title": "405 Method not allowed lors de la connexion",
+        "body": "Lorsqu'on lit les [politique de confidentialite](https://grafikart.fr/politique-de-confidentialite), on peut lire ceci\r\n```\r\nSi vous avez un compte et que vous souhaitez supprimer vos informations vous pouvez le faire automatiquement depuis votre compte en cliquant sur le bouton supprim\u00e9.\r\n```\r\nLe \"votre compte\" redirige ici:  https://grafikart.fr/profil ou l'on peut se connecter.\r\n\r\nSauf qu'une fois la connexion fait, nous avons une petite 405 :)",
+        "labels": null
+    },
+    {
+        "title": "Redirection sur la page d'accueil  si non premium",
+        "body": "Hello,\r\n\r\nSi on est pas premium et qu'on souhaite \"t\u00e9l\u00e9charger\" les sources et vid\u00e9os on se fait rediriger sur la page d'accueil au lieu de `/premium` comme avant, c'est voulu ?",
+        "labels": null
+    },
+    {
+        "title": "Message lorsque il n'y a aucune notification",
+        "body": "Lorsque il n'y a aucune notification, cela pourrait \u00eatre bien d'avoir un petit message dans la forme suivante : `Vous n'avez aucune notification !`.\r\n\r\n![image](https://user-images.githubusercontent.com/33806646/105750349-f3585780-5f44-11eb-8e2f-70956bcee079.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Flash CSS quand on change le th\u00e8me (dark/light) par d\u00e9faut",
+        "body": "# Description\r\n\r\nLorsque le navigateur web a le th\u00e8me dark et que l'on force le th\u00e8me light sur le site (et inversement), un flash CSS appara\u00eet au chargement de certaines pages.\r\n\r\n# Probl\u00e8me\r\n\r\nLe JS qui force le changement du th\u00e8me s\u2019ex\u00e9cute trop tard.\r\n\r\n# Solution\r\n\r\nLa cl\u00e9 \"theme\" actuellement en localstorage devrait plut\u00f4t se trouver dans les cookies afin d'appliquer le th\u00e8me cot\u00e9 serveur.\r\n\r\n# D\u00e9mo\r\n\r\nhttps://user-images.githubusercontent.com/8747883/105716904-c2196080-5f1f-11eb-9c65-340926acfb9e.mp4",
+        "labels": null
+    },
+    {
+        "title": "[Improvement] Liens vers les tweets",
+        "body": "Il serait interessant d'avoir le lien vers les tweet dans le dernier footer, sur les dernier tweets",
+        "labels": null
+    },
+    {
+        "title": "Filtres tutoriels",
+        "body": "Ce but appara\u00eet sur iOS sur les navigateurs Safari et Brave (pas tester sur Chrome).\r\n\r\nSur la page Tutoriels, lorsqu\u2019on choisi le niveau dans la partie filtre, la s\u00e9lection fonctionne mais le niveau (dans le select) se r\u00e9initialise \u00e0 Tous.\r\n\r\nQuant au filtre technologie, ce probl\u00e8me n\u2019est pas pr\u00e9sent mais le titre de chaque groupe n\u2019est pas visible.\r\n",
+        "labels": null
+    },
+    {
+        "title": "Am\u00e9liorer le CLS (content layout shift) sur mobile & desktop sur les tutoriels",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Mettre le nom d'utilisateur dans le corps de l'email de contact",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Icone \"user\" non align\u00e9e dans les barres de navigation",
+        "body": "Lorsqu'on ouvre la sidenav sur un mobile (dans mon cas, Galaxy Note 9), l'ic\u00f4ne \"user\" n'est pas align\u00e9e avec le nom d'utilisateur. \n![20210124_185530.jpg](https://user-images.githubusercontent.com/7703951/105638962-f0dafc80-5e75-11eb-9322-7941216e031e.jpg)",
+        "labels": null
+    },
+    {
+        "title": "Acc\u00e8s \u00e0 l'abonnement premium lorsqu'on est connect\u00e9",
+        "body": "Bonjour \u00e0 tous,\r\n\r\nLorsque l'on est connect\u00e9 sur le site web, l'acc\u00e8s \u00e0 l'abonnement premium est beaucoup plus complexe. Le seul moyen que j'ai trouv\u00e9 pour m'abonner est de passer par mon profil, onglet \"Editer\", puis \"Devenir premium\".\r\nUne id\u00e9e serait d'ajouter un lien dans les menus \"Devenir premium\" lorsque l'utilisateur ne l'est pas.",
+        "labels": null
+    },
+    {
+        "title": "Mise en place d'un lien d'\u00e9vitement pour faciliter la navigation au clavier",
+        "body": "Si on commence sur une page du site avec un appui au clavier sur la touche **tab**, on arrive directement sur le menu de navigation sans pouvoir l'\u00e9viter et aller directement au contenu de la page.\r\n\r\ncf : [https://www.alsacreations.com/article/lire/572-Les-liens-d-evitement.html]\r\n",
+        "labels": null
+    },
+    {
+        "title": "Une recherche vide sur le forum renvoie 0 r\u00e9sultat",
+        "body": "Si on fait une recherche sans mot cl\u00e9, je pense que \u00e7a devrait afficher la m\u00eame chose que ne pas faire de recherche.\r\n\r\nR\u00e9sultat actuel :\r\n![image](https://user-images.githubusercontent.com/35456349/105611199-1dc6db00-5db4-11eb-8b7c-5cc28947e418.png)\r\n\r\nR\u00e9sultat auquel je m'attendrais : \r\n![image](https://user-images.githubusercontent.com/35456349/105611224-464ed500-5db4-11eb-870a-5bc75f9e68b3.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me d'affichage du code dans les tutoriels",
+        "body": "Dans la partie \u00e9crite des tutoriels comme celui sur [l'oauth avec symfony](https://grafikart.fr/tutoriels/symfony-oauth-authenticator-1362) on peut y constater des soucis avec les parties de codes\r\n\r\n![image](https://user-images.githubusercontent.com/35631093/105611090-9a0cee80-5db3-11eb-9af4-68456828a04e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[SEO] Attribut meta description manquant",
+        "body": "L'attribut ``description`` est actuellement manquant. \r\n\r\nCelui-ci est plut\u00f4t important, car il est beaucoup utilis\u00e9 par les crawlers pour l'indexation. \r\n\r\nUn article (en anglais) qui en parle et qui permet d'optimiser cette derni\u00e8re afin d'augmenter le r\u00e9f\u00e9rencement de mani\u00e8re naturelle : https://moz.com/learn/seo/meta-description",
+        "labels": null
+    },
+    {
+        "title": "[Infra] Ajouter le support de l'http / 3 et du protocole QUIC",
+        "body": "L'HTTP / 3 est une nouvelle norme ainsi que la rel\u00e8ve de la version actuelle du protocole HTTP.\r\n\r\nIl apporte beaucoup de nouveaut\u00e9s int\u00e9ressantes qui am\u00e9liorent de fa\u00e7on significative les performances. \r\n\r\nIl est maintenant support\u00e9 par Nginx, il est donc int\u00e9ressant de modifier un peu la configuration afin de le supporter.\r\n\r\n[Informations sur l'HTTP/3](https://kinsta.com/fr/blog/http3/)\r\n[Tester le support de QUIC sur mon navigateur](https://quic.nginx.org/)",
+        "labels": null
+    },
+    {
+        "title": "[Load-time] Ajouter l'attribut preload afin d'acc\u00e9l\u00e9rer le chargement de la page",
+        "body": "D'apr\u00e8s une estimation de Lighthouse, ajouter un attribut permettrait d'am\u00e9liorer les performances de chargement de la page d'une demie seconde. \r\n\r\nhttps://web.dev/uses-rel-preload/?utm_source=lighthouse&utm_medium=lr\r\n ",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me de d\u00e9calage des \u00e9l\u00e9ments sous Mac",
+        "body": "Hello,\r\n\r\nJe suis sous Mac Book Pro et quand j'essaye d'acc\u00e9der au nouveau site, je vois un d\u00e9calage comme si le CSS n'est pas compl\u00e8tement pris en charge.\r\n![Screen Shot 2021-01-23 at 18 50 51](https://user-images.githubusercontent.com/20798417/105609808-0552c280-5dac-11eb-9feb-5acb5714b2d3.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Remember me ",
+        "body": "La fonction remember me ne semble pas fonctionner",
+        "labels": null
+    },
+    {
+        "title": "Affichage bizarre sur le forum",
+        "body": "Les messages sur le forum ont un layout p\u00e9t\u00e9 \u00e0 cause du .formatted.card qui est en display flex",
+        "labels": null
+    },
+    {
+        "title": "Afficher les badges des utilisateurs sur le profil",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "(JS) Incoh\u00e9rence dans la page premium",
+        "body": "### Description\r\n\r\nLorsqu'on utilise la checkbox pour passer d'un premium de 1 mois \u00e0 1 an, le texte en dessous ne change pas\r\n\r\n### Demo\r\n![XLm1JV6UHc](https://user-images.githubusercontent.com/4358740/105486045-28974800-5cae-11eb-9bf9-53d754ba861a.gif)\r\n\r\n### \u00c9tapes\r\n\r\n- Aller sur la page /premium\r\n- Cliquer sur la checkbox\r\n- Le texte du bouton ne change pas",
+        "labels": null
+    },
+    {
+        "title": "Bug d'affichage si l'on navigue rapidement sur le forum",
+        "body": "En naviguant rapidement sur le forum, au bout de 3-4 pages la suivante devient une 404, alors que si on navigue doucement il n'y a pas d'erreurs.\r\n\r\nEt quand on fait un retour en arri\u00e8re: bug d'affichage sur le site, il faut refresh.\r\n\r\nhttps://user-images.githubusercontent.com/10907922/105374964-8cffcc00-5c08-11eb-880c-9e2c3e5c0257.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Progression formation",
+        "body": "Quand on se situe sur une formation, la barre de progression indique n'importe quoi.\r\n\r\nCette formation a \u00e9t\u00e9 visionn\u00e9 en entier\r\n![Capture d\u2019\u00e9cran de 2021-01-21 16-24-09](https://user-images.githubusercontent.com/1242071/105372014-7ad05e80-5c05-11eb-88fb-060db007c4e9.png)\r\n\r\n1 seule vid\u00e9o a \u00e9t\u00e9 visionn\u00e9\r\n![Capture d\u2019\u00e9cran de 2021-01-21 16-24-21](https://user-images.githubusercontent.com/1242071/105372041-80c63f80-5c05-11eb-8c99-d5f76b205a04.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Petit bug CSS",
+        "body": "Petit bug CSS au niveau du text dans la navbar :\r\n\r\n![2021_03_01_19_58_22_Formation_D\u00e9boguer_son_code_JavaScript_Grafikart_et_7_pages_de_plus_Personne](https://user-images.githubusercontent.com/70549774/109545161-c7db0680-7ac8-11eb-87ea-f5da9c97a392.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Un tutoriel hors ligne devrait \u00eatre d\u00e9sindex\u00e9 de la recherche",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Date d'un sujet quand un message est supprim\u00e9.",
+        "body": "Quand un message est supprim\u00e9 la date du sujet devrait revenir au dernier message.",
+        "labels": null
+    },
+    {
+        "title": "Technologies sans aucun tutoriels ni ic\u00f4ne (et autres)",
+        "body": "Bonjour,\r\n\r\nEn me *baladant* sur le site, j'ai pu remarquer que certaines technologies n'ont pas de tutoriels ni d\u2019ic\u00f4ne. Voici certaines que j'ai remarqu\u00e9es :\r\n- [ungit](https://grafikart.fr/tutoriels/ungit) (aucun tutoriel ni d'ic\u00f4ne)\r\n- [Debian](https://grafikart.fr/tutoriels/debian) (aucun tutoriel)\r\n- [MySQL Workbench](https://grafikart.fr/tutoriels/mysql-workbench) (aucun tutoriel)\r\n- [MariaDB](https://grafikart.fr/tutoriels/mariadb) (aucun tutoriel)\r\n- [XDebug](https://grafikart.fr/tutoriels/xdebug) (pas d'ic\u00f4ne)\r\n- [Titanium](https://grafikart.fr/tutoriels/titanium) (pas d'ic\u00f4ne)\r\n- [Babel](https://grafikart.fr/tutoriels/babel) (aucun tutoriel)\r\n- [PHPStorm](https://grafikart.fr/tutoriels/phpstorm) (une formation mais pas de tutoriels)\r\n- [Twig](https://grafikart.fr/tutoriels/twig) (pas d'ic\u00f4ne)\r\n- [WordPlate](https://grafikart.fr/tutoriels/wordplate) (pas d'ic\u00f4ne)\r\n- [SVG](https://grafikart.fr/tutoriels/svg) (pas d'ic\u00f4ne)\r\n\r\nLa m\u00eame mais pour les formations :\r\n- [CakePHP 2](https://grafikart.fr/formations/cakephp) (pas d'ic\u00f4ne)\r\n\r\nJ'ai aussi remarqu\u00e9 certains tutoriels sans technologies :\r\n- [La programmation fonctionnelle](https://grafikart.fr/tutoriels/programmation-fonctionnelle-878)\r\n\r\nAu passage d'autres tutoriels auquels il manque des technologies :\r\n- [Carte interactive en SVG](https://grafikart.fr/tutoriels/carte-interactive-791) (il manque [SVG](https://grafikart.fr/tutoriels/svg))\r\n- [Jest](https://grafikart.fr/tutoriels/jest-test-framework-1202) (il manque [Jest](https://grafikart.fr/tutoriels/jest))\r\n\r\nVoil\u00e0, j'esp\u00e8re que \u00e7a aidera @Grafikart et la communaut\u00e9 !",
+        "labels": null
+    },
+    {
+        "title": "[Bug:Forum] Message non valid\u00e9",
+        "body": "En r\u00e9pondant sur le forum, la validation n'est pas prise en compte et il donc possible d'avoir un message vide",
+        "labels": null
+    },
+    {
+        "title": "compte reste bloqu\u00e9 apr\u00e8s reset du mot de passse",
+        "body": "apr\u00e8s trois tentative de connexion mon compte est bloqu\u00e9 alors je reset mon mot de passe parce que je me rends compte que je l'ai oubli\u00e9 mais mon compte est toujours bloqu\u00e9, \r\n\u00e7a serait aussi cool d'envoyer un mail pour d\u00e9bloquer le compte au cas ou c'est une autre personne qui me joue un sale tour",
+        "labels": null
+    },
+    {
+        "title": "Post marquer comme vu suite message perso",
+        "body": "Bonsoir\r\nLe post n'est pas marqu\u00e9 comme vu quand on vient d'\u00e9crire un message.\r\nIl faut revenir dessus pour qu'il soit marquer comme vu",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9sabonnement d'une sujet du forum",
+        "body": "Bonsoir,\r\nOn ne peux \"plus\" se d\u00e9sabonner d'un sujet afin de ne plus recevoir de notification",
+        "labels": null
+    },
+    {
+        "title": "Mise en place d'un champs libre pour ajouter des infos de facturation.",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "content en param filter",
+        "body": "Bonjour,\r\n\r\nDans l'operation _GET /api/comments_ ,dans _swagger_, il manque le parameter Filter content.\r\n\r\nExemple de code qui l'ajoute dans swagger : \r\n\r\n```php\r\n/**\r\n * @ApiResource(\r\n * )\r\n * @ApiFilter(CommentFilter::class, properties={\"content\"})\r\n */\r\nclass CommentResource extends CommentData\r\n{\r\n}\r\n```\r\n\r\n```php\r\n<?php\r\n\r\nnamespace App\\Http\\Api\\Filter;\r\n\r\nuse ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\AbstractFilter;\r\nuse ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Util\\QueryNameGeneratorInterface;\r\nuse Doctrine\\ORM\\QueryBuilder;\r\nuse Doctrine\\Persistence\\ManagerRegistry;\r\nuse Symfony\\Component\\Serializer\\NameConverter\\NameConverterInterface;\r\n\r\nclass CommentFilter extends AbstractFilter\r\n{\r\n    public function __construct(ManagerRegistry $managerRegistry, array $properties = [], NameConverterInterface $nameConverter = null)\r\n    {\r\n        parent::__construct($managerRegistry, null, null, $properties, $nameConverter);\r\n    }\r\n\r\n    protected function filterProperty(string $property, $value, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)\r\n    {\r\n    }\r\n\r\n    public function getDescription(string $resourceClass): array\r\n    {\r\n        if (!$this->properties) {\r\n            return [];\r\n        }\r\n\r\n        return [\r\n            'content' => [\r\n                'property' => 'content',\r\n                'type' => 'string',\r\n                'required' => true,\r\n                'openapi' => [\r\n                    'description' => 'Content id',\r\n                ],\r\n            ],\r\n        ];\r\n    }\r\n}\r\n```",
+        "labels": null
+    },
+    {
+        "title": "Acc\u00e8s \u00e0 l'API Plateform sur le site de Prod",
+        "body": "Nous avons acc\u00e8s \u00e0 l'API Plateform sur le site de Prod, et ainsi lister toutes les API existantes \r\n![2021-02-21 12_57_12-Window](https://user-images.githubusercontent.com/70549774/108624317-7f767580-7444-11eb-8a9a-7ec560bfe0b4.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Bug bulle notifications",
+        "body": "Lorsque nous sommes sur un fond de couleur (exemple sur le Blog), un contour blanc apparait :\r\n\r\n![2021-02-21 12_53_57-Window](https://user-images.githubusercontent.com/70549774/108624249-0d059580-7444-11eb-8b50-42c3fb1eff6e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Bouton \u00ab Marquer comme vue \u00bb - Tutoriel",
+        "body": "Bonjour,\r\n\r\nL\u2019id\u00e9e serait d\u2019ajouter un bouton \u00ab\u00a0marquer comme vue\u00a0\u00bb sous les vid\u00e9os tutoriels pour le suivi dans l\u2019historique et l\u2019effet visuel dans la liste des tutoriels disponible. En effet je regarde souvent sur l\u2019application YouTube (grace aux notifications) et du coup j\u2019ai pas mon suivi d\u2019avancement quand je reviens sur le site. \r\n\r\nBon courage, Thomas",
+        "labels": null
+    },
+    {
+        "title": "Bouton \"close\" de la banni\u00e8re \"Plus de vid\u00e9os\" se trouve sur le bouton de l'incrustation vid\u00e9o",
+        "body": "A chaque fois que tu mets en pause la vid\u00e9o une banni\u00e8re  proposant d'autres vid\u00e9os apparait.\r\nSon bouton pour la ferm\u00e9e est situ\u00e9 au m\u00eame niveau que le bouton de l'incrustation vid\u00e9o, en cas de clique cela active l'incrustation vid\u00e9o mais \u00e7a ne ferme pas la banni\u00e8re.\r\n\r\n<img width=\"966\" alt=\"Capture d\u2019e\u0301cran 2021-02-20 a\u0300 19 23 18\" src=\"https://user-images.githubusercontent.com/60188728/108604920-1bef3800-73b1-11eb-97d5-426e952261d2.png\">\r\n\r\n(On ne voit pas le bouton incustation vid\u00e9o sur le screenshot car il faut bouger la souris pour qu'il apparaisse)\r\n\r\n<img width=\"1433\" alt=\"Capture d\u2019e\u0301cran 2021-02-20 a\u0300 19 14 58\" src=\"https://user-images.githubusercontent.com/60188728/108604970-51942100-73b1-11eb-98e8-94716feea338.png\">\r\n\r\nEn cas de clique voila ce que \u00e7a donne.\r\nDu coup je sugg\u00e8re de r\u00e9duire la hauteur de cette banni\u00e8re.",
+        "labels": null
+    },
+    {
+        "title": "Suite homog\u00e9n\u00e9isation du design des pages Grafikart.fr",
+        "body": "Suite \u00e0 l'issue #250, pourquoi pas mettre le m\u00eame design de la page des tutoriels pour la page Formations, Premium, Blog et Forum ?\r\nCela apportera une coh\u00e9rence entre toutes les pages (au lieu d'avoir un style diff\u00e9rent pour chaque page) ;)",
+        "labels": null
+    },
+    {
+        "title": "Clic sur \" Voir les X r\u00e9sultats \" nous renvoie vers la page techno lorsqu'on cherche une techno",
+        "body": "![image](https://user-images.githubusercontent.com/24484284/108532173-dc085200-72d7-11eb-8656-bed4748eb140.png)\r\n<=\r\n\r\nSi je clique sur \" Voir les 7 r\u00e9sultats \", je suis redirig\u00e9 vers https://grafikart.fr/tutoriels/capistrano. Il faudrait juste rajouter un param\u00e8tre GET pour annuler la redirection.",
+        "labels": null
+    },
+    {
+        "title": "Usurpation de compte",
+        "body": "## Description\r\nIl est possible de se faire passer pour un autre compte en usurpant avatar et pseudo sur le blog\r\n\r\n- se rendre sur /blog en tant qu'utilisateur _**non connect\u00e9**_\r\n- cliquer pour poster un commentaire\r\n- renseigner pseudo et email qu'on veut usurper\r\n- poster le commentaire\r\n\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/108326076-1be11380-71ca-11eb-9729-394de76fdf19.mp4\r\n\r\n\r\n## Misc\r\nTest\u00e9 en local, j'ose pas tester sur la prod pour voir si le bug est pr\u00e9sent...",
+        "labels": null
+    },
+    {
+        "title": "Eviter le recul de la progression",
+        "body": "Normalement lorsque je termine un chapitre, si je reviens au milieu de vid\u00e9o apr\u00e8s un jour par exemple il ne faut pas qu'il deviens non termin\u00e9.",
+        "labels": null
+    },
+    {
+        "title": "Le dernier tuto ne s'affiche pas dans la page d'accueil.",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": " Trie dans la page historique -> Les nouveaux en haut.",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Cr\u00e9er une page de rapport financier ",
+        "body": "Pour la comptabilit\u00e9, il faudrait cr\u00e9er une page pour avoir le rapport mensuel des transactions stripes / paypal.",
+        "labels": null
+    },
+    {
+        "title": "Progression absente sur le player youtube pour les vid\u00e9os sans formation.",
+        "body": "Pour les vid\u00e9os sans formation par ex [celle-ci](https://grafikart.fr/tutoriels/distance-levenshtein-1372) la progression est absente lorsqu'on lance la vid\u00e9o youtube alors qu'elle est bien enregistr\u00e9e (et visible dans \"Mon Profil\").\r\n\r\nLe probl\u00e8me n'est pas pr\u00e9sent pour les vid\u00e9os avec formation.",
+        "labels": null
+    },
+    {
+        "title": "Cr\u00e9er une page pour lister les r\u00e9vision en cours sur le profil",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Connexion : Sensibilit\u00e9 \u00e0 la casse au niveau de l'adresse email",
+        "body": "Lors de la connexion il y'a une sensibilit\u00e9 \u00e0 la casse pour le champ adresse email.\r\nPar example: \r\nSi je me suis inscrit avec oza@grafikart.fr et que j'essaie de me connecter avec Oza@grafikart.fr j'ai une erreur \"Identifiant invalide.\"\r\n",
+        "labels": null
+    },
+    {
+        "title": "Le pop up de f\u00e9licitation peu \u00eatre r\u00e9p\u00e9t\u00e9 \u00e0 l'infini",
+        "body": "*Comportement non d\u00e9sir\u00e9*\r\nLorsqu'une vid\u00e9o se termine, pop \u00e0 l'\u00e9cran des f\u00e9licitations. L'action peu \u00eatre r\u00e9p\u00e9t\u00e9e ind\u00e9finiment, si la vid\u00e9o se termine \u00e0 nouveau. (possible uniquement lors d'une lecture Fullscreen)\r\n\r\nL'utilisateur doit alors fermer l'ensemble des pop-up de f\u00e9licitations avant de pouvoir \u00e0 nouveau interagir avec le reste de l'interface.",
+        "labels": null
+    },
+    {
+        "title": "Indicateur de live actif",
+        "body": "Ajouter un petit indicateur dans la navbar quand un live est actuellement en cours",
+        "labels": null
+    },
+    {
+        "title": "Mettre \u00e0 jour le libell\u00e9 \" Aucune r\u00e9ponse \" et supprimer le bouton \" Signaler le message \" (quand on poste soit-m\u00eame le message)",
+        "body": "Salut :)\r\n\r\n![image](https://user-images.githubusercontent.com/24484284/107186845-4e7a5780-69e5-11eb-90f4-c1cd83afcd94.png)\r\n\r\n- Bug \" Aucune r\u00e9ponse \"\r\nDans la capture, une r\u00e9ponse a \u00e9t\u00e9 apport\u00e9e mais on ne voit \" Aucune r\u00e9ponse \". Il faut r\u00e9actualiser la page pour que ce libell\u00e9 soit mise \u00e0 jour.\r\n\r\n- Bug \" Signaler le message \"\r\nJe pense qu'on peut supprimer le bouton \" Signaler le message \" pour l'utilisateur courant.",
+        "labels": null
+    },
+    {
+        "title": "Il y a  pas des contenu  sur la card",
+        "body": "![image](https://user-images.githubusercontent.com/34010260/107146890-85a02880-6953-11eb-8f2c-b43ec3cc323a.png)\r\nApres une connexion, j'ai constater  qu'il y a pas des contenues  dans la carde  et  il y avait  un cursus que  j'avait  finit  et  je  n'arrive plus a  retrouver  cela  sur la list des  cursus  finit\r\n",
+        "labels": null
+    },
+    {
+        "title": "CSS, switch theme sur ios",
+        "body": "## Description\r\nSur iOS 14.5 (plus de batterie dans les autres tel \u00e0 l'heure actuelle pour tester sur d'autres versions), le switch pour passer du th\u00e8me sombre \u00e0 clair marche sur toutes les pages SAUF /tutoriels\r\n\r\n## Demo\r\nhttps://user-images.githubusercontent.com/25200594/107100507-db21eb80-6814-11eb-83fd-eb472d56213c.mp4\r\n\r\n\r\n## \u00c9tapes\r\n- Utiliser safari sur iOS\r\n- Se rendre sur / (constater que le switch marche)\r\n- Se rendre sur /tutoriels (constater que le style ne marche pas et que la lune est en haut de page)\r\n\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Accessibilit\u00e9 : contraste",
+        "body": "Bonjour, \r\n\r\nGlobalement le th\u00e8me clair \u00e0 des probl\u00e8mes de contraste. \r\nPar exemple le switch pour changer de th\u00e8me est peu visible (jaune tr\u00e8s claire sur blanc, avec bordure quasiment blanche). \r\nLes niveaux de tuto souffre aussi de ce probl\u00e8me, amateur en jaune sur fond blanc, d\u00e9butant en vers tr\u00e8s clair. \r\nidem pour \"Les derni\u00e8res formations\" ou \"Tous les lives\" sur la home page etc.\r\n\r\nEn gros le texte jaune / gris clair / vert clair sur fond blanc ce n'est pas / peu lisible. \r\n\r\nPar exemple pour le jaune il faut utiliser une couleur comme #AA6700 pour respecter le niveau AA et #804D00 pour AAA (var --yellow). \r\n\r\n#AA6700 sur l\u2019ic\u00f4ne du theme switcher reste esth\u00e9tique, mais sur la bordure un peu moins. \r\nIdem sur \"Amateur\" c'est un peu terne. \r\n\r\nC'est une action complexe a r\u00e9aliser sachant que cela impact pas mal l'identit\u00e9 du site. \r\n",
+        "labels": null
+    },
+    {
+        "title": "[Zoom windows 125%] Scrolling horizontal page tutoriel",
+        "body": "Hello !\r\n\r\nSur mon laptop, il y a un scrolling horizontal sur la page tutoriel ce qui fait que certains elements ne sont pas visibles, de plus la scrollbar n'est elle m\u00eame pas visible :\r\n\r\n![image](https://user-images.githubusercontent.com/6690149/107072533-836c8b80-67e6-11eb-951d-8198c226905c.png)\r\n\r\nOS : windows\r\nBrowser : Chrome derni\u00e8re version\r\nNiveau de zoom Chrome: 100%\r\nR\u00e9solution : 1920 * 1080\r\nNiveau de zoom windows : 125 % (**Je pense que c'est ce qui pose le soucis)**\r\n\r\nEDIT : j'ai \u00e9dit\u00e9 le titre, c'est bel et bien le niveau de zoom \u00e0 125% de windows qui provoque le soucis. Sur l'ancienne UI de Grafikart ce n'\u00e9tait pas pr\u00e9sent et c'est vraiment n\u00e9cessaire en terme d'accessibilit\u00e9 pour moi sinon je n'arrive pas bien \u00e0 lire et je sais que nous sommes nombreux \u00e0 avoir le zoom windows ou chrome \u00e0 125 % par d\u00e9faut :\r\n\r\n![image](https://user-images.githubusercontent.com/6690149/107073645-e7438400-67e7-11eb-8832-d23a17d3b13f.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Th\u00e8me switcher variable --contrast-light non d\u00e9finie. ",
+        "body": "Bonjour,\r\n\r\nLa variable --contrast-light utilis\u00e9e dans assets/css/modules/_themeswitcher.scss (ligne 16) n'existe pas. \r\n\r\nA priori --color-inverted devrait faire l'affaire ?",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me taille des cours sans texte",
+        "body": "Bonjour,\r\n\r\nIl y a un probl\u00e8me de taille (card) sur les vid\u00e9os qui non pas de description dans les derniers tuto en cours sur la page d'accueil.\r\n\r\nCordialement,\r\n\r\n![bugTutoSansTexte](https://user-images.githubusercontent.com/19495834/107041464-d3385c00-67c0-11eb-9e3f-adc30268aa83.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Signaler des commentaires",
+        "body": "Il faudrait peut-\u00eatre ajouter une option pour signaler les commentaires sous les tutoriels.\r\n\r\n( ex: https://grafikart.fr/tutoriels/nextjs-react-1892#c51709 ) \r\n\r\n\r\n![image](https://user-images.githubusercontent.com/10907922/107009342-33190d80-6795-11eb-8568-d832125e1139.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": " Ajouter les balises OpenGraph pour les tutos & articles",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Probleme d'affichage du footer sur les formations \"Symfony 2.4: cr\u00e9er un e-commerce\" et \"Tester sur Symfony\"",
+        "body": "Salut Jonathan, \r\n\r\nje suis tomb\u00e9 sur un petit probl\u00e8me d'affichage du footer sur 2 formations Symfony (peut-\u00eatre plus je n'ai pas tout v\u00e9rifi\u00e9). \r\n\r\nIl y a un lien vers training.sensiolab qui vient se mettre avant et dans la premi\u00e8re colonne \"Me retrouver\". Ce qui d\u00e9cale toutes les colonnes de 1.\r\n\r\nTu trouveras deux captures qui illustrent le probl\u00e8me.\r\n\r\nTitouan\r\n\r\n![Screenshot_2021-02-03 Formation Symfony 2 4 Cr\u00e9ation d'un e-commerce Grafikart](https://user-images.githubusercontent.com/45697224/106745006-d399f100-6620-11eb-84ed-24f1d44fde09.png)\r\n\r\n![sensiolab link](https://user-images.githubusercontent.com/45697224/106745056-e57b9400-6620-11eb-8180-eae6d1ebe21c.JPG)\r\n\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Connexion FB/Google/Github",
+        "body": "Hello hello, juste pour signaler que la connexion via les r\u00e9seaux ne fonctionne plus\r\n\r\nErreur 400 : redirect_uri_mismatch\r\nThe redirect URI in the request, https://grafikart.fr/index.php/oauth/check/google, does not match the ones authorized for the OAuth client. To update the authorized redirect URIs, visit: https://console.developers.google.com/apis/credentials/oauthclient/${your_client_id}?project=${your_project_number}",
+        "labels": null
+    },
+    {
+        "title": "Pagination recherche",
+        "body": "La pagination est foireuse lorsque que l'on fait une recherche sur le site (exemple : https://grafikart.fr/recherche?q=a&page=104)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8mes d'overflow et de responsive dans le forum",
+        "body": "Hey, \r\nJ'ai trouv\u00e9 trois probl\u00e8mes dans le forum, sur la liste des sujets.\r\n - S'il y a trop de tag pour un sujet, une scrollbar apparait, mais elle n'est pas actionnable. \r\n![image](https://user-images.githubusercontent.com/64503329/106384901-aa355700-63cd-11eb-8368-8751afd2d31d.png)\r\n\r\n- Si le navigateur est compris entre 1000px et 800px, un titre trop long ne va pas revenir \u00e0 la ligne et va d\u00e9border sur les tags.\r\n![image](https://user-images.githubusercontent.com/64503329/106385019-56773d80-63ce-11eb-9816-edb6147142ff.png)\r\n\r\n- A 800px exactement, le design est explos\u00e9.\r\n![image](https://user-images.githubusercontent.com/64503329/106385057-81619180-63ce-11eb-8bef-0e89d66fbee5.png)\r\n\r\n\r\ntest\u00e9 sur Microsoft Edge, Google Chrome et Firefox",
+        "labels": null
+    },
+    {
+        "title": "Mode dark s'annule lorsqu'on se connecte",
+        "body": "Hello\r\nJ'ai active le mode sombre\r\nApres je me connecte, et je nai plus le mode sombre\r\nPareil que si j'active le mode sombre lorsque je suis connecte, et que je desactive\r\nA la deconnexion, le mode sombre revient.\r\n\r\nJe propose d'avoir le mode sombre dans les params de l'utilisateur a null des le depart.\r\nSi c'est set a true a false avant qu'on ecrase les params du navigateur. Sinon on utilise ceux du Navigateur.\r\nEt pourquoi pas pousser plus loin en mettant \u00e0 jour les donnees du navigateur (cookie) lorsque l'utilisateur change de mode",
+        "labels": null
+    },
+    {
+        "title": "declaration service FailedJobsService",
+        "body": "Bonjour,\r\n\r\nIl y a une erreur de d\u00e9claration du service FailedJobsService soulign\u00e9 par PHPStorm et affich\u00e9e avec la commande :\r\n\r\n```\r\nI have no name!@f1ddbf3f7a98:/var/www$ bin/console lint:container\r\n\r\n                                                                                                    \r\n [ERROR] Invalid definition for service \"App\\Infrastructure\\Queue\\FailedJobsService\": argument 1 of \r\n         \"App\\Infrastructure\\Queue\\FailedJobsService::__construct()\" accepts                        \r\n         \"Symfony\\Component\\Messenger\\Transport\\Receiver\\ListableReceiverInterface\",                \r\n         \"Symfony\\Component\\Messenger\\Transport\\TransportInterface\" passed.                         \r\n                                                                                                    \r\n```",
+        "labels": null
+    },
+    {
+        "title": "progression sur Grafikart ",
+        "body": "Bonjour Grafikart,\r\n\r\nje pense qu'il y a  un probl\u00e8me niveau de la barre de progression des buttons sur le site. Qd on finis la vid\u00e9o d'un tuto, la bar de la progression de button se finis pas, ca veut dire ca strock-dashbord se compl\u00e8te pas. je sais pas si je m'explique bien ou non. \r\n",
+        "labels": null
+    },
+    {
+        "title": "Pas d'authentification d\u00e9tect\u00e9e sur certaines 404",
+        "body": "Hello,\r\n\r\nIl y a un petit soucis sur certaines 404.\r\n\r\nSur la plus part tout vas bien, mais certaines, le th\u00e8me black n'est plus pr\u00e9sent par d\u00e9faut, et on est d\u00e9tect\u00e9 comme non authentifier.\r\n\r\n- https://grafikart.fr/forum/454545454545 => Tout va bien\r\n- https://grafikart.fr/forum/-42 => plus de th\u00e8me et plus \"auth\"",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me de logo sur la page Apprendre l'HTML",
+        "body": "Quand on est sur la page https://grafikart.fr/cursus il y a un logo pour la partie html et un autre pour la partie css et quand on va sur la page https://grafikart.fr/formations/html c'est le logo utiliser sur la page css qui est affich\u00e9",
+        "labels": null
+    },
+    {
+        "title": "Am\u00e9lioration de l'inscription",
+        "body": "Bonjour,\r\n\r\nLors de l'inscription d'un nouvel utilisateur (demande de login, mot de passe), lors que l'on clique sur le bouton s'inscrire, une petite boite apparait pour expliquer \u00e0 l'utilisateur qu'un mail lui \u00e0 \u00e9t\u00e9 envoy\u00e9, cependant, le formulaire d'inscription reste, ce qui est un peu perturbant. Cela donne l'impression que quelque chose ne se passe pas bien.\r\n\r\n![Capture d\u2019e\u0301cran 2021-01-28 a\u0300 08 43 58](https://user-images.githubusercontent.com/7392958/106106167-6a5c3e80-6145-11eb-8b48-4bd69a83e22e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "PWA",
+        "body": "Render le site grafikart.fr installable avec progressive web app",
+        "labels": null
+    },
+    {
+        "title": "Authentification via Google Acount",
+        "body": "Lors d'une tentative de connexion avec un compte Google j'ai eu le retour suivant :\r\nInvalid state parameter passed in callback URL\r\n![IMG_0548](https://user-images.githubusercontent.com/2023884/105990407-b3a78200-60a2-11eb-93d6-87f741f92342.PNG)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Uncaught (in promise) TypeError: this.player.cueVideoById is not a function",
+        "body": "In live page https://grafikart.fr/live/2019 \r\nWhen you try to change the current playing Live, you got this error\r\n\r\nUncaught (in promise) TypeError: this.player.cueVideoById is not a function",
+        "labels": null
+    },
+    {
+        "title": "Le menu premium n'est pas actif",
+        "body": "Quand nous allons sur la page premium, le menu ne se colore pas en bleu comme les autres menus :\r\n![image](https://user-images.githubusercontent.com/33806646/105872981-4ab8ff00-5ffb-11eb-9888-a86fe8fedd2c.png)\r\n![image](https://user-images.githubusercontent.com/33806646/105873015-54426700-5ffb-11eb-8dcd-81db3621eba7.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "S\u00e9curit\u00e9: Gestion des tokens",
+        "body": "Salut @Grafikart, en regardant le code, j'ai remarqu\u00e9 que les tokens g\u00e9n\u00e9r\u00e9s, sont bas\u00e9s sur un m\u00e9canisme al\u00e9atoire. \r\nJe te propose donc une \u00e9volution pour un syst\u00e8me plus pouss\u00e9, bas\u00e9 sur des tokens cryptographiques comme des JWT par exemple. \r\n\u00e7a te permettrait nativement de g\u00e9n\u00e9rer des tokens \u00e0 expiration, mais aussi de ne pas sauvegarder les tokens g\u00e9n\u00e9r\u00e9s dans ta base de donn\u00e9es. \r\nAvant de distribuer les jetons, tu peux m\u00eame proc\u00e9der \u00e0 un chiffrement AES, ce qui rends les jetons difficilement \"devinable\". \r\n\r\nCela reste une proposition. \r\n\r\n\r\nBonne journ\u00e9e \u00e0 toi. ",
+        "labels": null
+    },
+    {
+        "title": "405 Method not allowed lors de la connexion",
+        "body": "Lorsqu'on lit les [politique de confidentialite](https://grafikart.fr/politique-de-confidentialite), on peut lire ceci\r\n```\r\nSi vous avez un compte et que vous souhaitez supprimer vos informations vous pouvez le faire automatiquement depuis votre compte en cliquant sur le bouton supprim\u00e9.\r\n```\r\nLe \"votre compte\" redirige ici:  https://grafikart.fr/profil ou l'on peut se connecter.\r\n\r\nSauf qu'une fois la connexion fait, nous avons une petite 405 :)",
+        "labels": null
+    },
+    {
+        "title": "Redirection sur la page d'accueil  si non premium",
+        "body": "Hello,\r\n\r\nSi on est pas premium et qu'on souhaite \"t\u00e9l\u00e9charger\" les sources et vid\u00e9os on se fait rediriger sur la page d'accueil au lieu de `/premium` comme avant, c'est voulu ?",
+        "labels": null
+    },
+    {
+        "title": "Message lorsque il n'y a aucune notification",
+        "body": "Lorsque il n'y a aucune notification, cela pourrait \u00eatre bien d'avoir un petit message dans la forme suivante : `Vous n'avez aucune notification !`.\r\n\r\n![image](https://user-images.githubusercontent.com/33806646/105750349-f3585780-5f44-11eb-8e2f-70956bcee079.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Flash CSS quand on change le th\u00e8me (dark/light) par d\u00e9faut",
+        "body": "# Description\r\n\r\nLorsque le navigateur web a le th\u00e8me dark et que l'on force le th\u00e8me light sur le site (et inversement), un flash CSS appara\u00eet au chargement de certaines pages.\r\n\r\n# Probl\u00e8me\r\n\r\nLe JS qui force le changement du th\u00e8me s\u2019ex\u00e9cute trop tard.\r\n\r\n# Solution\r\n\r\nLa cl\u00e9 \"theme\" actuellement en localstorage devrait plut\u00f4t se trouver dans les cookies afin d'appliquer le th\u00e8me cot\u00e9 serveur.\r\n\r\n# D\u00e9mo\r\n\r\nhttps://user-images.githubusercontent.com/8747883/105716904-c2196080-5f1f-11eb-9c65-340926acfb9e.mp4",
+        "labels": null
+    },
+    {
+        "title": "[Improvement] Liens vers les tweets",
+        "body": "Il serait interessant d'avoir le lien vers les tweet dans le dernier footer, sur les dernier tweets",
+        "labels": null
+    },
+    {
+        "title": "Filtres tutoriels",
+        "body": "Ce but appara\u00eet sur iOS sur les navigateurs Safari et Brave (pas tester sur Chrome).\r\n\r\nSur la page Tutoriels, lorsqu\u2019on choisi le niveau dans la partie filtre, la s\u00e9lection fonctionne mais le niveau (dans le select) se r\u00e9initialise \u00e0 Tous.\r\n\r\nQuant au filtre technologie, ce probl\u00e8me n\u2019est pas pr\u00e9sent mais le titre de chaque groupe n\u2019est pas visible.\r\n",
+        "labels": null
+    },
+    {
+        "title": "Am\u00e9liorer le CLS (content layout shift) sur mobile & desktop sur les tutoriels",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Mettre le nom d'utilisateur dans le corps de l'email de contact",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Icone \"user\" non align\u00e9e dans les barres de navigation",
+        "body": "Lorsqu'on ouvre la sidenav sur un mobile (dans mon cas, Galaxy Note 9), l'ic\u00f4ne \"user\" n'est pas align\u00e9e avec le nom d'utilisateur. \n![20210124_185530.jpg](https://user-images.githubusercontent.com/7703951/105638962-f0dafc80-5e75-11eb-9322-7941216e031e.jpg)",
+        "labels": null
+    },
+    {
+        "title": "Acc\u00e8s \u00e0 l'abonnement premium lorsqu'on est connect\u00e9",
+        "body": "Bonjour \u00e0 tous,\r\n\r\nLorsque l'on est connect\u00e9 sur le site web, l'acc\u00e8s \u00e0 l'abonnement premium est beaucoup plus complexe. Le seul moyen que j'ai trouv\u00e9 pour m'abonner est de passer par mon profil, onglet \"Editer\", puis \"Devenir premium\".\r\nUne id\u00e9e serait d'ajouter un lien dans les menus \"Devenir premium\" lorsque l'utilisateur ne l'est pas.",
+        "labels": null
+    },
+    {
+        "title": "Mise en place d'un lien d'\u00e9vitement pour faciliter la navigation au clavier",
+        "body": "Si on commence sur une page du site avec un appui au clavier sur la touche **tab**, on arrive directement sur le menu de navigation sans pouvoir l'\u00e9viter et aller directement au contenu de la page.\r\n\r\ncf : [https://www.alsacreations.com/article/lire/572-Les-liens-d-evitement.html]\r\n",
+        "labels": null
+    },
+    {
+        "title": "Une recherche vide sur le forum renvoie 0 r\u00e9sultat",
+        "body": "Si on fait une recherche sans mot cl\u00e9, je pense que \u00e7a devrait afficher la m\u00eame chose que ne pas faire de recherche.\r\n\r\nR\u00e9sultat actuel :\r\n![image](https://user-images.githubusercontent.com/35456349/105611199-1dc6db00-5db4-11eb-8b7c-5cc28947e418.png)\r\n\r\nR\u00e9sultat auquel je m'attendrais : \r\n![image](https://user-images.githubusercontent.com/35456349/105611224-464ed500-5db4-11eb-870a-5bc75f9e68b3.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me d'affichage du code dans les tutoriels",
+        "body": "Dans la partie \u00e9crite des tutoriels comme celui sur [l'oauth avec symfony](https://grafikart.fr/tutoriels/symfony-oauth-authenticator-1362) on peut y constater des soucis avec les parties de codes\r\n\r\n![image](https://user-images.githubusercontent.com/35631093/105611090-9a0cee80-5db3-11eb-9af4-68456828a04e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[SEO] Attribut meta description manquant",
+        "body": "L'attribut ``description`` est actuellement manquant. \r\n\r\nCelui-ci est plut\u00f4t important, car il est beaucoup utilis\u00e9 par les crawlers pour l'indexation. \r\n\r\nUn article (en anglais) qui en parle et qui permet d'optimiser cette derni\u00e8re afin d'augmenter le r\u00e9f\u00e9rencement de mani\u00e8re naturelle : https://moz.com/learn/seo/meta-description",
+        "labels": null
+    },
+    {
+        "title": "[Infra] Ajouter le support de l'http / 3 et du protocole QUIC",
+        "body": "L'HTTP / 3 est une nouvelle norme ainsi que la rel\u00e8ve de la version actuelle du protocole HTTP.\r\n\r\nIl apporte beaucoup de nouveaut\u00e9s int\u00e9ressantes qui am\u00e9liorent de fa\u00e7on significative les performances. \r\n\r\nIl est maintenant support\u00e9 par Nginx, il est donc int\u00e9ressant de modifier un peu la configuration afin de le supporter.\r\n\r\n[Informations sur l'HTTP/3](https://kinsta.com/fr/blog/http3/)\r\n[Tester le support de QUIC sur mon navigateur](https://quic.nginx.org/)",
+        "labels": null
+    },
+    {
+        "title": "[Load-time] Ajouter l'attribut preload afin d'acc\u00e9l\u00e9rer le chargement de la page",
+        "body": "D'apr\u00e8s une estimation de Lighthouse, ajouter un attribut permettrait d'am\u00e9liorer les performances de chargement de la page d'une demie seconde. \r\n\r\nhttps://web.dev/uses-rel-preload/?utm_source=lighthouse&utm_medium=lr\r\n ",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me de d\u00e9calage des \u00e9l\u00e9ments sous Mac",
+        "body": "Hello,\r\n\r\nJe suis sous Mac Book Pro et quand j'essaye d'acc\u00e9der au nouveau site, je vois un d\u00e9calage comme si le CSS n'est pas compl\u00e8tement pris en charge.\r\n![Screen Shot 2021-01-23 at 18 50 51](https://user-images.githubusercontent.com/20798417/105609808-0552c280-5dac-11eb-9feb-5acb5714b2d3.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Remember me ",
+        "body": "La fonction remember me ne semble pas fonctionner",
+        "labels": null
+    },
+    {
+        "title": "Affichage bizarre sur le forum",
+        "body": "Les messages sur le forum ont un layout p\u00e9t\u00e9 \u00e0 cause du .formatted.card qui est en display flex",
+        "labels": null
+    },
+    {
+        "title": "Afficher les badges des utilisateurs sur le profil",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "(JS) Incoh\u00e9rence dans la page premium",
+        "body": "### Description\r\n\r\nLorsqu'on utilise la checkbox pour passer d'un premium de 1 mois \u00e0 1 an, le texte en dessous ne change pas\r\n\r\n### Demo\r\n![XLm1JV6UHc](https://user-images.githubusercontent.com/4358740/105486045-28974800-5cae-11eb-9bf9-53d754ba861a.gif)\r\n\r\n### \u00c9tapes\r\n\r\n- Aller sur la page /premium\r\n- Cliquer sur la checkbox\r\n- Le texte du bouton ne change pas",
+        "labels": null
+    },
+    {
+        "title": "Bug d'affichage si l'on navigue rapidement sur le forum",
+        "body": "En naviguant rapidement sur le forum, au bout de 3-4 pages la suivante devient une 404, alors que si on navigue doucement il n'y a pas d'erreurs.\r\n\r\nEt quand on fait un retour en arri\u00e8re: bug d'affichage sur le site, il faut refresh.\r\n\r\nhttps://user-images.githubusercontent.com/10907922/105374964-8cffcc00-5c08-11eb-880c-9e2c3e5c0257.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Progression formation",
+        "body": "Quand on se situe sur une formation, la barre de progression indique n'importe quoi.\r\n\r\nCette formation a \u00e9t\u00e9 visionn\u00e9 en entier\r\n![Capture d\u2019\u00e9cran de 2021-01-21 16-24-09](https://user-images.githubusercontent.com/1242071/105372014-7ad05e80-5c05-11eb-88fb-060db007c4e9.png)\r\n\r\n1 seule vid\u00e9o a \u00e9t\u00e9 visionn\u00e9\r\n![Capture d\u2019\u00e9cran de 2021-01-21 16-24-21](https://user-images.githubusercontent.com/1242071/105372041-80c63f80-5c05-11eb-8c99-d5f76b205a04.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[CSS]: La barre de  progression d'une  formation",
+        "body": "Apres la fin d'une formation  la barre de progression d\u00e9passe la carde\r\n![image](https://user-images.githubusercontent.com/34010260/105347132-24582580-5bef-11eb-9d3f-cefae1e1a333.png)\r\n ",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Page 404 sur /api",
+        "body": "https://beta.grafikart.fr/api",
+        "labels": null
+    },
+    {
+        "title": "Vid\u00e9o en m\u00e9daillon",
+        "body": "### **Description:**\r\nL'id\u00e9e de la vid\u00e9o r\u00e9duite sur le site reprends un peu le m\u00eame syst\u00e8me que youtube. Lorsque l'on regarde un tutoriel sur le site, et que l'on veux naviguer sur celui-ci (ex: pr\u00e9c\u00e9dent, recherche etc), la vid\u00e9o du tutoriel se r\u00e9duit en bas a droite de l'\u00e9cran et continu de se lire.\r\n\r\n### **Pourquoi:**\r\nImaginons que je suis sur un tutoriel sp\u00e9cifique (Pr\u00e9sentation de Docker) et que je souhaite faire une recherche sur le site, pour voir le tutoriel en rapport (D\u00e9ploiement), la vid\u00e9o que je regarde ne s'arr\u00eate pas et continue de se lire en bas \u00e0 droite laissant la possibilit\u00e9 \u00e0 l'utilisateur de rajouter la vid\u00e9o suivante et ainsi de suite cr\u00e9ant une file d'attente.\r\n\r\n### **Utilit\u00e9:**\r\nPermettre \u00e0 l'utilisateur de mettre un tutoriel en file d'attente, sans que cela perturbe la vid\u00e9o d\u00e9j\u00e0 en cours.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Flash 404 tutoriels",
+        "body": "Lorsqu'il n'y a aucun tutoriels correspondant aux filtres, une 404 est retourn\u00e9e, doit d\u00e9stabiliser Turbolinks et le cache, et on a un flash avec la page sans le CSS.\r\nLe cache semblent tout de m\u00eame fonctionnel apr\u00e8s que la 404 ait \u00e9t\u00e9 charg\u00e9 une premi\u00e8re fois.\r\n\r\nOn pourrait modifier cette ligne https://github.com/Grafikart/Grafikart.fr/blob/6dcb1b0cd76c756125b0f1076e5799e36cb2d0f7/src/Http/Controller/Course/CourseController.php#L61 pour toujours retourner une 200, mais si cette condition est pr\u00e9sente, j'imagine qu'il y a une raison... (SEO ?)\r\n\r\nhttps://user-images.githubusercontent.com/17570186/104908147-531f9300-5986-11eb-90c4-896301b02b2a.mp4\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Vid\u00e9o qui ne se t\u00e9l\u00e9charge pas apres connexion (premium)",
+        "body": "## Description\r\nLorsqu'on est sur le site en non connect\u00e9 et qu'on d\u00e9cide de cliquer sur \"t\u00e9l\u00e9charger la video\" sur un tuto, on est redirig\u00e9 sur la page de connexion, on se co (avec compte premium) et une fois co plutot que de t\u00e9l\u00e9charger la video, le site nous ouvre la video a son adresse en .mp4\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104906163-a3492600-5983-11eb-913a-0d329b7d37b8.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Icones des technologies",
+        "body": "## Propositions icones vectoris\u00e9s\r\n\r\nLes icones actuels des technologies suivantes ne sont pas au format SVG, voici des propositions d'icones au format SVG.\r\n\r\n|\tTechnologie\t|\tIcone actuel\t|\tIcone beta\t|\tProposition version vectorielle\t|\r\n|--------|--------|--------|--------|\r\n|\tavocode\t|\t![](https://www.grafikart.fr/uploads/icons/avocode.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/avocode.png)\t|\t[![](https://cdn.worldvectorlogo.com/logos/avocode-inc-1.svg)](https://cdn.worldvectorlogo.com/logos/avocode-inc-1.svg)\t|\r\n|\tjavascript\t|\t![](https://www.grafikart.fr/uploads/icons/javascript.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/javascript.png)\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg)](https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg)\t|\r\n|\tungit\t|\t![](https://www.grafikart.fr/uploads/icons/ungit.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/ungit.png) PNG VIDE\t|\t[![](https://raw.githubusercontent.com/FredrikNoren/ungit/master/assets/images/icon.svg)](https://raw.githubusercontent.com/FredrikNoren/ungit/master/assets/images/icon.svg)\t|\r\n|\tmaildev\t|\t![](https://www.grafikart.fr/uploads/icons/maildev.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/maildev.png)\t|\t[![](https://svgshare.com/i/TDv.svg)](https://svgshare.com/i/TDv.svg)\t|\r\n|\thtml\t|\t![](https://www.grafikart.fr/uploads/icons/html.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/html.png)\t|\t[![](https://svgshare.com/i/TEG.svg)](https://svgshare.com/i/TEG.svg)\t|\r\n|\tssh\t|\t![](https://www.grafikart.fr/uploads/icons/ssh.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/ssh.png)\t|\t[![](https://svgshare.com/i/TEH.svg)](https://svgshare.com/i/TEH.svg)\t|\r\n|\telixir\t|\t![](https://www.grafikart.fr/uploads/icons/elixir.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/elixir.png) PNG VIDE\t|\t[![](https://www.vectorlogo.zone/logos/elixir-lang/elixir-lang-icon.svg)](https://www.vectorlogo.zone/logos/elixir-lang/elixir-lang-icon.svg)\t|\r\n|\tgit\t|\t![](https://www.grafikart.fr/uploads/icons/git.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/git.png)\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg)](https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg)\t|\r\n|\tjquery-ui\t|\t![](https://www.grafikart.fr/uploads/icons/jquery-ui.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/jquery-ui.png) PNG VIDE\t|\t[![](https://cdn.worldvectorlogo.com/logos/jquery-ui.svg)](https://cdn.worldvectorlogo.com/logos/jquery-ui.svg)\t|\r\n|\tparcel\t|\t![](https://www.grafikart.fr/uploads/icons/parcel.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/parcel.png)\t|\t[![](https://fr.parceljs.org/assets/logo.svg)](https://fr.parceljs.org/assets/logo.svg)\t|\r\n|\tjquery\t|\t![](https://www.grafikart.fr/uploads/icons/jquery.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/jquery.png)\t|\t[![](https://www.vectorlogo.zone/logos/jquery/jquery-icon.svg)](https://www.vectorlogo.zone/logos/jquery/jquery-icon.svg)\t|\r\n|\trest\t|\t![](https://www.grafikart.fr/uploads/icons/rest.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/rest.png) PNG VIDE\t|\tPAS DE PROPOSITION\t|\r\n|\ttitanium\t|\t![](https://www.grafikart.fr/uploads/icons/titanium.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/titanium.png) PNG VIDE\t|\tPAS DE PROPOSITION\t|\r\n|\tufw\t|\t![](https://www.grafikart.fr/uploads/icons/ufw.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/ufw.png)\t|\t\u00c0 VECTORISER\t|\r\n|\tnodewebkit\t|\t![](https://www.grafikart.fr/uploads/icons/nodewebkit.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/nodewebkit.png)\t|\t[![](https://cdn.worldvectorlogo.com/logos/node-webkit.svg)](https://cdn.worldvectorlogo.com/logos/node-webkit.svg)\t|\r\n|\ttwig\\*\t|\t![](https://www.grafikart.fr/uploads/icons/twig.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/twig.png) PNG VIDE\t|\t[![](https://svgshare.com/i/HTy.svg)](https://svgshare.com/i/HTy.svg)\t|\r\n|\tphinx\t|\t![](https://www.grafikart.fr/uploads/icons/phinx.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/phinx.png)\t|\t\u00c0 VECTORISER\t|\r\n|\tftp\t|\t![](https://www.grafikart.fr/uploads/icons/ftp.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/ftp.png) PNG VIDE\t|\tPAS DE PROPOSITION\t|\r\n|\tantergos\t|\t![](https://www.grafikart.fr/uploads/icons/antergos.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/antergos.png)\t|\tPAS DE PROPOSITION\t|\r\n|\tfirebug\t|\t![](https://www.grafikart.fr/uploads/icons/firebug.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/firebug.png)\t|\tPAS DE PROPOSITION\t|\r\n|\tprepros\t|\t![](https://www.grafikart.fr/uploads/icons/prepros.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/prepros.png)\t|\tPAS DE PROPOSITION\t|\r\n|\taffinity-designer\t|\t![](https://www.grafikart.fr/uploads/icons/affinity-designer.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/affinity-designer.png)\t|\t[![](https://cdn.serif.com/affinity/img/global/logos/affinity-designer-icon-090520190839.svg)](https://cdn.serif.com/affinity/img/global/logos/affinity-designer-icon-090520190839.svg)\t|\r\n|\tnetbeans\t|\t![](https://www.grafikart.fr/uploads/icons/netbeans.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/netbeans.png)\t|\tPAS DE PROPOSITION\t|\r\n|\twordplate\t|\t![](https://www.grafikart.fr/uploads/icons/wordplate.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/wordplate.png) PNG VIDE\t|\tPAS DE PROPOSITION\t|\r\n|\tfail2ban\t|\t![](https://www.grafikart.fr/uploads/icons/fail2ban.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/fail2ban.png)\t|\tPAS DE PROPOSITION\t|\r\n|\tphp\t|\t![](https://www.grafikart.fr/uploads/icons/php.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/php.png)\t|\t[![](https://www.php.net/images/logos/new-php-logo.svg)](https://www.php.net/images/logos/new-php-logo.svg)\t|\r\n|\tmerise\t|\t![](https://www.grafikart.fr/uploads/icons/merise.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/merise.png) PNG VIDE\t|\tPAS DE PROPOSITION\t|\r\n|\tngrok\t|\t![](https://www.grafikart.fr/uploads/icons/ngrok.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/ngrok.png) PNG VIDE\t|\t[![](https://ngrok.com/static/img/ngrok-black.svg)](https://ngrok.com/static/img/ngrok-black.svg)\t|\r\n|\tcomposer\t|\t![](https://www.grafikart.fr/uploads/icons/composer.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/composer.png)\t|\t[![](https://cdn.worldvectorlogo.com/logos/composer.svg)](https://cdn.worldvectorlogo.com/logos/composer.svg)\t|\r\n|\txdebug\t|\t![](https://www.grafikart.fr/uploads/icons/xdebug.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/xdebug.png) PNG VIDE\t|\t[![](https://raw.githubusercontent.com/xdebug/xdebug.org/05787333a72543e9d324176a578ad7da5a6f0698/html/images/logo.svg)](https://raw.githubusercontent.com/xdebug/xdebug.org/05787333a72543e9d324176a578ad7da5a6f0698/html/images/logo.svg)\t|\r\n|\tunix\t|\t![](https://www.grafikart.fr/uploads/icons/unix.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/unix.png)\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg)](https://upload.wikimedia.org/wikipedia/commons/5/53/GNU_and_Tux.svg)\t|\r\n|\tsinatra\t|\t![](https://www.grafikart.fr/uploads/icons/sinatra.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/sinatra.png)\t|\t[![](https://cdn.worldvectorlogo.com/logos/sinatra.svg)](https://cdn.worldvectorlogo.com/logos/sinatra.svg)\t|\r\n|\tseo\t|\t![](https://www.grafikart.fr/uploads/icons/seo.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/seo.png) PNG VIDE\t|\tPAS DE PROPOSITION\t|\r\n|\tlet-s-encrypt\t|\t![](https://www.grafikart.fr/uploads/icons/let-s-encrypt.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/let-s-encrypt.png)\t|\t[![](https://raw.githubusercontent.com/letsencrypt/website/master/static/images/le-logo-standard.svg)](https://raw.githubusercontent.com/letsencrypt/website/master/static/images/le-logo-standard.svg)\t|\r\n|\tsvg\t|\t![](https://www.grafikart.fr/uploads/icons/svg.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/svg.png) PNG VIDE\t|\t[![](https://www.w3.org/Graphics/SVG/svglogo.svg)](https://www.w3.org/Graphics/SVG/svglogo.svg)\t|\r\n|\tvirtualbox\t|\t![](https://www.grafikart.fr/uploads/icons/virtualbox.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/virtualbox.png)\t|\t[![](https://www.vectorlogo.zone/logos/virtualbox/virtualbox-icon.svg)](https://www.vectorlogo.zone/logos/virtualbox/virtualbox-icon.svg)\t|\r\n|\tdploy\t|\t![](https://www.grafikart.fr/uploads/icons/dploy.png) PNG VIDE\t|\t![](https://beta.grafikart.fr/uploads/icons/dploy.png) PNG VIDE\t|\tPAS DE PROPOSITION\t|\r\n|\tphpunit\\*\t|\t![](https://www.grafikart.fr/uploads/icons/phpunit.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/phpunit.png) PNG VIDE\t|\t[![](https://phpunit.de/img/phpunit.svg)](https://phpunit.de/img/phpunit.svg)\t|\r\n|\tpostfix\\*\\*\t|\t![](https://www.grafikart.fr/uploads/icons/postfix.jpg)\t|\t![](https://beta.grafikart.fr/uploads/icons/postfix.jpg)\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/3/36/Postfix-logo.svg)](https://upload.wikimedia.org/wikipedia/commons/3/36/Postfix-logo.svg)\t|\r\n\r\n\\* Ceux-ci deviennent des PNG vide sur la beta.\r\n\r\n\\*\\* Celui-ci est au format JPG sur le site.\r\n\r\n## Icones inexistants\r\n\r\nLes icones suivants ne sont pas renseign\u00e9s dans la version actuelle du site.\r\nSur la beta, ces images pointes vers https://beta.grafikart.fr/uploads/icons/ qui renvoie une 403.\r\n\r\n|\tTechnologie\t|\tProposition version vectorielle\t|\r\n|--------|--------|\r\n|\tjest\t|\t[![](https://jestjs.io/img/jest.svg)](https://jestjs.io/img/jest.svg)\t|\r\n|\tmake\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/4/4a/Faenza-text-x-makefile.svg)](https://upload.wikimedia.org/wikipedia/commons/4/4a/Faenza-text-x-makefile.svg)\t|\r\n|\tphpbrew\t|\t[![](https://svgshare.com/i/TCM.svg)](https://svgshare.com/i/TCM.svg)\t|\r\n|\topenstreetmap\t|\t[![](https://www.openstreetmap.org/assets/osm_logo-d4979005d8a03d67bbf051b4e7e6ef1b26c6a34a5cd1b65908e2947c360ca391.svg)](https://www.openstreetmap.org/assets/osm_logo-d4979005d8a03d67bbf051b4e7e6ef1b26c6a34a5cd1b65908e2947c360ca391.svg)\t|\r\n|\tangular\t|\t[![](https://angular.io/assets/images/logos/angular/angular.svg)](https://angular.io/assets/images/logos/angular/angular.svg)\t|\r\n|\trecoiljs\t|\t[![](https://raw.githubusercontent.com/dkgrieshammer/recoil_logo/master/Recoil_withText.svg)](https://raw.githubusercontent.com/dkgrieshammer/recoil_logo/master/Recoil_withText.svg)\t|\r\n|\treactnative\t|\t[![](https://reactnative.dev/img/header_logo.svg)](https://reactnative.dev/img/header_logo.svg)\t|\r\n|\tlinux\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/3/3a/Tux_Mono.svg)](https://upload.wikimedia.org/wikipedia/commons/3/3a/Tux_Mono.svg)\t|\r\n|\tlaravel-nova\t|\t[![](https://svgshare.com/i/TCa.svg)](https://svgshare.com/i/TCa.svg)\t|\r\n|\thttp\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/5/5b/HTTP_logo.svg)](https://upload.wikimedia.org/wikipedia/commons/5/5b/HTTP_logo.svg)\t|\r\n\r\n## Icones vectoris\u00e9s mal import\u00e9s\r\n\r\nLes icones suivant sont renseign\u00e9s et au format SVG sur la version actuelle du site mais renvoient une 404 sur la beta, ils semblent ne pas avoir correctement \u00e9t\u00e9 import\u00e9s.\r\n\r\n|\tTechnologie\t|\tIcone actuel\t|\r\n|--------|--------|\r\n|\ttypesense\t|\t![](https://www.grafikart.fr/uploads/icons/typesense.svg)\t|\r\n|\timmer\t|\t![](https://www.grafikart.fr/uploads/icons/immer.svg)\t|\r\n|\tapi-platform\t|\t![](https://www.grafikart.fr/uploads/icons/api-platform.svg)\t|\r\n|\tfigma\t|\t![](https://www.grafikart.fr/uploads/icons/figma.svg)\t|\r\n|\tsketch\t|\t![](https://www.grafikart.fr/uploads/icons/sketch.svg)\t|\r\n|\tswagger\t|\t![](https://www.grafikart.fr/uploads/icons/swagger.svg)\t|\r\n|\tsvelte\t|\t![](https://www.grafikart.fr/uploads/icons/svelte.svg)\t|\r\n\r\n## Icones non vectoris\u00e9s mal import\u00e9s\r\n\r\nLes icones suivants sont renseign\u00e9s mais au format PNG sur la version actuelle du site, ils renvoient une 404 sur la beta, ils semblent ne pas avoir correctement \u00e9t\u00e9 import\u00e9s.\r\n\r\n|\tTechnologie\t|\tIcone actuel\t|\tProposition version vectorielle\t|\r\n|--------|--------|--------|\r\n|\trsync\t|\t![](https://www.grafikart.fr/uploads/icons/rsync.png)\t|\t[![](https://api.iconify.design/file-icons:rsync.svg?download=true&box=true&color=%23626262&inline=false&height=auto)](https://api.iconify.design/file-icons:rsync.svg?download=true&box=true&color=%23626262&inline=false&height=auto)\t|\r\n|\tphpstan\t|\t![](https://www.grafikart.fr/uploads/icons/phpstan.png)\t|\t\u00c0 VECTORISER\t|\r\n|\trollup\t|\t![](https://www.grafikart.fr/uploads/icons/rollup.png)\t|\t[![](https://rollupjs.org/logo.svg)](https://rollupjs.org/logo.svg)\t|\r\n|\tdns\t|\t![](https://www.grafikart.fr/uploads/icons/dns.png)\t|\t\u00c0 VECTORISER\t|\r\n|\tfish\t|\t![](https://www.grafikart.fr/uploads/icons/fish.png)\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/d/d8/Fish-shell-logo-ascii.svg)](https://upload.wikimedia.org/wikipedia/commons/d/d8/Fish-shell-logo-ascii.svg)\t|\r\n|\tcron\t|\t![](https://www.grafikart.fr/uploads/icons/cron.png)\t|\tPAS DE PROPOSITION\t|\r\n|\tgoogle-maps\t|\t![](https://www.grafikart.fr/uploads/icons/google-maps.png)\t|\t[![](https://upload.wikimedia.org/wikipedia/commons/b/bd/Google_Maps_Logo_2020.svg)](https://upload.wikimedia.org/wikipedia/commons/b/bd/Google_Maps_Logo_2020.svg)\t|\r\n|\tjwt\t|\t![](https://www.grafikart.fr/uploads/icons/jwt.png)\t|\t[![](https://jwt.io/img/pic_logo.svg)](https://jwt.io/img/pic_logo.svg)\t|\r\n\r\n## Icones vectoris\u00e9s sur la beta\r\n\r\nLes icones suivant sont renseign\u00e9s mais au format PNG sur la version actuelle du site.\r\nSur la beta ils renvoient une 404 mais existent au format SVG, seulement leur extension est mal renseign\u00e9e.\r\n\r\n|\tTechnologie\t|\tIcone actuel\t|\tIcone beta\t|\r\n|--------|--------|--------|\r\n|\tlaravel\t|\t![](https://www.grafikart.fr/uploads/icons/laravel.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/laravel.svg)\r\n|\tapache\t|\t![](https://www.grafikart.fr/uploads/icons/apache.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/apache.svg)\r\n|\tbootstrap\t|\t![](https://www.grafikart.fr/uploads/icons/bootstrap.png)\t|\t![](https://beta.grafikart.fr/uploads/icons/bootstrap.svg)\r\n\r\n## Faute de frappe\r\n\r\nLa technologie Bootstrap est renseign\u00e9e 2 fois, dont une avec une faute de frappe, sur la version actuelle et sur la beta&nbsp;:\r\n - https://www.grafikart.fr/tutoriels/boostrap\r\n - https://beta.grafikart.fr/tutoriels/boostrap\r\n - https://www.grafikart.fr/tutoriels/bootstrap\r\n - https://beta.grafikart.fr/tutoriels/bootstrap\r\n\r\n## Note\r\n\r\n**Je n'ai pas tenu compte des licences d'utilisation des icones.**\r\n\r\nLes technologies sont celles accessibles depuis [la liste des tutoriels](https://beta.grafikart.fr/), certaines ont pu \u00eatre oubli\u00e9es.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Design pages tutoriels + formations",
+        "body": "Je trouve que le design original de la page live rend mieux sur les pages tutoriels + formations.\r\nCela caract\u00e9rise une meilleure identit\u00e9 visuelle pour le site.\r\n\r\n![2021-01-17 23_14_34-Window](https://user-images.githubusercontent.com/70549774/104857603-f71f2500-5919-11eb-8cf8-2cc2d0ea393d.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Page a-propos",
+        "body": "Sur la page [https://beta.grafikart.fr/a-propos](https://beta.grafikart.fr/a-propos) il y a un petit bug concernant la dur\u00e9e des vid\u00e9os qui affiche `(null)` :\r\n \r\n![image](https://user-images.githubusercontent.com/73129182/104851516-bca39100-58f5-11eb-8548-6552c09f1d79.png)\r\n\r\nJe n'ai pas retrouver cette erreur ailleurs sur la beta\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Duplicate content sur la page Devenir premium \"/premium\"",
+        "body": "Le bloc \"Visionner les tutoriels en avance\" est en double\r\n\r\n![duplicate-content](https://user-images.githubusercontent.com/35625573/104847886-aa6c2780-58e2-11eb-9291-fb2a448de66d.PNG)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Bug d'affichage boutons \"pages suivantes\".",
+        "body": "Sur la version Mobile, lorsque l'on va dans tutoriel et que l'on descend jusqu'au dernier tutoriel, les premiers boutons de pages suivantes s'affiche correctement mais pas le suivant.\r\n![20210117_151749](https://user-images.githubusercontent.com/59423570/104845717-2f514400-58d7-11eb-87ee-6fb876824a42.jpg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Icones manquants",
+        "body": "Dans la page Forum, il manque les icones des cat\u00e9gories :\r\n![image](https://user-images.githubusercontent.com/64503329/104844449-8d2e5d80-58d0-11eb-8789-587d1fdf1133.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": " [BETA] Bug d'affichage de la pagination dans les tutoriels",
+        "body": "### DESCRIPTION\r\nSur mobile, la pagination dans la liste des tutoriels fait n'importe quoi : Le \"52\" est coup\u00e9 en deux, et le \"2\" du \"52\" se met en dessous.\r\n\r\n### DEMO \r\n![bug grafikart](https://user-images.githubusercontent.com/64503329/104843774-a1705b80-58cc-11eb-8112-91e88696a68d.jpg)\r\n\r\n\r\n### CONFIG \r\nTest\u00e9 sur samsung Galaxy A20e, Android 10, Navigateurs Samsung Internet, Google Chrome et Edge Mobile.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Impossible d'ajouter une r\u00e9ponse \u00e0 un topic",
+        "body": "Si on trigger le message d'erreur qui indique que la chaine de caract\u00e8re est trop courte (en mettant moins de 10 caract\u00e8res), le bouton \"R\u00e9pondre\" se disable.\r\n\r\nOn rajoute des caract\u00e8res pour en avoir plus de 10, mais le bouton \"R\u00e9pondre\" reste disable.\r\n\r\n![image](https://user-images.githubusercontent.com/34584317/104817385-40d81480-5821-11eb-8c1e-7e7eb84aadee.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] ?? (JS) XXXXXXXX qui se glissent dans les champs texts",
+        "body": "## Description\r\nLorsqu'on envoie un message contenant un lien sur un forum, le lien ne sera pas effectif comme mentionn\u00e9 dans une issue pr\u00e9c\u00e9dente mais, en editant le message sans rien changer de sorte a rendre le lien actif, cliquer sur le lien et faire fleche arriere sur le nav, des XXXXXXXXXXXXX irons se glisser sur tous les champs text\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104813794-b507bd80-580b-11eb-9258-19e9cfbcdcd3.mp4\r\n\r\n## \u00c9tapes\r\n- Aller sur un forum\r\n- Envoyer un message contenant un lien (ex: ``[slt](/azeaze)``)\r\n- Editer le message qui vient d'etre envoyer sans rien changer de sorte a rendre le lien clickable\r\n- Cliquer sur le lien\r\n- Faire fleche retour sur le navigateur pour aller sur la page pr\u00e9c\u00e9dente (donc le forum)\r\n- See\r\n\r\nLes champs texts, pour envoyer un message ou en editer un seront alors remplis d'une suite de X non supprimable ni selectionnables",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Texte de description du blog",
+        "body": "Sur la page d'accueil, au dessous du titre \"Des nouvelles du blog\", la description temporaire n'a pas \u00e9t\u00e9 modifi\u00e9.\r\nOn peut alors lire une nouvelle fois \"Am\u00e9liorez-vous et apprenez de nouvelles choses gr\u00e2ce \u00e0 513 heures de tutoriels vid\u00e9os gratuits.\".\r\n![image](https://user-images.githubusercontent.com/17570186/104813581-50982e80-580a-11eb-906f-285cadf556c8.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Probl\u00e8me affichage tags Forum",
+        "body": "Lorsque nous sommes sur la page \"/forum\", c'est le bordel au niveau de l'affichage des tags par topic, quand il y en a trop...\r\n\r\n![2021-01-15 19_38_35-Window](https://user-images.githubusercontent.com/70549774/104765661-86390b00-5769-11eb-8b66-2200ca7482d6.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] CSS, l'ic\u00f4ne hamburger sur t\u00e9l\u00e9phone ne s'affiche pas \"compl\u00e8tement\"",
+        "body": "## Description \r\nSur mobile, quand on se rend sur n'importe quelle page directement depuis l'URL (ou bien en rafra\u00eechissant une page), l'ic\u00f4ne hamburger s'affiche qu'en partie, il manque un peu du haut et du bas, manque combl\u00e9 une fois qu'on tap dessus ou qu'on change de page\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104724971-b9f83e80-5731-11eb-8fb3-3e73c4f02baa.MP4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Probl\u00e8me de marge texte \"Les derniers tutoriels\" sur mobile",
+        "body": "Je ne sais pas si c'est voulu mais je ne pense pas.\r\n\r\n![Screenshot_20210115-085030](https://user-images.githubusercontent.com/28825568/104697058-768cd880-570f-11eb-9ec4-0a2616786e9b.jpg)\r\n\r\nLe titre touche la \"card\" du dessus.\r\n\r\nJe suis sur mobile OnePlus 7, je n'ai pas reproduis le probl\u00e8me sur ordinateur avec la simulation des tailles d'\u00e9cran, donc je ne sais pas si tu vas pouvoir le voir.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] CSS - Mascotte qui n'est pas dans le header",
+        "body": "Quand on va sur une page non autoris\u00e9, par exemple _/admin_ la mascotte ne se trouve plus dans le header\r\n\r\n![Admin](https://nsa40.casimages.com/img/2021/01/14/210114090526445774.png\r\n)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Validation de l'adresse email",
+        "body": "Je m'inscris :\r\n![image](https://user-images.githubusercontent.com/17570186/104618397-f160df80-568c-11eb-8cb6-b464c28bd09c.png)\r\n\r\nMais imaginons que je ne re\u00e7ois pas l'email, ou trop tard ie. plus de deux heures apr\u00e8s mon inscription (pour plein de raisons possibles) :\r\n![image](https://user-images.githubusercontent.com/17570186/104618615-3a189880-568d-11eb-8d46-62e3115cc330.png)\r\n\r\nAlors je ne pourrais plus m'inscrire car l'adresse email est d\u00e9j\u00e0 utilis\u00e9e :\r\n![image](https://user-images.githubusercontent.com/17570186/104618783-6fbd8180-568d-11eb-8321-9713d3a4cc90.png)\r\n\r\nEn plus j'ai un compte qui n'est pas valid\u00e9 auquel je ne peux pas me connecter\u2026",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Adresse email de plus de 255 caract\u00e8res",
+        "body": "Lorsque l'on tente de s'inscrire avec une adresse email de plus de 255 caract\u00e8res, on obtient une erreur serveur.\r\n\r\nhttps://user-images.githubusercontent.com/17570186/104615172-44389800-5689-11eb-9a69-3e6a0f6b32ac.mp4\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Forum, \u00e9dition de message non prise en compte",
+        "body": "## Description\r\nSur le forum, il est impossible d'\u00e9diter un message et le markdown ne marche pas\r\n(pour les liens, par d\u00e9faut, ils ne marchent pas, mais, si on click sur \u00e9diter puis confirmer, le lien sera pris en compte (et sera a nouveau innactif une fois refresh) les styles bold et italiques eux ne marchent pas quoi qu'on fasse)\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104609400-51528880-5683-11eb-9e8d-0fd89d184940.mp4\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur Serveur (SQLate) Report trop long sur forum",
+        "body": "## Description\r\nSur le forum, lors d'un report de message, si on d\u00e9passe les 255 chars, l'absence de v\u00e9rification cot\u00e9 serveur fait planter la requete...\r\n\r\n## Erreur\r\n![image](https://user-images.githubusercontent.com/25200594/104603912-2e24da80-567d-11eb-82d8-3671f58c8a91.png)\r\n![image](https://user-images.githubusercontent.com/25200594/104604089-5f050f80-567d-11eb-9641-e11c122f3b7f.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] CSS Superposition d'\u00e9l\u00e9ments",
+        "body": "## Description\r\nLorsqu'on suit plusieurs tuto (mise en pratique de la POO par exemple), dans la section \"Vid\u00e9os en cours de visionnage\" sur notre profil et la page d'accueil, lesdites vid\u00e9os se superposent\r\n\r\n## Demo\r\n![image](https://user-images.githubusercontent.com/25200594/104601303-5d861800-567a-11eb-95d0-d666a8e86f44.png)\r\n![image](https://user-images.githubusercontent.com/25200594/104601455-8e664d00-567a-11eb-937f-123f28eb4fe0.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] CSS selection blanche sur text blanc",
+        "body": "## Description\r\nSur le forum, lors de la cr\u00e9ation d'un forum ou d'une r\u00e9ponse \u00e0 un message (bref tout ce qui fait intervenir le textarea pour taper un message), la couleur de selection semble \u00eatre mal choisie, une selection blanche sur text blanc ne laisse pas place \u00e0 la lisibilit\u00e9...\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104559228-652aca00-5644-11eb-83b4-ce11e8bd0e16.mp4\r\n\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Pagination, page en trop",
+        "body": "## Description\r\nSur certaines recherches (/recherche, pas le forum, aucun prob sur le forum), la pagination sort un nombre trop grand de page (ex: recherche gra donne 31 pages mais a partir de la 26eme page on a \"Aucun r\u00e9sultat\")\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104518607-3981f280-55f8-11eb-926b-e26b0c7376e6.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur JS (SyntaxError) 'systemThemeSwitch' has already been declared",
+        "body": "## Description\r\nQuand on est sur le profil et qu'on se balade entre \u00c9diter et n'importe quelle autre tab, on obtient l'erreur ``Identifier 'systemThemeSwitch' has already been declared`` \u00e0 chaque fois qu'on retourne sur Editer\r\n\r\n## Demo\r\nhttps://user-images.githubusercontent.com/25200594/104513311-beb4d980-55ef-11eb-99e5-e8ed9a827807.mp4\r\n\r\n## Erreur\r\n![image](https://user-images.githubusercontent.com/25200594/104513402-e0ae5c00-55ef-11eb-8171-082a408e9b55.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Notification au clic de \"regarder plus tard\"",
+        "body": "Lorsqu'on clique sur \"regarder plus tard\" il affiche \"Tutoriel retir\u00e9 de votre watchlist\".",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Inconsistences dans les titres",
+        "body": "Inconsistences dans les titres :\r\n \r\n- https://beta.grafikart.fr/ `Grafikart | Tutoriels et Formations vid\u00e9os sur le d\u00e9veloppement web | Grafikart` Grafikart deux fois, pareil quand on est connect\u00e9 : `Grafikart | Dernier tutoriels | Grafikart`\r\n\r\n - https://beta.grafikart.fr/error.html `Title` Oublie de modification du titre\r\n\r\n - https://beta.grafikart.fr/tutoriels/distance-levenshtein-1372 `Tutoriel vid\u00e9o Algorithmique : Distance de Levenshtein | Grafikart` Le titre du tutoriel n'est pas directement au d\u00e9but et un onglet a une petite largeur, je verrais plut\u00f4t un `Distance de Levenshtein \u2014 Algorithmique \u2014 Tutoriel vid\u00e9o | Grafikart`\r\n\r\n - https://beta.grafikart.fr/forum/33736 `Apprendre HTML | Grafikart` Ici le titre d'un sujet du forum correspond \u00e0 une autre page du site : https://beta.grafikart.fr/tutoriels/html il faudrait rajouter `Forum` pour bien indiquer qu'il s'agit d'un sujet du forum et non une autre page\r\n\r\n - https://beta.grafikart.fr/tutoriels/javascript-cannot-read-property-1348 `Formation D\u00e9boguer son code JavaScript : Cannot read property of null | Grafikart` ici aussi je verrais plut\u00f4t un `Cannot read property of null \u2014 D\u00e9boguer son code JavaScript \u2014 Formation | Grafikart` histoire d'avoir le coeur du sujet affich\u00e9 dans l'onglet\r\n\r\n - https://beta.grafikart.fr/tutoriels?page=4 `Tous les tutoriels, page4 | Grafikart` il manque un espace entre page et le num\u00e9ro (et je trouve la virgule dans le titre bizarre, mais soit)\r\n\r\n - https://beta.grafikart.fr/forum?page=4 `Forum | Grafikart` il manque le num\u00e9ro de la page\r\n\r\n_Je suis peut-\u00eatre tatillon sur certains points_",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Paypal en anglais",
+        "body": "Paypal apparait en anglais.\r\n\r\n![image](https://user-images.githubusercontent.com/17570186/104468225-7e396980-55b7-11eb-9122-0bcf39f4b4bf.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Checkbox non cliquable",
+        "body": "Les checkboxs ne s'activent et ne se d\u00e9sactivent pas lorsque l'on clique directement dessus, en revanche cela fonctionne lorsqu'on clique sur le label associ\u00e9.\r\n\r\nhttps://user-images.githubusercontent.com/17570186/104467320-7af1ae00-55b6-11eb-96b0-44474b087cef.mp4\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Notification forum",
+        "body": "## Description\r\nQuand on envoie un message sur un forum, on recoit une notification pour notre propre message\r\n\r\n## Demo\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104451589-0e6cb400-55a2-11eb-9222-61288c5b9e9f.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] [caption]",
+        "body": "Il y a un probl\u00e8me avec des `[caption]` dans des ressources (https://beta.grafikart.fr/blog/trucs-et-astuces-pour-realiser-un-bon-design-dapplication-1-les-espaces-et-les-polices par exemple)\r\n![221B5928-FD56-4123-B662-9892FCEE7419](https://user-images.githubusercontent.com/36899582/104450440-660a2000-55a0-11eb-8341-24ec359912b6.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] R\u00e9sultats de recherche",
+        "body": "Quand on effectue une recherche, il y a un d\u00e9calage sur les r\u00e9sultats trouv\u00e9s (sur mobile) pour les formations\r\n![776917A6-AB34-431E-ABAD-698D8F913ABE](https://user-images.githubusercontent.com/36899582/104450003-c056b100-559f-11eb-8360-ccc508168efb.jpeg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur Serveur (TypeError) changement de mot de passe a vide",
+        "body": "## Description\r\nLorsqu'on d\u00e9cide de changer le mot de passe sur la section \u00e9dit\u00e9 de notre profile et que, en tant que petit malin, d\u00e9cide aussi de virer les required=\"required\" des 2 inputs pour mot de passe, on obtient une Erreur Serveur\r\n\r\nDe plus, sur cet input, il n'y a plus les restrictions de longueur du mdp donc on peut aussi choisir un simple espace comme mdp ou bien un qui d\u00e9passe les 4096 chars\r\n\r\n## Demo\r\nhttps://user-images.githubusercontent.com/25200594/104424323-82e22b80-557f-11eb-99b8-bde0cf8ff331.mp4\r\n\r\n## Erreur\r\n![image](https://user-images.githubusercontent.com/25200594/104424569-d5234c80-557f-11eb-8668-fb5f03246baa.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur Serveur (TypeError) route user_edit (pseudo triple espace)",
+        "body": "Quand on \u00e9dite son pseudo et d\u00e9cide de mettre juste 3 espaces, try it and see (ca retourne la page Erreur Serveur...)\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104370037-93ae8500-551e-11eb-9708-47533c31ffd3.png)\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104369993-86919600-551e-11eb-9258-7c8fb92920c9.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Menu sur mobile",
+        "body": "Bonjour \r\n\r\nSur mobile quand le menu est ouvert. Si on effectue un scroll rapide pour aller plus bas.\r\n\r\nLe menu se d\u00e9cale vers le haut et ca laisse un espace en bas \r\n![image](https://user-images.githubusercontent.com/1319567/104358530-92f4ff00-54dc-11eb-87c0-63cef928106a.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Mois en anglais sur le blog",
+        "body": "Le nom des mois est en anglais sur le blog.\r\n\r\n![image](https://user-images.githubusercontent.com/15141534/104354639-c8641180-5509-11eb-8298-bda3f5c66205.png)\r\n![image](https://user-images.githubusercontent.com/15141534/104354669-d31ea680-5509-11eb-82ff-4d6099b2a441.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur Serveur (UniqueConstraintViolationException) changement d'adresse mail",
+        "body": "## Description\r\nLorsque 2 comptes d\u00e9cident de changer l'adresse mail dans /profil/edit et rentrent la meme adresse mail, le mail est envoy\u00e9 une fois pour chaque compte, logique, quand on clique sur le premier lien de v\u00e9rification, ca change l'adresse mail du premier compte, logique, mais quand on clique sur le second lien pour l'autre compte, Erreur Serveur\r\n\r\n## D\u00e9mo \r\nhttps://user-images.githubusercontent.com/25200594/104327799-73190780-54eb-11eb-9da6-f2fb2a78b0d2.mp4\r\n\r\n## Erreur\r\n![image](https://user-images.githubusercontent.com/25200594/104327822-7a401580-54eb-11eb-8d66-b0b3f2671cb5.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur Serveur (TypeError) route auth_password_reset_confirm",
+        "body": "Quand on se rend (en tant qu'utilisateur connect\u00e9 ou non) sur https://beta.grafikart.fr/password/new/1/azeaze, on obtiens une Erreur Serveur \u00e0 la place de je ne sais quelle erreur mais probablement pas celle ci :sweat_smile: \r\n\r\ncf \r\n![image](https://user-images.githubusercontent.com/25200594/104319568-5677d200-54e1-11eb-8ca5-3393f88c3999.png)\r\n![image](https://user-images.githubusercontent.com/25200594/104319602-64c5ee00-54e1-11eb-8541-e090732e4ff4.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Bug Z-index dans la recherche ",
+        "body": "Lorsque l'on effectue une recherche, la barre des suggestions appara\u00eet en dessus des r\u00e9sultats.\r\n\r\n![Capture d\u2019\u00e9cran 2021-01-12 134125](https://user-images.githubusercontent.com/38298743/104315868-84561a00-54d3-11eb-9baa-124f459574a9.png)\r\n\r\n\r\nComment reproduire l'erreur ?\r\n\r\n1. Recherchez un terme et valider\r\n2. Sur la page de recherche, saisissez un terme qui produit beaucoup de suggestions, exemple : **l** (L minuscule)  ",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur Serveur (TooManyEmailChangeException) edition email dans profil",
+        "body": "Quand on d\u00e9cide de changer notre adresse mail dans le profile, la premiere fois marche avec la notification en haut a droite (qui au passage selon moi est beaucoup trop rapide, pas le temps de la lire), mais quand on d\u00e9cide de changer a nouveau, Erreur serveur\r\n\r\ncf\r\n![image](https://user-images.githubusercontent.com/25200594/104315625-87ed9f00-54db-11eb-91d2-8646ce80a227.png)\r\n![image](https://user-images.githubusercontent.com/25200594/104315670-93d96100-54db-11eb-87f5-9df1d4cf241e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Internal Server Error api repost delete",
+        "body": "Quand on va sur un blog, et supprime un de nos messages, pas de probleme mais si on d\u00e9cide de rejouer la requete de suppression du message, l'api retourne une erreur interne \r\n(probleme volontairement d\u00e9clench\u00e9 mais je pense qu'il peut surevnir si quelqu'un a une mauvaise co/co instable)\r\n\r\ncf\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104306714-8f5a7b80-54ce-11eb-906f-cd1b612caa12.mp4\r\n\r\nr\u00e9ponse de l'api :\r\n\r\n```json\r\n{\r\n    \"type\": \"https:\\/\\/tools.ietf.org\\/html\\/rfc2616#section-10\",\r\n    \"title\": \"An error occurred\",\"detail\":\"Internal Server Error\"\r\n}\r\n```\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Inscription mails sensibles a la case",
+        "body": "Il est possible de cr\u00e9er 2 comptes avec la m\u00eame adresse mail \u00e0 condition que cette derni\u00e8re ai une majuscule qui diff\u00e8re ou plus\r\nex : foo@bar.Fr et foo@bar.fr\r\n\r\ncf \r\n\r\nhttps://user-images.githubusercontent.com/25200594/104301485-ffb1ce80-54c7-11eb-8548-4382dc56676c.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Probleme d'affichage bouton /live",
+        "body": "Quand on est sur /live et qu'on clique sur une video, la video s'affiche par dessus le bouton de gauche \r\ncf \r\n![image](https://user-images.githubusercontent.com/25200594/104297610-5c5eba80-54c3-11eb-8224-6844c9e96b6e.png)\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104297653-684a7c80-54c3-11eb-9e6c-92cee57e0dfc.mp4\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Soumission a \"vide\" sur blog",
+        "body": "Quand on entre des espaces dans le nom et le message, on peut ne \"rien\" envoyer \r\ncf sur https://beta.grafikart.fr/blog/bilan-2020\r\n![image](https://user-images.githubusercontent.com/25200594/104296869-78ae2780-54c2-11eb-89da-2d61e317bd08.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Absence de \"aucun r\u00e9sultat\" forum",
+        "body": "Quand on cherche n'importe quoi et qu'il n'y a pas de r\u00e9sultat, la page est vide, un \"aucun r\u00e9sultat\" serai mieux :thinking: \r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104285827-7775fe00-54b4-11eb-89f8-82cf8b1dfd97.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Select profil mauvaise couleur",
+        "body": "Bonjour, dans le profil en th\u00e8me dark le select des pays ne s'affiche pas dans la bonne couleur.\r\n\r\n![Select page profil](https://user-images.githubusercontent.com/54680442/104282539-8312f600-54af-11eb-8f19-bb5ce19f3d6b.jpg)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Th\u00e8me switch non visible bas de page",
+        "body": "Bonjour, le switch pour le th\u00e8me n'apparait pas en bas de page\r\n\r\n![Screenshot_21](https://user-images.githubusercontent.com/32935159/104243072-51267300-5460-11eb-9d73-e73873fab169.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Profile th\u00e8me switch mobile",
+        "body": "Bonjour, sur mobile (navigateur chrome), lorsque l'on va sur son profile, l'option pour changer de th\u00e8me n'apparait pas. Il faut modifier une fois les pr\u00e9f\u00e9rences pour qu'il s'affiche ou bien actualiser la page\r\n\r\n\r\nhttps://user-images.githubusercontent.com/32935159/104242421-6ea70d00-545f-11eb-8524-e0912d778167.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Marquage comme lus",
+        "body": "Le bouton \"Marquer tous comme lus\" sur /forum ne marche pas et essai d'appeler https://beta.grafikart.fr/[object%20MouseEvent]\r\ncf video\r\n\r\nhttps://user-images.githubusercontent.com/25200594/104240273-17ec0400-545c-11eb-8353-a0b9f311999a.mp4\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BUG MESSAGE] f",
+        "body": "![image](https://user-images.githubusercontent.com/54817653/104226183-af932780-5447-11eb-839f-541a962cea4b.png)\r\n\r\nRemplacer les [\"]\" par de vrai message.\r\n\r\nBonne chance !\r\nEt bravo pour le site\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Derni\u00e8re ligne correction coup\u00e9e",
+        "body": "Lorsqu'on souhaite proposer une correction, la derni\u00e8re ligne de texte dans l'\u00e9diteur est coup\u00e9e.\r\n\r\n![image](https://user-images.githubusercontent.com/15141534/104223301-bfa90800-5443-11eb-8f00-dfed010f642e.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Bug sur le switch des technos backend de l'arbre des formations",
+        "body": "Sur https://beta.grafikart.fr/formations/guide, quand tu cliques sur une techno Backend (ruby par exemple) puis que tu cliques sur le logo Git (par exemple), quand tu reviens sur la page pr\u00e9c\u00e9dente, tu ne peux plus choisir une autre techno backend.\r\n\r\n![grafikart-bug](https://user-images.githubusercontent.com/36128301/104223120-84a6d480-5443-11eb-9d5b-382497041a72.gif)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Upload image sur un profil qui n'est pas le notre",
+        "body": "En allant sur l'avatar d'un profil on peut afficher le menu contextuel pour upload une nouvelle image.\r\n\r\n![Screenshot_55](https://user-images.githubusercontent.com/48072357/104218816-91c0c500-543d-11eb-8994-63a2b4d9e09a.png)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Spam requete pour les svg",
+        "body": "Quand on hover un contenu avec svg (ex: sur notre page profil pour faire apparaitre le \"editer\" sur l'avatar), le site execute 2 requetes, une a l'hover et une une fois unhover, et ce a chaque fois\r\ncf video \r\n\r\nhttps://user-images.githubusercontent.com/25200594/104194459-aa22e680-5421-11eb-86aa-14bc2430e988.mp4\r\n\r\n ",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur serveur pour entier > 32 bits",
+        "body": "Quand on se rend sur une page qui prend en param un id (ex https://beta.grafikart.fr/revision/) et qu'on d\u00e9cide de lui mettre un entier sup a 32bits (ex https://beta.grafikart.fr/revision/2147483648), erreur serveur...\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104193391-59f75480-5420-11eb-83fd-ae9f35c4eef5.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Timeline illogique pour les messages des forums",
+        "body": "L'ordre des messages dans les forums semblent etre assez random et non li\u00e9 \u00e0 la date de publication du dit message\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104192513-37b10700-541f-11eb-8676-2270649f090a.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] - Bug r\u00e9initialisation pagination Tutoriels",
+        "body": "Bonjour,\r\n\r\nPetit bug dans la pagination des tutoriels.\r\n\r\nPour reproduire le probl\u00e8me :\r\n\r\n  - Aller sur la page des tutoriels\r\n  - S\u00e9lectionner une page sup\u00e9rieure \u00e0 1 (3 par exemple)\r\n  - Changer la technologie\r\n  => Le N\u00b0 de la page s\u00e9lectionn\u00e9e n'est pas r\u00e9initialis\u00e9e \u00e0 1 (on reste sur la page 3 de la technologie s\u00e9lectionn\u00e9e)\r\n        Et si la page 3 n'existe pas (par exemple, choix de la techno \"Laravel\"), on a le message :\r\n\r\n**Aucun tutoriels :(\r\nAucun contenu ne correspond aux filtres que vous avez s\u00e9lectionn\u00e9s.**",
+        "labels": null
+    },
+    {
+        "title": "[BETA] 400 de nginx sur /%",
+        "body": "Quand on se rend sur n'importe quelle page (/, /tutoriel, /forum,... ) et qu'on y rajoute /%, on obtient une 400 Bad Request de nginx\r\n![image](https://user-images.githubusercontent.com/25200594/104159668-0d942080-53f0-11eb-811d-a1dd2f9601dd.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Erreur Serveur sur id non conforme",
+        "body": "Lorsqu'on se rend sur https://beta.grafikart.fr/profil/factures/azeaze, https://beta.grafikart.fr/profil/factures/+, bref toute facture avec id diff\u00e9rent d'entier (entier 32bits, car https://beta.grafikart.fr/profil/factures/2147483648 a le m\u00eame effet la ou https://beta.grafikart.fr/profil/factures/2147483647 semble \u00eatre la limite), on obtient une erreur serveur\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104158344-6e6e2980-53ed-11eb-8a86-407641d84612.png)\r\n\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104158335-6615ee80-53ed-11eb-959f-5a0adc3755a6.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] G\u00e9n\u00e9ration de facture vide",
+        "body": "Lorsqu'on a aucune facture a son actif et qu'on se rend sur https://beta.grafikart.fr/profil/factures/1 https://beta.grafikart.fr/profil/factures/2 ou bien https://beta.grafikart.fr/profil/factures/42525848, le site nous propose d'imprimer une facture vide de montant 0\u20ac et sans aucune info dessus\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104158002-b50f5400-53ec-11eb-8c0b-fa6ddd97802f.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Probl\u00e8me de pagination",
+        "body": "Lorsqu'on rentre la page -1, le site retourne une Erreur Serveur\r\n\r\nReproduire :\r\n- aller sur https://beta.grafikart.fr/tutoriels (ou bien /forums ou /blog)\r\n- rajouter ?page=-1\r\n- observer\r\n\r\n![image](https://user-images.githubusercontent.com/25200594/104157404-601f0e00-53eb-11eb-987d-4321572b6c24.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] icon du theme-switcher",
+        "body": "Au chargement de la page on voit les icons du theme-switcher en haut \u00e0 gauche de la page en position: absolute; top: 5px; left: 5px; car la classe form-switch et son position: relative; ne s'ajoute au parent qu'au chargement du web component.\r\n\r\n![image](https://user-images.githubusercontent.com/17570186/104137324-13601680-539c-11eb-88e6-53da9eae5eb6.png)\r\n\r\nAvant le chargement du web component :\r\n\r\n![image](https://user-images.githubusercontent.com/17570186/104137421-c6c90b00-539c-11eb-8dcc-9c330ab746d0.png)\r\n\r\nApr\u00e8s le chargement du web component :\r\n\r\n![image](https://user-images.githubusercontent.com/17570186/104137425-d0eb0980-539c-11eb-8b28-ce524ab1ea21.png)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Soumission \u00e0 vide du formulaire d'inscription",
+        "body": "Possibilit\u00e9 de soumettre le formulaire \u00e0 vide en virant tous les required\r\n![image](https://user-images.githubusercontent.com/25200594/104137081-89637e00-539a-11eb-87bd-db14a0bc615f.png)\r\n\r\nCe qui a pour effet de retourner une erreur serveur\r\n![image](https://user-images.githubusercontent.com/25200594/104137096-aef08780-539a-11eb-8074-05da3dd5851d.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Page de profil",
+        "body": "Plusieurs choses :\r\n\r\n- Le Pays des comptes ne semble pas \u00eatre migr\u00e9, le `<select>` du pays se mettait sur le premier \u00e0 savoir l'*Afghanistan*.\r\n- On ne peut pas \u00e9diter son pseudonyme\r\n- On ne peut pas mettre son site web et il n'apparait nulle part (suppression de la fonctionnalit\u00e9 ?)\r\n- La page \"Mon profil\" est vide lorsque l'on n'a aucune activit\u00e9 sur le site, il faudrait peut-\u00eatre un message qui explique pourquoi la page est vide\r\n- La page \"Mon profil\" n'affiche pas les commentaires laiss\u00e9s sur un tutoriel (sur la version actuelle du site aussi d'ailleurs)\r\n\r\nVoil\u00e0 :smiley:",
+        "labels": null
+    },
+    {
+        "title": "[BETA] \u00c9dition de l'avatar sur les pages de profils",
+        "body": "On peut \u00e9diter notre avatar en cliquant sur l'avatar d'un autre profil que le notre.\r\n\r\n![image](https://user-images.githubusercontent.com/17570186/104135324-d7bf4f80-538f-11eb-8d62-c77ba4bbd554.png)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Montant des factures erron\u00e9es",
+        "body": "Dans la sections \"Mes factures\" le montant indiqu\u00e9 ne sont pas les bons.\r\nM\u00eame chose lorsque l'on t\u00e9l\u00e9charge la facture.\r\n\r\n![image](https://user-images.githubusercontent.com/55019004/104119651-22f64580-5331-11eb-9e62-e4e73d3f6cc3.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Konami code",
+        "body": "Je suis connect\u00e9, et lorsque je fait le Konami code il y a cette erreur dans la console : \r\nXHR POST https://beta.grafikart.fr/api/badges/gamer/unlock [HTTP/2 403 Forbidden 55ms]\r\nUncaught (in promise) SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data\r\n\r\n![image](https://user-images.githubusercontent.com/55019004/104119547-4d93ce80-5330-11eb-91aa-481f85a234e7.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Manque image ou dossier ICONS",
+        "body": "![image](https://user-images.githubusercontent.com/77216970/104112254-88056780-5340-11eb-92db-bee59574a289.png)\r\n\r\nIl manque certaines images sur la page /tutoriels\r\napparemment le dossier https://beta.grafikart.fr/uploads/icons/\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] (Safari) : Switch theme",
+        "body": "Je pense qu'il manque un polyfill pour la gestion des custom-element avec Safari.\r\nPS : Il me semble que l'utilisation du localStorage est soumis \u00e0 la RGPD\r\n\r\n<img width=\"260\" alt=\"bug\" src=\"https://user-images.githubusercontent.com/6663426/104111000-ae45eb80-52dd-11eb-94ee-7ed637971d05.png\">\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Page d'accueil : Bouton switch abonnements",
+        "body": "Hello !\r\n\r\nSur la page d'accueil, il y a le bouton JS pour switch entre l'abonnement par \"mois\" et celui par \"an\".\r\nOn peut cliquer dessus 1 fois pour le switch \u00e0 droite, mais apr\u00e8s on ne peut plus le re-switch \u00e0 gauche. Ca marche en cliquant sur les textes mais pas sur le bouton en lui-m\u00eame. Je trouve que ce n'est pas tr\u00e8s intuitif et j'imagine que ce n'\u00e9tait pas voulu xd\r\n\r\nhttps://user-images.githubusercontent.com/17437652/104107310-7b8afb80-52bb-11eb-853c-88849723b1c0.mov\r\n\r\n\r\n\r\n\r\n\r\n(OS : MacOS, navigateur : Brave)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] page profil utilisateur en venant du forum",
+        "body": "Erreur 500 quand on clique sur le nom de l'auteur d'un post depuis le forum : [https://beta.grafikart.fr/profil/%7Bid:%5Cd+%7D?id=117729](https://beta.grafikart.fr/profil/%7Bid:%5Cd+%7D?id=117729)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] (Safari 14) Les filtres de la page formation ne rafraichissent pas la page",
+        "body": "Sur la [page des formations](https://beta.grafikart.fr/tutoriels) lors le la selection d'un niveau ou d'une technologie, la page n'est pas rafraichie. (Probl\u00e8me survenu uniquement sur Safari).\r\n\r\nhttps://user-images.githubusercontent.com/24266957/104062325-8b8ed680-51fa-11eb-913f-fbec645a93b1.mov\r\n\r\nSur la [page blog](https://beta.grafikart.fr/blog/category/bonnes-pratiques) un select du m\u00eame genre fonctionne quant \u00e0 lui.\r\n",
+        "labels": null
+    },
+    {
+        "title": "Forum Show Route (Clique sur Avatar)",
+        "body": "Sur beta.grafikart.fr \r\n\r\nLorsqu'on clique sur le l'avatar d'un forum, cela envoie un 500; surement les requirement dans la route? \r\n\r\nEt aussi les tutoriels , les commentaires ne se chargent pas en scrollant ou pas du tout; on voit juste le nombre de comments.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Premium Login Link Dead",
+        "body": "Sur la page de login le bouton Devenir premium redirige vers\r\nhttps://beta.grafikart.fr/login?redirect=/premium\r\n\r\nQui est une page introuvable",
+        "labels": null
+    },
+    {
+        "title": "[BETA] probl\u00e8me typo Recherche",
+        "body": "Lorsque l'on recherche \"Symfony\" (par exemple) il y a un probl\u00e8me de typo avec le \u00e2 de t\u00e2ches. Pareil avec \"Cr\u00e9er un th\u00e8me WordPress\" qui s'affiche comme \"Cr'eer un th`eme WordPress\"\r\n\r\n![image](https://user-images.githubusercontent.com/18333296/103875122-51c2b080-50d2-11eb-8a9c-4dc5917ff105.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Les commentaires d'un tutoriel ne s'affichent pas",
+        "body": "Bonjour,\r\n\r\nJ'ai remarqu\u00e9 que les commentaires n'arrivaient pas \u00e0 s'afficher, m\u00eame en d\u00e9sactivant mon adblocker (\u00e7a aurait pu \u00eatre lui la source de ce probl\u00e8me :o ), mais non c'est la m\u00eame chose :(. Je vois seulement le *skeleton element* mais quand il disparait, plus rien \ud83d\udca5 ! Voil\u00e0 donc j'esp\u00e8re que ce bug va \u00eatre r\u00e9solu :D",
+        "labels": null
+    },
+    {
+        "title": "[BETA] D\u00e9blocage d'un badge",
+        "body": "Lorsque nous souhaitons d\u00e9bloquer le badge \"lochness\" en tapant dans la console JS lochness();, le badge ne se d\u00e9bloque pas et indique une page 403.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Page 404",
+        "body": "Lorsque nous sommes connect\u00e9 au site, arriv\u00e9 sur la page 404 du site, cela nous d\u00e9finis comme n'\u00e9tant pas connect\u00e9.\r\n\r\n![IFczJxn](https://user-images.githubusercontent.com/70549774/103367722-21718580-4ac6-11eb-978f-d00e42bfd648.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Probl\u00e8me de responsive sur Iphone 12 Pro",
+        "body": "Hello, je te report quelques issues que j'ai eu sur la beta au premier coup d'oeil.\r\nIl n'y a pas que des issues de responsive mais comme la majorit\u00e9 c'est du responsive, j'ai tout mis dedans ;)\r\n\r\n- Device: Iphone 12 pro\r\n- Browser: Chrome\r\n\r\n### Menu principal\r\n\r\n- Les liens \"S'inscrire\" et \"Se connecter\" rendent pas terrible\r\n\r\n![Menu principal](https://user-images.githubusercontent.com/4354248/103239659-8bffb580-494e-11eb-8b9f-e9e500da2d65.PNG)\r\n\r\n### Blog\r\n\r\n- Le contenu du 1er bloc ne se \"fit\" pas au container. Ce qui est \u00e9trange \u00e9tant donn\u00e9 que les autres contenus se \"fit\" bien.\r\n\r\n![Blog](https://user-images.githubusercontent.com/4354248/103239898-2829bc80-494f-11eb-889b-760bfa754df0.PNG)\r\n\r\n- Le contenu d\u00e9borde.\r\n\r\n![Blog2](https://user-images.githubusercontent.com/4354248/103240161-d2094900-494f-11eb-98ac-21a395a03e08.PNG)\r\n\r\n### Forum\r\n\r\n- Le titre du sujet ne prend pas toute la place qu'il a de disponible.\r\n\r\n![Forum](https://user-images.githubusercontent.com/4354248/103240001-658e4a00-494f-11eb-8067-2a711c32cd3f.PNG)\r\n\r\n- Il est dommage de devoir scroll en bas de la liste des sujets afin de pouvoir cr\u00e9er un nouveau sujet. Idem concernant les cat\u00e9gories.\r\n\r\n![Forum2](https://user-images.githubusercontent.com/4354248/103240081-979fac00-494f-11eb-8741-3ae5ed0579fa.PNG)\r\n\r\n### Formation\r\n\r\n- Le bloc est vide quand il n'y a pas de \"Liens\" ou de \"Pr\u00e9-requis\"\r\n\r\n![Formation](https://user-images.githubusercontent.com/4354248/103240264-21e81000-4950-11eb-9c10-d6b178fb658c.PNG)\r\n\r\n### Footer\r\n\r\n- Le bloc \"Mes derniers tweets\" quand il n'y a pas de tweets r\u00e9cents.\r\n\r\n![Footer](https://user-images.githubusercontent.com/4354248/103240377-768b8b00-4950-11eb-9273-19bbda6c806e.PNG)\r\n\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] mon profil / mes factures",
+        "body": "il y a une colonne date mais pas de date en face des lignes correspondant aux factures / paiements\r\nhttps://beta.grafikart.fr/profil/factures",
+        "labels": null
+    },
+    {
+        "title": "api-platform/core/pull/3418 Merged",
+        "body": "https://github.com/Grafikart/Grafikart.fr/blob/e9728e64f5e7a11fad9727a3ebbed89108b7fd38/tests/ApiTestCase.php#L49",
+        "labels": null
+    },
+    {
+        "title": "[BETA] \u00c7a tombe sur une page 404 Github quand on essaie d'y aller",
+        "body": "Donc en gros quand on veut lier ou connecter avec GitHub \u00e7a nous tombe sur une page 404 GitHub.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Tabulation espace commentaire",
+        "body": "Test\u00e9 sur la page : https://beta.grafikart.fr/tutoriels/validator-929\r\n\r\nL'\u00e9l\u00e9ment \"comment__date\" est focusable or il n'est pas pertinent.\r\nL'\u00e9l\u00e9ment pour r\u00e9pondre n'est pas visible d\u00e8s lors qu'il est focus.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Evolution : tabulation formation chapitre",
+        "body": "Il serait bien pour la gestion des chapitres d'avoir le tabindex=\"0\" uniquement sur les titres des chapitres et ensuite de pouvoir naviguer avec les fl\u00e8ches pour acc\u00e9der aux chapitres.\r\n\r\n\u00c7a \u00e9viterait d'avoir beaucoup de saut \u00e0 faire pour une grande formation comme Wordpress par exemple.\r\nJe parle \u00e9videmment de cette page : https://beta.grafikart.fr/tutoriels/wordpress-theme-presentation-1251\r\nLa page https://beta.grafikart.fr/formations/creer-theme-wordpress peut rester comme elle est",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Tabulation niveau/technologie",
+        "body": "Ce probl\u00e8me intervient lors d'une action sur les select niveaux et technologies sur la page /tutoriels.\r\n\r\nTout d'abord, le style sur le focus n'est pas pr\u00e9sent.\r\nDe plus d\u00e8s lors que l'on active une option, le focus est perdu et nous renvoi au d\u00e9but du document alors qu'on s'attendrait \u00e0 ce qu'il retourne sur l'\u00e9l\u00e9ment niveaux ou technnologies.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Tabulation recherche element",
+        "body": "Ce probl\u00e8me intervient lors d'une action sur le bouton de recherche dans le header.\r\n\r\nLorsqu'on a le focus sur l'\u00e9l\u00e9ment et qu'on l'active pour lancer une recherche, si on clique sur escape pour fermer la popup sans faire de recherche, le focus est perdu et nous renvoi au d\u00e9but du document alors qu'on s'attendrait \u00e0 ce qu'il retourne sur l'\u00e9l\u00e9ment recherche.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Background Wave Responsive",
+        "body": "Le texte d\u00e9borde de la vague sur les petits \u00e9crans et sur mobile (dans la page formation)\r\n\r\n![image](https://user-images.githubusercontent.com/11465943/101363178-5c0a4880-38a1-11eb-98a5-51425041caf8.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] M\u00eame titre pour cetaines pages",
+        "body": "M\u00eame titre pour les pages formations et forum",
+        "labels": null
+    },
+    {
+        "title": "[Dark Mode] Menu en mobile est blanc, et couleurs trop clair",
+        "body": "Sur le dark theme, le menu est tout blanc (est-ce normal ?) Et les liens sont bleu avec une opacit\u00e9 qui est difficilement lisible. \r\n\r\nL'ic\u00f4ne de la croix est \u00e9galement difficile \u00e0 per\u00e7evoir.\r\n\r\n![Capture d\u2019e\u0301cran 2020-12-03 a\u0300 16 06 46](https://user-images.githubusercontent.com/8480281/101046875-a62dba00-3581-11eb-976f-8e2613758181.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] R\u00e9pondre ou \u00e9diter un message",
+        "body": "Pour \u00e9diter un message ou r\u00e9pondre \u00e0 un message, les boutons ne s'affichent pas lorsque l'on \"hover\" un message, ce serait pertinant que ce soit le cas, car actuellement il faut hover l'espace \u00e0 c\u00f4t\u00e9 du temps (l\u00e0 o\u00f9 c'est \u00e9crit \"il y a...\") ce qui n'est pas tr\u00e8s intuitif.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Navigation par tabulation",
+        "body": "Lorsqu'on navigue sur une page qui contient une vid\u00e9o via youtube-player, la tabulation ne passe jamais sur le bouton \"play\".\r\n\r\nDu coup, on peut jamais lancer la vid\u00e9o.",
+        "labels": null
+    },
+    {
+        "title": "Attribut ID en doublon",
+        "body": "ID en doublon sur `<youtube-player>` et `<premium-player>`\r\n- ligne 49, 54\r\n- ligne 60, 65\r\n\r\nhttps://github.com/Grafikart/Grafikart.fr/blob/e8dbc9f3cc53be48c6bed5b470ed8e93f2563673/templates/courses/show.html.twig#L49-L65",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Checkbox - MacOS (BigSur) Safari",
+        "body": "Probl\u00e8me d'affichage des checkboxs customs \r\n<img width=\"919\" alt=\"Checkbox-lightmode\" src=\"https://user-images.githubusercontent.com/6663426/100819432-7630ca80-344c-11eb-9d1d-07e754b5f370.png\">\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Images technologies mode dark",
+        "body": "Yo,\r\n\r\nEn mode dark, certaines images de technologies ne ressortent pas du tout. Peut-\u00eatre mettre un background clair & opaque (et rounded pourquoi pas) pour les faire un peu ressortir ?\r\n\r\n![image](https://user-images.githubusercontent.com/13481208/100733440-77bbad80-33ce-11eb-8c5f-1458e9115ac0.png)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Impossible de lier mon compte github",
+        "body": "Lorsque je tente de lier mon compte GitHub, j'atterris sur la page 404 de GitHub",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Bouton \"marquer tous comme lus\" forum ne fonctionne pas",
+        "body": "Dans la partie Forum, cliquer sur le bouton \"Marquer tous comme lus\" retourne une erreur `An error occurred Not Found`.",
+        "labels": null
+    },
+    {
+        "title": "Int\u00e9gration impossible du player Twitch sur la beta",
+        "body": "Il est actuellement impossible d'utiliser la fonction live sur le site. Il me semble que l'int\u00e9gration doit \u00eatre fait aussi du c\u00f4t\u00e9 de Twitch afin de pouvoir int\u00e9grer le player sans probl\u00e8me. \r\n\r\n![image](https://user-images.githubusercontent.com/42717232/100713929-58fced00-33b5-11eb-933b-f0b3e6c064d0.png)\r\n\r\nQu'est-ce qu'il en retourne ? ",
+        "labels": null
+    },
+    {
+        "title": "[BETA] petit d\u00e9tail d\u00e9rangeant",
+        "body": "![image](https://user-images.githubusercontent.com/53426441/100518931-f9c09200-3194-11eb-92b4-d2c78b0812c4.png)\r\net \r\n![image](https://user-images.githubusercontent.com/53426441/100518945-1230ac80-3195-11eb-8745-cdbe765a3650.png)\r\nsi je click sur le point bleu je m'attends \u00e0 ce que sa change mais sa ne le fait pas",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Probl\u00e8me de style sur la page tuto single",
+        "body": "Salut Graf',\r\n\r\nLe contenu du site se stack sur la gauche sous certaines conditions. Visiblement un souci au niveau de la classe `.container` (cf capture ci-dessous). Le style est dans le head, il a l'ait d'\u00eatre auto-g\u00e9n\u00e9r\u00e9, \u00e0 moins que \u00e7a soit toi @Grafikart qui l'ai mis l\u00e0 ?\r\n\r\n![image](https://user-images.githubusercontent.com/13481208/100389916-117e0600-302f-11eb-8ecf-cfd6a257529f.png)\r\n\r\nVoici le workflow pour reproduire le bug :\r\n -> Page d'accueil\r\n -> Cliquer sur \"Se connecter\"\r\n -> Puis sur le bouton \"Se connecter avec Facebook\" -> Erreur 500 (normal) -> go back\r\n -> Page tutoriels\r\n -> Cliquer sur un tuto (n'importe le quel) ou m\u00eame revenir \u00e0 la page d'accueil (cf capture ci-dessous)\r\n\r\nMon env :\r\n -> Ubuntu 20.04.1 LTS x86_64 (5.4.0-54-generic)\r\n -> Chrome 87.0.4280.66 (Build officiel) (64 bits)\r\n -> R\u00e9solution 1794 x 593 (DPI 137) (r\u00e9solution originale 2560 x 1080)\r\n\r\n![2020-11-26-21-29-beta grafikart fr](https://user-images.githubusercontent.com/13481208/100389737-79801c80-302e-11eb-863b-46c823cfc786.png)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Nombre d'heures sur la home",
+        "body": "Sur la page d'accueil, c'est marqu\u00e9 \"513 heures de tutoriels vid\u00e9os\".\r\nMais le nombre 513 est inscrit en dur \u2026 il faudrait peut \u00eatre le calculer ?",
+        "labels": null
+    },
+    {
+        "title": "[BETA] L'envoi des Mails ne fonctionne pas",
+        "body": "Lorsque je souhaite cr\u00e9er un compte, je ne re\u00e7ois pas de mail voulant confirmer mon compte...",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Profil Supprimer une vid\u00e9o en cours de visionnage",
+        "body": "En cliquant sur la croix, la carte reste affich\u00e9e et ne disparait pas.\r\nPour autant, l'appel \u00e0 l'api fonctionne parce qu'en actualisant la page, la progression de la vid\u00e9o est bien supprim\u00e9e.\r\n\r\n![image](https://user-images.githubusercontent.com/11465943/100212122-4003c000-2f0d-11eb-9b7c-a6c1956d2e74.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] (id\u00e9e) Video Intro Formation",
+        "body": "Le player de la 1\u00e8re vid\u00e9o qui s'affiche sur la page d'une formation (par exemple https://beta.grafikart.fr/formations/wordpress-decouverte) n'a pas les \u00e9v\u00e9nements (enregistrement de la progression et les confettis \u00e0 la fin surtout pour permettre de continuer).",
+        "labels": null
+    },
+    {
+        "title": "[BETA] CSS Page Technologie",
+        "body": "2 choses sur la page d'une technologie :\r\n* Est ce qu'il n'y avait pas avant les ronds sur le c\u00f4t\u00e9 qui faisait progression ? Ca n'apparait plus.\r\n* Le logo php est d\u00e9form\u00e9 (car rectangulaire) ...\r\n\r\n![image](https://user-images.githubusercontent.com/11465943/100208822-6e7f9c00-2f09-11eb-86c6-9624dd4f95a2.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Background CSS Alert",
+        "body": "Le fond blanc des alertes et des notifications ne passent pas avec la wave bleu\r\n\r\n![image](https://user-images.githubusercontent.com/11465943/100208191-be119800-2f08-11eb-8a45-20621116a2c1.png)\r\n\r\n\r\nEDIT : Je chipote un peu mais il manque une opacit\u00e9 de .6 sur l'icone de recherche search-button (parce qu'on dirait qu'il est en surbrillance par rapport au menu ...)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Divers",
+        "body": "- [x] Lien GitHub footer pas bon (m\u00eame pb sur la page contact)\r\n- [x] les liens sociaux du footer n'ont pas de target blank (bon \u00e7a c'est juste une question de go\u00fbt)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Forum",
+        "body": "- [x] On a pas de pagination sur les sujet du forum ? \r\n- [x] On a pas non plus d'indicateur de la rubrique active du forum si par exemple on va sur laravel \u00e0 part dans l'url aucun moyen de savoir dans quelle cat\u00e9gorie on se trouve :/\r\n- [x] De mani\u00e8re g\u00e9n\u00e9rale aussi, c'est bizarre d'avoir du serif dans les wysiwygs alors que partout on a du sans serif ^^\r\n- [x] \"Marquer tout comme lu\" ne fonctionne pas, erreur console : `https://beta.grafikart.fr/[object%20MouseEvent] 404` + `Illegal constructor`",
+        "labels": null
+    },
+    {
+        "title": "[BETA] bouton \"Continuer\" formation ne fait rien",
+        "body": "Sur la page d'une formation ex https://beta.grafikart.fr/formations/wordpress-avance on a un bouton \"continuer\" qui ne fait rien ^^ \r\n\r\nD'ailleurs il est l\u00e0 m\u00eame si on a jamais commenc\u00e9 la formation.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Progression des vid\u00e9os",
+        "body": "Sur une formation quand on passe d'une vid\u00e9o \u00e0 l'autre, la progression n'est pas sauvegard\u00e9e. \r\nEt on a pas non plus les vid\u00e9os en cours de visionnage sur notre profile, le premier tuto que j'ai lanc\u00e9 a bien \u00e9t\u00e9 r\u00e9cup\u00e9r\u00e9 dans la liste mais depuis, plus rien :'(\r\n\r\nEn plus de \u00e7a sur la page des lives, si on regarde une rediff, tous les lives ont le bouton \"pause\" donc visuellement en cours de lecture et ont tous la m\u00eame progression\r\n\r\n![image](https://user-images.githubusercontent.com/4257500/100088271-251f4600-2e50-11eb-8570-77b1f0cc10bc.png)\r\n\r\n**EDIT** ah il semblerait qu'en fait les tutos soient bien remont\u00e9s dans les vid\u00e9os en cours de visionnage mais pas les tutos d'une formation\r\n\r\n**EDIT 2** Bon j'ai tent\u00e9 une autre formation et l\u00e0 j'ai bien un d\u00e9but de progression du coup je sais pas trop :/ \r\n\r\n**EDIT 3** (esp\u00e9rons que ce soit le dernier) sur la page d'une pr\u00e9sentation, parfois j'ai la progression et le bouton est en \"pause\" alors que la vid\u00e9o n'est pas en lecture \r\n![image](https://user-images.githubusercontent.com/4257500/100089373-d96d9c00-2e51-11eb-9a2c-1eaaadba7e27.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] D\u00e9blocage badge commentaires",
+        "body": "Pas re\u00e7u le badge des 100 commentaires :'(\r\nJ'avais celui des 50 + 50 nouveaux commentaires j'ai rien re\u00e7u.\r\n\r\n**EDIT** il a bien \u00e9t\u00e9 d\u00e9bloqu\u00e9 (mais pas vue tout de suite, cache ?) par contre j'ai pas eu l'alerte comme quoi il avait \u00e9t\u00e9 d\u00e9bloqu\u00e9.",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Badge Lochness",
+        "body": "Peut-\u00eatre parce que je l'ai d\u00e9j\u00e0 mais 403 quand je tente de d\u00e9bloqu\u00e9 le lochness !",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Page profile autres utilisateurs",
+        "body": "Belle 404 quand on clique sur l'avatar de l'auteur d'une vid\u00e9o : https://beta.grafikart.fr/profil/1",
+        "labels": null
+    },
+    {
+        "title": "[BETA] (id\u00e9e) tutoriels par niveau",
+        "body": "Au m\u00eame titre qu'on a la page https://beta.grafikart.fr/tutoriels/premium (d'ailleurs il manque un lien pour y arriver)\r\n\u00c7a serait d'avoir un lien sur les badges de niveau \"d\u00e9butant\"... sous les vid\u00e9os qui m\u00e8ne au listing des tutos du dit niveau. ",
+        "labels": null
+    },
+    {
+        "title": "[BETA] T\u00e9l\u00e9chargement des vid\u00e9os/sources",
+        "body": "Pas possible de t\u00e9l\u00e9charger les vid\u00e9os ou les sources ^^ \r\n\r\n![image](https://user-images.githubusercontent.com/4257500/100069668-4de81100-2e39-11eb-8e4a-77499a151d10.png)\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Partager sur facebook",
+        "body": "Le partage sur twitter d'un tuto semble ok mais facebook nope : \r\n\r\n![image](https://user-images.githubusercontent.com/4257500/100069454-137e7400-2e39-11eb-927d-1917aa6190a9.png)\r\n\r\nProbl\u00e8me d'app sans doute ? \r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Tutoriel avec slides",
+        "body": "Pas vraiment un probl\u00e8me, mais il serait peut-\u00eatre mieux que les slides prennent toute la largeur non ? \r\nPar ex : https://beta.grafikart.fr/tutoriels/css-in-js-1363\r\n\r\nEt j'ai l'impression qu'au niveau du responsive \u00e7a casse un peu ;)",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Nombre de r\u00e9ponse sur forum",
+        "body": "Le message initial sur un forum est compt\u00e9 comme une r\u00e9ponse. \r\n\r\nex on voit \"2 r\u00e9ponses\" mais 1 seule visible : \r\n\r\n![image](https://user-images.githubusercontent.com/4257500/100068668-1d53a780-2e38-11eb-8bac-b6d9367ec781.png)\r\n\r\nD'ailleurs le nombre n'est pas incr\u00e9ment\u00e9 apr\u00e8s avoir post\u00e9 une r\u00e9ponse. (Mais au rechargement de la page oui)\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "[BETA] Suppression de r\u00e9ponse au forum",
+        "body": "La suppression d'une r\u00e9ponse au forum est bien effective, mais visuellement le message n'est pas supprim\u00e9.\r\n\r\nFameuse erreur du `Illegal constructor`",
+        "labels": null
+    },
+    {
+        "title": "Id\u00e9es de bagde",
+        "body": "Voici une liste non exhaustive de badge \u00e0 mettre en place (ou pas). \r\nTout le monde peut amener ces id\u00e9es, plus on est de fous moins y a de riz ! \r\n\r\n- [ ] ~~\"Usurpateur\" : si on va sur la page premium?success=1 sans avoir proc\u00e9d\u00e9 au paiement~~\r\n- [ ] ~~\"Poisson rouge\" : si on effecture plus de X (3?) fois la m\u00eame recherche sur le site~~\r\n- [x] \"Inception\" : si on recherche Grafikart sur le site Grafikart\r\n- [x] \"source anonyme/indic\" : lorsque l'on remonte un bug/spam/faute de typo/... \u00e0 grand manitou Grafikart\r\n- [x] \"Contributeur\" : Si on est contributeur sur Github\r\n- [ ] ~~\"SwithFr\" : un badge que seul moi peut avoir (et si un utilisateur \u00e0 le pseudo \"moi\") il peut aussi l'avoir :)~~\r\n- [x] \"Confin\u00e9\" : _Id\u00e9e de Grafikart_ pour les comptes cr\u00e9\u00e9s avant le confinement ;)\r\n- [x] \"Motiv\u00e9\" : Si on regarde X vid\u00e9os \u00e0 la suite (hors formation sinon c'est trop facile) ",
+        "labels": null
+    },
+    {
+        "title": "Initialisation du projet",
+        "body": "Lors de l'initialisation du projet, le [README.md](https://github.com/Grafikart/Grafikart.fr/blob/master/README.md) nous dit que pour participer on peut lancer le serveur avec la commande \"make dev\" or cette commande ne suffit pas \u00e0 initialiser le projet. Il est n\u00e9cessaire de lancer un make install pour g\u00e9n\u00e9rer les assets. serait-il possible de d\u00e9tailler un peu plus le process d'initialisation ? ",
+        "labels": null
+    },
+    {
+        "title": "tests unitaires erreur fixtures",
+        "body": "Bonjour,\r\n\r\nIl y a un comportement bizarre avec les fixtures qui font planter les tests!\r\nQuand on lance cette fixtures on est cens\u00e9 avoir 5 lignes en base de donn\u00e9es mais pas 15\r\n\r\n``` \r\n// tests/fixtures/comments.yaml:10\r\nApp\\Domain\\Comment\\Comment:\r\n  comment{1..5} (extends comment):\r\n``` \r\nm\u00eames choses comment{1..10} ajoute 110 ligne etc (les deux points sont ignor\u00e9es)... \r\n\r\nD'o\u00f9 le fail des tests U.\r\n\r\n``` \r\nvendor/bin/phpunit --filter test* tests/Domain/Comment/CommentTest.php\r\n1) App\\Tests\\Domain\\Comment\\CommentTest::testCascadeDeleteForUser\r\nFailed asserting that 2 matches expected 3.\r\n\r\n/var/www/tests/Domain/Comment/CommentTest.php:55\r\n```\r\n",
+        "labels": null
+    },
+    {
+        "title": "Compl\u00e9ment \u00e0 PHPstan",
+        "body": "j'ai fait tourn\u00e9 deux outils d'analyse d'analyse disponible gratuitement pour des repositories open-source: **sonarcloud.io** et **scrutinizer-ci**.\r\n\r\nLes r\u00e9sultats sont disponibles publiquement:\r\n - https://scrutinizer-ci.com/g/Mcdostone/Grafikart.fr/\r\n - https://sonarcloud.io/project/issues?id=Mcdostone_Grafikart.fr\r\n\r\nLeurs mises en place est tr\u00e8s simple. J'ai regard\u00e9 en diagonale les r\u00e9sultats, ceux de **scrutinizer-ci** me paraissent plus int\u00e9ressants.",
+        "labels": null
+    },
+    {
+        "title": "PUT Forum Message",
+        "body": "Bonjour,\r\n\r\nUn utilisateur, non admin, ne peut pas \u00e9diter **son** message dans Forum. Une erreur HTTP 403 sera affich\u00e9.\r\n\r\nExemple :\r\n```\r\n curl --request PUT \\\r\n  --url http://grafikart.localhost:8000/api/forum/messages/87 \\\r\n  --header 'content-type: application/json' \\\r\n  --header 'cookie: PHPSESSID=c86fa75cd214236b74c6c79cb27f8834' \\\r\n  --cookie PHPSESSID=c86fa75cd214236b74c6c79cb27f8834 \\\r\n  --data '{\r\n\t\"content\": \"content message UPDATED\"\r\n}'\r\n\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "ajout de commentaire",
+        "body": "Erreur Ajax dans l'ajout de  commentaire\r\n\r\n```\r\ncurl -X POST \"http://localhost:8000/api/comments\" -H  \"accept: application/json\" -H  \"Content-Type: application/json\" -d \"{\\\"username\\\":\\\"user_fake\\\",\\\"content\\\":\\\"loremipsum\\\",\\\"target\\\":\\\"80\\\",\\\"email\\\":\\\"user@fake.com\\\",\\\"parent\\\":null}\"\r\n```\r\ntarget doit \u00eatre num\u00e9rique.\r\n\r\nUncaught PHP Exception ApiPlatform\\Core\\Exception\\InvalidArgumentException: \"The type of the \"target\" attribute must be \"int\", \"string\" given.\" at /var/www/vendor/api-platform/core/src/Serializer/AbstractItemNormalizer.php line 373",
+        "labels": null
+    },
+    {
+        "title": "Vite failed to load config",
+        "body": "Au lancement de docker avec `make dev`, j'obtient une erreur sur vite et du coup le container node plante\r\n\r\n<img width=\"773\" alt=\"Capture d\u2019e\u0301cran 2020-07-16 a\u0300 12 05 55\" src=\"https://user-images.githubusercontent.com/12433170/87658722-def8fe00-c75c-11ea-936a-e59bb314ec38.png\">\r\n",
+        "labels": null
+    },
+    {
+        "title": "Typesense manifest error",
+        "body": "ERROR: manifest for typesense/typesense:0.12.0-rc2 not found: manifest unknown: manifest unknown\r\n\r\nPas de soucis avec la 0.13.0",
+        "labels": null
+    },
+    {
+        "title": "Forum import fail",
+        "body": "Lorsqu'on lance la commande make import, on obtient cette erreur:\r\n\r\n`SQLSTATE[42S02]: Base table or view not found: 1146 Table 'grafikart_dev.forum_forums' doesn't exist`\r\n\r\nDans le forum importer, c'est la ligne 28, qui pose probl\u00e8me:\r\n`// On importe les tags\r\n        $query = $this->pdo->prepare(<<<SQL\r\n            SELECT *\r\n            FROM forum_forums\r\n        SQL);`\r\n\r\nvisiblement, la table forum_forums n'existe pas !",
+        "labels": null
+    },
+    {
+        "title": "Structure du forum, syst\u00e8me de tags",
+        "body": "Les forums passent maintenant a une structures de tag. La question est donc de trouver une organisation convenable. \r\n\r\nMa premi\u00e8re id\u00e9e est de s\u00e9parer par langage et d'avoir en enfant les framework technos. Le souci est alors: comment dire \"ma question concerne PHP brut\"\r\n\r\nL'objectif est d'avoir \u00e0 gauche du forum une navigation permettant d'acc\u00e9der rapidement au sujet qui nous int\u00e9r\u00e8sse : https://discuss.flarum.org/t/meta",
+        "labels": null
+    },
+    {
+        "title": "Progression, suggestion de contenu \u00e0 la fin d'une formation",
+        "body": "Il serait int\u00e9ressant de proposer des contenus \u00e0 regarder lorsqu'un utilisateur compl\u00e8te une formation en lui envoyant un email ou via une alerte sur le site.\r\n\r\n## Fonctionnement\r\n\r\nPour mettre en place ce syst\u00e8me il faudrait cr\u00e9er dans un premier temps un syst\u00e8me qui permettrait de d\u00e9finir les contenus \"relatifs\" \u00e0 une formation (une liaison n-n entre Content et Content). Ensuite, il serait possible d'\u00e9couter l'\u00e9v\u00e8nement ProgressEvent et de d\u00e9clencher l'envoie de l'email en sugg\u00e9rant X contenu relatif.",
+        "labels": null
+    },
+    {
+        "title": "Librairie Front Preact ou Svelte ?",
+        "body": "Je suis un peu partag\u00e9 sur ce point et je voudrais recueillir certains avis sur le sujet. Pour la partie front vous l'avez vu au travers des diff\u00e9rents live je compte utiliser le principe des Custom Element afin d'avoir des \u00e9l\u00e9ments r\u00e9utilisable et compatible. La pluspart de ces Custom Element ont une logique assez simple qu'il est possible d'\u00e9crire en JavaScript pur. Cependant certains composants sont un peu plus complexes (je pense au composant commentaire, qui doit g\u00e9rer l'affichage imbriqu\u00e9 des commentaires et g\u00e9rer aussi le traitement du formulaire) et je ne pense pas qu'il soit judicieux de se passer de l'utilisation d'un framework pour ce besoin l\u00e0.\r\n\r\nMaintenant la question se pose sur le choix du framework sachant que  :\r\n\r\n- Le framework doit \u00eatre l\u00e9ger en perf et en poid cas il ne sera utilis\u00e9 que par petite touches.\r\n- Le framework doit s'int\u00e9grer au code actuel avec un minimum d'effort en terme d'outils.\r\n- Le framework doit disposer d'une documentation convenable.\r\n\r\nPar rapport \u00e0 ces crit\u00e8res j'ai 2 candidats potentiel (mais je suis ouvert aux propositions)\r\n\r\n## Svelte\r\n\r\nSvelte a un poid l\u00e9ger et une approche assez simple avec des fonctions d'animations qui peuvent \u00eatre utile pour certains besoins. Cependant la syntaxe est un peu \u00e9trange et son approche de la r\u00e9activit\u00e9 peut parfois amener \u00e0 devoir \u00e9cire des choses \u00e9tranges pour qu'il capture bien les changements.\r\n\r\n```js\r\narr.push('lol') // Ne d\u00e9lenche rien\r\narr = arr // d\u00e9clenche les changements\r\n```\r\n\r\nAussi je trouve que le code peut rapidement \u00eatre fouilli car il n'est pas forc\u00e9ment possible de morceler un composant sans cr\u00e9er des sous composants (donc un fichier s\u00e9par\u00e9).\r\n\r\n## Preact\r\n\r\nPreact est une version \"light\" de react et utilise la syntaxe JSX beaucoup plus famili\u00e8re. Cela donne parfois un code plus verbeux et le VDom ne facilit\u00e9 pas la cr\u00e9ation d'animations de base (il faut rapidement cr\u00e9er des composants en plus pour g\u00e9rer \u00e7a). L'autre inconv\u00e9nient est que le vdom rajoute une \u00e9tape suppl\u00e9mentaire au niveau du navigateur ce qui peut avoir un impact n\u00e9gatif sur les performances (le traitement de l'arbre occupe de la m\u00e9moire et l'algo de diffing peut couter au CPU).\r\nMais l'avantage est qu'il permet de cr\u00e9er des fonctions pour certaines parties du code\r\n\r\n```js\r\nfunction monIcon () {  return <svg ....> }\r\n```\r\n\r\nJe pense personnellement aussi que la syntaxe sera plus famili\u00e8re aux personnes qui souhaite intervenir sur le code. L'autre avantage est que l'on peut imaginer changer de framework plus facilement tant que le nouveau framework support le JSX.\r\n\r\n## Ma position\r\n\r\nPour le moment mon coeur balance. D'un point de vue utilisateur j'aurais tendance \u00e0 partir sur Svelte, mais d'un point de vu dev j'aurais tendance \u00e0 partir sur preact :(",
+        "labels": null
+    },
+    {
+        "title": "Pourquoi mettre toute la logique dans src/domain",
+        "body": "Pourquoi mettre toute la logique dans src/domain voir meme les entit\u00e9s ?\r\nA quoi servira le dossier natif Entity (m\u00eame celui des  repository) ?\r\n\r\n\r\nMerci",
+        "labels": null
+    },
+    {
+        "title": "Probl\u00e8me de logique sur PasswordResetRequestEvent",
+        "body": "https://github.com/Grafikart/Grafikart.fr/blob/0ab521ea499d2ecf325011eeb2d8f39d1818e356/src/Domain/Auth/Event/PasswordResetRequestEvent.php#L16\r\n\r\nL'utilisateur est accessible depuis le token, il n'est donc pas n\u00e9cessaire de le passer ici. De m\u00eame, l'evenement devrait \u00eatre renomm\u00e9 PasswordResetTokenCreatedEvent",
+        "labels": null
+    },
+    {
+        "title": "S\u00e9curit\u00e9 des comptes et lutte contre le brute force",
+        "body": "## Probl\u00e9matique\r\n\r\nUn m\u00e9chant hacker peut trouver le mot de passe d'un utilisateur en essayant de se connecter avec diff\u00e9rents mots de passe\r\n\r\n## Solution\r\n\r\nOn m\u00e9morise les tentatives de connexion \u00e9chou\u00e9es de l'utilisateur\r\n\r\n- Si l'utilisateur a plus de 3 \u00e9checs dans les 10 derni\u00e8res minutes, il ne peut pas se connecter\r\n- Au bout du 3\u00e8me \u00e9chec un email est envoy\u00e9 et permet de d\u00e9bloquer le compte",
+        "labels": null
+    },
+    {
+        "title": "Typescript ou JavaScript ?",
+        "body": "J'ai commenc\u00e9 \u00e0 travailler un peu sur la partie front et je m'interroge sur le choix du langage\r\n\r\n## Pourquoi Typescript ?\r\n\r\nPermet de mieux organiser le code et d'avoir une v\u00e9rification statique du code. Le probl\u00e8me est qu'en contrepartie je trouve que le code peut devenir moins lisible avec des cas o\u00f9 le type doit \u00eatre forc\u00e9.\r\n\r\nhttps://github.com/Grafikart/Grafikart.fr/blob/master/assets/js/elements/RecapLiveElement.ts\r\n\r\nAussi, le typescript semble sur certains point s'\u00e9carter du JavaScript classique (private / public, d\u00e9corateur...) et il y a un risque de breaking change qui oblige plus tard \u00e0 repenser le code :( .\r\n\r\n## Pourquoi pas ?\r\n\r\nSi on retire typescript on retire aussi un outil n\u00e9cessaire \u00e0 la compilation du code. On peut aussi imaginer que dans un avenir le support des modules et des outils comme https://www.snowpack.dev/ permettront de ne plus avoir aucune \u00e9tape de compilation. \r\n\r\nIl faudra alors utiliser des commentaires (jsdoc) pour sp\u00e9cifier le typage. Mais je ne suis pas s\u00fbr qu'il existe un outil capable d'analyser le code par ce biais l\u00e0.",
+        "labels": null
+    },
+    {
+        "title": "Recherche et filtres (prioriser les videos les plus recentes dans les resultats)",
+        "body": "Bonjour @Grafikart \r\n\r\nJe ne sais pas si c'est d\u00e9j\u00e0 le cas mais je sugg\u00e8re l'utilisation d'Elasticsearch pour le search & filters.\r\n\r\nIl me semble que dans une de tes videos tu expliquais avoir du mal a faire ressortir les formations qui sont les plus r\u00e9centes.\r\nL\u2019id\u00e9e serait de booster le score des r\u00e9sultats en fonction de leur date de creation. Voici un topic stackoverflow qui parle du sujet:\r\nhttps://discuss.elastic.co/t/how-to-prioritize-more-recent-content/134100/2",
+        "labels": null
+    },
+    {
+        "title": "Structure de la base de donn\u00e9es",
+        "body": "Avant de choisir un type de base de donn\u00e9es on va r\u00e9fl\u00e9chir \u00e0 la structure de la base de donn\u00e9es. Dans cette conception on ne prends pas en compte le framework qui sera utilis\u00e9, on se focalise sur la structure qui permettra une bonne structure et de bonnes performances.\r\n\r\nVoila un premier jet : \r\n\r\n- [21/10/2019](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=grafikart.xml#R7Z1bk6NGsoB%2FjWK9Dz3BXehxusfjPcdjnwnP7Np%2B6kCIbjGDhBZQX%2BbXn%2BJS6FJFN5IqVaQ6HQ5bopEERfKR9xzZN4unX7JgNf8tnUXJyDJmTyP7w8iyLHtss%2F%2BVW57rLZOJX2%2B4z%2BJZvcncbPgS%2F4iajUazdR3PonxnxyJNkyJe7W4M0%2BUyCoudbUGWpY%2B7u92lye6vroL75heNzYYvYZBEwm5%2FxrNiXm%2F1rfFm%2B7%2Bi%2BH7Of9n0JvVfFgHfufnifB7M0setTfbPI%2FsmS9OifrV4uomScvH4utSf%2B9jx1%2FbAsmhZ9PnAl8fHxdO3v35N7d%2Fufnz%2BEf5VPP24cpqrkRfP%2FIyjGVuA5m2UTNPHnzcbrrN0vZxF5Tca7F2aFfP0Pl0Gyac0XbGNJtv4LSqK5%2BZCBusiZZvmxSJp%2Fho9xcVfW6%2F%2FLr%2Fqndu8%2B%2FDUfHP15pm%2FWRbZc%2Fuh8s3Wp8q3m49V7%2FjnxBVqFi1P11kYvbQszTUrguw%2Baj774Zdffsuu17f%2FCv71uxX89uM%2FabRm6%2BfVe5artvUbzSX4JUoXETsktkMWJUERP%2ByKVdBI5327X%2FPR91kWPG%2FtsErjZZFvffPncgPbobnRrhy3OeTmPvMNa1sa2Iv6K%2Fm7rWPbbKok5hDp8TBJj3Eu6bG9ntLjm6qFZ%2Bt6v3g55cLsuZqup3EGGuTschTvy0cC27BMlxHf9jEul6nZJ0u%2Ft6Avf%2BAuXRY3aZJm1XLYN9U%2FfaVDvsqG3VM8THcQbHHMXbRYhjFSiRbpudvu5ILZMhRZtN2%2BsqgeVcc956yxBmE0nfo3H4Jk3ZzYDbsW5XLvy2j%2BGC%2BSoLqg5eXi4lpe0HAeJ7NPwXO6LheaXe7wO393PU%2Bz%2BAfbP%2BDSWElDI6uWV34bk4yti28YrhHd7XzyS%2FmNzW9lUc4%2B%2B5mLhLm36bfgaWfHT0Fe8KNMkyRY5fG0Ou7ygwsmG%2FHyOi2KdMFlsznLj7sHdVf9w%2F4eJPH9km0L2W9FGV%2BL%2BmzYYu7frbWo75yd%2BeH6RhT59gc6Rf4hyoro6UUJfdqVHC5JXLAeN2q%2BybfNt1R8a2IBPX8577fErNz%2Fffk5majNg1X5kq1CEQfJH8z8CZb3FQyLinnl0ibRHb%2ByWXMO5espv5rm1tWq970ulzBmFtD7ZvMins2qb90WQQ6tVRDGy%2FtP9a%2FYzmbTH82vlZtS9pV3SQW7OfuyaFlJQBEUwbS9O5o7n52Ze83%2BZQt%2FU3LUZWd6w96bm%2Ffs33L3jAnGkklOEFciEDERfoxKMb6eZenqKweasXcnunvSaEml6WUMvC5jnE5eP5myDSiR8gSR%2BvzryZI03WaBRCr6CtSu9CgTntfkozzNrUfqMZLgdkhC64hoDm60bevvSMiWSNhnlYixIBHLYBHVmHkIsnAeZDCoMV6XjOrLkHPmHFxxe3KF80e9FPmCFOmmSi07eJEy7hACZUiBE4aJIAx5sr4npGBCim9pRgr3kxNSlCFl0iEEw0dKa85thCFsLO6KKux8gAwiQooypJiGr5spFjFFLVM6%2FSzDZ4rjiVCJF1X8lxQVRFSxHc1UcTzCimKsbO7NQXPl59%2B%2Fht%2FX08nH3F9%2F%2BfHwx7Ox%2BPvKtgVpKJ5XDVWi5Xrx0yply8RuMaa3rIs0i6Pk3bt3%2FyTSqCSNRHB6wqebNF7fkACYaImBJwLNS6DpjY9d6Xjhvh6O%2FmIaYnyIGDJ0bcXv6arlXw0gNmIMiCBymmPFAI%2F%2FwImDxFu7zqPsFjzU%2FPaosht3hkJMm8igLxok8d1%2B1B5mxg4ZxO5bU%2BK%2FJagMXFXpna0C92wif61yisA7bMHEwRYhsl7NgiKa3QZFrayU7wgsQweLo1tBsYkrirlio%2FDXdlhvYgpcmEXEFXRc8bSnwRmUB6fct4I3EU4SCfraBHxEqaBCkRHOQhHb76nO2C6YZizGhZr0KHg3HlWMHKAl2b2FbSgVI7YYZKKKEQX6cpd2M%2FyKEVuMH83WWVDE6ZIiBnp05cO5or1ixBaNLt1UQa4pt%2FclPkXZEf0xpX67nkat%2FkLpmDjAor1uxBGNLgLLacmYVocQIACLJ0oDJ0sxXy%2BmyyBOCDCYAKO%2FisTxKA1Teb53lxwgYIzo832IZ1F6u6pa%2FhFbELFFfy2JmI1HaDkNLX6HFAyfLLyHo0CWJFrec7aQtwUBV85ZOSIXJYAEvLfNlfbmRMgV0d3CWwOWRJmmqSQ%2BSUgZFlL6FpLASRE5WlQjBa%2BjxRVN4lm0SAkoaIBimbo9ty5APeMbBwp4lBlOGMQo8yqLFvF6QUzBwxRbt6%2FWpTCzaqYgDjN7IlSSh4T8KGh44mn3z3oEFOWxH7xEsS3qwYGPIpOe3lhuEQGIDfXgUJ39ZsH34IASh7EoDXdptqhSaqkPxzD6cByOGdvQ7VAZi7qK%2Ftx95JwZI1ZWJAX0s2iVRWFV6zp9JtDgBI2l28tiSwrqiTSnajSIa%2BpdMSfuI9doRLGg0tcRjtLX%2FdGPdt9WY220Wr2kiQlzVPo6wNJXtysNb7ilrzxpa1APNfylr%2B0di6%2F0VTIxIGSXn%2FE6r1HzLZc930h5BvT%2FHQ4W7bWvNC9ANVNwjAuQT1DxRe8f1dNjY4r2slfLp8Ck6tlGPl5fn%2BWLFjgfNnIbMkuyILZgYYv%2BilfLp7I05XDBW5fWBtAlVfWrJHhO4rygwldUiNFe%2BGpNqEJNNWLa2xQfYhxP1F8oVRMTUbSXvDoeKS3KUzXxKi1jV7j40ew%2B4qGNKJmmjz9vNuyF29iyztP7dBkkn9JKLspV%2FBYVxXOzjAEzrtimebFIttZ4Kw53U%2F0jXetmBXkN7que84Lf0V07ms25lif44s2aRUlQxA%2FRznGoX3r%2FxaXfrK3S9WfLmz3%2F1Xy%2BevN3%2Beady99%2BeNr%2B44fnLUTKrlsdcf2zEd%2FqF57iov0B9nrr%2B9m7zdeXb%2Fi3H3%2F1eeaRhqtfffR9lgXPWzs08Nl88%2Be0ejDzYHFL%2B%2BaJ4Jn2tiS9ur9pmnuSVx%2FBRg7bUzlBNCeXKZrHixm3BLBBxhdt0n%2FnkcT0PFO2SWSHvmGMLjTb5NqYuIZEJFVmm1xZ7h5BeqqU7UDuTpYtnjaaXvfvSeoEvB4qS5CwJV0GRXRdrmEuSLYCbPmS0fWU7TKcbBe%2Fy%2FIebrYLj2BRtotSk8kHj0zDSYTY4KWcDLsMFtGed5fJrm1utFtyy5zJLXM4ZrTnvvjUO1U1YfC2TvXF6tlVkOePaUZd31FhRXv6iySJirByGlbA62nhxvBJpCF4YKuZEVUwUUV%2F4otJWXWquWIizqqzpYP21svKmUNkQUQW7fkutmSwHpHlxIJZvO0OTQOgmy5RBJgifQMSJtTgV9Mgd4rygdPg%2FhQwcZBoq3dBGE3T9DvpJ6jIMtatn0jqRwgspzlU8A6yl5R%2FNPn%2BhBVMWLH69usAkyRJ5Qhh5TSsgLdTgBMGMYvlPi7m6ylRBRVV%2BuauwAmSRVRRS5UJeNoKnCvFFF0pszgPKaiMjSt8HpK%2B8I9J7hXV7hUTb7rKBKCgjCACDJFxzxgyoI%2BWbB7V2gm4zQMoDaLRk7C1uc3ZlbkNilpFmQVFRGgZOlq42aFPP%2BEt5gkt6sI%2FiC0fSXL1hi3xiswfTHixTf3Zb5Sjojz7DXOOiqTXdhZVwyNIccFEFkd3dNk0ySZSrrjgDQSZEPPQiCLAFOHE0OdZsSg7XzVFLPDsfEBxEHOW2DHfxXyUXpF%2Bj5ZkBKGCjK9dVbGojZxyyOBtI2faouaaRXlU3PLKZcIMPsy0g630YUYynJEwcxpm7C45wIAZ0bO%2FhxlyuWACjK07R860ASrM3jpgrA45QAAYyxGuPmw%2F3GO6pbaNMtuumcNplGmafdvx8h5gA%2BmUaUqq2L9G4XzJFuz%2BWWQCjWfdItmQx7N6vB61u3%2Bl3EFng7lkJFXu1KhSmeZyeqNKs7NmvjvtRXenStMWowXUqlKFOgPe8glQJsRQgKRRJVlJZ7SSjmCL9vaUpk11z8qxgrfw2bRF53%2BerO8JK6iwor09pelQvotyrCDOd3Ekg%2BTZMkR8LCs7IRpxNnisDKA%2FpSOGCYgrp3HF6fK7IOCKK%2Fr4b2qu3A7AwzcLIv8uHF2oh88L%2FWiqyJPnOI0p%2FoInTzaKpjVfAERLdBoXrUjdss%2Fqelz19%2BV5xoCfWAp8eW5XafVBvjyZXMH5bVzRQVz68m4%2B%2FmoeIlHbS2gCPdguwMPnKq0%2B4d6aM0mK6PVtdGYw%2BiiNJBB9%2Bnj7zkwf0Wvc0OcgNZro009ClOaWn5k%2Bol%2BYnUYep02m5zRNk6Fb7IMm0FmI4%2FckDqCFRtnkyrGiNJtchhU4cfBEv3C8KNcr4K5AAgsGsJimJMRwXrJ4lECumizt3YmRLOLVP09%2BJ399UH5n%2B6ZffqeYx9mV8Sle6t75nW7vSej2sEahm56t6dobx1z7A3N7z3Ptvb7XfmCXfiz60%2F4MinCexLkkongmx%2F%2Fd3Z0VXqzjf%2BZNPdd7Sd76O%2F6vuAXb6BWb7oEaXf9j0fNWDoK%2BBc%2FkJe%2F%2FAcrKuCt7c8De%2F3Gn%2F428%2F%2BrV2TFi%2F9tY2tuBe%2F8RFRQQhoYXBhiLTjkKA8BhCNxfBycpvuivw9gCb9AQOgt09EcCfPLXKW%2BuidhfJxm491ga7tGM4gB4sDKAOIBkWB9x5USuII4w%2BuLVB%2FYFg%2Fv0j4k0iJe6ty94jNUX7FMY4MQwADdVNLT4qD76PsuC560dGvJtvvlzWnk9Wvexs%2Bs%2BbgyhjRTVX7iRqfbIThAzyUzP66BcB13hhsgOfcMYXWi44dqYuIYhyrvKTiJXnrsfh%2BjbIc%2F0X3iUNT%2B40Tc2v2jt%2FaKk5KGPHhUkbFGXzAS%2FLlcxFyCqROBFyw2XD3LQpXsKfJCTLjvwoFDIeZuaSGaYUlMTBbo7%2FCRTQJkQy%2FmoqYlmn8DhbNHf1GRCY0yVYwXvGFNzIuYIzaI8zOJV0dYz1B0I2CHY5sZ8JsoMlzL6e5xMAIa4vHXKgHdkAxQHMbdnlebxBjE608YIK3h6nEyoJZtyruBtycb0aUEcgnBDFTKLsJDF1j3ap%2F1mIosqsmzuToxkETWWmiy3Ybrm9ZiktWBgiydGD87NFtJalLMFs9YiZuVUQdLbf%2BeRRFmhwqzRwAqznL3QutW3LotnhKmXKckoumklU1SYNaBo5ObWx1OYZUmm0VFhFtiDTe2gurNWRFiSQXXnKQ6lqixQBmmvyrIkA%2BuoKguOQVaHhGBgkBjfpqos7Xb7EdDRXpVlSQaWkdl%2BIlnAm87CiYMjXv1L6qLELu77LKvkhROp3FYa5O0%2B8Gn27bMH2yRNy7nsCouhiIfRUzzaZM%2BhyId0HsNiEclsojO5%2FDxn7Pnj0YW6%2FGzTsV1HFEOlxRH27nAGy%2BubIsFzvAEETdSAcRngg45ZKTDA1cxmOGtJgtUxm0GvNnwBprbaKQxnLUmwJFMYSncflSVotrXVTF84b4hcMn1BN12w29pqRyycN0QuGbEQLYI4Ia6g4or2QgSLZiyo54rSDijn5YpsxsKKoIIKKvrLECyar6CcKmrnK5yZKpZ6cSCMQGOkb82B6YDJjegSJoyciBGrQw6UYQROHMaiOAymt%2F6FYWXXlQvHGEe7qjIWowEftTtusVNmjLfjg6Wzez6BBgo0Y%2B0FlJLG%2BQSak0GD2Nfiu8LV306I2WS8DCcrZmBJUy%2FT4fVkGd709dVkmTYMqbtnqbmXTmHa23L46v6OuSe2AD1O21XdbmZSXTR6fqJ9flqy0WrnfX76pKirf376mBV1gPRzogp0plbfVC1ANxJ1MlGuhoN3MgF0Mov2%2Fno1Q1cQRWixHO06ikfZFMoDFogt%2FLGYTYGx1pLQYnnaE0DHlFKhXGtBnFLBp0Ejch5iLakb9%2FUSDq3i8pVxZsAy8qaqcnsPv1I%2F9%2BwoR3LbKYA7hpv6pS5H8v7%2BpnkOT7JkFsPXLFjmTQ9b4fFHneBGp5eFKu0E5%2B91grsyextpLxWANj%2BIezaWJZktQYWoygwDBYWok67iwxcMhX7SDVd0KJksQYWoCowF%2BPESgDIhFg%2FO1llA4yU0OiEOZ4v%2BIlSaLqEeK4j7NE9Eb%2Fcqi0tDqWQKW%2BqAqDJ4qmgvQbUN0UtOVDmRKl3dBIdPFdsQHd1FaTITU9AwRX8Fqm1YBBW1UNncmBihIuaksm%2BepzOqbcdFFu2DsGyDBgQrJwveLFTbEJ24q%2BB5FSRttjvBBQtctE%2FCsg3KTVUOF7xT9mxThEsWxYvpOsujhi7TNE0ILYNHi6xb%2F3nRYhJaVKPFRIwWA6ChJGEEOrzMB%2BRpq56xDYoBKddQwGNAcOJgUk%2BeQZf6HsGYvjksgKoKlfoCKCuInSwmQF0VUQVaWXG1KysWhZaVYwQ8tAwoDmJomerxUKJFez2ezUlCaFGGls76AgQaiuUIV5%2Bm2%2BkbfthquwOpxbNtDNMPh3KdbVt5JaW8rK1ta9WWte3l4NeC1nxqIwMHl9uNd3%2FHHrt7IgVQPmfbosf%2FSziXxovOVDkX2aFvGKMLrZy7NiauYYh3hNKBis5efZvp9g1aG8artwfugjrbFmMaVFCnTLM%2FvaBuQyQ8BXW2LQY8qKBOgbZvg0c9AGVC9EfSVEe9XoQj2KK9oM52yD%2BpHCuIS18c0T9JUx3xcUV%2FSZ1DzknVXHEQOycdMUmj4sotO5Mm7lG9IrIMnCwDKKxzqPxFOVoQZ2Y4YoZ6vp5%2BY8dMSgsutOivrHMoQ105WhBnqLsAHW8JI9AY6VtDB5flw9POCCPKMOKCGz%2BA4kAZ6kPOUD%2BGMdqHOdouZagDUAaxHeSJnvw61yK%2F%2FZ9FuW6icFC34tHpORdKuxV7Qm5FX0%2FuS4%2Bvy8it8ERtnHIrlD1EFeRWtARClFvhiao65VYoeJJ64Po6oEyI%2Bjo1K9bsBzicLfpzKzwKVCjHCmYFXdKni5oVI6OK%2FswKj2IUyqmCOEYhGfhZOhfzmirfctmUIoLKsKAygKQKyaBQosqJVEGcBwox65MwAo2RvgkUcKGuMUU%2BVWNkjDjyORY9KXkVk6DY50Bin0dQxtGvrFDsE4AziF0rYwCbmKgCra70TaIAfD4BtKB96xjpSqbBoK6IhdbUnQslWnz9OgpAw8i3jha%2FQw4waCiucPXP032Jvz6oO1f7Bld3rlaHfb07F%2B%2F9MJTuXL7ocLthj5r7tPlyHXl7XmAYVYrcRebt2WPDqOQNsFeSzx9dPN%2FJ6avy8ogAgKSJLjpKo1Om3ihIo%2FP7i9lg0uh80dFHaXQKVJ72ZkWYRueLXjpqUaTZlDqcLfrT6Hwxb0o3WbBbUn5Xv2sElpQv%2BnrzZH1PWEGFFf15dD75fpVjBdz3CyYOjmRc%2B%2Bc011c0R8b3qca3d7Tx7cBJmWgnsTujYCdZZkSQ7a3Z9t5QAI%2Ft7UjGwZPtffrTzIGfCQ8nE5KhiGHjTqbUq2GkXh3BGu22uCOZi6ifNcjVZgfxXEQHon80QQVYZ%2BlrfPNZzwBiA1Bf8MYp0t6JcIlXYOIgmRNEiVcYyTLR3RfLkUzgIbKcRpbO%2FmgI9BPJ7Jz1akZkQUcWk09S1ogWSulUjha8KZ2OORauPqV0qk7pbI3j11M6uVUzkJROxxRxcbPO8nUuQuNMMSXDcI3oYmNKhmF%2BuAaOKdmT3ZiSa5j9nkpcONWLmSV6YCikNKCQUosBRCElS3TP6HfzXkBIyQL30QDKhCXIRMgEoKBeQxrtqMPhoj%2BGZImxSd1owW5GtfcmQjPKtjWZUdxWOsiMMpGaUfzJ86oZZbrDsqIkgyQ%2Flb%2Bqy4aivLxTbaj9vDxm4r9z%2Bz2UzAlUWZwjmVBJ5tMAzCen69E2YPNJMqGSzCcVIW7EGXmSMZVUDafZejqcLfqtJxpRqR4reNs%2FO46Y7jCL8jCLV5txFUQXJHTRXhTnOGK6BNHlRLqMO8QAA13EEGZpN6%2BnpLfgIov%2BDvOOK8YpCS0nogVvh3mHZmtjxEjvDvMWmNyI%2FmDCyGkYOcNsbThxEO0fqhxAiRZHu2vFJeNHOVoQGz%2BuZLIWlQ5gRAufSqMPLZLh7ISWE9GC2PiRTFv7mGbrxa32nr%2BG4QeGMbrQ9AbDcMcGhw9QesOVzz0dPGbEm6Oe1PS3%2Bb0NFTY%2FaO39IM9R3%2Fo9r4d4Bwlb0yUTwOtyEXNByttTPUXwRaufmg8re5oqSLdoyYQo3UIydI7SLRQ8YeEnzwHKhJjORekWmjX3w9miP91CMmpON1mwK%2B6IB805YzGLa5Xm8SbXgpqqIcCK%2FjwLiIGFbx0riLO4JC3ua39A9V9RMsgZgMUZ4DlHOgMs9%2BKdAZJO%2FuQMGJIzwO9C6oCdAZK2%2FuQMUPB4he%2FtDygTYmCXnAGatfbD2aLfGeBTAzDlWEHcAIyrVlR7cQF00e8TmFBPZNV0mXS5hjDQRYxqkasRHVYGUHgxoX47yrlidcjB8LniGqKvkV2OOMxvw3RdnjaxBQtb%2BlZjAAoTxTEUs2Vzf%2BJjizMBEAfCCDRGPDFE0JGfCCY3NLRBuYoC7q8FFAcx6Yam1w1set0RnBn35Azg80kSZ9ceHEJPGrzD5F3JPN6ELc5tZRERa%2FCyZqI7WORKxvISa042jhDnjk4AoodEFeiEFn6RtBlHrkG1o8pVFvDaUUBxEMOEQVhGhagqHRdZbN0RZ7edwkdkUaaggNfMASoovnD1aRKD8kkM3Fx%2BdRJDW385kFEMriF6aesqha%2BltSySg6oURkiqFJxjqxRsXnt9sVUKriEmD1OVgjJV6%2FQqhQ2W8FQpuIboC6AqBRXqF3g6MZxMmKKdT1UKes26I9iivUrBNSmPWDVW2lsTn1Xn8t6r4nxgRhZ2NhTaGjxTtNcmuCblECtnitUhBhiYIub5rdK8oBRibGTRX57gmpT7pxwt4Ll%2FcOIgmfe6TIv47rmmyjRNE8LK4LGivzJBMs%2BVsHIaVjo7byPAignQ258wAo0R7ZUJrkktH5RrJ%2BA%2BWjhxsCX9q%2FPbnF2f76SgYCKL9loEl6f%2FEFmUkcXGm3zj2mJpCiNLkobfoxmRBRFZ9Fce2FSUrZwseIuyXRvAEiaMQKeo8Iukz%2FSxqfW9coyAly%2FBiYMlpqes8yijIslhFEkewxj9FQiWaE9TkeSplGnvVITKCn%2FGUEH2hbHG1R5otkQ9mFhzMmsQx4QsAAWXqAJtGPk9Q8uAmrDoqiOMnIgR8B4ygOIgutuoIBsjWSbak1YsyoVTThbEuXC2mLQSZhGDyYzQggotNjfJNQaFKJFFuTcX7%2BwS15F4c1czQgs%2BtDja480OFRwqT7XF7MLV1UaGvz6ojUz7BlcbmbYT4qttZNqa%2BKG0kbHHJB%2Fw8sE1zlflwx9YlyFH0je16jL0Oc0lUR9qMjRC0mTIOnoUsnfpo5BdR5L9SU2GBtRkyOlyUHe7E7U3GXJExzQ1GVKhnIMngwLKhOgGom4gOi3%2Bw8Giv8OQKzqPdGMFvcEP3pFahTh8eXxcPH3769fU%2Fu3ux%2Bcf4V%2FF048rSdCqeC6vPfUtQ0SVc%2FYYkosRQIX2m4HKyzfmoJnS8YgByLEhhgAzpHc3IbhkHJdq31SrJi64uQMoDqJuUtbrp8lD6Sajqlo0ZDG1p4%2B7pJ8oJwtiBcUDCHoTRqAx4mhPHvcswohijHhdsSgECoonFiVRVe2AKt2OYIyrPY3co9GjAJTBO3rU9URvChXUIseMrz2l3BN9LYSZkzGDuNOQB1C%2BRFSBzlMxesaTAZVgcq0oxwi4awVOHMaia4XK3lCixdSeqsLnUxJalKFlDO5uARQHibuFyt4wooUPI9CIFuqPqBwtiH0sY1e4%2BgOent6%2BQVbW5PUte1Nf1lR9lK1B8Ly1Q3OLbL75c1r50jZFKLzEpAGX00BqI2v1V6qtJxl7CIRxOELl9hQqjbWU0gw%2FSffMqlTuj6gEtfg0omK5EZJiOWevWG7S291rvPCEw1YsJ09rFYSeSuWUKe8Hlcq9yKRBFspJj1i0CalMTkH2ObQqDyYPol2XsZVJl1TRchYXgRqqnLNKTnrE1CRUMVDAW4SCiQIPlVBcFA0%2B%2BpbDqYiCyY%2BYmmop5kd7Fw46JCo%2FdNHmoSxRLelbaugyOWPwQn7ENAtBPV%2FALR44cRBNHsoPxQyYs9bLyQ9ZtH%2BIMKcSBq8JxLXXLXFYpXlBgMEKmL6VdHASRSqMep8tYhUGoPEDAQXUx9LyQp%2BTheatqFZRwMetwAkDTVu5CKqcszBOfsg0akU1VVBMWpGrVI5w7S%2Bn2714%2BSQ5dy9qmq%2Bn3PFuuwNJubMuOc33%2BOvJXRM6UiiPS8x19hJz%2FaYKUVVirlx6dOXlDpsGZl8a6BtWIb%2Bc4pO%2BTsD9Txw9is98Sr8dIUm%2F9Zx9OPQ1VccvmCcXkX7LtSfKvx1m%2Fm3LJEQJuGKuC2Xgnm41tXcqvhRcW%2FTmUsLLcMJFhzNGezquLbp6KVx0KmBQzNaWH7ro7KWMF9SE0T7AQjJhmwhzKmHwOn4lE7bvKt8AEQYpYXqPt4CTKUnBNyHmNMTgGLUtP3RLEAciylmj00dAxD5jC3q51IiJc4SQ0xBidUjB8JNeJNO2KekFI1a05%2BNKRlgTVk7DCt50f2csXHuKc2%2FMWXSNpiRjo98XRRDOF5HMij1boNs1orvRxQa6zQ%2FXNyPQQLdl7Iadr0yrr3rKBxmpb5xBAWZAZeT0AHPnqOrhBphdCjBDKCguuOsETiLE%2BE%2B8CMpnLfV40mX1HA4W7VFll1L9VTMFb8THExUXIsjACdK7z5MDJTTU50kxQTxwrQROGMSADjvkgp0vRY2HETU%2BnDAT3TqKZMQsBY1PZQx4xAdOHADGlhBQYLUUk18jfWoKRXdUIwQ8ugMnDNQp4TKwYmvXTch%2FohoreP0nXPKotF6qa74aNDaVd0qoPnpoZT1vwAJaSC%2BZEft7WsR37E4u4nQpQuRMIenIDv3Lrb2%2BNibuGUYfNXLMY9JW79wm54VwUfODuIuvJeNsKTauTOc6PTbeORt3uLFxyUhcio2froe1dyq%2B2PhYLL6eRXmYxavq0UoRcm0m3uF40R4hH1OLTdVkwVt1bRqi%2FrIKykMhpuBhivZKa9OgEiblw5HwRrR8imihY0jvWmqwIIZPES3FDPHxRrR86jc15KybI%2FjC72ZtSopPDafUEwav6cNH%2FpGSgkhJcXQrKRMydBQjpL0P8SkpE%2Blgesq5wcUUHs7XpphMyPBRzRS8jRomouGTR9GSmIKKKb7uxnQTivKoZgpeU8fkTSUoPxg3V1pVVmOkh8ojlUd68Da8nPjCxX8DbaU0TEWSZ%2FZeWfzmb9sF%2BZPdL6mzmZvP7V1tBfmPk8lbFIBXU8S5X3TA87N%2B%2Fv1r%2BH09nXzM%2FfWXHw9%2FPBuLv69k3i0vKTk3ZS%2Fui2pR6g0l7XYuvPffdcr%2FcJVX169ULNgCPm3%2ByL%2BlmsrFv4odav1tu7%2FANgu%2FOs1e37JO9rcksfApvqFuAZ5FJePlP8xW0rgf3dij935WJiknUV6eN3v2BElUtlsr387Kv7AHzqIWmHa3dREncc50q3WWb329eECvHuJDNcGs6wAX1QFOFmkW55uDLJW69uhmUbaM%2BXnk9cMlXydFk5%2FP%2Fl6d15rdf%2BWLqGi33e1drCOO%2FjEownn34a%2BibNH8YHUM2UPE1ICoXMf1kh9Ve1D%2FqM7ifVFdjmVVZVCffrlHuXsYtGe9TNcPUbAulyjK87KhkGX8VF%2BhaBHE5R2RrtuL9hhN8zT8HhX%2FfPF02cZtIetQf9iRlch7nMdF9IXpIuW2xyxY7QIt38r2l2s2e%2BpPo9Z8rYB5JSl5mLmRP6sUoP1yAd%2Ba2p7XHrNE4RBg110WMNmb1zjmQwO3lBHLl2gjNs8WUo4v0R%2F7cVv69q8Tjf8bnV6C0nP832mytj%2F%2BzzR4hcirlpDxgu6LrQRFKvSi95gqUJRZ9a9WoLwi192YGkQBivTwRA801Z%2B8aub3Nt57yId7lJEPJg%2Bm6EuuVacKMtM0TWAo81Ydh%2BqRcs6iE7kIiQ0qdBNl2F5DlTip718tTkP58QD0mCCAgAKkd1dGqGeQJUawCCBnA8jkKICACYOoj1Bu%2BNlyw9XDZdITLmAPJFE5ocTw89FlYNqJqJzQHGLMdDHNM%2BZiyR%2Bfou5CfDkfX45TXuCkAaCCgHgCav30nuUHpvGaABXVBJC%2B5o89LPPHFCM%2BdRCc0jlxYcU9YzanXJLEUA9h5WxYOS7MAyYMlogVqmbDhhSeb6MNKRYhRR9SrKEhRVaFBJJP%2Bm95nqW2tNIv4byKi%2FdPKA3TxarYzxkdtdmOkzCt9%2FvvOi5FIVo%2FVJN%2BjXhRil%2BVKjmTpJzWCZFJWryY0PjCmXzNgmUehHWS6GHpp6sg5gmyx%2F32dVCmRR%2BwiNPyA232Kl%2FY5SwuD3%2BTCVsf7TRJw%2BA%2Bese2fK4TQp%2BixarKAhuNr5tTrmTuJl3Uc5XLX63%2FcBum62XzZHTZ%2Fh%2BOPcc%2Fy9xEdsFeyD7ezY6tz3qSVZe8PsViXbCVj5Ly9da9Ue7H3htZdB9ks2r%2FVbKuPsDeb99E9XqF0fqplbC8vh8fqv1%2FYvJWvttOvM3r4yihlHE5s6rvntZHNbI%2FYk6jvbu7s8JwJEl5nHlTz4VKozU9950rPMTPnEhryfI1QMB9U41TW7eIELl7FMY%2F%2FSOdfmPP0PiuFM1cfvMUaSXcLSaaAzFmZUJ4zsStRMOngMt0fXPtLkJ9%2BMXWn7aPa%2FfGLTNsMyaF%2BdadO2OP%2BvqQ%2BENgsV5uCMbh%2FxAXWx%2Bqa0FqoK3S5JlhdzWP%2F7uOqvfVUyMpj5qhcCe3P9iaEG%2BUAlL%2FIHsfxHVJQL2xiML5kon7fRzl7969A3tI3rAnVLngNx3LxxaqPI2qAmCTx188r6J2SeuLtvVYLBe8qD4mXm%2B2shtuMV7yne7SbNEuaLMEDVFL9lW%2Fz%2B5oRvwsP4ho9cZZ%2FNCKZXXQ82CxymXSxP7CdIAs71iP8mzjaDlrVqU6mSJbh8W6AvL%2Ffvm%2F3zcSUP99IwI5UxSS7UqJn2pFYUtzaMndfEXIlnLvS6JFcyNsPQiqNUz%2BUerO3xlC%2F9lLXsbba7a1QpJFY%2F9nC8ZeLKf5qn5cSTb9D7u50tl666ndGG0lekoXXvnCMS27sejU%2FvrnesWCpmilecwmzFTI24Ox6mMofbk3tdYAcSRbN%2Bzr37ijtuzsO7CH8SyI%2FDvpw9gL%2FWiqqM7A33sWO8ak55PYtoCexNxekzyJ%2Bz54TUv24P1FUJ7v4nAe1%2FSpnxQ1KhpA1%2FtUM9nLFwtGjrrEbCl9hso0xgrNWyV0VRXlhrntd7eKa7IBXfM7HEkVqrZZvKsivEnptSe70ntlWhJvkCsRX9MYHyy%2B7G2WlhLV%2Fu0XtpLz39JZVO7x%2Fw%3D%3D)\r\n- [22/10/2019](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#R7Z1rk5tG1oB%2FjWqzH%2BziLvTRM46TfdfOumJnk3yaQoiZwUZCC2gu%2FvVvc2l06UaDpD5qjuakUonEIAmaw8O5n5F9PX%2F6JQuW95%2FSWZSMLGP2NLLfjyzLnDhj9r9yy3O9xfecesNdFs%2BandYbvsQ%2Fomaj0WxdxbMo39qxSNOkiJfbG8N0sYjCYmtbkGXp4%2FZut2my%2FavL4K75RWO94UsYJJGw25%2FxrLhvzsIar7f%2FGsV39%2FyXTW9S%2F2Ue8J2bL87vg1n6uLHJ%2FnlkX2dpWtSv5k%2FXUVIuHl%2BX%2BnMfOv7aHlgWLYo%2BH%2Fjy%2BDh%2F%2BvbXv1P70%2B2Pzz%2FCv4qnH28cvzm44pmfcTRjC9C8jZJp%2BvjzesNVlq4Ws6j8RoO9S7PiPr1LF0HyMU2XbKPJNn6LiuK5uZDBqkjZpvtinjR%2FjZ7i4q%2BN13%2BXX%2FXWbd69f2q%2BuXrzzN8siuy5%2FVD5ZuNT5dv1x6p3%2FHPiCjWLlqerLIz2LUtzzYogu4uaz77%2F5ZdP2dXq5tfg19%2Bs4NOP%2F6bRiq2fV%2B9ZrtrGbzSX4JconUfskNgOWZQERfywLVZBI5137X7NR99lWfC8scMyjRdFvvHNn8sNbIfmRnvjuM0h8%2FvMsDalgb2ov5K%2F2zi29aZKYg6RHg%2BT9Bjnkh7b6yk9vqlaeDau997LKRdmz9V0PY0z0CBnl6N4Vz4S2IZFuoj4tg9xuUzNPln6vQV9%2BQO36aK4TpM0q5bDvq7%2B6Ssd8lU27J7iYbqDYItjbqPFMoyRSrRIz912JxfMlqHIou32lUX1qDruOWeNNQij2eisD0Gyak7sml2Lcrl3ZTR%2FjOdJUF3Q8nJxcS0vaHgfJ7OPwXO6KheaXe7wO393dZ9m8Q%2B2f8ClsZKGRlYtr%2Fw2JhkbF98wXCO63frkl%2FIbm9%2FKopx99jMXCXNn06fgaWvHj0Fe8KNMkyRY5vG0Ou7yg3MmG%2FHiKi2KdM5lsznLD9sHdVv9w%2F4eJPHdgm0L2W9FGV%2BL%2BmzYYu7erbWob52d%2Bf7qWhT59gc6Rf4hyoroaa%2BEPm1LDpckLliPazXf5NvuN1R8a2IBPX857zfErNz%2FXfk5majdB8vyJVuFIg6S35n5EyzuKhgWFfPKpU2iW35ls%2BYcytdTfjXNjatV73tVLmHMLKB3zeZ5PJtV37opghxayyCMF3cf61%2BxnfWm35tfKzel7Ctvkwp29%2BzLokUlAUVQBNP27mjufHZm7hX7ly38dclRl53pNXtvrt%2Bzf8vdMyYYCyY5QVyJQMRE%2BDEqxfhqlqXLrxxoxs6d6O5IoyWVpv0YeFnGOJ28fjJlG1Ai5Qki9fnfJ0vSdJMFEqnoK1Db0qNMeF6Sj%2FI0Nx6px0iC2yEJrSOiObjRpq2%2FJSEbImGfVSLGgkQsgnlUY%2BYhyML7IINBjfGyZFRfhpwz5%2BCK25MrnD%2FqpcgXpEg3VWrZwYuUcYcQKEMKnDBMBGHIk9UdIQUTUnxLM1K4n5yQogwpkw4hGD5SWnNuLQxhY3FXVGHnA2QQEVKUIcU0fN1MsYgpapnS6WcZPlMcT4RKPK%2Fiv6SoIKKK7WimiuMRVhRjZX1vDporP%2F%2F2Nfy%2Bmk4%2B5P7qy4%2BH35%2BN%2Bd9vbFuQhuJ52VAlWqzmPy1TtkzsFmN6y6pIszhK3r59%2B08izdBJ4%2FUNCYCJlhh4ItD0Bc3%2Bm3XQnJELsCHGh4ghQ2eI39NVy78aQGzEGBBB5DTHigEe%2F4ETB4m3dpVH2Q14qPn1UWU77gyFmDaRQV80SOK7%2FaA9zIwdMojdt6bEf0tQGbiq0jtbBe7ZRP5a5RSBd9iCiYMtQmS1nAVFNLsJilpZKd8RWIYOFke3gmITVxRzxUbhr%2B2w3sQUuDCLiCvouOJpT4MzKA9OuW8FbyKcJBL0tQn4iFJBhSIjnIUitt9TnbFdMM1YjAs16VHwbjyqGDlAS%2BqKNg23YsQWg0xUMaJAX%2B7SboZfMWKL8aPZKguKOF1QxECPrnw4V7RXjNii0aWbKsg15fa%2BxKcoO6I%2FptRvV9Oo1V8oHRMHWLTXjTii0UVgOS0Z0%2BoQAgRg8URp4GQp7lfz6SKIEwIMJsDoryJxPErDVJ7vjTcP0xF9vg%2FxLEpvllXLP2ILIrboryURs%2FEILaehxe%2BQguGThfdwFMiSRIs7zhbytiDgyjkrR%2BSiBJCA97q50t6cCLkiult4a8CSKNM0lcQnCSnDQkrfQhI4KSJHi2qk4HW0uKJJPIvmKQEFDVAsU7fn1gWoZ3zlQAGPMsMJgxhlXmbRPF7NiSl4mGLr9tW6FGZWzRTEYWZPhErykJAfBQ1PPO3%2BWY%2BAojz2g5cotkU9OPBRZNLTG8stIgCxoR4cqrPfLPgeHFDiMBal4TbN5lVKLfXhGEYfjsMxYxu6HSpjUVfRn7uPnDNjxMqKpIB%2BFi2zKKxqXafPBBqcoLF0e1lsSUE9keZUjQZxTb0r5sR94BqNKBZU%2BjrCUfq6O%2FrR7ttqrI1Wq5c0MWGOSl8HWPrqdqXhDbf0lSdtDeqhhr%2F0tb1j8ZW%2BSiYGhOzyM17nNWq%2B5bLnGynPgP6%2Fw8GivfaV5gWoZgqOcQHyCSq%2B6P2jenpsTNFe9mr5FJhUPdvIx%2Bvrs3zRAufDRm5CZkkWxBYsbNFf8Wr5VJamHC5469LaALqkqn6ZBM9JnBdU%2BIoKMdoLX60JVaipRkx7m%2BJDjOOJ%2BgulamIiivaSV8cjpUV5qiZepWXsChc%2Fmt1FPLQRJdP08ef1hp1wG1vW%2B%2FQuXQTJx7SSi3IVv0VF8dwsY8CMK7bpvpgnG2u8EYe7rv6RrnWzgrwG90XPecHv6K4dzeZcyxPce7NmURIU8UO0dRzql97fu%2FTrtVW6%2Fmx5s%2Be%2Fms9Xb%2F4u37x1%2Bdv3T5t%2FfP%2B8gUjZdasjrn824lv9wlNctD%2FAXm98P3u3%2FvryDf%2F2468%2BzzzScPWrj77LsuB5Y4cGPutv%2FpxWD2YeLG5p3zwRPNPelKQX9zdNc0fy6iNYy2F7KieI5uQyRfN4MeOWADbI%2BKJN%2BkceSUzPM2WbRHboG8boQrNNroyJa0hEUmW2yRvL3SFIT5WyHcjdybL501rT6%2F49SZ2A10NlCRK2pIugiK7KNcwFyVaALV8yup6yXYaT7eJ3Wd7DzXbhESzKdlFqMvngkWk4iRAbvJSTYRfBPNrx7jLZtc21dktumTO5ZQ7HjPbcF596p6omDN7Wqb5YPbsM8vwxzajrOyqsaE9%2FkSRREVZOwwp4PS3cGD6JNAQPbDUzogomquhPfDEpq041V0zEWXW2dNDealE5c4gsiMiiPd%2FFlgzWI7KcWDCLt92haQB00yWKAFOkb0DChBr8ahrkTlE%2BcBrcnwImDhJt9TYIo2mafif9BBVZxrr1E0n9CIHlNIcK3kH2kvKPJt%2BfsIIJK1bffh1gkiSpHCGsnIYV8HYKcMIgZrHcxcX9akpUQUWVvrkrcIJkEVXUUmUCnrYC50oxRVfKLM5DCipj4wqfh6Qv%2FGOSe0W1e8XEm64yASgoI4gAQ2TcM4YM6KMlm0e1dgJu8wBKg2j0JGxtbnJ2ZW6ColZRZkEREVqGjhZudujTT3iLeUKLuvAPYstHkly9Zku8JPMHE15sU3%2F2G%2BWoKM9%2Bw5yjIum1nUXV8AhSXDCRxdEdXTZNsomUKy54A0EmxDw0oggwRTgx9HlWLMrOV00RCzw7H1AcxJwldsy3MR%2BlV6TfowUZQagg42tXVSxqI6ccMnjbyJm2qLlmUR4VN7xymTCDDzPtYCt9mJEMZyTMnIYZu0sOMGBG9OzvYIZcLpgAY%2BvOkTNtgAqz1w4Yq0MOEADGcoSrD9sP95huqW2jzLZr5nAaZZpm33a8vAfYQDplmpIq9q9ReL9gC3b3LDKBxrNukGzI41k9Xo%2Fa3b9S7qCzwVwykip3alSpTHM5vVGl2Vkz3532ortTpWmL0QJqValCnQFv%2BQQoE2IoQNKokqykM1pJR7BFe3tK06a6Z%2BVYwVv4bNqi8z9PVneEFVRY0d6e0nQo30U5VhDnuziSQfJsGSI%2BlpWdEI04GzxWBtCf0hHDBMSV07jidPldEHDFFX381zVXbgbg4ZsFkX8bji7Uw%2BeFfjRV5MlznMYU3%2BPJk42iac0XANESncZFK1I37LO6Hlf9fXmeMeAnlgJfnttVWn2QL08mV3B%2BG1d0EJe%2BvOsP%2FzYPkajNJTSBHmwX4OFzlVafcG%2FNmSRF9Po2OjMYfZRGEog%2Bfbx9Z6aP6DVu6HOQGk306SchSnPLz0wf0S%2FMTiOP0ybTc5qmydAt9kET6CzE8XsSB9BCo2xy5VhRmk0uwwqcOHiiXziel%2BsVcFcggQUDWExTEmI4L1k8SiBXTZb27sRIFvHqnye%2Fk78%2BKL%2BzfdMvv1PM4%2BzK%2BBQvde%2F8Trf3JHR7WKPQTc%2FWdO2NY679gbm957n2Xt9rP7BLPxb9aX8GRXifxLkkongmx%2F%2Ft7a0VXqzjf%2BZNPdfbJ2%2F9Hf9vuAXb6BXr7oEaXf9j0fNWDoK%2BAc%2FkJe%2F%2FAcrKuCt7c8De%2F3Gn%2F428%2F%2BrV2TFi%2F9tY2tuBe%2F8RFRQQhoYXBhiLTjkKA8BhCNxfBycpvuivw9gCb9AQOgt09EcCfPLXKW%2BuidhfJxm491ga7tGM4gB4sDKAOIBkWB9x5USuII4w%2BuLVB%2FYFg%2Fv0j4k0iJe6ty94jNUX7FMY4MQwADdVNLT4qD76LsuC540dGvKtv%2FlzWnk9Wvexs%2B0%2BbgyhtRTVX7iWqfbIThAzyUzPq6BcB13hhsgOfcMYXWi44cqYuIYhyrvKTiJvPHc3DtG3Q57p73mUNT%2B41jfWv2jt%2FKKk5KGPHhUkbFEXzAS%2FKlcxFyCqROBFyw2XD3LQpXsKfJCTLjvwoFDIeZuaSGaYUlMTBbo7%2FCRTQJkQy%2FmoqYlmn8DhbNHf1GRCY0yVYwXvGFNzIuYIzaI8zOJl0dYz1B0I2CHY5tp8JsoMlzL6e5xMAIa4vHbKgHdkAxQHMbdnmebxGjE608YIK3h6nEyoJZtyruBtycb0aUEcgnBNFTKLsJDF1j3ap%2F1mIosqsqzvToxkETWWmiw3Ybri9ZiktWBgiydGD87NFtJalLMFs9YiZuVUQdKbP%2FJIoqxQYdZoYIVZzk5o3epbl8UzwtTLlGQU3bSSKSrMGlA0cn3r4ynMsiTT6KgwC%2BzBpnZQ3VkrIizJoLrzFIdSVRYog7RXZVmSgXVUlQXHIKtDQjAwSIxvU1WWdrv9COhor8qyJAPLyGw%2FkSzgTWfhxMERr%2F4ldVFiF%2FddllXywolUbisN8nYf%2BDT79tmDbZKm5Vx2hcVQxMPoKR5tsudQ5EM6j2E%2Bj2Q20Zlcfp4z9vzx6EJdfrbp2K4jiqHS4gh7eziD5fVNkXDANGDJdAZcBvigY1YKDHA1sxnOWpJgdcxm0KsNX4CprXYKw1lLEixZw%2BIlZd5otLLVzF04b3CcehUrh4raXsXnDY7zXsUqxYEoAkyRvgUHpgMmNqJ1RRQ5kSJKowAyisCJw1gUh8G0qb0wqmxbRWCImWhXVMaiXf1BuwmEHTJjvLWTls4%2BtMQZIM6YXHHQCBoxP5RAczJolPZtOy9ofFe4%2BpuhpXXsaDjxpYGFH%2FfT4eWwE2%2Bf9mLYqXXo6e7%2BZe4EJkx7Uw5f3L%2BZfA7aLaxd1c2y4Oqi0fMT7%2FPT0V0kbPmkqKt%2FfvqYFXWARC6iCrBP0Rz3rAkG9CJRTbByNRy8JhjQxyza%2B6vlDF1qMaGlbeKtMepJndmVxysQW%2FhjMZUCY9UCoaV9%2FGh0H1JChXKtBXFCBZ%2BriMh5iDU5fdzXSzi02oUXBoMAy8irqm%2FpPUZC%2FQSRoxzJbc0ddww3mcBdjuTd%2FU3zHJ5kSVfjr1mwyJtucMLjj3qqjAbWU8Xf6anyxuQbXtSkeLv8i50yYUm6NFNJhzLDQEFJx6QrjX%2FAJR2SHs1U0qHAWIBv1AwoE2Lbw9kqC6hRs0YnxOFs0V%2FUQX2a1WMFccfDiejtXmZxaSiVTGFLHRBVBk8V7VMlbEP0khNVTqRKV1%2Be4VPFNkRHd1GazMQUNEzRP1LCNiyCilqorG9MjFARc1LZN9%2BnMypsx0UW7SMlbING7SknC94sVNsQnbjL4HkZJG22O8EFC1y0z5SwDcpNVQ4XvPNqbFOESxbF8%2Bkqy6OGLtM0TQgtg0eLrO%2FtedFiElpUo8VEjBZDjAkRRoaOEYuPmtFWPWMbFANSrqGAx4DgxMGkljyDLvU9gjF9c1gAVRUq9QVQVhA7WUyAuiqiCrSy4mpXViwKLSvHCHhoGVAcxNAy1eOhRIunXUfhJCG0KENLZ30BAg3FcoSrT3Ni9I0RarXdgdTi2TaGOUJDuc42H06ruEpOKGuzeO5hW9a2k4NfC1rzqbUMHFxuN97%2BHXvs7ogUQPmcbYse%2Fy%2FhvTRedKbKucgOfcMYXWjl3JUxcQ1DvCOUjiZydurbTLdv0NowXrw9cBfU2bYY06CCOmWa%2FekFdWsi4Smos20x4EEFdQq0fRs86gEoE6I%2FchHMI8r30udFOIIt2gvqbIf8k8qxgrj0xRH9k9E8iBPiCiqu6C%2Bp40OtiSvKuOIgdk46YpJGxZUbdiZN3KN6RWQZOFkGUFjnUPmLcrQgzsxwxAz1fDX9xo6ZlBZcaNFfWedQhrpytCDOUHcBOt4SRqAx0reGDi7Lh6edEUaUYcQFN34AxYEy1IecoX4MY%2FrOkAF8NlGGOgBlENtBnujJr3Mt8pt%2Fzct1E4WDuhWPTs%2B5UNqt2BNyK%2Fp6cvc9vi4jt8ITtXHKrVD2EFWQW9ESCFFuhSeq6pRboeBJ6oHr64AyIerr1KxYsx%2FgcLboz63wKFChHCuYFXRJny5qVoyMKvozKzyKUSinCuIYhWTgZ%2BlczGuqfMtlU4oIKsOCygCSKiSDQokqJ1IFcR4oxKxPwgg0RvomUMCFusYU%2BVSNkTHiyOdY9KTkVUyCYp8DiX0eQRlHv7JCsU8AziB2rYwBbGKiCrS60jeJAvD5BNCC9rVjpCuZBoO6IhZaU3culGjx9esoAA0jXzta%2FA45wKChuMLVP0%2F3Jf76oO5c7Rtc3blaHfbl7ly898NQunP5osPtmj1q7tLmy3Xk7XmBYVQpcheZt2ePDaOSN8BeST5%2FdPF8J6evyssjAgCSJrroKI1OmXqjII3O7y9mg0mj80VHH6XRKVB52psVYRqdL3rpqEWRZlPqcLboT6Pzxbwp3WTBbkn5Xf2uEVhSvujrzZPVHWEFFVb059H55PtVjhVw3y%2BYODiSce2f01xf0RwZ36ca397RxrcDJ2WincTujIKdZJkRQba3Ztt7TQE8trcjGQdPtvfpTzMHfiY8nExIhiKGjTuZUq%2BGkXp1BGu02%2BKOZC6iftYgV5sdxHMRHYj%2B0QQVYJ2lr%2FHNZz0DiA1AfcErp0h7J8IlXoGJg2ROECVeYSTLRHdfLEcygYfIchpZOvujIdBPJLNzVssZkQUdWUw%2BSVkjWiilUzla8KZ0OuZYuPqU0qk6pbM1jl9O6eRWzUBSOh1TxMX1KstXuQiNM8WUDMM1oouNKRmG%2Bf4KOKZkT7ZjSq5h9nsqceFUL2aW6IGhkNKAQkotBhCFlCzRPaPfzXsBISUL3EcDKBOWIBMhE4CCeg1ptKMOh4v%2BGJIlxiZ1owW7GdXemwjNKNvWZEZxW%2BkgM8pEakbxJ8%2BLZpTpDsuKkgyS%2FFj%2Bqi4bivLyTrWhdvPymIn%2F1u33UDInUGVxjmRCJZlPAzCfnK5H24DNJ8mESjKfVIS4EWfkScZUUjWcZuvpcLbot55oRKV6rOBt%2F%2Bw4YrrDLMrDLF6ux1UQXZDQRXtRnOOI6RJElxPpMu4QAwx0EUOYpd28mpLegoss%2BjvMO64YpyS0nIgWvB3mHZqtjREjvTvMW2ByI%2FqDCSOnYeQMs7XhxEG0f6hyACVaHO2uFZeMH%2BVoQWz8uJLJWlQ6gBEtfCqNPrRIhrMTWk5EC2LjRzJt7UOareY32nv%2BGoYfGMboQtMbDMMdGxw%2BQOkNb3zu6eAxI94c9aSmv83vramw%2FkFr5wd5jvrG73k9xDtI2JoumABelYuYC1Lenuopgi9a%2FdR8WNnTVEG6RUsmROkWkqFzlG6h4AkLP3kOUCbEdC5Kt9CsuR%2FOFv3pFpJRc7rJgl1xRzxozhmLWVzLNI%2FXuRbUVA0BVvTnWUAMLHztWEGcxSVpcV%2F7A6r%2FipJBzgAszgDPOdIZYLkX7wyQdPInZ8CQnAF%2BF1IH7AyQtPUnZ4CCxyt8b39AmRADu%2BQM0Ky1H84W%2Fc4AnxqAKccK4gZgXLWi2osLoIt%2Bn8CEeiKrpsukyzWEgS5iVItcjeiwMoDCiwn121HOFatDDobPFdcQfY3scsRhfhOmq%2FK0iS1Y2NK3GgNQmCiOoZgt6%2FsTH1ucCYA4EEagMeKJIYKO%2FEQwuaGhDcpVFHB%2FLaA4iEk3NL1uYNPrjuDMuCdnAJ9Pkji79uAQetLgHSbvSubxJmxxbiqLiFiDlzUT3cEiVzKWl1hzsnGEOHd0AhA9JKpAJ7Twi6TNOHINqh1VrrKA144CioMYJgzCMipEVem4yGLrjji77RQ%2BIosyBQW8Zg5QQfGFq0%2BTGJRPYuDm8ouTGNr6y4GMYnAN0UtbVyl8La1lkRxUpTBCUqXgHFulYPPa64utUnANMXmYqhSUqVqnVymssYSnSsE1RF8AVSmoUL%2FA04nhZMIU7XyqUtBr1h3BFu1VCq5JecSqsdLemvisOpf3XhXnAzOysLOh0NbgmaK9NsE1KYdYOVOsDjHAwBQxz2%2BZ5gWlEGMji%2F7yBNek3D%2FlaAHP%2FYMTB8m810VaxLfPNVWmaZoQVgaPFf2VCZJ5roSV07DS2XkbAVZMgN7%2BhBFojGivTHBNavmgXDsB99HCiYMt6V%2Bd3%2BTs%2BnwnBQUTWbTXIrg8%2FYfIoowsNt7kG9cWS1MYWZI0%2FB7NiCyIyKK%2F8sCmomzlZMFblO3aAJYwYQQ6RYVfJH2mj02t75VjBLx8CU4cLDE9ZZVHGRVJDqNI8hjG6K9AsER7mookT6VMe6ciVFb4M4YKsi%2BMNa72QLMl6sHEmpNZgzgmZAEouEQVaMPI7xlaBtSERVcdYeREjID3kAEUB9HdRgXZGMky0Z60YlEunHKyIM6Fs8WklTCLGExmhBZUaLG5Sa4xKESJLMq9uXhnl7iOxJu7nBFa8KHF0R5vdqjgUHmqLWYXrq42Mvz1QW1k2je42si0nRBfbCPT1sQPpY2MPSb5gJcPrnG%2BKB%2F%2BwLoMOZK%2BqVWXoc9pLon6UJOhEZImQ9bRo5C9Sx%2BF7DqS7E9qMjSgJkNOl4O6252ovcmQIzqmqcmQCuUcPBkUUCZENxB1A9Fp8R8OFv0dhlzReaQbK%2BgNfvCO1CrE4cvj4%2Fzp21%2F%2FTu1Ptz8%2B%2Fwj%2FKp5%2BvJEErYrn8tpT3zJEVDlnjyG5GAFUaL8aqOy%2FMQfNlI5HDECODTEEmCG9uwnBJeO4VPumWjVxwc0dQHEQdZOyXj9NHko3GVXVoiGLqT193CX9RDlZECsoHkDQmzACjRFHe%2FK4ZxFGFGPE64pFIVBQPLEoiapqB1TpdgRjXO1p5B6NHgWgDN7Ro64nelOooBY5ZnztKeWe6GshzJyMGcSdhjyA8iWiCnSeitEzngyoBJNrRTlGwF0rcOIwFl0rVPaGEi2m9lQVPp%2BS0KIMLWNwdwugOEjcLVT2hhEtfBiBRrRQf0TlaEHsYxm7wtUf8PT09g2ysiavb9mb%2BrKm6qNsDYLnjR2aW2T9zZ%2FType2LkLhJSYNuJwGUmtZq79SbT3J2EMgjMMRKrenUGmspZRm%2BEm6Z1alcr9HJajFpxEVy42QFMs5O8Vyk97uXmPPEw5bsZw8rVUQeiqVU6a8H1Qqt5dJgyyUkx6xaBNSmZyC7HNoVR5MHkS7LmMrky6oouUsLgI1VDlnlZz0iKlJqGKggLcIBRMFHiqhuCgafPQth1MRBZMfMTXVUsyP9i4cdEhUfuiizUNZolrSt9TQZXLG4IX8iGkWgnq%2BgFs8cOIgmjyUH4oZMGetl5Mfsmj%2FEGFOJQxeE4hrrxvisEzzggCDFTB9K%2BngJIpUGPU%2BW8QqDEDjBwIKqI%2Bl5YU%2BJwvNW1GtooCPW4ETBpq2chFUOWdhnPyQadSKaqqgmLQiV6kc4dpfTrd78fJJcu72apovp9zxbrsDSbmzLjnN9%2FjryV0TOlIoj0vMdXYSc%2F2mClFVYq5cenTl5Q6bBmZfGugbViG%2FnOKTvk7A%2FW8cPYrPfEq%2FHSFJv%2FWcXTj0NVXHe8yTi0i%2F5doT5d8OM%2F%2B2ZRKiBFwx14UycE%2B3mto7FV8Kri16cynhZTjhosMZoz0d1xZdvRQuOhUwKGZryw9ddPZSxgtqwmgfYCGZsE2EOZUweB2%2Fkgnbt5VvgAiDlDC9x1vAyZSk4JsQcxpicIzalh%2B6JYgDEeWs0ekjIGKfsQW9XGrExDlCyGkIsTqkYPhJL5Jp25T0ghEr2vNxJSOsCSunYQVvur8zFq49xbnX5iy6RlOSsdHviiII7%2BeRzIo9W6DbNaLb0cUGus33V9cj0EC3ZWyHnd%2BYVl%2F1lA8yUt84gwLMgMrI6QHmzlHVww0wuxRghlBQXHDXCZxEiPGfeB6Uz1rq8aTL6jkcLNqjyi6l%2BqtmCt6IjycqLkSQgROkd58nB0poqM%2BTYoJ44FoJnDCIAR12yAU7X4oaDyNqfDhhJrp1FMmIWQoan8oY8IgPnDgAjC0hoMBqKSa%2FRvrUFIruqEYIeHQHThioU8JlYMXWrpuQ%2F0Q1VvD6T7jkUWm9VNd8MWhsKu%2BUUH300Mp63oAFtJBeMiP2t7SIb9mdXMTpQoTImULSkR36l1t7fWVM3DOMPmrkmMekrd65Tc6ecFHzg7iLryXjbCk2rkznOj023jkbd7ixcclIXIqNn66HtXcqvtj4WCy%2BnkV5mMXL6tFKEXJtJt7heNEeIR9Ti03VZMFbdW0aov6yDMpDIabgYYr2SmvToBIm5cOR8Ea0fIpooWNI71pqsCCGTxEtxQzx8Ua0fOo3NeSsmyP4wu9mbUqKTw2n1BMGr%2BnDR%2F6RkoJISXF0KykTMnQUI6S9D%2FEpKRPpYHrKucHFFB7O16aYTMjwUc0UvI0aJqLhk0fRgpiCiim%2B7sZ0E4ryqGYKXlPH5E0lKD8YN1daVVZjpIfKI5VHevA2vJz4wsV%2FBW2lNExFkmf2vrH4zd%2B2C%2FIn219SZzM3n9u52gryHyeT1ygAL6aIc7%2FogOdn%2Ffzb1%2FD7ajr5kPurLz8efn825n%2B%2FkXm3vKTk3JS9uCuqRak3lLTbuvDe%2F1Yp%2F8ObvLp%2BpWLBFvBp%2FUf%2BLdVULv5V7FDrb9v%2BBbZZ%2BNVp9vKWVbK7JYmFT%2FENdQvwLCoZL%2F9htpLG3ejaHr3zszJJOYny8rzZsydIorLdWvl2Vv6FPXDmtcC0u62KOIlzplutsnzj68UDevEQH6oJZl0HOK8OcDJPszhfH2Sp1LVHN4uyRczPI68fLvkqKZr8fPb36rxW7P4rX0RFu%2B1252IdcfSPQRHedx%2F%2BMsrmzQ9Wx5A9REwNiMp1XC34UbUH9Y%2FqLN4V1eVYVFUG9emXe5S7h0F71ot09RAFq3KJojwvGwpZxk%2F1FYrmQVzeEemqvWiP0TRPw%2B9R8c%2B9p8s2bgpZh%2FrDjqxE3uN9XERfmC5SbnvMguU20PKNbH%2B5ZrOj%2FjRqzdcKmG8kJQ8zN%2FJnlQK0Wy7gW1Pb8%2FaR7YCygMnOvMYxHxq4oYxYvkQbsXm2kHJ8if7YD5vSt3udaPzf6PQSFC3j%2F0yDV4i8aAkZe3RfbCUoUqEXvcdUgaLMqj%2BoAmUvkwZZgCI9YtEDTfUnB5n5e2%2FTQZefSI%2FcFH3JtepUQWaapgkMZchxqAop5yw6kYuQ2KBCN1HweA3335SDdhrKDx2gxwQBBBQgvbsyQj2DLIBWnq8cIF3daQY1I0d66KI%2BQrnhWnLD1cBl0hMuYA8kUTmhxPAT6YJXOxGVE5pDjJkupnnGXCz5k1bUXYgvJ%2FIFXHmBkwaACgLiCaj103uWH5jGawJUVL9ugLS3IT7zxxQjPnUQnNI5cWHFPWM2p1ySxFAPYeU0rICHecCEwRKxQtVs2JDC8220IcUipChGioUYKbIqJJB80j%2FkeZba0kq%2FhPdVXLx%2FQmmYzpfFbs7oqM12nIRpvd%2F%2FVnEpNdHqoZr0a8TzUvyqVMmZJOW0TohM0mJvQuOeM%2FmaBYs8COsk0cPST5dBzBNkj%2Fvtq6BMiz5gEaflB9rsVb6wi1lcHv46E7Y%2B2mmShsFd9JZt%2BVwnhD5F82WVBTYaXzWnXMncdTqv5yqXv1r%2F4SZMV4vmyeiy%2Fd8fe45%2FlrmJ7ILtyT7ezo6tz3qSVZe8PsViVbCVj5Ly9ca9Ue7H3htZdBdks2r%2FZbKqPsDeb95E9XqF0eqplbC8vh8fqv1%2FYvJWvttMvM3r4yj5lXE5s6rvntZHNbI%2FYE6jvb29tcJwJEl5nHlTz4VKozU9960rPMTPnEhryfI1QMB9XY1TW7WIELl7FMY%2F%2FiOdfmOPxvi2FM1cfvMUaSXcLSaaAzFmZUJ4zsStRMPHgMt0fXNtL0J9%2BMXGnzaPa%2FvGLTNsMyaF%2BcadO2NP8PqQ%2BENgvlqsCcbh%2FxAXGx%2Bqa0FqoC3T5Jlhd3kf%2F28VVe%2Brp0ZSHjVD4VZuf7AxId4oBaT%2BQfY%2BiOuSgHpjEYX3Cybud3GUv337Fuwhec2eUOWCX3csH1uo8jSqCoB1Hn%2FxvIzaJa0v2sZjsVzwovqYeL3Zyq65xXjJd7pNs3m7oM0SNEQt2Vf9PrvJGfGz%2FCCi1Rtn8UMrltVB3wfzZS6TJvYXpgNkecd6lGcbR4tZsyrVyRTZKixWFZD%2F78t%2FfltLQP33tQjkTFFINislfqoVhQ3NoSV38xUhW8qdL4nmzY2w8SCo1jD5R6k7f2cI%2FWcveRlvrtnGCkkWjf2fLRh7sZjmy%2FpxJdn0L3ZzpbPVxlO7MdpK9JTevvKFY1p2Y9Gp%2FfXP9YoFTdFK85hNmKmQtwdj1cdQ%2BnKva60B4kg2btiXv3FLbdnad2AP41kQ%2BbfSh7EX%2BtFUUZ2Bv%2FMsdoxJzyexbQE9ibm9JnkS933wmpbswfuLoDzfxuF9XNOnflLUqGgAXe9TzWQvX8wZOeoSs4X0GSrTGCs0b5TQVVWUa%2Ba2390qrskadM3vcCRVqNpk8baK8Cql155sS%2B8b05J4g1yJ%2BJrG%2BHTx%2Fe3W%2B%2Fk%2FS%2BuPwP3r9tOv326egtVnWez7I9MrFjfv2HVk5BKuFI0FGp1ek9VzLJDEoyQIYLfhslshxcStb5jU20NLbDVZcrEXu2RQUZYyR%2FqLRVkvCPYeUg2iKkt%2BfJYgUlSW9aJ3vbfTvI%2BEdADxDHVZ8uMRM4niJU3uAAvXAVDlnIVZ8uOjxCKNQLGPAgqYMFii1kIEGThBeldmKWiCLBcaUS8hgpyLIF022hk6YsuPR6yeoNKssxVPAOBloltBkfg%2FqXjijICZDEtFcah2HJ2K0nv0D9hjyRUhQgg5F0Kc4xACJwyiwhpUwQhqh40NLLZu7cSlcUD6wFLfyMPRTVxTuPabvZDXzY5BGiIbo3M1RN7pVfxih%2BS9lmLPDsniVT6sdfa7LAueN3ZoxHr9zUJn7Z1UEF7Z86HvB3in%2FLVE1cfQM87I3mZpmbCx3j0Llvef0llU7vH%2F) Ajout de la table login attempt et simplification des commentaires\r\n\r\nLe gros changement par rapport \u00e0 ma structure actuelle est l'utilisation d'une table \"Content\" qui permet de repr\u00e9senter un contenu et d'\u00e9viter les relations polymorphiques.\r\n\r\n## Questions : \r\n\r\n- Est-ce qu'on s\u00e9pare l'historique du visionnage et la watchlist (\u00e0 regarder plus tard). Sur cette version j'utilise un bool\u00e9en \"watched\" car je pense qu'un contenu ne peut \u00eatre \u00e0 la fois vu et \u00e0 regarder plus tard.\r\n- Les notifications vont \u00eatre un probl\u00e8me (relation polymorphique)\r\n- Est-ce qu'on laisse les commentaire sans compte utilisateur ? \r\n",
+        "labels": null
+    },
+    {
+        "title": "Non Commercial LICENSE",
+        "body": "je propose cette license :\r\n\r\n[Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)\r\n\r\n# You are free to:\r\n  *  Share \u2014 copy and redistribute the material in any medium or format\r\n   * Adapt \u2014 remix, transform, and build upon the material \r\n\r\n# under the following terms : \r\n   *  Attribution \u2014 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\r\n\r\n   *  NonCommercial \u2014 You may not use the material for commercial purposes.\r\n\r\n   *  ShareAlike \u2014 If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\r\n\r\n   * No additional restrictions \u2014 You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "#Homepage Header / Votre Parcours",
+        "body": "https://www.figma.com/file/Gi73ZypyKWAukwNBfu1aPW/Site-Copy?node-id=21%3A2",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Couleurs accessibles",
+        "body": "Il y a des probl\u00e8mes d'accessibilit\u00e9s au niveau des couleurs.\r\n\r\nPar exemple pour le main menu:\r\nhttps://color.review/check/5F6461-252827\r\n\r\nPour les cards aussi avec le nombre de videos et longueur de video.\r\nhttps://color.review/check/919191-F9F9F9\r\n\r\nCa doit \u00eatre pareil pour les badges \"facile\", \"difficile\", etc. \r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "ID\u00c9E : Inscription et type de profil",
+        "body": "Je ne sais pas trop comment formul\u00e9 \u00e7a et je me doute que \u00e7a va ajouter, un peu de complexit\u00e9. Mais l'id\u00e9e serait en deux ou trois mots que d\u00e8s l'inscription l'on puisse choisir son type de profil. J'en vois 2 qui me viennent \u00e0 l'esprit pour le moment : \r\n- Profil simple consommateur\r\n- Profil \u00e9tudiant/pro/Sp\u00e9cifique orient\u00e9 sur une techno ou objectif particulier\r\n\r\nLe premier c'est un compte normal tout ce qu'il y a de plus classique. \r\nLe second, l'inscription serait un poil plus longue et on aurait diff\u00e9rents choix pour ensuite \u00eatre mieux orient\u00e9 sur le site avec des mises en avant des contenus qui correspondent \u00e0 nos attentes. \r\nPar exemple on pourrait imaginer un objectif \"simple\" : Je souhaite \u00eatre capable de cr\u00e9er un site web et l\u2019h\u00e9berger par moi m\u00eame.  \r\nDe l\u00e0 ensuite sur la homepage (qui serait plus en fait une page perso) on aurait une sorte d'arbre de tutos/formations \u00e0 suivre pour arriver \u00e0 cet objectif. \r\nLe but n'\u00e9tant pas de faire quelque chose d'ultra pouss\u00e9 mais de r\u00e9pondre d\u00e8s l'inscription \u00e0 l'une des probl\u00e9matiques cit\u00e9es dans ton README sur les probl\u00e8mes d'organisation / d'UX.\r\n\r\nC'est un peu fichu en vrac comme \u00e7a et c'est assez mal construit dans mon esprit mais \u00e7a peut donner une base \u00e0 d'autre id\u00e9e qui iraient dans ce sens. ",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Factures",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Edition Profil",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Home Profil",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Single blog",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Blog",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Rappel du mot de passe",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Inscription",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Login",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Single Tutoriel (dans une formation)",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Single Formation",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Page Formations",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Single Tutoriel",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Page d'un langage",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Page tutoriels",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Forum > Forum",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Forum > Homepage",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Forum > Sujet",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Live",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Contact",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : A propos",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Politique de confidentialit\u00e9s",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Homepage",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Carte Tutoriel",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "DESIGN : Carte Formation",
+        "body": "L'objectif est de cr\u00e9er une carte pour repr\u00e9senter une formation. Cette carte serait repris dans les diff\u00e9rents listings. Pour moi les informations importantes sont \r\n\r\n- La technologie / sujet de la formation\r\n- Le nombre de vid\u00e9o / chapitres\r\n- La dur\u00e9e de la formation\r\n- Le niveau n\u00e9cessaire pour suivre la formation (est-ce que si je d\u00e9bute dans la techno je peux suivre la formation ?)",
+        "labels": null
+    },
+    {
+        "title": "Quel langage / framework choisir ?",
+        "body": "La question se posera au moment du d\u00e9veloppement mais pour le moment j'h\u00e9site entre Laravel / Symfony et Rails.\r\n\r\n## Ruby on Rails\r\n\r\nJ'aime le langage et je trouve que le framework permet d'avancer rapidement et offre de bons outils. En revanche, le code peut rapidement \u00eatre difficile \u00e0 parcourir \u00e0 cause du m\u00e9ta-programming qui est fr\u00e9quent dans le framework et pas s\u00fbr que tout le monde soit en mesure de participer dans ce choix technique.\r\n\r\n**Avantages**\r\n- Tests unitaires avec rspec\r\n- Code facile \u00e0 lire et \u00e0 \u00e9crire\r\n- Moteur de template slim\r\n\r\n**Inconv\u00e9nients**\r\n- Performance \u00e0 surveiller\r\n- L'ORM qui engendre des \"fat model\"\r\n- Je n'ai pas autant d'exp\u00e9rience qu'avec PHP\r\n- Absence de typage \r\n- Le meta programming est \u00e0 double tranchant \r\n\r\n## Symfony\r\n\r\nJ'aime bien l'approche Data Mapper de l'ORM Doctrine fournit dans le framework mais il a de nombreuses limitations qui bloquent assez rapidement (relation polymorphique, hydratation des liaisons pas forc\u00e9ment \u00e9vidente...) du coup j'ai peur de perdre un temps consid\u00e9rable sur cette partie l\u00e0. \r\n\r\n**Avantages**\r\n- Facile de trouver des personnes pour collaborer\r\n- Code bien s\u00e9par\u00e9 au niveau de la couche base de donn\u00e9es par d\u00e9faut\r\n- Moteur de template Twig\r\n\r\n**Inconv\u00e9nients** \r\n- Code en g\u00e9n\u00e9ral plus long qu'avez les autres frameworks\r\n- L'ORM risque d'\u00eatre limitant rapidement\r\n\r\n## Laravel\r\n\r\nJ'aime bien le code (un peu comme pour rails) mais d'exp\u00e9rience le code devient rapidement difficile \u00e0 g\u00e9rer au niveau des Model qui finissent pas englober pas mal de logique (relation, persistance, mutateurs...).\r\n\r\n**Avantages**\r\n- Code facile \u00e0 \u00e9crire / lire\r\n- L'ORM contient les fonctions n\u00e9cessaire au site\r\n\r\n**Inconv\u00e9nients**\r\n- L'ORM qui engendre des \"fat model\"\r\n- Il faudra penser \u00e0 \u00e9viter d'utiliser les fa\u00e7ades \r\n- Les mises \u00e0 jours peuvent \u00eatre difficiles\r\n\r\n## Le reste ?\r\n\r\nEvidemment il existe d'autres frameworks / langage mais je pr\u00e9f\u00e8re rester sur qqchose que je maitrise pour cr\u00e9er un code propre ce coup ci ;) ",
+        "labels": null
+    }
+]

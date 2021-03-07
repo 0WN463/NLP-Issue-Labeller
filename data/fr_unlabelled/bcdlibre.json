@@ -1,0 +1,182 @@
+[
+    {
+        "title": "Lorsqu'on supprime tous les exemplaires d'un livre, il est impossible de faire marche arri\u00e8re (crash)",
+        "body": "Lorsqu'on **supprime le dernier exemplaire** d'un livre **alors qu'il est en cours d'emprunt**, en cliquant sur le bouton \"-\" de la fiche (/item/view), un crash se produit dans la page appel\u00e9e (/item/new_copy). Le log contient cette erreur:\r\n\r\n> Error: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`bibliopuce`.`borrow`, CONSTRAINT `borrow_fk_item` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON UPDATE CASCADE)\r\n\r\nEnsuite, il est impossible de remettre un exemplaire de ce livre : la fiche existe toujours (table item_detail) mais l'enregistrement correspondant n'existe plus dans la table des exemplaires (table item). La base est alors dans un \u00e9tat incoh\u00e9rent - impossible de remettre un exemple de ce livre dans la base !\r\n\r\nE.\r\n",
+        "labels": null
+    },
+    {
+        "title": "Statistiques livres/nb d'emprunt",
+        "body": "il serait int\u00e9ressant de savoir combien de fois un livre \u00e0 \u00e9t\u00e9 emprunt\u00e9",
+        "labels": null
+    },
+    {
+        "title": "statistiques: liste emprunts par classe",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Bloquer certains livres",
+        "body": "quelques livres ne peuvent pas \u00eatre emprunt\u00e9s.",
+        "labels": null
+    },
+    {
+        "title": "l'utilisateur peut ajouter des DVD ou CD",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Emprunt en cours: nom emprunteur dans alerte dans le cas o\u00f9 le livre a d\u00e9j\u00e0  \u00e9t\u00e9 emprunt\u00e9",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Emprunt en cours: titre de l'item dans alerte dans le cas o\u00f9 l'emprunteur a d\u00e9j\u00e0 un ou x emprunts",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "backup distant SFTP ou mail sur serveur mairie ou serveur \u00e9ducation nationale",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "S\u00e9curiser/Limiter l'acc\u00e8s aux fonctions de gestion (login/password)",
+        "body": "- Utiliser un protocole \u00e9prouv\u00e9 comme OAuth\r\n\r\n- Ne pas stocker les mots de passe en clair dans la base (quel algorithme de cryptage?)\r\n\r\n- Demander le mot de passe admin lors de l'installation et le m\u00e9moriser (afin de ne pas avoir le m\u00eame mdp admin dans toutes les installations du logiciel\r\n",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9velopper une interface graphique pour visualiser l'activit\u00e9 des lecteurs (log)",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9velopper une interface graphique pour charger une liste de lecteurs (format csv par exemple)",
+        "body": "- Sauvegarde pr\u00e9alable de l'existant\r\n\r\n- Gestion des doublons (effacer/remplacer)\r\n\r\n- Gestion des probl\u00e8mes de formats et des formats varibles (quelle colonne va dans quel champ de la table?)\r\n\r\nLe code d'import existe d\u00e9j\u00e0 - il est dans le programme batch \"load_class.js\" (il n'existe pas de batch pour Windows).",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9velopper une interface graphique pour sauvegarder les donn\u00e9es et restaurer les donn\u00e9es",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Le composant autocomplete de twitter doit \u00eatre remplac\u00e9 par un composant efficace/non bugg\u00e9",
+        "body": "- Bug lorsqu'il y a plus de 20 r\u00e9sultats\r\n\r\n- Complexit\u00e9 d'utilisation\r\n\r\n- Probl\u00e8me de performances avec des requ\u00eates \"LIKE %%\"\r\n\r\nVoir ce composant qui est un bon candidat: [https://github.com/Pixabay/JavaScript-autoComplete](https://github.com/Pixabay/JavaScript-autoComplete)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Am\u00e9liore les modules list_record/search_record ainsi que leurs templates ejs (pagination)",
+        "body": "L'affichage d'une liste ou d'un resultat de recherche ne doit pas afficher tous les r\u00e9sultats d'un coup : il faut en afficher un nombre raisonnable (25?) et permettre de naviguer (page suivante, page pr\u00e9c\u00e9dente) dans les r\u00e9sultats.\r\n",
+        "labels": null
+    },
+    {
+        "title": "MySQL doit \u00eatre remplac\u00e9 par MariaDB (version 10.1.26)",
+        "body": "- A faire sur Windows ET Linux (\u00e0 ce jour Debian 9 utilise MariaDB 10.1.26 : [https://packages.debian.org/fr/stretch/mariadb-server](https://packages.debian.org/fr/stretch/mariadb-server))\r\n\r\n- Permet d'utiliser des AUTO_INCREMENT sur table transactionnelle (XTraDB/InnoDB) et de supprimer les tables de recherche qui sont suffix\u00e9es par _search: item_detail_search, user_search) ainsi que les triggers de synchronisation entre les tables et leurs tables _search associ\u00e9e.",
+        "labels": null
+    },
+    {
+        "title": "Le setup Windows doit \u00eatre am\u00e9lior\u00e9 et automatis\u00e9",
+        "body": "* Utiliser un programme de setup complet de type Windows Installer/NSIS/etc...\r\n* Int\u00e9grer les logiciels tiers comme MySQL/MariaDB\r\n",
+        "labels": null
+    },
+    {
+        "title": "MySQL server must NOT use SQL_MODE = 'ONLY_FULL_GROUP_BY'",
+        "body": "BCDLibre uses MySQL extensions to \"GROUP BY\" ; as such it's not compatible with option 'ONLY_FULL_GROUP_BY' in SQL_MODE.\r\n\r\nSee https://dev.mysql.com/doc/refman/5.5/en/sql-mode.html#sqlmode_only_full_group_by\r\n\r\n=> setup must configure MySQL to remove ONLY_FULL_GROUP_BY option\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Installation sous Linux Ubuntu >= 14.04",
+        "body": "L'installation, telle que d\u00e9crite dans le fichier _Markdown_ ne semble pas fonctionner.\r\nEst-elle \u00e0 jour ou faut-il pr\u00e9voir des dispositions sp\u00e9cifiques pour une distribution (Linux) donn\u00e9e ?",
+        "labels": null
+    },
+    {
+        "title": "Lorsqu'on supprime tous les exemplaires d'un livre, il est impossible de faire marche arri\u00e8re (crash)",
+        "body": "Lorsqu'on **supprime le dernier exemplaire** d'un livre **alors qu'il est en cours d'emprunt**, en cliquant sur le bouton \"-\" de la fiche (/item/view), un crash se produit dans la page appel\u00e9e (/item/new_copy). Le log contient cette erreur:\r\n\r\n> Error: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`bibliopuce`.`borrow`, CONSTRAINT `borrow_fk_item` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON UPDATE CASCADE)\r\n\r\nEnsuite, il est impossible de remettre un exemplaire de ce livre : la fiche existe toujours (table item_detail) mais l'enregistrement correspondant n'existe plus dans la table des exemplaires (table item). La base est alors dans un \u00e9tat incoh\u00e9rent - impossible de remettre un exemple de ce livre dans la base !\r\n\r\nE.\r\n",
+        "labels": null
+    },
+    {
+        "title": "Statistiques livres/nb d'emprunt",
+        "body": "il serait int\u00e9ressant de savoir combien de fois un livre \u00e0 \u00e9t\u00e9 emprunt\u00e9",
+        "labels": null
+    },
+    {
+        "title": "statistiques: liste emprunts par classe",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Bloquer certains livres",
+        "body": "quelques livres ne peuvent pas \u00eatre emprunt\u00e9s.",
+        "labels": null
+    },
+    {
+        "title": "l'utilisateur peut ajouter des DVD ou CD",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Emprunt en cours: nom emprunteur dans alerte dans le cas o\u00f9 le livre a d\u00e9j\u00e0  \u00e9t\u00e9 emprunt\u00e9",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Emprunt en cours: titre de l'item dans alerte dans le cas o\u00f9 l'emprunteur a d\u00e9j\u00e0 un ou x emprunts",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "backup distant SFTP ou mail sur serveur mairie ou serveur \u00e9ducation nationale",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "S\u00e9curiser/Limiter l'acc\u00e8s aux fonctions de gestion (login/password)",
+        "body": "- Utiliser un protocole \u00e9prouv\u00e9 comme OAuth\r\n\r\n- Ne pas stocker les mots de passe en clair dans la base (quel algorithme de cryptage?)\r\n\r\n- Demander le mot de passe admin lors de l'installation et le m\u00e9moriser (afin de ne pas avoir le m\u00eame mdp admin dans toutes les installations du logiciel\r\n",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9velopper une interface graphique pour visualiser l'activit\u00e9 des lecteurs (log)",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9velopper une interface graphique pour charger une liste de lecteurs (format csv par exemple)",
+        "body": "- Sauvegarde pr\u00e9alable de l'existant\r\n\r\n- Gestion des doublons (effacer/remplacer)\r\n\r\n- Gestion des probl\u00e8mes de formats et des formats varibles (quelle colonne va dans quel champ de la table?)\r\n\r\nLe code d'import existe d\u00e9j\u00e0 - il est dans le programme batch \"load_class.js\" (il n'existe pas de batch pour Windows).",
+        "labels": null
+    },
+    {
+        "title": "D\u00e9velopper une interface graphique pour sauvegarder les donn\u00e9es et restaurer les donn\u00e9es",
+        "body": "",
+        "labels": null
+    },
+    {
+        "title": "Le composant autocomplete de twitter doit \u00eatre remplac\u00e9 par un composant efficace/non bugg\u00e9",
+        "body": "- Bug lorsqu'il y a plus de 20 r\u00e9sultats\r\n\r\n- Complexit\u00e9 d'utilisation\r\n\r\n- Probl\u00e8me de performances avec des requ\u00eates \"LIKE %%\"\r\n\r\nVoir ce composant qui est un bon candidat: [https://github.com/Pixabay/JavaScript-autoComplete](https://github.com/Pixabay/JavaScript-autoComplete)\r\n",
+        "labels": null
+    },
+    {
+        "title": "Am\u00e9liore les modules list_record/search_record ainsi que leurs templates ejs (pagination)",
+        "body": "L'affichage d'une liste ou d'un resultat de recherche ne doit pas afficher tous les r\u00e9sultats d'un coup : il faut en afficher un nombre raisonnable (25?) et permettre de naviguer (page suivante, page pr\u00e9c\u00e9dente) dans les r\u00e9sultats.\r\n",
+        "labels": null
+    },
+    {
+        "title": "MySQL doit \u00eatre remplac\u00e9 par MariaDB (version 10.1.26)",
+        "body": "- A faire sur Windows ET Linux (\u00e0 ce jour Debian 9 utilise MariaDB 10.1.26 : [https://packages.debian.org/fr/stretch/mariadb-server](https://packages.debian.org/fr/stretch/mariadb-server))\r\n\r\n- Permet d'utiliser des AUTO_INCREMENT sur table transactionnelle (XTraDB/InnoDB) et de supprimer les tables de recherche qui sont suffix\u00e9es par _search: item_detail_search, user_search) ainsi que les triggers de synchronisation entre les tables et leurs tables _search associ\u00e9e.",
+        "labels": null
+    },
+    {
+        "title": "Le setup Windows doit \u00eatre am\u00e9lior\u00e9 et automatis\u00e9",
+        "body": "* Utiliser un programme de setup complet de type Windows Installer/NSIS/etc...\r\n* Int\u00e9grer les logiciels tiers comme MySQL/MariaDB\r\n",
+        "labels": null
+    },
+    {
+        "title": "MySQL server must NOT use SQL_MODE = 'ONLY_FULL_GROUP_BY'",
+        "body": "BCDLibre uses MySQL extensions to \"GROUP BY\" ; as such it's not compatible with option 'ONLY_FULL_GROUP_BY' in SQL_MODE.\r\n\r\nSee https://dev.mysql.com/doc/refman/5.5/en/sql-mode.html#sqlmode_only_full_group_by\r\n\r\n=> setup must configure MySQL to remove ONLY_FULL_GROUP_BY option\r\n\r\n",
+        "labels": null
+    },
+    {
+        "title": "Installation sous Linux Ubuntu >= 14.04",
+        "body": "L'installation, telle que d\u00e9crite dans le fichier _Markdown_ ne semble pas fonctionner.\r\nEst-elle \u00e0 jour ou faut-il pr\u00e9voir des dispositions sp\u00e9cifiques pour une distribution (Linux) donn\u00e9e ?",
+        "labels": null
+    }
+]

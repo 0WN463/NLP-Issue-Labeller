@@ -1,4 +1,4 @@
 {
 	"repo": "rust-lang/rust", 
-	"desired_labels": ["C-bug", "C-discussion", "C-feature-enhancement", "C-feature-request", "T-doc"]
+	"desired_labels": ["C-bug", "C-discussion", "C-enhancement", "C-feature-accepted", "C-feature-request", "T-doc"]
 }

@@ -46,12 +46,18 @@ for dic in arr:
     print(f"Scraping {repo}...")
 
     target_labels = dic['desired_labels']
+
+    if len(target_labels) == 0:
+        target_labels = [None]
+
     user, repo = repo.split('/')
     arr = []
     for label in target_labels:
         page = 0
-        print(label)
-        payload['labels'] = label
+        if label:
+            print(label)
+            payload['labels'] = label
+
         while True:
             if rate_left == 0:
                 print("Used up limit. Sleeping...")
