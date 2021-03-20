@@ -1,4 +1,4 @@
-# CS4248 Natural Language Process Project
+# CS4248 Natural Language Processing Project
 
 ## ML Model Logs
 Please refer to this Google Doc [https://docs.google.com/document/d/1gbVSwV-hOVDH6KOhZyQZVdEpqOnWA63lkSm7FQlKa70/edit](https://docs.google.com/document/d/1gbVSwV-hOVDH6KOhZyQZVdEpqOnWA63lkSm7FQlKa70/edit) for current model performance.
