@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import GradientBoostingClassifier
 
 def load_pickle(filename):
     retrieved_df = pd.read_pickle(filename)
@@ -21,10 +22,32 @@ def load_pickle(filename):
     
     return processed_X, retrieved_df['Label']
 
+def combine_pickles(file1, file2, file3):
+    # df_y is the same 
+    df_X1, df_y = load_pickle(file1)
+    df_X2, df_y = load_pickle(file2)
+    df_X3, df_y = load_pickle(file3)
+    
+    new_X = []
+    for i in range(len(df_y)):
+        new_X.append(df_X1[i] + df_X2[i] + df_X3[i])
+    
+    return new_X, df_y
+
 def main():
     # Load data
-    df_X, df_y = load_pickle(filename="../pickles/word_count_vectors.pkl")
+    # df_X, df_y = load_pickle(filename="../pickles/text_embeddings.pkl")
+    df_X, df_y = combine_pickles(file1="../pickles/text_embeddings.pkl", 
+        file2="../pickles/title_embeddings.pkl", 
+        file3="../pickles/word_count_vectors.pkl")
     
+    #### analysis #####
+    # print(pd.Series(df_y).value_counts())
+    # RESULT:
+    # 1    33842 (bug)
+    # 0    16926 (feature)
+    # 2     3382 (doc)
+
     # Train-Test split 
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
     training_length = math.ceil(len(df_X) * 0.8)
@@ -34,7 +57,9 @@ def main():
     y_test = df_y[training_length:]
     
     # Training
-    model = LogisticRegression(C=1.3, max_iter=500)
+    model = LogisticRegression(C=1.3, max_iter=2000)
+    # model = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0,
+        # max_depth=1, random_state=0)
     print("Training model now...")
     print("X_train length: ", len(X_train))
     # print("10 examples of X_train: ", X_train[:10])
