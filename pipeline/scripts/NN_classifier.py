@@ -1,5 +1,7 @@
 #!/usr/bin/env python.
 
+import os
+from dotenv import load_dotenv
 import math
 import numpy as np
 import pandas as pd
@@ -7,10 +9,12 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 import tensorflow as tf
 
-TEXT_EMBEDDINGS_FILE = "../pickles/text_embeddings.pkl"
-TITLE_EMBEDDINGS_FILE = "../pickles/title_embeddings.pkl"
-WORD_COUNT_VECTORS_FILE = "../pickles/word_count_vectors.pkl"
-HANDCRAFTED_FEATURES_FILE = "../pickles/handcrafted_features.pkl"
+load_dotenv()
+ROOT = os.environ.get("ROOT")
+TEXT_EMBEDDINGS_FILE = f"{ROOT}/pipeline/pickles/text_embeddings.pkl"
+TITLE_EMBEDDINGS_FILE = f"{ROOT}/pipeline/pickles/title_embeddings.pkl"
+WORD_COUNT_VECTORS_FILE = f"{ROOT}/pipeline/pickles/word_count_vectors.pkl"
+HANDCRAFTED_FEATURES_FILE = f"{ROOT}/pipeline/pickles/handcrafted_features.pkl"
 
 def load_pickle(filename):
     retrieved_df = pd.read_pickle(filename)

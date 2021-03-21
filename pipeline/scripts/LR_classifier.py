@@ -1,17 +1,21 @@
 #!/usr/bin/env python.
 
+import os
 import math
 import numpy as np
 import pandas as pd
+from dotenv import load_dotenv
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier
 
-TEXT_EMBEDDINGS_FILE = "../pickles/text_embeddings.pkl"
-TITLE_EMBEDDINGS_FILE = "../pickles/title_embeddings.pkl"
-WORD_COUNT_VECTORS_FILE = "../pickles/word_count_vectors.pkl"
-HANDCRAFTED_FEATURES_FILE = "../pickles/handcrafted_features.pkl"
+load_dotenv()
+ROOT = os.environ.get("ROOT")
+TEXT_EMBEDDINGS_FILE = f"{ROOT}/pipeline/pickles/text_embeddings.pkl"
+TITLE_EMBEDDINGS_FILE = f"{ROOT}/pipeline/pickles/title_embeddings.pkl"
+WORD_COUNT_VECTORS_FILE = f"{ROOT}/pipeline/pickles/word_count_vectors.pkl"
+HANDCRAFTED_FEATURES_FILE = f"{ROOT}/pipeline/pickles/handcrafted_features.pkl"
 
 def load_pickle(filename):
     retrieved_df = pd.read_pickle(filename)
@@ -47,6 +51,7 @@ def combine_pickles(files):
 def main():
     # Load data
     # df_X, df_y = load_pickle(filename="../pickles/handcrafted_features.pkl")
+    print("Combining pickles...")
     df_X, df_y = combine_pickles([TEXT_EMBEDDINGS_FILE, TITLE_EMBEDDINGS_FILE, WORD_COUNT_VECTORS_FILE])
     
     #### Analysis #####

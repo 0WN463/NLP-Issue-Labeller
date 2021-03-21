@@ -2,3 +2,5 @@ secret.key
 node_modules
 .ipynb_checkpoints/
 pipeline/pickles/dataframe.pkl
+.idea
+.env
