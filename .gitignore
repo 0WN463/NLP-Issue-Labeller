@@ -4,3 +4,5 @@ node_modules
 pipeline/pickles/dataframe.pkl
 .idea
 .env
+logs
+.DS_Store
