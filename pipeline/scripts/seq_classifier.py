@@ -100,6 +100,21 @@ def load_model(load_path, test_dataset):
 
     return trainer
 
+def pretty_dict(dict):
+    """ Returns a pretty string version of a dictionary.
+    """
+    result = ""
+    for key, value in dict.items():
+        key = str(key)
+        value = str(value)
+        if len(value) < 40:
+            result += f'{key}: {value} \n'
+        else:
+            result += f'{key}: \n' \
+                      f'{value} \n'
+    return result
+
+
 def main():
     print("Preparing data...")
     # Setting seeds to control randomness
@@ -151,7 +166,7 @@ def main():
     trainer.save_model(SAVE_DIR)
     tokenizer.save_pretrained(SAVE_DIR)
     data_file = open(f'{SAVE_DIR}/data.txt', "w+")
-    data_file.write(info)
+    data_file.write(pretty_dict(info))
     data_file.close()
 
 
