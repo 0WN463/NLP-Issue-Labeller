@@ -18,7 +18,7 @@ LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/"  # load pre-traine
 DEVICE = torch.device("cpu")  # "cpu/cuda"
 
 HP = {  # hyperparameters
-    "train_test_split": 0.8,
+    "train_test_split": 0.999,  #0.8
     "num_train_epochs": 3,
     "per_device_train_batch_size": 16,
     "per_device_eval_batch_size": 64,
@@ -50,8 +50,9 @@ def load_pickle(filename):
 
 
 def compute_metrics(pred):
-    ''' Argument for Trainer. '''
-    acc = accuracy_score(pred.label_ids, pred.predictions)
+    labels = pred.label_ids
+    preds = pred.predictions.argmax(-1)
+    acc = accuracy_score(labels, preds)
     return {
         'accuracy': acc,
     }
@@ -59,6 +60,7 @@ def compute_metrics(pred):
 def train_model(train_dataset, test_dataset):
     print("Training model...")
     model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
+    model.to(DEVICE)
 
     training_args = TrainingArguments(
         output_dir=SAVE_DIR,  # output directory
@@ -97,6 +99,21 @@ def load_model(load_path, test_dataset):
     )
 
     return trainer
+
+def pretty_dict(dict):
+    """ Returns a pretty string version of a dictionary.
+    """
+    result = ""
+    for key, value in dict.items():
+        key = str(key)
+        value = str(value)
+        if len(value) < 40:
+            result += f'{key}: {value} \n'
+        else:
+            result += f'{key}: \n' \
+                      f'{value} \n'
+    return result
+
 
 def main():
     print("Preparing data...")
@@ -149,7 +166,7 @@ def main():
     trainer.save_pretrained(SAVE_DIR)
     tokenizer.save_pretrained(SAVE_DIR)
     data_file = open(f'{SAVE_DIR}/data.txt', "w+")
-    data_file.write(info)
+    data_file.write(pretty_dict(info))
     data_file.close()
 
 

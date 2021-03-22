@@ -7,3 +7,4 @@ pipeline/pickles/dataframe.pkl
 logs
 .DS_Store
 results
+runs
