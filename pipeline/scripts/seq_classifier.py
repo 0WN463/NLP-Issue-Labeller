@@ -13,12 +13,12 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 SEQUENCE_FEATURES_FILE = f"{ROOT}/pipeline/pickles/sequence_features.pkl"
-SAVE_DIR = f"{ROOT}/results/seq_classifier"
-LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/"  # load pre-trained model. If non empty, will load model instead of training from scratch.
+SAVE_DIR = f"{ROOT}/results/"
+LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
 DEVICE = torch.device("cpu")  # "cpu/cuda"
 
 HP = {  # hyperparameters
-    "train_test_split": 0.999,  #0.8
+    "train_test_split": 0.8,
     "num_train_epochs": 3,
     "per_device_train_batch_size": 16,
     "per_device_eval_batch_size": 64,
@@ -60,8 +60,9 @@ def compute_metrics(pred):
 def train_model(train_dataset, test_dataset):
     print("Training model...")
     model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
-    model.to(DEVICE)
+    # model.to(DEVICE)
 
+    no_cuda = DEVICE == torch.device('cpu')
     training_args = TrainingArguments(
         output_dir=SAVE_DIR,  # output directory
         num_train_epochs=HP["num_train_epochs"],  # total number of training epochs
@@ -71,6 +72,7 @@ def train_model(train_dataset, test_dataset):
         weight_decay=HP["weight_decay"],  # strength of weight decay
         logging_dir='./logs',  # directory for storing logs
         logging_steps=HP["logging_steps"],
+        no_cuda=no_cuda,
     )
 
     trainer = Trainer(
@@ -88,12 +90,18 @@ def train_model(train_dataset, test_dataset):
 def load_model(load_path, test_dataset):
     print("Loading model...")
     model = DistilBertForSequenceClassification.from_pretrained(load_path, num_labels=3)
-    model.to(DEVICE)
+    # model.to(DEVICE)
+
+    no_cuda = DEVICE == torch.device('cpu')
+    training_args = TrainingArguments(  # no trg is done
+        output_dir=SAVE_DIR,
+        no_cuda=no_cuda
+    )
 
     trainer = Trainer(
         model=model,  # the instantiated 🤗 Transformers model to be trained
-        args=None,  # already trained
-        train_dataset=None,  
+        args=training_args,
+        train_dataset=None,
         eval_dataset=test_dataset,  # evaluation dataset
         compute_metrics=compute_metrics  # accuracy metric
     )
@@ -163,7 +171,7 @@ def main():
 
     # saving results and model
     print("Saving the good stuff...")
-    trainer.save_pretrained(SAVE_DIR)
+    trainer.save_model(SAVE_DIR)
     tokenizer.save_pretrained(SAVE_DIR)
     data_file = open(f'{SAVE_DIR}/data.txt', "w+")
     data_file.write(pretty_dict(info))
