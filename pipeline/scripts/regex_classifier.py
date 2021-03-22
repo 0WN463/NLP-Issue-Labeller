@@ -46,9 +46,10 @@ def main():
     X = []
     Y = []
     for x in data:
-        title, body, label = x  # TODO: try out body_text too
-        X.append(title)
+        title, body, label = x
+        # X.append(title)
         # X.append(body)
+        X.append(f"{title} {body}")
         Y.append(label)
 
     # Test split

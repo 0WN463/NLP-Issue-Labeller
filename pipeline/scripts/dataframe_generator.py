@@ -1,8 +1,12 @@
 #!/usr/bin/env python.
-
+import os
 import pandas as pd
+from dotenv import load_dotenv
 
 ###### This script generates /pickles/dataframe.pkl ######
+
+load_dotenv()
+ROOT = os.environ.get("ROOT")
 
 LABELS = {
     "feature": 0,
@@ -25,9 +29,9 @@ def standardise_df_labels(df, feature_labels, bug_labels, doc_labels):
 
 def main():
     # load data
-    df_tensorflow = pd.read_json('../../data/eng_labelled/code_text_split/tensorflow_text_code_split.json')
-    df_rust = pd.read_json('../../data/eng_labelled/code_text_split/rust_text_code_split.json')
-    df_kubernetes = pd.read_json('../../data/eng_labelled/code_text_split/kubernetes_text_code_split.json')
+    df_tensorflow = pd.read_json(f'{ROOT}/data/eng_labelled/code_text_split/tensorflow_text_code_split.json')
+    df_rust = pd.read_json(f'{ROOT}/data/eng_labelled/code_text_split/rust_text_code_split.json')
+    df_kubernetes = pd.read_json(f'{ROOT}/data/eng_labelled/code_text_split/kubernetes_text_code_split.json')
     
     # standardise dataframe labels
     df_tensorflow = standardise_df_labels(df_tensorflow, feature_labels=['type:feature'], 
@@ -46,7 +50,7 @@ def main():
     
     combined_df = pd.concat([df_tensorflow, df_rust, df_kubernetes], ignore_index=True)
     combined_df = combined_df.sample(frac=1, random_state=1) # seed randomisation
-    combined_df.to_pickle("../pickles/dataframe.pkl")
+    combined_df.to_pickle(f"{ROOT}/pipeline/pickles/dataframe.pkl")
 
 if __name__ == "__main__":
     main()

@@ -138,7 +138,7 @@ def main():
     X = []
     Y = []
     for x in data:
-        title, body, label = x  # TODO: try out body_text too
+        title, body, label = x
         X.append(title)
         # X.append(body)
         Y.append(label)
