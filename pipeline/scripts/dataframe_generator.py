@@ -11,16 +11,16 @@ LABELS = {
 }
 
 def standardise_df_labels(df, feature_labels, bug_labels, doc_labels):
-    for _, row in df.iterrows():
-        if row['labels'] in feature_labels:
-            row['labels'] = LABELS['feature']
-        elif row['labels'] in bug_labels:
-            row['labels'] = LABELS['bug']
-        elif row['labels'] in doc_labels:
-            row['labels'] = LABELS['doc']
+    def standardise(label):
+        if label in feature_labels:
+            return LABELS['feature']
+        elif label in bug_labels:
+            return LABELS['bug']
+        elif label in doc_labels:
+            return LABELS['doc']
         else:
-            print('Should not reach here')
-    df['labels'] = df['labels'].astype('int')
+            print("Should not reach here.")
+    df['labels'] = df['labels'].apply(standardise)
     return df
 
 def main():
