@@ -13,9 +13,10 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 SEQUENCE_FEATURES_FILE = f"{ROOT}/pipeline/pickles/sequence_features.pkl"
-SAVE_DIR = f"{ROOT}/results/"
-LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
-DEVICE = torch.device("cpu")  # "cpu/cuda"
+SAVE_DIR = f"{ROOT}/results/body"
+# LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
+LOAD_PATH = None
+DEVICE = torch.device("cuda")  # "cpu/cuda"
 
 HP = {  # hyperparameters
     "train_test_split": 0.8,
@@ -95,7 +96,8 @@ def load_model(load_path, test_dataset):
     no_cuda = DEVICE == torch.device('cpu')
     training_args = TrainingArguments(  # no trg is done
         output_dir=SAVE_DIR,
-        no_cuda=no_cuda
+        no_cuda=no_cuda,
+        logging_dir='./logs',  # directory for storing logs
     )
 
     trainer = Trainer(
@@ -136,8 +138,9 @@ def main():
     X = []
     Y = []
     for x in data:
-        title, _, label = x  # TODO: try out body_text too
+        title, body, label = x  # TODO: try out body_text too
         X.append(title)
+        # X.append(body)
         Y.append(label)
 
     # Train-Test split

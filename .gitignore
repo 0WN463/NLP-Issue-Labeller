@@ -8,3 +8,4 @@ logs
 .DS_Store
 results
 runs
+.python-version

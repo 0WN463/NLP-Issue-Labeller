@@ -4,7 +4,6 @@ cachetools==4.2.1
 certifi==2020.12.5
 chardet==4.0.0
 click==7.1.2
-dataclasses==0.8
 filelock==3.0.12
 flatbuffers==1.12
 gast==0.3.3
@@ -43,8 +42,6 @@ sklearn==0.0
 smart-open==4.2.0
 tensorboard==2.4.1
 tensorboard-plugin-wit==1.8.0
-tensorflow==2.4.1
-tensorflow-estimator==2.4.0
 termcolor==1.1.0
 threadpoolctl==2.1.0
 tokenizers==0.10.1
