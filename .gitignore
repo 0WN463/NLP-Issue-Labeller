@@ -6,3 +6,5 @@ pipeline/pickles/dataframe.pkl
 .env
 logs
 .DS_Store
+results
+runs
