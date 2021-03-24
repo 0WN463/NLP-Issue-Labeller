@@ -17,6 +17,7 @@ TITLE_EMBEDDINGS_FILE = f"{ROOT}/pipeline/pickles/title_embeddings.pkl"
 WORD_COUNT_VECTORS_FILE = f"{ROOT}/pipeline/pickles/word_count_vectors.pkl"
 HANDCRAFTED_FEATURES_FILE = f"{ROOT}/pipeline/pickles/handcrafted_features.pkl"
 TITLE_SENTENCE_EMBEDDINGS_FILE= f"{ROOT}/pipeline/pickles/title_sentence_embeddings.pkl"
+TEXT_SENTENCE_EMBEDDINGS_FILE= f"{ROOT}/pipeline/pickles/text_sentence_embeddings.pkl"
 
 def load_pickle(filename):
     retrieved_df = pd.read_pickle(filename)
@@ -53,7 +54,7 @@ def main():
     # Load data
     # df_X, df_y = load_pickle(filename="../pickles/handcrafted_features.pkl")
     print("Combining pickles...")
-    df_X, df_y = combine_pickles([TEXT_EMBEDDINGS_FILE, TITLE_EMBEDDINGS_FILE, WORD_COUNT_VECTORS_FILE, TITLE_SENTENCE_EMBEDDINGS_FILE])
+    df_X, df_y = combine_pickles([TEXT_EMBEDDINGS_FILE, TITLE_EMBEDDINGS_FILE, WORD_COUNT_VECTORS_FILE, TITLE_SENTENCE_EMBEDDINGS_FILE, TEXT_SENTENCE_EMBEDDINGS_FILE])
 
     #### Analysis #####
     # print(pd.Series(df_y).value_counts())
