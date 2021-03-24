@@ -12,7 +12,8 @@ from sentence_transformers import SentenceTransformer
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
-DEVICE = "cpu"  # "cpu/cuda"
+INPUT_COL = "text"  # [title, text]
+DEVICE = "cuda"  # "cpu/cuda"
 MODEL = 'distilbert-base-nli-stsb-mean-tokens'
 
 
@@ -32,37 +33,40 @@ def load_dataframe_from_pickle():
 
 def avg_sentence_embedding(paragraph, model):
     """ Returns average of the sentence embedding vectors in the paragraph. """
-    all_embeddings = []
-    for sentence in nltk.sent_tokenize(paragraph):
-        all_embeddings.append(model.encode(sentence))
-    avg_embedding_np = np.mean(np.array(all_embeddings), axis=0)
+    all_embeddings = model.encode(nltk.sent_tokenize(paragraph))
+    avg_embedding_np = np.mean(all_embeddings, axis=0)
     return avg_embedding_np
 
+def save_vector_array(vector_array, labels, filename):
+    save_df = pd.DataFrame(columns=['Feature', 'Label'])
+    save_df['Feature'] = pd.Series(vector_array)
+    save_df['Label'] = labels.values
+    save_df.to_pickle(filename)
 
 def main():
     df = load_dataframe_from_pickle()
     print("Done loading dataframe.")
 
     # Removing Markdown
-    df["title"] = df["title"].apply(lambda x: remove_markdown(x))
-    df["text"] = df["text"].apply(lambda x: remove_markdown(x))
+    df[INPUT_COL] = df[INPUT_COL].apply(lambda x: remove_markdown(x))
     print("Done with removing Markdown.")
 
     model = SentenceTransformer(MODEL, device=DEVICE)
-    title_embeddings_np = model.encode(df["title"].to_numpy())
-    text_embeddings = []
-    for _, para in df["text"]:
-        text_embeddings.append(avg_sentence_embedding(para, model))
-    text_embeddings_np = np.array(text_embeddings)
-    sent_embeddings = np.concatenate((title_embeddings_np, text_embeddings_np), axis=1)
+    sent_embeddings= []  # 1-D
+    if INPUT_COL == "title":
+        for _, sent in df["title"].items():
+            sent_embeddings.append(model.encode(sent))
+    elif INPUT_COL == "text":
+        for _, para in df["text"].items():
+            sent_embeddings.append(avg_sentence_embedding(para, model))
+    else:
+        raise NotImplementedError("Only supports embedding of title and text for now.")
     print("Done with sentence embeddings.")
 
-    print("Saving to pickle...")
-    filename = f"{ROOT}/pipeline/pickles/sentence_embedding.pkl"
-    outfile = open(filename, 'wb')
-    pickle.dump(sent_embeddings, outfile)
-    outfile.close()
-    print("Done with pickling.")
+    print("Saving feature vectors to disc...")
+    filename = f"{ROOT}/pipeline/pickles/{INPUT_COL}_sentence_embeddings.pkl"
+    save_vector_array(sent_embeddings, df['labels'], filename=filename)
+    print("Done with saving.")
 
 
 if __name__ == "__main__":
