@@ -34,7 +34,7 @@ def load_dataframe_from_pickle():
 def avg_sentence_embedding(paragraph, model):
     """ Returns average of the sentence embedding vectors in the paragraph. """
     all_embeddings = model.encode(nltk.sent_tokenize(paragraph))
-    avg_embedding_np = np.mean(all_embeddings, axis=0)
+    avg_embedding_np = np.nanmean(all_embeddings, axis=0) if not np.isnan(all_embeddings).all() else np.zeros(768)
     return avg_embedding_np
 
 def save_vector_array(vector_array, labels, filename):
