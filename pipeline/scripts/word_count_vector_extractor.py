@@ -1,11 +1,16 @@
 #!/usr/bin/env python.
 
+import os
 from collections import Counter
 import re
 import numpy as np
 import pandas as pd
+from dotenv import load_dotenv
 
 ###### This script generates /pickles/word_count_vectors.pkl ######
+
+load_dotenv()
+ROOT = os.environ.get("ROOT")
 
 LABELS = {
     "feature": 0,
@@ -92,7 +97,7 @@ def top_words_in_categories(n, m, sentences, labels):
     return set(most_common_feature + most_common_bug + most_common_doc)
 
 def load_dataframe_from_pickle():
-    retrieved_df = pd.read_pickle("../pickles/dataframe.pkl")
+    retrieved_df = pd.read_pickle(f"{ROOT}/pipeline/pickles/dataframe.pkl")
     return retrieved_df
 
 def save_vector_array(vector_array, labels, filename):
