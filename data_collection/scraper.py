@@ -10,18 +10,6 @@ for arg in sys.argv[1:]:
         j = json.load(f)
         arr.append(j)
 
-#target_repos = ['tensorflow/tensorflow']
-
-#target_labels = [
-#    'type:feature' ,
-#    'type:bug',
-#    'type:docs-feature',
-#    'type:docs-bug',
-#    'type:build/install',
-#    'type:performance',
-#    'type:support'
-#    ]
-
 with open('secret.key', 'r') as f:
     SECRET_TOKEN = f.read().strip()
 
@@ -69,7 +57,7 @@ for dic in arr:
             print("requesting page", page)
             if len(res.json()) == 0:
                 if page == 0:
-                    print("Warning: {label} returned no pages")
+                    print(f"Warning: {label} returned no pages")
                 break
             for dic in res.json():
                 if 'pull_request' not in dic:

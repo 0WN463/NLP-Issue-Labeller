@@ -1,4 +1,0 @@
-{
-	"repo": "kubernetes/kubernetes", 
-	"desired_labels": ["kind/api-change", "kind/bug", "kind/documentation", "kind/failing-test", "kind/feature", "kind/support"]
-}
