@@ -18,17 +18,23 @@ TRAIN_TEST_SPLIT = 0.8
 
 def bug_regex():
     ''' Returns regex to detect bug class. '''
-    return r"bug"
+    key_words = "(version|packages|line|file|model|core|import|source|local|device|error|build|return|unknown|backtrace|debug|bug|panic|test|what)"
+
+    return key_words
 
 
 def docs_regex():
     ''' Returns regex to detect doc class. '''
-    return r"doc"
+    key_words = "(issue|doc|example|version|define|model|guide|use|src|source|need|description|link|changing|api|)"
+
+    return key_words
 
 
 def features_regex():
     ''' Returns regex to detect feature class. '''
-    return r"feature"
+    key_words = "(feature|version|current|using|model|contrib|operation|type|would|use|unsupported|convert|information|system)"
+
+    return key_words
 
 
 def load_pickle(filename):
@@ -68,9 +74,9 @@ def main():
     Y_pred_np = np.empty(Y_test_np.shape)
     guesses = 0
     for idx, x in enumerate(X_test):
-        count = [len(re.findall(bug, x)),
-                 len(re.findall(docs, x)),
-                 len(re.findall(features, x))]  # bug, doc, feature counts
+        count = [len(re.findall(bug, x, re.IGNORECASE)),
+                 len(re.findall(docs, x, re.IGNORECASE)),
+                 len(re.findall(features, x, re.IGNORECASE))]  # bug, doc, feature counts
         if max(count) == 0:
             Y_pred_np[idx] = 0  # predicts bug (most common class) if there are no matches
             guesses += 1
