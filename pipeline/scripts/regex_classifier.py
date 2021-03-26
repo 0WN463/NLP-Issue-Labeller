@@ -18,6 +18,7 @@ TRAIN_TEST_SPLIT = 0.8
 
 def bug_regex():
     ''' Returns regex to detect bug class. '''
+    #key_words = "(version|src|error|packages|line|core|file|model|build|name|code|home|site|github|local|use|usr|test|bug|linux|source|import|node|using|type|run|device|master)"
     key_words = "(version|packages|line|file|model|core|import|source|local|device|error|build|return|unknown|backtrace|debug|bug|panic|test|what)"
 
     return key_words
@@ -25,6 +26,7 @@ def bug_regex():
 
 def docs_regex():
     ''' Returns regex to detect doc class. '''
+    #key_words = "(docs|documentation|issue|example|version|doc|use|master|guide|blob|defined|name|error|this|link|would|source|using|line|model|needs|src|url|user|data|description|build|pull|site|changing|image)"
     key_words = "(issue|doc|example|version|define|model|guide|use|src|source|need|description|link|changing|api|)"
 
     return key_words
@@ -32,10 +34,17 @@ def docs_regex():
 
 def features_regex():
     ''' Returns regex to detect feature class. '''
+    #key_words = "(error|type|use|would|github|src|version|take|like|this|feature|impl|main|test|note|using|foo|time|trait|could|name|empty|expected|example|new|function|what|core|current|value|found)"
     key_words = "(feature|version|current|using|model|contrib|operation|type|would|use|unsupported|convert|information|system)"
 
     return key_words
 
+def other_regex():
+    ''' Returns regex to detect feature class. '''
+    key_words = "(master|github|version|src|name|use|cluster|node|error|service|pkg|test|code|default|file|etc|system|type|local|using|true|core|image|what|run)"
+    #key_words = "(feature|version|current|using|model|contrib|operation|type|would|use|unsupported|convert|information|system)"
+
+    return key_words
 
 def load_pickle(filename):
     with (open(filename, "rb")) as file:
@@ -70,15 +79,17 @@ def main():
     bug = bug_regex()
     docs = docs_regex()
     features = features_regex()
+    other = other_regex()
 
     Y_pred_np = np.empty(Y_test_np.shape)
     guesses = 0
     for idx, x in enumerate(X_test):
         count = [len(re.findall(bug, x, re.IGNORECASE)),
                  len(re.findall(docs, x, re.IGNORECASE)),
-                 len(re.findall(features, x, re.IGNORECASE))]  # bug, doc, feature counts
+                 len(re.findall(features, x, re.IGNORECASE)),
+                 len(re.findall(other, x, re.IGNORECASE))]  # bug, doc, feature counts
         if max(count) == 0:
-            Y_pred_np[idx] = 0  # predicts bug (most common class) if there are no matches
+            Y_pred_np[idx] = 0  # predicts bug (most common) if there are no matches
             guesses += 1
         else:
             Y_pred_np[idx] = count.index(max(count))
@@ -92,6 +103,7 @@ def main():
         "Bug regex": bug,
         "Doc regex": docs,
         "Feature regex": features,
+        "Other regex": other,
         "% Guesses": guesses / len(Y_test)
     }
 
