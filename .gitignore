@@ -1,9 +1,7 @@
 secret.key
 node_modules
 .ipynb_checkpoints/
-pipeline/pickles/dataframe.pkl
-pipeline/pickles/title_sentence_embeddings.pkl
-pipeline/pickles/text_sentence_embeddings.pkl
+pipeline/pickles/*
 .idea
 .env
 logs

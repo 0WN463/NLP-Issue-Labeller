@@ -12,10 +12,11 @@ from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassific
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 
-SEQUENCE_FEATURES_FILE = f"{ROOT}/pipeline/pickles/sequence_features.pkl"
-SAVE_DIR = f"{ROOT}/results/body"
-# LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
-LOAD_PATH = None
+SEQUENCE_FEATURES_TRAIN_FILE = f"{ROOT}/pipeline/pickles/sequence_features_train.pkl"
+SEQUENCE_FEATURES_TEST_FILE = f"{ROOT}/pipeline/pickles/sequence_features_test.pkl"
+SAVE_DIR = f"{ROOT}/results/title"
+LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
+# LOAD_PATH = None
 DEVICE = torch.device("cuda")  # "cpu/cuda"
 
 HP = {  # hyperparameters
@@ -58,7 +59,7 @@ def compute_metrics(pred):
         'accuracy': acc,
     }
 
-def train_model(train_dataset, test_dataset):
+def train_model(train_dataset):
     print("Training model...")
     model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
     # model.to(DEVICE)
@@ -80,7 +81,6 @@ def train_model(train_dataset, test_dataset):
         model=model,  # the instantiated 🤗 Transformers model to be trained
         args=training_args,  # training arguments, defined above
         train_dataset=train_dataset,  # training dataset
-        eval_dataset=test_dataset,  # evaluation dataset
         compute_metrics=compute_metrics  # accuracy metric
     )
 
@@ -88,10 +88,9 @@ def train_model(train_dataset, test_dataset):
 
     return trainer
 
-def load_model(load_path, test_dataset):
+def load_model(load_path):
     print("Loading model...")
     model = DistilBertForSequenceClassification.from_pretrained(load_path, num_labels=3)
-    # model.to(DEVICE)
 
     no_cuda = DEVICE == torch.device('cpu')
     training_args = TrainingArguments(  # no trg is done
@@ -103,8 +102,6 @@ def load_model(load_path, test_dataset):
     trainer = Trainer(
         model=model,  # the instantiated 🤗 Transformers model to be trained
         args=training_args,
-        train_dataset=None,
-        eval_dataset=test_dataset,  # evaluation dataset
         compute_metrics=compute_metrics  # accuracy metric
     )
 
@@ -132,48 +129,54 @@ def main():
     torch.manual_seed(HP["SEED"])
 
     # Load data
-    data = load_pickle(SEQUENCE_FEATURES_FILE)
+    train_data = load_pickle(SEQUENCE_FEATURES_TRAIN_FILE)
+    test_data = load_pickle(SEQUENCE_FEATURES_TEST_FILE)
+    all_data = [train_data, test_data]
 
     # X-Y split
-    X = []
-    Y = []
-    for x in data:
-        title, body, label = x
-        X.append(title)
-        # X.append(body)
-        Y.append(label)
-
-    # Train-Test split
-    # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    training_length = math.ceil(len(X) * HP["train_test_split"])
-    X_train = X[:training_length]
-    Y_train = Y[:training_length]
-    X_test = X[training_length:]
-    Y_test = Y[training_length:]
+    X = [[], []]  # train data, test data
+    Y = [[], []]
+    for i, data in enumerate(all_data):
+        for x in data:
+            title, body, label = x
+            X[i].append(title)
+            # X.append(body)
+            Y[i].append(label)
 
     # Preparing model
     print("Preparing model...")
+    training_length = math.ceil(len(X) * HP["train_test_split"])
     tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
-    train_encodings = tokenizer(X_train, truncation=True, padding=True)
-    test_encodings = tokenizer(X_test, truncation=True, padding=True)
+    train_encodings = tokenizer(X[0][:training_length], truncation=True, padding=True)
+    test_seen_encodings = tokenizer(X[0][training_length:], truncation=True, padding=True)
+    test_encodings = tokenizer(X[1], truncation=True, padding=True)
+    # test_encodings = tokenizer(X[1][:100], truncation=True, padding=True)  # quick test
 
-    train_dataset = Dataset(train_encodings, Y_train)
-    test_dataset = Dataset(test_encodings, Y_test)
+    # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
+    train_dataset = Dataset(train_encodings, Y[0][:training_length])
+    test_seen_dataset = Dataset(test_seen_encodings, Y[0][training_length:])
+    test_unseen_dataset = Dataset(test_encodings, Y[1])
+    # test_unseen_dataset = Dataset(test_encodings, Y[1][:100])  # quick test
 
     # Building model
     load = bool(LOAD_PATH)
     if load:
-        trainer = load_model(LOAD_PATH, test_dataset)
+        trainer = load_model(LOAD_PATH)
     else:  # train from scratch
-        trainer = train_model(train_dataset, test_dataset)
+        trainer = train_model(train_dataset)
+        print("Saving the good stuff in case they get lost...")
+        trainer.save_model(SAVE_DIR)
+        tokenizer.save_pretrained(SAVE_DIR)
 
     print("Evaluating...")
-    results = trainer.evaluate()
+    results_seen = trainer.evaluate(test_seen_dataset)
+    results_unseen = trainer.evaluate(test_unseen_dataset)
     info = HP
-    info["results"] = results
+    info["results on seen repos"] = results_seen
+    info["results on unseen repos"] = results_unseen
 
     # saving results and model
-    print("Saving the good stuff...")
+    print("Saving all the good stuff...")
     trainer.save_model(SAVE_DIR)
     tokenizer.save_pretrained(SAVE_DIR)
     data_file = open(f'{SAVE_DIR}/data.txt', "w+")

@@ -1,10 +1,10 @@
 #!/usr/bin/env python.
 
-import re
 import os
-import numpy as np
-import pandas as pd
 import pickle
+import re
+
+import pandas as pd
 from dotenv import load_dotenv
 
 ###### This script generates /pickles/sequence_features.pkl ######
@@ -17,14 +17,17 @@ SAVE_TRAIN_PATH = f"{ROOT}/pipeline/pickles/sequence_features_train.pkl"
 LOAD_TEST_PATH = f"{ROOT}/pipeline/pickles/dataframe_test.pkl"
 SAVE_TEST_PATH = f"{ROOT}/pipeline/pickles/sequence_features_test.pkl"
 
+
 def remove_markdown(sentence):
     markdown_pattern = r'#+|[*]+|[_]+|[>]+|[-][-]+|[+]|[`]+|!\[.+\]\(.+\)|\[.+\]\(.+\)|<.{0,6}>|\n|\r|<!---|-->|<>|=+'
     text = re.sub(markdown_pattern, ' ', sentence)
     return text
 
+
 def load_dataframe_from_pickle(path):
     retrieved_df = pd.read_pickle(path)
     return retrieved_df
+
 
 def main():
     def _generate_seq_features(load_path, save_path):
@@ -34,7 +37,7 @@ def main():
         # Removing Markdown
         results = []
         for _, row in df.iterrows():
-            results.append([remove_markdown(row['title']), remove_markdown(row['body']), row['class']])
+            results.append([remove_markdown(row['title']), remove_markdown(row['body']), row['labels']])
         print("Done with removing Markdown.")
 
         print("Saving to pickle...")
@@ -42,8 +45,10 @@ def main():
         pickle.dump(results, outfile)
         outfile.close()
         print("Done with pickling.")
+
     _generate_seq_features(LOAD_TRAIN_PATH, SAVE_TRAIN_PATH)
     _generate_seq_features(LOAD_TEST_PATH, SAVE_TEST_PATH)
+
 
 if __name__ == "__main__":
     main()

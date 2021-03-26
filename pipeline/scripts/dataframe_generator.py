@@ -4,7 +4,7 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 
-###### This script generates /pickles/train_df.pkl and /pickles/test_df.pkl ######
+###### This script generates /pickles/dataframe_train.pkl and /pickles/dataframe_test.pkl ######
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -70,7 +70,9 @@ def standardise_df_labels(df, feature_labels, bug_labels, doc_labels):
 
 def remove_redundant_classes(df):
     is_correct_class = df['labels'] != -1
+    print(f"before: {df.shape}")
     df = df[is_correct_class]
+    print(f"after: {df.shape}")
     return df
 
 def main():
