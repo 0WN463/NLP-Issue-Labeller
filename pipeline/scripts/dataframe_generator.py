@@ -1,9 +1,10 @@
 #!/usr/bin/env python.
 import os
+
 import pandas as pd
 from dotenv import load_dotenv
 
-###### This script generates /pickles/dataframe.pkl ######
+###### This script generates /pickles/train_df.pkl and /pickles/test_df.pkl ######
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -11,8 +12,46 @@ ROOT = os.environ.get("ROOT")
 LABELS = {
     "feature": 0,
     "bug": 1,
-    "doc": 2
+    "doc": 2,
+    "others": -1,
 }
+
+TRAIN_MAPPINGS = {
+    "tensorflow": {
+        "feature": ["type:feature"],
+        "bug": ["type:bug"],
+        "doc": ["type:docs-feature", "type:docs-bug"],
+    },
+    "rust": {
+        "feature": ["C-feature-request", "C-feature-accepted", "C-enhancement"],
+        "bug": ["C-bug"],
+        "doc": ["T-doc"],
+    },
+    "kubernetes": {
+        "feature": ["kind/feature", "kind/api-change"],
+        "bug": ["kind/bug"],
+        "doc": ["kind/documentation"],
+    }
+}
+
+TEST_MAPPINGS = {
+    "flutter": {
+        "feature": ['severe: new feature'],
+        "bug": ["severe: crash", "severe: fatal crash", "severe: rendering"],
+        "doc": ["documentation"],
+    },
+    "ohmyzsh": {
+        "feature": ["Feature", "Enhancement"],
+        "bug": ["Bug"],
+        "doc": ["Type: documentation"],
+    },
+    "electron": {
+        "feature": ["enhancement :sparkles:"],
+        "bug": ["bug :beetle:", "crash :boom:"],
+        "doc": ["documentation :notebook:"],
+    }
+}
+
 
 def standardise_df_labels(df, feature_labels, bug_labels, doc_labels):
     def standardise(label):
@@ -23,34 +62,41 @@ def standardise_df_labels(df, feature_labels, bug_labels, doc_labels):
         elif label in doc_labels:
             return LABELS['doc']
         else:
-            print("Should not reach here.")
+            return LABELS['others']
+
+    # df['class'] = df['labels'].apply(standardise)  # sanity check
     df['labels'] = df['labels'].apply(standardise)
     return df
 
+def remove_redundant_classes(df):
+    is_correct_class = df['labels'] != -1
+    df = df[is_correct_class]
+    return df
+
 def main():
-    # load data
-    df_tensorflow = pd.read_json(f'{ROOT}/data/eng_labelled/code_text_split/tensorflow_text_code_split.json')
-    df_rust = pd.read_json(f'{ROOT}/data/eng_labelled/code_text_split/rust_text_code_split.json')
-    df_kubernetes = pd.read_json(f'{ROOT}/data/eng_labelled/code_text_split/kubernetes_text_code_split.json')
-    
-    # standardise dataframe labels
-    df_tensorflow = standardise_df_labels(df_tensorflow, feature_labels=['type:feature'], 
-        bug_labels=['type:bug', 'type:build/install', 'type:performance', 'type:support'],
-        doc_labels=['type:docs-feature', 'type:docs-bug'])
-    
-    df_rust = df_rust[df_rust.labels != 'C-discussion'] # remove Rust "C-discussion" label
-    df_rust = standardise_df_labels(df_rust, feature_labels=['C-feature-request', 'C-feature-accepted', 'C-enhancement'], 
-        bug_labels=['C-bug'],
-        doc_labels=['T-doc'])
-    
-    df_kubernetes = df_kubernetes[df_kubernetes.labels != 'kind/support'] # remove Kubernetes "kind/support" label
-    df_kubernetes = standardise_df_labels(df_kubernetes, feature_labels=['kind/feature', 'kind/api-change'], 
-        bug_labels=['kind/bug', 'kind/failing-test'],
-        doc_labels=['kind/documentation'])
-    
-    combined_df = pd.concat([df_tensorflow, df_rust, df_kubernetes], ignore_index=True)
-    combined_df = combined_df.sample(frac=1, random_state=1) # seed randomisation
-    combined_df.to_pickle(f"{ROOT}/pipeline/pickles/dataframe.pkl")
+    def _generate_dataframe(mapping, file_path):
+        dfs = []
+
+        for repo_name, repo_details in mapping.items():
+            # load data
+            df = pd.read_json(f'{ROOT}/data/eng_labelled/raw/{repo_name}.json')
+
+            # standardise labels
+            df = standardise_df_labels(df, repo_details["feature"], repo_details["bug"], repo_details["doc"])
+
+            # remove other class
+            df = remove_redundant_classes(df)
+
+            # append to df
+            dfs.append(df)
+
+        combined_df = pd.concat(dfs, ignore_index=True)
+        combined_df = combined_df.sample(frac=1, random_state=1)  # seed randomisation
+        combined_df.to_pickle(file_path)
+    print("Generating dfs...")
+    _generate_dataframe(TRAIN_MAPPINGS, f"{ROOT}/pipeline/pickles/dataframe_train.pkl")
+    _generate_dataframe(TEST_MAPPINGS, f"{ROOT}/pipeline/pickles/dataframe_test.pkl")
+
 
 if __name__ == "__main__":
     main()
