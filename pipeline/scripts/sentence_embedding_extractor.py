@@ -12,10 +12,11 @@ from sentence_transformers import SentenceTransformer
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
-INPUT_COL = "text"  # [title, text]
+FEATURE = "text"  # [title, text]
 DEVICE = "cuda"  # "cpu/cuda"
 MODEL = 'distilbert-base-nli-stsb-mean-tokens'
-
+LOAD_TRAIN_PATH = f"{ROOT}/pipeline/pickles/dataframe_train.pkl"
+LOAD_TEST_PATH = f"{ROOT}/pipeline/pickles/dataframe_test.pkl"
 
 ###### This script generates /pickles/sentence_embedding.pkl ######
 # Average of sentence embeddings
@@ -26,8 +27,8 @@ def remove_markdown(sentence):
     return text
 
 
-def load_dataframe_from_pickle():
-    retrieved_df = pd.read_pickle(f"{ROOT}/pipeline/pickles/dataframe.pkl")
+def load_dataframe_from_pickle(path):
+    retrieved_df = pd.read_pickle(path)
     return retrieved_df
 
 
@@ -44,28 +45,38 @@ def save_vector_array(vector_array, labels, filename):
     save_df.to_pickle(filename)
 
 def main():
-    df = load_dataframe_from_pickle()
+    train_df = load_dataframe_from_pickle(LOAD_TRAIN_PATH)
+    test_df = load_dataframe_from_pickle(LOAD_TEST_PATH)
     print("Done loading dataframe.")
 
     # Removing Markdown
-    df[INPUT_COL] = df[INPUT_COL].apply(lambda x: remove_markdown(x))
+    train_df[FEATURE] = train_df[FEATURE].apply(lambda x: remove_markdown(x))
+    test_df[FEATURE] = test_df[FEATURE].apply(lambda x: remove_markdown(x))
     print("Done with removing Markdown.")
 
     model = SentenceTransformer(MODEL, device=DEVICE)
-    sent_embeddings= []  # 1-D
-    if INPUT_COL == "title":
-        for _, sent in df["title"].items():
-            sent_embeddings.append(model.encode(sent))
-    elif INPUT_COL == "text":
-        for _, para in df["text"].items():
-            sent_embeddings.append(avg_sentence_embedding(para, model))
+    train_sent_embeddings= []  # 1-D
+    test_sent_embeddings = []  # 1-D
+    if FEATURE == "title":
+        for _, sent in train_df["title"].items():
+            train_sent_embeddings.append(model.encode(sent))
+        for _, sent in test_df["title"].items():
+            test_sent_embeddings.append(model.encode(sent))
+    elif FEATURE == "text":
+        for _, para in train_df["text"].items():
+            train_sent_embeddings.append(avg_sentence_embedding(para, model))
+        for _, para in train_df["text"].items():
+            test_sent_embeddings.append(avg_sentence_embedding(para, model))
     else:
         raise NotImplementedError("Only supports embedding of title and text for now.")
     print("Done with sentence embeddings.")
 
     print("Saving feature vectors to disc...")
-    filename = f"{ROOT}/pipeline/pickles/{INPUT_COL}_sentence_embeddings.pkl"
-    save_vector_array(sent_embeddings, df['labels'], filename=filename)
+    train_filename = f"{ROOT}/pipeline/pickles/{FEATURE}_sentence_embeddings_train.pkl"
+    save_vector_array(train_sent_embeddings, train_df['labels'], filename=train_filename)
+
+    test_filename = f"{ROOT}/pipeline/pickles/{FEATURE}_sentence_embeddings_test.pkl"
+    save_vector_array(test_sent_embeddings, train_df['labels'], filename=test_filename)
     print("Done with saving.")
 
 
