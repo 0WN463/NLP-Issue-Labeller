@@ -1,8 +1,9 @@
 #!/usr/bin/env python.
 import math
 import os
-import pickle
+import re
 
+import pandas as pd
 import numpy as np
 import torch
 from dotenv import load_dotenv
@@ -12,10 +13,10 @@ from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassific
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 
-SEQUENCE_FEATURES_TRAIN_FILE = f"{ROOT}/pipeline/pickles/sequence_features_train.pkl"
-SEQUENCE_FEATURES_TEST_FILE = f"{ROOT}/pipeline/pickles/sequence_features_test.pkl"
+LOAD_TRAIN_PATH = f"{ROOT}/pipeline/pickles/dataframe_train.pkl"
+LOAD_TEST_PATH = f"{ROOT}/pipeline/pickles/dataframe_test.pkl"
 SAVE_DIR = f"{ROOT}/results/title"
-# LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
+# LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/"  # load pre-trained model. If non empty, will load model instead of training from scratch.
 LOAD_PATH = None
 DEVICE = torch.device("cuda")  # "cpu/cuda"
 
@@ -45,12 +46,6 @@ class Dataset(torch.utils.data.Dataset):
         return len(self.labels)
 
 
-def load_pickle(filename):
-    with (open(filename, "rb")) as file:
-        data = pickle.load(file)
-    return data
-
-
 def compute_metrics(pred):
     labels = pred.label_ids
     preds = pred.predictions.argmax(-1)
@@ -58,6 +53,33 @@ def compute_metrics(pred):
     return {
         'accuracy': acc,
     }
+
+def remove_markdown(sentence):
+    markdown_pattern = r'#+|[*]+|[_]+|[>]+|[-][-]+|[+]|[`]+|!\[.+\]\(.+\)|\[.+\]\(.+\)|<.{0,6}>|\n|\r|<!---|-->|<>|=+'
+    text = re.sub(markdown_pattern, ' ', sentence)
+    return text
+
+
+def load_dataframe_from_pickle(path):
+    retrieved_df = pd.read_pickle(path)
+    return retrieved_df
+
+
+def pretty_dict(dict):
+    """ Returns a pretty string version of a dictionary.
+    """
+    result = ""
+    for key, value in dict.items():
+        key = str(key)
+        value = str(value)
+        if len(value) < 40:
+            result += f'{key}: {value} \n'
+        else:
+            result += f'{key}: \n' \
+                      f'{value} \n'
+    return result
+
+
 
 def train_model(train_dataset):
     print("Training model...")
@@ -88,6 +110,7 @@ def train_model(train_dataset):
 
     return trainer
 
+
 def load_model(load_path):
     print("Loading model...")
     model = DistilBertForSequenceClassification.from_pretrained(load_path, num_labels=3)
@@ -107,20 +130,6 @@ def load_model(load_path):
 
     return trainer
 
-def pretty_dict(dict):
-    """ Returns a pretty string version of a dictionary.
-    """
-    result = ""
-    for key, value in dict.items():
-        key = str(key)
-        value = str(value)
-        if len(value) < 40:
-            result += f'{key}: {value} \n'
-        else:
-            result += f'{key}: \n' \
-                      f'{value} \n'
-    return result
-
 
 def main():
     print("Preparing data...")
@@ -129,34 +138,27 @@ def main():
     torch.manual_seed(HP["SEED"])
 
     # Load data
-    train_data = load_pickle(SEQUENCE_FEATURES_TRAIN_FILE)
-    test_data = load_pickle(SEQUENCE_FEATURES_TEST_FILE)
-    all_data = [train_data, test_data]
+    train_data = load_dataframe_from_pickle(LOAD_TRAIN_PATH)
+    test_data = load_dataframe_from_pickle(LOAD_TEST_PATH)
 
-    # X-Y split
-    X = [[], []]  # train data, test data
-    Y = [[], []]
-    for i, data in enumerate(all_data):
-        for x in data:
-            title, body, label = x
-            X[i].append(title)
-            # X.append(body)
-            Y[i].append(label)
+    # Preprocess
+    train_data['X'] = (train_data['title'] + " " + train_data['body']).apply(remove_markdown)
+    test_data['X'] = (test_data['title'] + " " + test_data['body']).apply(remove_markdown)
 
     # Preparing model
     print("Preparing model...")
-    training_length = math.ceil(len(X) * HP["train_test_split"])
+    training_length = math.ceil(len(train_data.index) * HP["train_test_split"])
     tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
-    train_encodings = tokenizer(X[0][:training_length], truncation=True, padding=True)
-    test_seen_encodings = tokenizer(X[0][training_length:], truncation=True, padding=True)
-    test_encodings = tokenizer(X[1], truncation=True, padding=True)
-    # test_encodings = tokenizer(X[1][:100], truncation=True, padding=True)  # quick test
+    train_encodings = tokenizer(train_data['X'][:training_length], truncation=True, padding=True)
+    test_seen_encodings = tokenizer(train_data['X'][training_length:], truncation=True, padding=True)
+    test_unseen_encodings = tokenizer(test_data['X'], truncation=True, padding=True)
+    # test_unseen_encodings = tokenizer(test_data['X'][:100].tolist(), truncation=True, padding=True)  # quick test
 
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    train_dataset = Dataset(train_encodings, Y[0][:training_length])
-    test_seen_dataset = Dataset(test_seen_encodings, Y[0][training_length:])
-    test_unseen_dataset = Dataset(test_encodings, Y[1])
-    # test_unseen_dataset = Dataset(test_encodings, Y[1][:100])  # quick test
+    train_dataset = Dataset(train_encodings, train_data['labels'][:training_length])
+    test_seen_dataset = Dataset(test_seen_encodings, train_data['labels'][training_length:])
+    test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'])
+    # test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'][:100].tolist())  # quick test
 
     # Building model
     load = bool(LOAD_PATH)
