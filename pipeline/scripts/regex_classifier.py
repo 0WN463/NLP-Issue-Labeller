@@ -15,10 +15,25 @@ SAVE_DIR = f"{ROOT}/results/regex"
 SEQUENCE_FEATURES_FILE = f"{ROOT}/pipeline/pickles/sequence_features.pkl"
 TRAIN_TEST_SPLIT = 0.8
 
+"""
+"regex_classifier" categorises the label based on keyword occurrences.
+
+- keywords are chosen from the most frequent and symbolic words from each category (doc/feature/bug/other)
+
+- word frequency analysis is done both holistically and individually on each repo
+
+- it turns out that individual repo analysis gives us more insights into words that symbolise the category
+
+- individual repo analysis also avoids large repo overshadows the insights from smaller repo
+
+- frequent words that are common to many categories are not selected
+
+- stop words and punctuations are not selected
+
+"""
 
 def bug_regex():
     ''' Returns regex to detect bug class. '''
-    #key_words = "(version|src|error|packages|line|core|file|model|build|name|code|home|site|github|local|use|usr|test|bug|linux|source|import|node|using|type|run|device|master)"
     key_words = "(version|packages|line|file|model|core|import|source|local|device|error|build|return|unknown|backtrace|debug|bug|panic|test|what)"
 
     return key_words
@@ -26,7 +41,6 @@ def bug_regex():
 
 def docs_regex():
     ''' Returns regex to detect doc class. '''
-    #key_words = "(docs|documentation|issue|example|version|doc|use|master|guide|blob|defined|name|error|this|link|would|source|using|line|model|needs|src|url|user|data|description|build|pull|site|changing|image)"
     key_words = "(issue|doc|example|version|define|model|guide|use|src|source|need|description|link|changing|api|)"
 
     return key_words
@@ -34,7 +48,6 @@ def docs_regex():
 
 def features_regex():
     ''' Returns regex to detect feature class. '''
-    #key_words = "(error|type|use|would|github|src|version|take|like|this|feature|impl|main|test|note|using|foo|time|trait|could|name|empty|expected|example|new|function|what|core|current|value|found)"
     key_words = "(feature|version|current|using|model|contrib|operation|type|would|use|unsupported|convert|information|system)"
 
     return key_words
@@ -42,7 +55,6 @@ def features_regex():
 def other_regex():
     ''' Returns regex to detect feature class. '''
     key_words = "(master|github|version|src|name|use|cluster|node|error|service|pkg|test|code|default|file|etc|system|type|local|using|true|core|image|what|run)"
-    #key_words = "(feature|version|current|using|model|contrib|operation|type|would|use|unsupported|convert|information|system)"
 
     return key_words
 
