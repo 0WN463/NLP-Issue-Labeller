@@ -1,0 +1,4 @@
+{
+	"repo": "nodejs/node", 
+	"desired_labels": ["feature request", "doc", "confirmed-bug"]
+}
