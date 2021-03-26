@@ -1,3 +1,20 @@
+"""
+"regex_classifier" categorises the label based on keyword occurrences.
+
+- keywords are chosen from the most frequent and symbolic words from each category (doc/feature/bug/other)
+
+- word frequency analysis is done both holistically and individually on each repo
+
+- it turns out that individual repo analysis gives us more insights into words that symbolise the category
+
+- individual repo analysis also avoids large repo overshadows the insights from smaller repo
+
+- frequent words that are common to many categories are not selected
+
+- stop words and punctuations are not selected
+
+"""
+
 import math
 import os
 import pickle
@@ -44,6 +61,12 @@ def features_regex():
 
     return key_words
 
+def other_regex():
+    ''' Returns regex to detect feature class. '''
+    key_words = "(master|github|version|src|name|use|cluster|node|error|service|pkg|test|code|default|file|etc|system|type|local|using|true|core|image|what|run)"
+
+    return key_words
+
 def compute_regex_class(sentence):
     """ Returns class label for sentence. """
     bug = bug_regex()
@@ -56,6 +79,11 @@ def compute_regex_class(sentence):
         return 0
     else:
         return count.index(max(count))
+
+def load_pickle(filename):
+    with (open(filename, "rb")) as file:
+        data = pickle.load(file)
+    return data
 
 def main():
     print("Preparing data...")
