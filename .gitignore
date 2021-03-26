@@ -10,3 +10,4 @@ results
 runs
 .python-version
 src/__pycache__
+.pth

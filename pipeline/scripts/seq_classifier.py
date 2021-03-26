@@ -1,26 +1,27 @@
 #!/usr/bin/env python.
 import math
 import os
+import re
 
 import numpy as np
+import pandas as pd
 import torch
 from dotenv import load_dotenv
 from sklearn.metrics import accuracy_score
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification, Trainer, TrainingArguments
-
-from src.utils import remove_markdown, load_dataframe_from_pickle, pretty_dict
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 LOAD_TRAIN_PATH = f"{ROOT}/pipeline/pickles/dataframe_train.pkl"
 LOAD_TEST_PATH = f"{ROOT}/pipeline/pickles/dataframe_test.pkl"
-SAVE_DIR = f"{ROOT}/results/title"
-LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/"  # load pre-trained model. If non empty, will load model instead of training from scratch.
-# LOAD_PATH = None
-DEVICE = torch.device("cuda")  # "cpu/cuda"
+SAVE_DIR = f"{ROOT}/results/title-body"
+# LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/"  # load pre-trained model. If non empty, will load model instead of training from scratch.
+LOAD_PATH = None
+DEVICE = torch.device("cuda:0")  # "cpu/cuda"
 
-HP = {  # hyperparameters
+options = {
+    "features": ["title", "body"],  # title, body
     "train_test_split": 0.8,
     "num_train_epochs": 3,
     "per_device_train_batch_size": 16,
@@ -31,6 +32,29 @@ HP = {  # hyperparameters
     "logging_steps": 10,
 }
 
+def remove_markdown(sentence):
+    markdown_pattern = r'#+|[*]+|[_]+|[>]+|[-][-]+|[+]|[`]+|!\[.+\]\(.+\)|\[.+\]\(.+\)|<.{0,6}>|\n|\r|<!---|-->|<>|=+'
+    text = re.sub(markdown_pattern, ' ', sentence)
+    return text
+
+
+def load_dataframe_from_pickle(path):
+    retrieved_df = pd.read_pickle(path)
+    return retrieved_df
+
+def pretty_dict(dict):
+    """ Returns a pretty string version of a dictionary.
+    """
+    result = ""
+    for key, value in dict.items():
+        key = str(key)
+        value = str(value)
+        if len(value) < 40:
+            result += f'{key}: {value} \n'
+        else:
+            result += f'{key}: \n' \
+                      f'{value} \n'
+    return result
 
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, encodings, labels):
@@ -63,13 +87,13 @@ def train_model(train_dataset):
     no_cuda = DEVICE == torch.device('cpu')
     training_args = TrainingArguments(
         output_dir=SAVE_DIR,  # output directory
-        num_train_epochs=HP["num_train_epochs"],  # total number of training epochs
-        per_device_train_batch_size=HP["per_device_train_batch_size"],  # batch size per device during training
-        per_device_eval_batch_size=HP["per_device_eval_batch_size"],  # batch size for evaluation
-        warmup_steps=HP["warmup_steps"],  # number of warmup steps for learning rate scheduler
-        weight_decay=HP["weight_decay"],  # strength of weight decay
+        num_train_epochs=options["num_train_epochs"],  # total number of training epochs
+        per_device_train_batch_size=options["per_device_train_batch_size"],  # batch size per device during training
+        per_device_eval_batch_size=options["per_device_eval_batch_size"],  # batch size for evaluation
+        warmup_steps=options["warmup_steps"],  # number of warmup steps for learning rate scheduler
+        weight_decay=options["weight_decay"],  # strength of weight decay
         logging_dir='./logs',  # directory for storing logs
-        logging_steps=HP["logging_steps"],
+        logging_steps=options["logging_steps"],
         no_cuda=no_cuda,
     )
 
@@ -108,30 +132,38 @@ def load_model(load_path):
 def main():
     print("Preparing data...")
     # Setting seeds to control randomness
-    np.random.seed(HP["SEED"])
-    torch.manual_seed(HP["SEED"])
+    np.random.seed(options["SEED"])
+    torch.manual_seed(options["SEED"])
 
     # Load data
     train_data = load_dataframe_from_pickle(LOAD_TRAIN_PATH)
     test_data = load_dataframe_from_pickle(LOAD_TEST_PATH)
 
+    # Retrieve features
+    print("Retrieving features...")
+    train_data['X'] = ''
+    test_data['X'] = ''
+    for feature in options["features"]:
+        train_data['X'] += train_data[feature] + " "
+        test_data['X'] += test_data[feature] + " "
     # Preprocess
-    train_data['X'] = (train_data['title'] + " " + train_data['body']).apply(remove_markdown)
-    test_data['X'] = (test_data['title'] + " " + test_data['body']).apply(remove_markdown)
+    print("Preprocessing...")
+    train_data['X'] = train_data['X'].apply(remove_markdown)
+    test_data['X'] = test_data['X'].apply(remove_markdown)
 
     # Preparing model
     print("Preparing model...")
-    training_length = math.ceil(len(train_data.index) * HP["train_test_split"])
+    training_length = math.ceil(len(train_data.index) * options["train_test_split"])
     tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
-    train_encodings = tokenizer(train_data['X'][:training_length], truncation=True, padding=True)
-    test_seen_encodings = tokenizer(train_data['X'][training_length:], truncation=True, padding=True)
-    test_unseen_encodings = tokenizer(test_data['X'], truncation=True, padding=True)
+    train_encodings = tokenizer(train_data['X'][:training_length].tolist(), truncation=True, padding=True)
+    test_seen_encodings = tokenizer(train_data['X'][training_length:].tolist(), truncation=True, padding=True)
+    test_unseen_encodings = tokenizer(test_data['X'].tolist(), truncation=True, padding=True)
     # test_unseen_encodings = tokenizer(test_data['X'][:100].tolist(), truncation=True, padding=True)  # quick test
 
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    train_dataset = Dataset(train_encodings, train_data['labels'][:training_length])
-    test_seen_dataset = Dataset(test_seen_encodings, train_data['labels'][training_length:])
-    test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'])
+    train_dataset = Dataset(train_encodings, train_data['labels'][:training_length].tolist())
+    test_seen_dataset = Dataset(test_seen_encodings, train_data['labels'][training_length:].tolist())
+    test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'].tolist())
     # test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'][:100].tolist())  # quick test
 
     # Building model
@@ -147,7 +179,7 @@ def main():
     print("Evaluating...")
     results_seen = trainer.evaluate(test_seen_dataset)
     results_unseen = trainer.evaluate(test_unseen_dataset)
-    info = HP
+    info = options
     info["results on seen repos"] = results_seen
     info["results on unseen repos"] = results_unseen
 
