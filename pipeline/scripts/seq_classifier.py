@@ -15,8 +15,8 @@ ROOT = os.environ.get("ROOT")
 SEQUENCE_FEATURES_TRAIN_FILE = f"{ROOT}/pipeline/pickles/sequence_features_train.pkl"
 SEQUENCE_FEATURES_TEST_FILE = f"{ROOT}/pipeline/pickles/sequence_features_test.pkl"
 SAVE_DIR = f"{ROOT}/results/title"
-LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
-# LOAD_PATH = None
+# LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
+LOAD_PATH = None
 DEVICE = torch.device("cuda")  # "cpu/cuda"
 
 HP = {  # hyperparameters
