@@ -39,6 +39,7 @@ def main():
         for _, row in df.iterrows():
             results.append([remove_markdown(row['title']), remove_markdown(row['body']), row['labels']])
         print("Done with removing Markdown.")
+        print(len(results[0]))
 
         print("Saving to pickle...")
         outfile = open(save_path, 'wb')

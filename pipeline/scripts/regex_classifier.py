@@ -1,20 +1,3 @@
-import math
-import os
-import pickle
-import re
-import shutil
-
-import numpy as np
-from dotenv import load_dotenv
-from sklearn.metrics import accuracy_score
-
-load_dotenv()
-ROOT = os.environ.get("ROOT")
-
-SAVE_DIR = f"{ROOT}/results/regex"
-SEQUENCE_FEATURES_FILE = f"{ROOT}/pipeline/pickles/sequence_features.pkl"
-TRAIN_TEST_SPLIT = 0.8
-
 """
 "regex_classifier" categorises the label based on keyword occurrences.
 
@@ -32,19 +15,45 @@ TRAIN_TEST_SPLIT = 0.8
 
 """
 
+import math
+import os
+import pickle
+import re
+import shutil
+
+import pandas as pd
+from dotenv import load_dotenv
+from sklearn.metrics import accuracy_score
+
+load_dotenv()
+ROOT = os.environ.get("ROOT")
+
+LOAD_TRAIN_PATH = f"{ROOT}/pipeline/pickles/dataframe_train.pkl"
+LOAD_TEST_PATH = f"{ROOT}/pipeline/pickles/dataframe_test.pkl"
+SAVE_DIR = f"{ROOT}/results/regex"
+TRAIN_TEST_SPLIT = 0.8
+FEATURES = ['title', 'body']
+
+def load_pickle(filename):
+    with (open(filename, "rb")) as file:
+        data = pickle.load(file)
+    return data
+
+def load_dataframe_from_pickle(path):
+    retrieved_df = pd.read_pickle(path)
+    return retrieved_df
+
 def bug_regex():
     ''' Returns regex to detect bug class. '''
     key_words = "(version|packages|line|file|model|core|import|source|local|device|error|build|return|unknown|backtrace|debug|bug|panic|test|what)"
 
     return key_words
 
-
 def docs_regex():
     ''' Returns regex to detect doc class. '''
     key_words = "(issue|doc|example|version|define|model|guide|use|src|source|need|description|link|changing|api|)"
 
     return key_words
-
 
 def features_regex():
     ''' Returns regex to detect feature class. '''
@@ -58,65 +67,57 @@ def other_regex():
 
     return key_words
 
+def compute_regex_class(sentence):
+    """ Returns class label for sentence. """
+    bug = bug_regex()
+    docs = docs_regex()
+    features = features_regex()
+    count = [len(re.findall(bug, sentence, re.IGNORECASE)),
+             len(re.findall(docs, sentence, re.IGNORECASE)),
+             len(re.findall(features, sentence, re.IGNORECASE))]  # bug, doc, feature counts
+    if max(count) == 0:
+        return 0
+    else:
+        return count.index(max(count))
+
 def load_pickle(filename):
     with (open(filename, "rb")) as file:
         data = pickle.load(file)
     return data
 
-
 def main():
     print("Preparing data...")
     # Load data
-    data = load_pickle(SEQUENCE_FEATURES_FILE)
+    train_data = load_dataframe_from_pickle(LOAD_TRAIN_PATH)
+    training_length = math.ceil(len(train_data.index) * TRAIN_TEST_SPLIT)
+    train_data = train_data[training_length:]  # No need training set for regex
+    test_data = load_dataframe_from_pickle(LOAD_TEST_PATH)
+    datasets = [train_data, test_data]
 
-    # X-Y split
-    X = []
-    Y = []
-    for x in data:
-        title, body, label = x
-        # X.append(title)
-        # X.append(body)
-        X.append(f"{title} {body}")
-        Y.append(label)
-
-    # Test split
-    # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    training_length = math.ceil(len(X) * TRAIN_TEST_SPLIT)  # no training needed for regex classifier
-    X_test = X[training_length:]
-    Y_test = Y[training_length:]
-    Y_test_np = np.array(Y_test)
+    # Retrieve features
+    print("Retrieving features...")
+    for ds in datasets:
+        ds['X'] = ""
+        for feature in FEATURES:
+            ds['X'] += ds[feature] + " "
 
     # Regex matching
     print("Matching regex...")
-    bug = bug_regex()
-    docs = docs_regex()
-    features = features_regex()
-    other = other_regex()
-
-    Y_pred_np = np.empty(Y_test_np.shape)
-    guesses = 0
-    for idx, x in enumerate(X_test):
-        count = [len(re.findall(bug, x, re.IGNORECASE)),
-                 len(re.findall(docs, x, re.IGNORECASE)),
-                 len(re.findall(features, x, re.IGNORECASE)),
-                 len(re.findall(other, x, re.IGNORECASE))]  # bug, doc, feature counts
-        if max(count) == 0:
-            Y_pred_np[idx] = 0  # predicts bug (most common) if there are no matches
-            guesses += 1
-        else:
-            Y_pred_np[idx] = count.index(max(count))
-
-    score = accuracy_score(Y_test_np, Y_pred_np)
+    scores = []
+    for ds in datasets:
+        ds["pred"] = ds['X'].apply(compute_regex_class)
+        Y_pred_np = ds["pred"].to_numpy()
+        Y_np = ds["labels"].to_numpy()
+        scores.append(accuracy_score(Y_np, Y_pred_np))
 
     # saving results and model
     print("Saving the good stuff...")
     info = {
-        "Accuracy": score,
-        "Bug regex": bug,
-        "Doc regex": docs,
-        "Feature regex": features,
-        "Other regex": other,
-        "% Guesses": guesses / len(Y_test)
+        "Accuracy for seen repos": scores[0],
+        "Accuracy for unseen repos": scores[1],
+        "Bug regex": bug_regex(),
+        "Doc regex": docs_regex(),
+        "Feature regex": features_regex(),
     }
 
     if os.path.exists(SAVE_DIR):

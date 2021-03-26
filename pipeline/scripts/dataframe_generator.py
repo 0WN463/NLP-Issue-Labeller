@@ -70,9 +70,7 @@ def standardise_df_labels(df, feature_labels, bug_labels, doc_labels):
 
 def remove_redundant_classes(df):
     is_correct_class = df['labels'] != -1
-    print(f"before: {df.shape}")
     df = df[is_correct_class]
-    print(f"after: {df.shape}")
     return df
 
 def main():
@@ -94,6 +92,7 @@ def main():
 
         combined_df = pd.concat(dfs, ignore_index=True)
         combined_df = combined_df.sample(frac=1, random_state=1)  # seed randomisation
+        print(combined_df.shape)  # sanity check
         combined_df.to_pickle(file_path)
     print("Generating dfs...")
     _generate_dataframe(TRAIN_MAPPINGS, f"{ROOT}/pipeline/pickles/dataframe_train.pkl")

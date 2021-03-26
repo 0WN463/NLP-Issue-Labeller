@@ -1,9 +1,11 @@
 #!/usr/bin/env python.
 import math
 import os
-import pickle
+import re
 
+import pandas as pd
 import numpy as np
+import pandas as pd
 import torch
 from dotenv import load_dotenv
 from sklearn.metrics import accuracy_score
@@ -12,14 +14,15 @@ from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassific
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 
-SEQUENCE_FEATURES_TRAIN_FILE = f"{ROOT}/pipeline/pickles/sequence_features_train.pkl"
-SEQUENCE_FEATURES_TEST_FILE = f"{ROOT}/pipeline/pickles/sequence_features_test.pkl"
-SAVE_DIR = f"{ROOT}/results/title"
-LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/" # load pre-trained model. If non empty, will load model instead of training from scratch.
-# LOAD_PATH = None
-DEVICE = torch.device("cuda")  # "cpu/cuda"
+LOAD_TRAIN_PATH = f"{ROOT}/pipeline/pickles/dataframe_train.pkl"
+LOAD_TEST_PATH = f"{ROOT}/pipeline/pickles/dataframe_test.pkl"
+SAVE_DIR = f"{ROOT}/results/title-body"
+# LOAD_PATH = f"{ROOT}/results/seq_classifier/checkpoint-8000/"  # load pre-trained model. If non empty, will load model instead of training from scratch.
+LOAD_PATH = None
+DEVICE = torch.device("cuda:0")  # "cpu/cuda"
 
-HP = {  # hyperparameters
+options = {
+    "features": ["title", "body"],  # title, body
     "train_test_split": 0.8,
     "num_train_epochs": 3,
     "per_device_train_batch_size": 16,
@@ -30,6 +33,29 @@ HP = {  # hyperparameters
     "logging_steps": 10,
 }
 
+def remove_markdown(sentence):
+    markdown_pattern = r'#+|[*]+|[_]+|[>]+|[-][-]+|[+]|[`]+|!\[.+\]\(.+\)|\[.+\]\(.+\)|<.{0,6}>|\n|\r|<!---|-->|<>|=+'
+    text = re.sub(markdown_pattern, ' ', sentence)
+    return text
+
+
+def load_dataframe_from_pickle(path):
+    retrieved_df = pd.read_pickle(path)
+    return retrieved_df
+
+def pretty_dict(dict):
+    """ Returns a pretty string version of a dictionary.
+    """
+    result = ""
+    for key, value in dict.items():
+        key = str(key)
+        value = str(value)
+        if len(value) < 40:
+            result += f'{key}: {value} \n'
+        else:
+            result += f'{key}: \n' \
+                      f'{value} \n'
+    return result
 
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, encodings, labels):
@@ -43,12 +69,6 @@ class Dataset(torch.utils.data.Dataset):
 
     def __len__(self):
         return len(self.labels)
-
-
-def load_pickle(filename):
-    with (open(filename, "rb")) as file:
-        data = pickle.load(file)
-    return data
 
 
 def compute_metrics(pred):
@@ -67,13 +87,13 @@ def train_model(train_dataset):
     no_cuda = DEVICE == torch.device('cpu')
     training_args = TrainingArguments(
         output_dir=SAVE_DIR,  # output directory
-        num_train_epochs=HP["num_train_epochs"],  # total number of training epochs
-        per_device_train_batch_size=HP["per_device_train_batch_size"],  # batch size per device during training
-        per_device_eval_batch_size=HP["per_device_eval_batch_size"],  # batch size for evaluation
-        warmup_steps=HP["warmup_steps"],  # number of warmup steps for learning rate scheduler
-        weight_decay=HP["weight_decay"],  # strength of weight decay
+        num_train_epochs=options["num_train_epochs"],  # total number of training epochs
+        per_device_train_batch_size=options["per_device_train_batch_size"],  # batch size per device during training
+        per_device_eval_batch_size=options["per_device_eval_batch_size"],  # batch size for evaluation
+        warmup_steps=options["warmup_steps"],  # number of warmup steps for learning rate scheduler
+        weight_decay=options["weight_decay"],  # strength of weight decay
         logging_dir='./logs',  # directory for storing logs
-        logging_steps=HP["logging_steps"],
+        logging_steps=options["logging_steps"],
         no_cuda=no_cuda,
     )
 
@@ -87,6 +107,7 @@ def train_model(train_dataset):
     trainer.train()
 
     return trainer
+
 
 def load_model(load_path):
     print("Loading model...")
@@ -107,56 +128,44 @@ def load_model(load_path):
 
     return trainer
 
-def pretty_dict(dict):
-    """ Returns a pretty string version of a dictionary.
-    """
-    result = ""
-    for key, value in dict.items():
-        key = str(key)
-        value = str(value)
-        if len(value) < 40:
-            result += f'{key}: {value} \n'
-        else:
-            result += f'{key}: \n' \
-                      f'{value} \n'
-    return result
-
 
 def main():
     print("Preparing data...")
     # Setting seeds to control randomness
-    np.random.seed(HP["SEED"])
-    torch.manual_seed(HP["SEED"])
+    np.random.seed(options["SEED"])
+    torch.manual_seed(options["SEED"])
 
     # Load data
-    train_data = load_pickle(SEQUENCE_FEATURES_TRAIN_FILE)
-    test_data = load_pickle(SEQUENCE_FEATURES_TEST_FILE)
-    all_data = [train_data, test_data]
+    train_data = load_dataframe_from_pickle(LOAD_TRAIN_PATH)
+    test_data = load_dataframe_from_pickle(LOAD_TEST_PATH)
 
-    # X-Y split
-    X = [[], []]  # train data, test data
-    Y = [[], []]
-    for i, data in enumerate(all_data):
-        for x in data:
-            title, body, label = x
-            X[i].append(title)
-            # X.append(body)
-            Y[i].append(label)
+    # Retrieve features
+    print("Retrieving features...")
+    train_data['X'] = ''
+    test_data['X'] = ''
+    for feature in options["features"]:
+        train_data['X'] += train_data[feature] + " "
+        test_data['X'] += test_data[feature] + " "
+
+    # Preprocess
+    print("Preprocessing...")
+    train_data['X'] = train_data['X'].apply(remove_markdown)
+    test_data['X'] = test_data['X'].apply(remove_markdown)
 
     # Preparing model
     print("Preparing model...")
-    training_length = math.ceil(len(X) * HP["train_test_split"])
+    training_length = math.ceil(len(train_data.index) * options["train_test_split"])
     tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
-    train_encodings = tokenizer(X[0][:training_length], truncation=True, padding=True)
-    test_seen_encodings = tokenizer(X[0][training_length:], truncation=True, padding=True)
-    test_encodings = tokenizer(X[1], truncation=True, padding=True)
-    # test_encodings = tokenizer(X[1][:100], truncation=True, padding=True)  # quick test
+    train_encodings = tokenizer(train_data['X'][:training_length].tolist(), truncation=True, padding=True)
+    test_seen_encodings = tokenizer(train_data['X'][training_length:].tolist(), truncation=True, padding=True)
+    test_unseen_encodings = tokenizer(test_data['X'].tolist(), truncation=True, padding=True)
+    # test_unseen_encodings = tokenizer(test_data['X'][:100].tolist(), truncation=True, padding=True)  # quick test
 
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    train_dataset = Dataset(train_encodings, Y[0][:training_length])
-    test_seen_dataset = Dataset(test_seen_encodings, Y[0][training_length:])
-    test_unseen_dataset = Dataset(test_encodings, Y[1])
-    # test_unseen_dataset = Dataset(test_encodings, Y[1][:100])  # quick test
+    train_dataset = Dataset(train_encodings, train_data['labels'][:training_length].tolist())
+    test_seen_dataset = Dataset(test_seen_encodings, train_data['labels'][training_length:].tolist())
+    test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'].tolist())
+    # test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'][:100].tolist())  # quick test
 
     # Building model
     load = bool(LOAD_PATH)
@@ -171,7 +180,7 @@ def main():
     print("Evaluating...")
     results_seen = trainer.evaluate(test_seen_dataset)
     results_unseen = trainer.evaluate(test_unseen_dataset)
-    info = HP
+    info = options
     info["results on seen repos"] = results_seen
     info["results on unseen repos"] = results_unseen
 
