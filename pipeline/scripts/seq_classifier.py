@@ -165,21 +165,6 @@ def main():
     train_dataset = Dataset(train_encodings, train_data['labels'][:training_length].tolist())
     test_seen_dataset = Dataset(test_seen_encodings, train_data['labels'][training_length:].tolist())
     test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'].tolist())
-
-    # Preparing model
-    print("Preparing model...")
-    training_length = math.ceil(len(train_data.index) * HP["train_test_split"])
-    tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
-    train_encodings = tokenizer(train_data['X'][:training_length], truncation=True, padding=True)
-    test_seen_encodings = tokenizer(train_data['X'][training_length:], truncation=True, padding=True)
-    test_unseen_encodings = tokenizer(test_data['X'], truncation=True, padding=True)
-    # test_unseen_encodings = tokenizer(test_data['X'][:100].tolist(), truncation=True, padding=True)  # quick test
-
-    # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    train_dataset = Dataset(train_encodings, train_data['labels'][:training_length])
-    test_seen_dataset = Dataset(test_seen_encodings, train_data['labels'][training_length:])
-    test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'])
->>>>>>> c858ff9baed26504d6077cf8b2b426d777b97cd6
     # test_unseen_dataset = Dataset(test_unseen_encodings, test_data['labels'][:100].tolist())  # quick test
 
     # Building model
