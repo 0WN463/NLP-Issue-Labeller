@@ -12,7 +12,7 @@ from sentence_transformers import SentenceTransformer
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
-FEATURE = "text"  # [title, text]
+FEATURE = "body"  # [title, body]
 DEVICE = "cuda"  # "cpu/cuda"
 MODEL = 'distilbert-base-nli-stsb-mean-tokens'
 LOAD_TRAIN_PATH = f"{ROOT}/pipeline/pickles/dataframe_train.pkl"
@@ -62,10 +62,10 @@ def main():
             train_sent_embeddings.append(model.encode(sent))
         for _, sent in test_df["title"].items():
             test_sent_embeddings.append(model.encode(sent))
-    elif FEATURE == "text":
-        for _, para in train_df["text"].items():
+    elif FEATURE == "body":
+        for _, para in train_df["body"].items():
             train_sent_embeddings.append(avg_sentence_embedding(para, model))
-        for _, para in train_df["text"].items():
+        for _, para in test_df["body"].items():
             test_sent_embeddings.append(avg_sentence_embedding(para, model))
     else:
         raise NotImplementedError("Only supports embedding of title and text for now.")
@@ -76,7 +76,7 @@ def main():
     save_vector_array(train_sent_embeddings, train_df['labels'], filename=train_filename)
 
     test_filename = f"{ROOT}/pipeline/pickles/{FEATURE}_sentence_embeddings_test.pkl"
-    save_vector_array(test_sent_embeddings, train_df['labels'], filename=test_filename)
+    save_vector_array(test_sent_embeddings, test_df['labels'], filename=test_filename)
     print("Done with saving.")
 
 
