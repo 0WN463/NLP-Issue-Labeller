@@ -5,6 +5,7 @@ Please refer to this Google Doc [https://docs.google.com/document/d/1gbVSwV-hOVD
 
 ## Note
 1. The feature engineering and ML model files are in the ``pipeline/scripts`` directory. The pickled data files are in ``pipeline/pickles``. Note that the pickle files are separated based on the type of features so that it's easier to try experimenting with and combining different features during ML training.
+2. ``pipeline/pickles/dataframe_train.pkl`` and ``pipeline/pickles/dataframe_test.pkl`` are not committed/pushed to GitHub due to their large size. You may run ``pipeline/scripts/dataframe_generator.py`` to obtain the same dataframe pickle files when you need them.
 
 ## Installation
 Set your ROOT path via 

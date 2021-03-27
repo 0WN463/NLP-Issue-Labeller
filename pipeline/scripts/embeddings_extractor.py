@@ -6,8 +6,17 @@ import re
 import numpy as np
 import pandas as pd
 from gensim.models import Word2Vec
+from dotenv import load_dotenv
 
-###### This script generates /pickles/text_embeddings.pkl AND /pickles/title_embeddings.pkl######
+
+###### This script generates the following pickle files: ######
+# /pickles/text_embeddings_seen.pkl
+# /pickles/title_embeddings_seen.pkl
+# /pickles/text_embeddings_unseen.pkl
+# /pickles/title_embeddings_unseen.pkl
+
+load_dotenv()
+ROOT = os.environ.get("ROOT")
 
 LABELS = {
     "feature": 0,
@@ -25,13 +34,6 @@ def generate_averaged_word_embeddings(embeddings_model, sentences):
             return (1.0 / l2_norm) * x
         else:
             return x
-
-    ###### Discarded: reweighting using idf values ########
-    # train = pd.read_csv('./data/train.csv')
-    # X_train = train['Text']
-    # tf = TfidfVectorizer(use_idf=True)
-    # tf.fit_transform(X_train)
-    # idf = tf.idf_
     
     res = []
     num_of_sentences = 0
@@ -47,11 +49,6 @@ def generate_averaged_word_embeddings(embeddings_model, sentences):
         for token in tokens:
             if token in embeddings_model:
                 embedding = normalise(embeddings_model[token])
-                ###### Discarded: reweighting using idf values (cont. from above) ########
-                # idf_value = 1
-                # if token.lower() in tf.vocabulary_:
-                #     idf_value = idf[tf.vocabulary_[token.lower()]]
-                # embedding = embedding * idf_value
                 length += 1
                 if is_first:
                     summed_vector = embedding
@@ -78,15 +75,17 @@ def tokenise(sentence):
 def train_embeddings(df, size, window, sg):
     sentences = []
     for _, row in df.iterrows():
-        sentences.append(tokenise(row['text']))
+        sentences.append(tokenise(row['body']))
         sentences.append(tokenise(row['title']))
 
     embeddings_model = Word2Vec(sentences=sentences, size=size, window=window, sg=sg)
     return embeddings_model
 
-def load_dataframe_from_pickle():
-    retrieved_df = pd.read_pickle("../pickles/dataframe.pkl")
-    return retrieved_df
+def load_dataframe_from_pickle(is_seen):
+    if is_seen:
+        return pd.read_pickle(f"{ROOT}/pipeline/pickles/dataframe_train.pkl")
+    else:
+        return pd.read_pickle(f"{ROOT}/pipeline/pickles/dataframe_test.pkl")
 
 def save_vector_array(vector_array, labels, filename):
     save_df = pd.DataFrame(columns=['Feature', 'Label'])
@@ -95,24 +94,38 @@ def save_vector_array(vector_array, labels, filename):
     save_df.to_pickle(filename)
 
 def main():
-    df = load_dataframe_from_pickle()
-    print("Done loading dataframe.")
+    # seen repos
+    seen_df = load_dataframe_from_pickle(is_seen=True)
+    print("Done loading dataframe_train.pkl.")
 
-    embeddings_model = train_embeddings(df, size=300, window=5, sg=0) # 0 for Skip-gram
+    embeddings_model = train_embeddings(seen_df, size=300, window=5, sg=0) # 0 for Skip-gram
     print("Done with embeddings training.")
 
-    text_vector_array = generate_averaged_word_embeddings(embeddings_model, df['text'])
+    text_vector_array_seen = generate_averaged_word_embeddings(embeddings_model, seen_df['body'])
     print("Done with text embedding vectorisation.")
-    title_vector_array = generate_averaged_word_embeddings(embeddings_model, df['title'])
+    title_vector_array_seen = generate_averaged_word_embeddings(embeddings_model, seen_df['title'])
     print("Done with title embedding vectorisation.")
 
-    print("Saving text vector array to memory...")
-    save_vector_array(text_vector_array, df['labels'], filename="../pickles/text_embeddings.pkl")
-    print("Done with saving")
+    save_vector_array(text_vector_array_seen, seen_df['labels'], filename=f"{ROOT}/pipeline/pickles/text_embeddings_seen.pkl")
+    print("Done with saving text vector array")
 
-    print("Saving title vector array to memory...")
-    save_vector_array(title_vector_array, df['labels'], filename="../pickles/title_embeddings.pkl")
-    print("Done with saving")
+    save_vector_array(title_vector_array_seen, seen_df['labels'], filename=f"{ROOT}/pipeline/pickles/title_embeddings_seen.pkl")
+    print("Done with saving title vector array")
+
+    # unseen repos
+    unseen_df = load_dataframe_from_pickle(is_seen=False)
+    print("Done loading dataframe_test.pkl.")
+
+    text_vector_array_unseen = generate_averaged_word_embeddings(embeddings_model, unseen_df['body'])
+    print("Done with text embedding vectorisation.")
+    title_vector_array_unseen = generate_averaged_word_embeddings(embeddings_model, unseen_df['title'])
+    print("Done with title embedding vectorisation.")
+
+    save_vector_array(text_vector_array_unseen, unseen_df['labels'], filename=f"{ROOT}/pipeline/pickles/text_embeddings_unseen.pkl")
+    print("Done with saving text vector array")
+
+    save_vector_array(title_vector_array_unseen, unseen_df['labels'], filename=f"{ROOT}/pipeline/pickles/title_embeddings_unseen.pkl")
+    print("Done with saving title vector array")
 
 if __name__ == "__main__":
     main()

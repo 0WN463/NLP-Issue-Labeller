@@ -12,12 +12,20 @@ from sklearn.ensemble import GradientBoostingClassifier
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
-TEXT_EMBEDDINGS_FILE = f"{ROOT}/pipeline/pickles/text_embeddings.pkl"
-TITLE_EMBEDDINGS_FILE = f"{ROOT}/pipeline/pickles/title_embeddings.pkl"
-WORD_COUNT_VECTORS_FILE = f"{ROOT}/pipeline/pickles/word_count_vectors.pkl"
-HANDCRAFTED_FEATURES_FILE = f"{ROOT}/pipeline/pickles/handcrafted_features.pkl"
-TITLE_SENTENCE_EMBEDDINGS_FILE= f"{ROOT}/pipeline/pickles/title_sentence_embeddings.pkl"
-TEXT_SENTENCE_EMBEDDINGS_FILE= f"{ROOT}/pipeline/pickles/text_sentence_embeddings.pkl"
+# Seen repos
+TEXT_EMBEDDINGS_SEEN = f"{ROOT}/pipeline/pickles/text_embeddings_seen.pkl"
+TITLE_EMBEDDINGS_SEEN = f"{ROOT}/pipeline/pickles/title_embeddings_seen.pkl"
+WORD_COUNT_VECTORS_SEEN = f"{ROOT}/pipeline/pickles/word_count_vectors_seen.pkl"
+# HANDCRAFTED_FEATURES_FILE = f"{ROOT}/pipeline/pickles/handcrafted_features.pkl"
+TITLE_SENTENCE_EMBEDDINGS_SEEN= f"{ROOT}/pipeline/pickles/title_sentence_embeddings_seen.pkl"
+BODY_SENTENCE_EMBEDDINGS_SEEN= f"{ROOT}/pipeline/pickles/body_sentence_embeddings_seen.pkl"
+
+# Seen repos
+TEXT_EMBEDDINGS_UNSEEN = f"{ROOT}/pipeline/pickles/text_embeddings_unseen.pkl"
+TITLE_EMBEDDINGS_UNSEEN = f"{ROOT}/pipeline/pickles/title_embeddings_unseen.pkl"
+WORD_COUNT_VECTORS_UNSEEN = f"{ROOT}/pipeline/pickles/word_count_vectors_unseen.pkl"
+TITLE_SENTENCE_EMBEDDINGS_UNSEEN= f"{ROOT}/pipeline/pickles/title_sentence_embeddings_unseen.pkl"
+BODY_SENTENCE_EMBEDDINGS_UNSEEN= f"{ROOT}/pipeline/pickles/body_sentence_embeddings_unseen.pkl"
 
 def load_pickle(filename):
     retrieved_df = pd.read_pickle(filename)
@@ -51,30 +59,20 @@ def combine_pickles(files):
     return new_X, df_y
 
 def main():
-    # Load data
-    # df_X, df_y = load_pickle(filename="../pickles/handcrafted_features.pkl")
+    # Load training data. NOTE: only pass in seen repos here
     print("Combining pickles...")
-    df_X, df_y = combine_pickles([TEXT_EMBEDDINGS_FILE, TITLE_EMBEDDINGS_FILE, WORD_COUNT_VECTORS_FILE, TITLE_SENTENCE_EMBEDDINGS_FILE, TEXT_SENTENCE_EMBEDDINGS_FILE])
-
-    #### Analysis #####
-    # print(pd.Series(df_y).value_counts())
-    # RESULT:
-    # 1    33842 (bug)
-    # 0    16926 (feature)
-    # 2     3382 (doc)
+    df_X_seen, df_y_seen = combine_pickles([TEXT_EMBEDDINGS_SEEN, WORD_COUNT_VECTORS_SEEN, TITLE_EMBEDDINGS_SEEN])
 
     # Train-Test split
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    training_length = math.ceil(len(df_X) * 0.8)
-    X_train = df_X[:training_length]
-    y_train = df_y[:training_length]
-    X_test = df_X[training_length:]
-    y_test = df_y[training_length:]
+    training_length = math.ceil(len(df_X_seen) * 0.8)
+    X_train = df_X_seen[:training_length]
+    y_train = df_y_seen[:training_length]
+    X_test_seen = df_X_seen[training_length:]
+    y_test_seen = df_y_seen[training_length:]
 
     # Training
     model = LogisticRegression(C=1.3, max_iter=2000)
-    # model = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0,
-        # max_depth=1, random_state=0)
     print("Training model now...")
     print("X_train length: ", len(X_train))
     # print("10 examples of X_train: ", X_train[:10])
@@ -83,15 +81,28 @@ def main():
     y_train = y_train.astype('int')
     model.fit(X_train, y_train)
 
-    # Testing
-    print("Testing model now...")
-    y_pred = model.predict(X_test)
+    # Testing for seen repos
+    print("Testing model on testing set of SEEN repos now...")
+    y_pred_seen = model.predict(X_test_seen)
+    y_test_seen = y_test_seen.astype('int')
+    score_seen = accuracy_score(y_test_seen, y_pred_seen)
+    print('Accurracy score on test set for seen repos = {}'.format(score_seen))
 
-    # Use accurracy as the metric
-    y_test = y_test.astype('int')
-    score = accuracy_score(y_test, y_pred)
-    print('Accurracy score on test set = {}'.format(score))
+    # sanity checks
+    y_pred_seen = None
+    X_test_seen = None
+    y_test_seen = None
+    score_seen = None
 
+    # Testing for unseen repos
+    # load unseen repos first
+    df_X_unseen, df_y_unseen = combine_pickles([TEXT_EMBEDDINGS_UNSEEN, WORD_COUNT_VECTORS_UNSEEN, TITLE_EMBEDDINGS_UNSEEN])
+    print("length of df_X_unseen: ", len(df_X_unseen)) # sanity check
+    print("Testing model on UNSEEN repos now...")
+    y_pred_unseen = model.predict(df_X_unseen)
+    y_test_unseen = df_y_unseen.astype('int')
+    score_unseen = accuracy_score(y_test_unseen, y_pred_unseen)
+    print('Accurracy score on entire unseen repos = {}'.format(score_unseen))
 
 if __name__ == "__main__":
     main()

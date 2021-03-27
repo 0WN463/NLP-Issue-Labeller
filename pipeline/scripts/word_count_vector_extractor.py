@@ -7,7 +7,9 @@ import numpy as np
 import pandas as pd
 from dotenv import load_dotenv
 
-###### This script generates /pickles/word_count_vectors.pkl ######
+###### This script generates the following pickle files: ######
+# /pickles/word_count_vectors_seen.pkl
+# /pickles/word_count_vectors_unseen.pkl
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -96,10 +98,12 @@ def top_words_in_categories(n, m, sentences, labels):
 
     return set(most_common_feature + most_common_bug + most_common_doc)
 
-def load_dataframe_from_pickle():
-    retrieved_df = pd.read_pickle(f"{ROOT}/pipeline/pickles/dataframe.pkl")
-    return retrieved_df
-
+def load_dataframe_from_pickle(is_seen):
+    if is_seen:
+        return pd.read_pickle(f"{ROOT}/pipeline/pickles/dataframe_train.pkl")
+    else:
+        return pd.read_pickle(f"{ROOT}/pipeline/pickles/dataframe_test.pkl")
+    
 def save_vector_array(vector_array, labels, filename):
     save_df = pd.DataFrame(columns=['Feature', 'Label'])
     save_df['Feature'] = pd.Series(vector_array)
@@ -107,16 +111,26 @@ def save_vector_array(vector_array, labels, filename):
     save_df.to_pickle(filename)
 
 def main():
-    df = load_dataframe_from_pickle()
-    print("Done loading dataframe.")
+    # seen repos
+    seen_df = load_dataframe_from_pickle(is_seen=True)
+    print("Done loading dataframe_train.pkl.")
 
     # generate influential words
-    influential_words = list(top_words_in_categories(150, 50, df['text'], df['labels']))
-    word_count_vectors = generate_word_count_features(df['text'], influential_words)
-    print("Done with generating word count vectors.")
+    influential_words = list(top_words_in_categories(150, 50, seen_df['body'], seen_df['labels']))
+    word_count_vectors_seen = generate_word_count_features(seen_df['body'], influential_words)
+    print("Done with generating word count vectors for seen repos.")
+     
+    save_vector_array(word_count_vectors_seen, seen_df['labels'], filename=f"{ROOT}/pipeline/pickles/word_count_vectors_seen.pkl")
+    print("Done with saving.")
 
-    print("Saving word count vectors to memory...")      
-    save_vector_array(word_count_vectors, df['labels'], filename="../pickles/word_count_vectors.pkl")
+    # unseen repos
+    unseen_df = load_dataframe_from_pickle(is_seen=False)
+    print("Done loading dataframe_test.pkl.")
+    
+    word_count_vectors_unseen = generate_word_count_features(unseen_df['body'], influential_words)
+    print("Done with generating word count vectors for unseen repos.")
+     
+    save_vector_array(word_count_vectors_unseen, unseen_df['labels'], filename=f"{ROOT}/pipeline/pickles/word_count_vectors_unseen.pkl")
     print("Done with saving.")
 
 if __name__ == "__main__":
