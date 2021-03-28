@@ -9,6 +9,9 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import confusion_matrix
+import seaborn as sn
+import matplotlib.pyplot as plt
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -58,6 +61,13 @@ def combine_pickles(files):
 
     return new_X, df_y
 
+def plot_confusion_matrix(y_true, y_pred):
+    confusion_array = confusion_matrix(y_true, y_pred)
+    df_cm = pd.DataFrame(confusion_array, index = range(3), columns = range(3))
+    # plt.figure(figsize = (10,7))
+    sn.heatmap(df_cm, annot=True, cmap='viridis_r', fmt='d')
+    plt.show()
+
 def main():
     # Load training data. NOTE: only pass in seen repos here
     print("Combining pickles...")
@@ -87,6 +97,7 @@ def main():
     y_test_seen = y_test_seen.astype('int')
     score_seen = accuracy_score(y_test_seen, y_pred_seen)
     print('Accurracy score on test set for seen repos = {}'.format(score_seen))
+    plot_confusion_matrix(y_test_seen, y_pred_seen)
 
     # sanity checks
     y_pred_seen = None
@@ -103,6 +114,7 @@ def main():
     y_test_unseen = df_y_unseen.astype('int')
     score_unseen = accuracy_score(y_test_unseen, y_pred_unseen)
     print('Accurracy score on entire unseen repos = {}'.format(score_unseen))
+    plot_confusion_matrix(y_test_unseen, y_pred_unseen)
 
 if __name__ == "__main__":
     main()

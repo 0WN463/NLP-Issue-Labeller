@@ -7,7 +7,10 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 import tensorflow as tf
+import seaborn as sn
+import matplotlib.pyplot as plt
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -57,10 +60,18 @@ def combine_pickles(files):
 
     return new_X, df_y
 
+def plot_confusion_matrix(y_true, y_pred):
+    confusion_array = confusion_matrix(y_true, y_pred)
+    df_cm = pd.DataFrame(confusion_array, index = range(3), columns = range(3))
+    # plt.figure(figsize = (10,7))
+    sn.heatmap(df_cm, annot=True, cmap='viridis_r', fmt='d')
+    plt.show()
+
 def main():
     # Load training data. NOTE: only pass in seen repos here
     print("Combining pickles...")
-    df_X_seen, df_y_seen = combine_pickles([TEXT_EMBEDDINGS_SEEN, WORD_COUNT_VECTORS_SEEN, TITLE_EMBEDDINGS_SEEN])
+    df_X_seen, df_y_seen = combine_pickles([TEXT_EMBEDDINGS_SEEN,
+        WORD_COUNT_VECTORS_SEEN, TITLE_EMBEDDINGS_SEEN])
 
     # Train-Test split
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
@@ -77,10 +88,11 @@ def main():
     y_test_seen = np.asarray(y_test_seen)
 
     # Training
+    input_length = len(X_train[0])
     model = tf.keras.models.Sequential([
-        tf.keras.layers.InputLayer(input_shape=(798,)),
+        tf.keras.layers.InputLayer(input_shape=(input_length,)),
         tf.keras.layers.Dense(128, activation='relu'),
-        # tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dropout(0.2),
         tf.keras.layers.Dense(32, activation='relu'),
         tf.keras.layers.Dense(3, activation='softmax')
     ])
@@ -99,6 +111,7 @@ def main():
     # Testing for seen repos
     print("Testing model on testing set of SEEN repos now...")
     model.evaluate(X_test_seen, y_test_seen)
+    # plot_confusion_matrix(y_test_seen, model.predict(X_test_seen))
 
     # sanity checks
     X_test_seen = None
@@ -106,12 +119,14 @@ def main():
 
     # Testing for unseen repos
     # load unseen repos first
-    df_X_unseen, df_y_unseen = combine_pickles([TEXT_EMBEDDINGS_UNSEEN, WORD_COUNT_VECTORS_UNSEEN, TITLE_EMBEDDINGS_UNSEEN])
+    df_X_unseen, df_y_unseen = combine_pickles([TEXT_EMBEDDINGS_UNSEEN,
+        WORD_COUNT_VECTORS_UNSEEN, TITLE_EMBEDDINGS_UNSEEN])
     df_X_unseen = np.asarray(df_X_unseen)
     df_y_unseen = np.asarray(df_y_unseen)
     print("length of df_X_unseen: ", len(df_X_unseen)) # sanity check
     print("Testing model on UNSEEN repos now...")
     model.evaluate(df_X_unseen, df_y_unseen)
+    # plot_confusion_matrix(df_y_unseen, model.predict(df_X_unseen))
 
 if __name__ == "__main__":
     main()
