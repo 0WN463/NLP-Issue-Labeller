@@ -15,12 +15,19 @@ def remove_log(text):
 	pass
 
 def has_code_block(text):
-	# TODO
-	pass
+        CODE_REGEX = r'```.+?```'
+        for match in re.findall(CODE_REGEX, text, flags=re.S):
+            if not has_log(str(match)):
+                return True
+
+        return False
 
 def remove_code_block(text):
-	# TODO
-	pass
+        CODE_REGEX = r'```.+?```'
+        for match in re.findall(CODE_REGEX, text, flags=re.S):
+            if not has_log(str(match)):
+                text = text.replace(str(match), '')
+        return text
 
 def has_url(text):
     pattern = r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
