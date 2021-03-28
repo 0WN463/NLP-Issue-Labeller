@@ -28,7 +28,13 @@ def has_url(text):
     return len(results) != 0
 
 def remove_url(text):
-    pattern = r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
-    replacement = ''
-    result = re.sub(pattern, replacement, text)
-    return result
+    # remove link in markdown
+    markdown_pattern = r'(?:__|[*#])|\[(.*?)\]\(.*?\)'
+    replacement_alt_text = r'\1'
+    result_1 = re.sub(markdown_pattern, replacement_alt_text, text)
+    
+    # remove link in plain text
+    plain_pattern = r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
+    replacement_plain = ''
+    result_2 = re.sub(plain_pattern, replacement_plain, result_1)
+    return result_2
