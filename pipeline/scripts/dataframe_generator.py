@@ -79,7 +79,7 @@ def main():
 
         for repo_name, repo_details in mapping.items():
             # load data
-            df = pd.read_json(f'{ROOT}/data/eng_labelled/raw/{repo_name}.json')
+            df = pd.read_json(f'{ROOT}/data/eng_labelled/remove_duplicates/{repo_name}_removed_dups.json')
 
             # standardise labels
             df = standardise_df_labels(df, repo_details["feature"], repo_details["bug"], repo_details["doc"])
