@@ -56,3 +56,9 @@ def remove_url(text):
     replacement_plain = ''
     result_2 = re.sub(plain_pattern, replacement_plain, result_1)
     return result_2
+
+
+def remove_markdown(sentence):
+    markdown_pattern = r'#+|[*]+|[_]+|[>]+|[-][-]+|[+]|[`]+|!\[.+\]\(.+\)|\[.+\]\(.+\)|<.{0,6}>|\n|\r|<!---|-->|<>|=+'
+    text = re.sub(markdown_pattern, ' ', sentence)
+    return text
