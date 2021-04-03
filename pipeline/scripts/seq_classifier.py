@@ -1,7 +1,5 @@
 #!/usr/bin/env python.
-import math
 import os
-import re
 
 import numpy as np
 import pandas as pd
@@ -10,25 +8,21 @@ from dotenv import load_dotenv
 from sklearn.metrics import accuracy_score
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification, Trainer, TrainingArguments
 
+from machine_info_identifier import remove_log, remove_code_block, remove_url, remove_markdown, has_log, has_code_block, \
+    has_url
+
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 
-LOAD_TRAIN_PATH = f"{ROOT}/pipeline/pickles/dataframe_train.pkl"
-LOAD_TEST_PATH = f"{ROOT}/pipeline/pickles/dataframe_test.pkl"
-SAVE_DIR = f"{ROOT}/results/title-body"
-LOAD_PATH = f"{ROOT}/results/title-body"  # load pre-trained model. If non empty, will load model instead of training from scratch.
-# LOAD_PATH = None
-DEVICE = torch.device("cuda:0")  # "cpu/cuda"
-
-if LOAD_PATH:
-    MODEL = DistilBertForSequenceClassification.from_pretrained(LOAD_PATH, num_labels=3)
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained(LOAD_PATH)
-else:
-    MODEL = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
-
 options = {
+    "preprocess": [remove_markdown],  # remove_markdown, remove_code_block, remove_url, remove_log
     "features": ["title", "body"],  # title, body
+    "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
+    "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
+    "save_dir": f"{ROOT}/results/title-body",
+    "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
+    # "load_dir": None,
+    "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
     "per_device_train_batch_size": 16,
@@ -38,6 +32,14 @@ options = {
     "SEED": 1,
     "logging_steps": 10,
 }
+
+# Consts
+if options["load_dir"]:
+    MODEL = DistilBertForSequenceClassification.from_pretrained(options["load_dir"], num_labels=3)
+    TOKENIZER = DistilBertTokenizerFast.from_pretrained(options["load_dir"])
+else:
+    MODEL = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
+    TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 
 
 class Dataset(torch.utils.data.Dataset):
@@ -54,10 +56,10 @@ class Dataset(torch.utils.data.Dataset):
         return len(self.labels)
 
 
-def remove_markdown(sentence):
-    markdown_pattern = r'#+|[*]+|[_]+|[>]+|[-][-]+|[+]|[`]+|!\[.+\]\(.+\)|\[.+\]\(.+\)|<.{0,6}>|\n|\r|<!---|-->|<>|=+'
-    text = re.sub(markdown_pattern, ' ', sentence)
-    return text
+def preprocess(df):
+    for fn in options["preprocess"]:
+        df.apply(fn)
+    return df
 
 
 def load_dataframe_from_pickle(path):
@@ -80,11 +82,27 @@ def pretty_dict(dict):
     return result
 
 
-def prep_dataset(X, Y):
-    """ Returns instance of Dataset class from list of training data (str) and list of labels (int). """
-    encodings = TOKENIZER(X, truncation=True, padding=True)
-    dataset = Dataset(encodings, Y)
+def prep_single_dataset(df):
+    encodings = TOKENIZER(df["X"].tolist(), truncation=True, padding=True)
+    dataset = Dataset(encodings, df["labels"].tolist())
     return dataset
+
+
+def prep_datasets(df):
+    """ Returns all, code, url, log dataset from list of training data (str) and list of labels (int). """
+    all_ds = prep_single_dataset(df)
+
+    result = [all_ds]
+    fns = [has_code_block, has_url, has_log]
+    print(f"Shape before filtering: {df.shape}")
+    for fn in fns:
+        df_ = df[df["X"].apply(fn)]
+        print(f"Shape after {fn}: {df_.shape}")
+        assert df_.size <= df.size, "filtered df should not be of bigger size than original one"
+        ds = prep_single_dataset(df_)
+        result.append(ds)
+
+    return result
 
 
 def compute_metrics(pred):
@@ -98,9 +116,9 @@ def compute_metrics(pred):
 
 def train_model(train_dataset):
     print("Training model...")
-    no_cuda = DEVICE == torch.device('cpu')
+    no_cuda = options["device"] == torch.device('cpu')
     training_args = TrainingArguments(
-        output_dir=SAVE_DIR,  # output directory
+        output_dir=options["save_dir"],  # output directory
         num_train_epochs=options["num_train_epochs"],  # total number of training epochs
         per_device_train_batch_size=options["per_device_train_batch_size"],  # batch size per device during training
         per_device_eval_batch_size=options["per_device_eval_batch_size"],  # batch size for evaluation
@@ -125,9 +143,9 @@ def train_model(train_dataset):
 
 def load_model():
     print("Loading model...")
-    no_cuda = DEVICE == torch.device('cpu')
+    no_cuda = options["device"] == torch.device('cpu')
     training_args = TrainingArguments(  # no trg is done
-        output_dir=SAVE_DIR,
+        output_dir=options["save_dir"],
         no_cuda=no_cuda,
         logging_dir='./logs',  # directory for storing logs
     )
@@ -148,8 +166,8 @@ def main():
     torch.manual_seed(options["SEED"])
 
     # Load data
-    train_data = load_dataframe_from_pickle(LOAD_TRAIN_PATH)
-    test_data = load_dataframe_from_pickle(LOAD_TEST_PATH)
+    train_data = load_dataframe_from_pickle(options["load_train_path"])
+    test_data = load_dataframe_from_pickle(options["load_test_path"])
 
     # Retrieve features
     print("Retrieving features...")
@@ -161,40 +179,47 @@ def main():
 
     # Preprocess
     print("Preprocessing...")
-    train_data['X'] = train_data['X'].apply(remove_markdown)
-    test_data['X'] = test_data['X'].apply(remove_markdown)
+    train_data['X'] = preprocess(train_data['X'])
+    test_data['X'] = preprocess(test_data['X'])
 
     # Preparing model
     print("Preparing model...")
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    training_length = math.ceil(len(train_data.index) * options["train_test_split"])
-    train_dataset = prep_dataset(train_data['X'][:training_length].tolist(),
-                                 train_data['labels'][:training_length].tolist())
-    test_seen_dataset = prep_dataset(train_data['X'][training_length:].tolist(),
-                                     train_data['labels'][training_length:].tolist())
-    test_unseen_dataset = prep_dataset(test_data['X'].tolist(), test_data['labels'].tolist())
-    # lite_dataset = prep_dataset(test_data['X'][:100].tolist(),  test_data['labels'][:100].tolist())  # for dev testing
+    # training_length = math.ceil(len(train_data.index) * options["train_test_split"])
+    # train_dataset = prep_single_dataset(train_data[:training_length])
+    # test_seen_datasets = prep_datasets(train_data[training_length:])  # all, code, url, log
+    # test_unseen_datasets = prep_datasets(test_data)
+    # assert len(test_seen_datasets) == 4
+    # assert len(test_unseen_datasets) == 4
+    test_lite_dataset = prep_datasets(test_data[:100])  # for dev testing
+    assert len(test_lite_dataset) == 4
 
     # Building model
-    load = bool(LOAD_PATH)
+    load = bool(options["load_dir"])
     if load:
         trainer = load_model()
     else:  # train from scratch
+        raise NotImplementedError
         trainer = train_model(train_dataset)
         print("Saving the good stuff in case they get lost...")
-        trainer.save_model(SAVE_DIR)
-        TOKENIZER.save_pretrained(SAVE_DIR)
+        trainer.save_model(options["save_dir"])
+        TOKENIZER.save_pretrained(options["save_dir"])
 
     print("Evaluating...")
-    results_seen = trainer.evaluate(test_seen_dataset)
-    results_unseen = trainer.evaluate(test_unseen_dataset)
     info = options
-    info["results on seen repos"] = results_seen
-    info["results on unseen repos"] = results_unseen
+    ds_type = ["all", "code", "url", "log"]
+    # for idx, ds in enumerate(test_seen_datasets):
+    #     info[f"results on {ds_type[idx]} seen repos"] = trainer.evaluate(ds)
+    # for idx, ds in enumerate(test_unseen_datasets):
+    #     info[f"results on {ds_type[idx]} unseen repos"] = trainer.evaluate(ds)
+    for idx, ds in enumerate(test_lite_dataset):
+        result = trainer.evaluate(ds)
+        result["dataset size"] = len(ds)
+        info[f"results on {ds_type[idx]} unseen lite repos"] = result
 
     # saving results and model
     print("Saving all the good stuff...")
-    data_file = open(f'{SAVE_DIR}/data.txt', "w+")
+    data_file = open(f'{options["save_dir"]}/data.txt', "w+")
     data_file.write(pretty_dict(info))
     data_file.close()
 
