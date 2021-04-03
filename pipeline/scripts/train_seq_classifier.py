@@ -18,10 +18,10 @@ ROOT = os.environ.get("ROOT")
 options = {
     "preprocess": [remove_markdown, remove_code_block],  # remove_markdown, remove_code_block, remove_url, remove_log
     "features": ["title", "body"],  # title, body
-    "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
+    "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "save_dir": f"{ROOT}/results/code",
     "test_mode": False,
-    "device": torch.device("cuda:1"),  # cpu, cuda
+    "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
     "per_device_train_batch_size": 16,
@@ -33,12 +33,8 @@ options = {
 }
 
 # Consts
-if options["load_dir"]:
-    MODEL = DistilBertForSequenceClassification.from_pretrained(options["load_dir"], num_labels=3)
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained(options["load_dir"])
-else:
-    MODEL = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
+MODEL = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
+TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 
 
 class Dataset(torch.utils.data.Dataset):
@@ -154,6 +150,8 @@ def main():
 
     # Load data
     train_data = load_dataframe_from_pickle(options["load_train_path"])
+    if options["test_mode"]:
+        train_data = train_data[:20]
 
     # Retrieve features
     print("Retrieving features...")
@@ -168,12 +166,9 @@ def main():
     # Preparing model
     print("Preparing model...")
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    if options["test_mode"]:
-        test_lite_dataset = prep_datasets(train_data[:10])  # for dev testing
-        assert len(test_lite_dataset) == 4
-    else:
-        training_length = math.ceil(len(train_data.index) * options["train_test_split"])
-        train_dataset = prep_single_dataset(train_data[:training_length])
+    training_length = math.ceil(len(train_data.index) * options["train_test_split"])
+    train_dataset = prep_single_dataset(train_data[:training_length])
+    del train_data
 
     # Building model
     trainer = train_model(train_dataset)
