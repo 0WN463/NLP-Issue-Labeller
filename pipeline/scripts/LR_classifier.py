@@ -71,7 +71,7 @@ def plot_confusion_matrix(y_true, y_pred):
 def main():
     # Load training data. NOTE: only pass in seen repos here
     print("Combining pickles...")
-    df_X_seen, df_y_seen = combine_pickles([TEXT_EMBEDDINGS_SEEN, WORD_COUNT_VECTORS_SEEN, TITLE_EMBEDDINGS_SEEN])
+    df_X_seen, df_y_seen = combine_pickles([TEXT_EMBEDDINGS_SEEN, WORD_COUNT_VECTORS_SEEN])
 
     # Train-Test split
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
@@ -97,7 +97,7 @@ def main():
     y_test_seen = y_test_seen.astype('int')
     score_seen = accuracy_score(y_test_seen, y_pred_seen)
     print('Accurracy score on test set for seen repos = {}'.format(score_seen))
-    plot_confusion_matrix(y_test_seen, y_pred_seen)
+    # plot_confusion_matrix(y_test_seen, y_pred_seen)
 
     # sanity checks
     y_pred_seen = None
@@ -107,14 +107,14 @@ def main():
 
     # Testing for unseen repos
     # load unseen repos first
-    df_X_unseen, df_y_unseen = combine_pickles([TEXT_EMBEDDINGS_UNSEEN, WORD_COUNT_VECTORS_UNSEEN, TITLE_EMBEDDINGS_UNSEEN])
+    df_X_unseen, df_y_unseen = combine_pickles([TEXT_EMBEDDINGS_UNSEEN, WORD_COUNT_VECTORS_UNSEEN])
     print("length of df_X_unseen: ", len(df_X_unseen)) # sanity check
     print("Testing model on UNSEEN repos now...")
     y_pred_unseen = model.predict(df_X_unseen)
     y_test_unseen = df_y_unseen.astype('int')
     score_unseen = accuracy_score(y_test_unseen, y_pred_unseen)
     print('Accurracy score on entire unseen repos = {}'.format(score_unseen))
-    plot_confusion_matrix(y_test_unseen, y_pred_unseen)
+    # plot_confusion_matrix(y_test_unseen, y_pred_unseen)
 
 if __name__ == "__main__":
     main()

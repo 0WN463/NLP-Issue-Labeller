@@ -70,8 +70,7 @@ def plot_confusion_matrix(y_true, y_pred):
 def main():
     # Load training data. NOTE: only pass in seen repos here
     print("Combining pickles...")
-    df_X_seen, df_y_seen = combine_pickles([TEXT_EMBEDDINGS_SEEN,
-        WORD_COUNT_VECTORS_SEEN, TITLE_EMBEDDINGS_SEEN])
+    df_X_seen, df_y_seen = combine_pickles([TEXT_EMBEDDINGS_SEEN, TITLE_EMBEDDINGS_SEEN])
 
     # Train-Test split
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
@@ -92,7 +91,7 @@ def main():
     model = tf.keras.models.Sequential([
         tf.keras.layers.InputLayer(input_shape=(input_length,)),
         tf.keras.layers.Dense(128, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
+        # tf.keras.layers.Dropout(0.2),
         tf.keras.layers.Dense(32, activation='relu'),
         tf.keras.layers.Dense(3, activation='softmax')
     ])
@@ -119,8 +118,7 @@ def main():
 
     # Testing for unseen repos
     # load unseen repos first
-    df_X_unseen, df_y_unseen = combine_pickles([TEXT_EMBEDDINGS_UNSEEN,
-        WORD_COUNT_VECTORS_UNSEEN, TITLE_EMBEDDINGS_UNSEEN])
+    df_X_unseen, df_y_unseen = combine_pickles([TEXT_EMBEDDINGS_UNSEEN, TITLE_EMBEDDINGS_UNSEEN])
     df_X_unseen = np.asarray(df_X_unseen)
     df_y_unseen = np.asarray(df_y_unseen)
     print("length of df_X_unseen: ", len(df_X_unseen)) # sanity check

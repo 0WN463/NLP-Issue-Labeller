@@ -2,17 +2,28 @@
 
 import re
 
-# Returns True of `text` contains logs; False otherwise
 def has_log(text):
     pattern = r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}:|\
-        [Tt]raceback.*:|[Bb]acktrace.*:|[Ll]ogs?:|\d{2}:\d{2}:\d{2}|\
-        (INFO|info|FAIL|fail|WARN(ING)?|warn(ing)?|FATAL|fatal|DEBUG|debug|SYSTEM|system|ERROR|error)\s*:'
+        [Tt]raceback.{0,10}:|[Bb]acktrace.{0,10}:|[Ll]ogs?:|\d{2}:\d{2}:\d{2}|\
+        (INFO|[Ii]nfo|FAIL|[Ff]ail|WARN(ING)?|[Ww]arn(ing)?|FATAL|[Ff]atal|DEBUG|[Dd]ebug|SYSTEM|[Ss]ystem|ERROR|[Ee]rror)\s*:'
     results = re.findall(pattern, text)
     return len(results) != 0
 
 def remove_log(text):
-	# TODO
-	pass
+    # If logs appear in a code block, remove the whole code block
+    CODE_REGEX = r'```.+?```'
+    for match in re.findall(CODE_REGEX, text, flags=re.S):
+        if has_log(str(match)):
+            text = text.replace(str(match), '')
+    
+    # If logs appear outside a code block, remove corresponding lines
+    LOG_REGEX = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}:|\
+        [Tt]raceback.{0,10}:|[Bb]acktrace.{0,10}:|[Ll]ogs?:|\d{2}:\d{2}:\d{2}|\
+        (INFO|[Ii]nfo|FAIL|[Ff]ail|WARN(ING)?|[Ww]arn(ing)?|FATAL|[Ff]atal|DEBUG|[Dd]ebug|SYSTEM|[Ss]ystem|ERROR|[Ee]rror)\s*:).+?\n'
+    for match in re.findall(LOG_REGEX, text, flags=re.S):
+        text = text.replace(str(match), '')
+
+    return text
 
 def has_code_block(text):
         CODE_REGEX = r'```.+?```'

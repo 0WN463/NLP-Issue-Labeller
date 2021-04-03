@@ -98,7 +98,7 @@ def main():
     seen_df = load_dataframe_from_pickle(is_seen=True)
     print("Done loading dataframe_train.pkl.")
 
-    embeddings_model = train_embeddings(seen_df, size=300, window=5, sg=0) # 0 for Skip-gram
+    embeddings_model = train_embeddings(seen_df, size=300, window=5, sg=0) # 0 for CBOW
     print("Done with embeddings training.")
 
     text_vector_array_seen = generate_averaged_word_embeddings(embeddings_model, seen_df['body'])
