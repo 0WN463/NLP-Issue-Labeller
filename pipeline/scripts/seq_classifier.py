@@ -16,15 +16,15 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [remove_markdown],  # remove_markdown, remove_code_block, remove_url, remove_log
+    "preprocess": [remove_markdown, remove_code_block],  # remove_markdown, remove_code_block, remove_url, remove_log
     "features": ["title", "body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
     "save_dir": f"{ROOT}/results/code",
-    "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
-    # "load_dir": None,
-    "test_mode": True,
-    "device": torch.device("cuda"),  # cpu, cuda
+    # load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
+    "load_dir": None,
+    "test_mode": False,
+    "device": torch.device("cuda:1"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
     "per_device_train_batch_size": 16,
@@ -32,6 +32,7 @@ options = {
     "warmup_steps": 500,
     "weight_decay": 0.01,
     "SEED": 1,
+    "logging_steps": 10
 }
 
 # Consts
@@ -196,8 +197,8 @@ def main():
         test_lite_dataset = prep_datasets(test_data[:10])  # for dev testing
         assert len(test_lite_dataset) == 4
     else:
-        if not bool(options["load_dir"]): training_length = math.ceil(len(train_data.index) * options["train_test_split"])
-        train_dataset = prep_single_dataset(train_data[:training_length])
+        training_length = math.ceil(len(train_data.index) * options["train_test_split"])
+        if not bool(options["load_dir"]): train_dataset = prep_single_dataset(train_data[:training_length])
         test_seen_datasets = prep_datasets(train_data[training_length:])  # all, code, url, log
         test_unseen_datasets = prep_datasets(test_data)
         assert len(test_seen_datasets) == 4
