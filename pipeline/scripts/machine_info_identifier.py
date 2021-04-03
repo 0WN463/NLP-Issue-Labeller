@@ -62,3 +62,4 @@ def remove_markdown(sentence):
     markdown_pattern = r'#+|[*]+|[_]+|[>]+|[-][-]+|[+]|[`]+|!\[.+\]\(.+\)|\[.+\]\(.+\)|<.{0,6}>|\n|\r|<!---|-->|<>|=+'
     text = re.sub(markdown_pattern, ' ', sentence)
     return text
+
