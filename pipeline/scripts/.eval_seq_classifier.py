@@ -1,7 +1,6 @@
 #!/usr/bin/env python.
 import math
 import os
-import shutil
 
 import numpy as np
 import pandas as pd
@@ -17,11 +16,11 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [remove_markdown, remove_log],  # remove_markdown, remove_code_block, remove_url, remove_log
+    "preprocess": [remove_markdown, remove_code_block],  # remove_markdown, remove_code_block, remove_url, remove_log
     "features": ["title", "body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
-    "save_dir": f"{ROOT}/results/log",
+    "save_dir": f"{ROOT}/results/code",
     # load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
     "load_dir": None,
     "test_mode": False,
@@ -174,11 +173,6 @@ def main():
     np.random.seed(options["SEED"])
     torch.manual_seed(options["SEED"])
 
-    # clear dir
-    if os.path.exists(options["save_dir"]):
-        shutil.rmtree(options["save_dir"])
-    os.makedirs(options["save_dir"])
-
     # Load data
     train_data = load_dataframe_from_pickle(options["load_train_path"])
     test_data = load_dataframe_from_pickle(options["load_test_path"])
@@ -200,7 +194,6 @@ def main():
     print("Preparing model...")
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
     if options["test_mode"]:
-        train_dataset = prep_single_dataset(train_data[:10])
         test_lite_dataset = prep_datasets(test_data[:10])  # for dev testing
         assert len(test_lite_dataset) == 4
     else:
@@ -210,8 +203,6 @@ def main():
         test_unseen_datasets = prep_datasets(test_data)
         assert len(test_seen_datasets) == 4
         assert len(test_unseen_datasets) == 4
-        del train_data
-        del test_data
 
 
     # Building model

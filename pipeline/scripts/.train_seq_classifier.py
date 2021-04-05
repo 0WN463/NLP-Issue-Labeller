@@ -1,7 +1,6 @@
 #!/usr/bin/env python.
 import math
 import os
-import shutil
 
 import numpy as np
 import pandas as pd
@@ -17,13 +16,10 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [remove_markdown, remove_log],  # remove_markdown, remove_code_block, remove_url, remove_log
+    "preprocess": [remove_markdown, remove_code_block],  # remove_markdown, remove_code_block, remove_url, remove_log
     "features": ["title", "body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
-    "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
-    "save_dir": f"{ROOT}/results/log",
-    # load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
-    "load_dir": None,
+    "save_dir": f"{ROOT}/results/code",
     "test_mode": False,
     "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
@@ -37,12 +33,8 @@ options = {
 }
 
 # Consts
-if options["load_dir"]:
-    MODEL = DistilBertForSequenceClassification.from_pretrained(options["load_dir"], num_labels=3)
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained(options["load_dir"])
-else:
-    MODEL = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
+MODEL = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
+TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 
 
 class Dataset(torch.utils.data.Dataset):
@@ -150,100 +142,44 @@ def train_model(train_dataset):
     return trainer
 
 
-def load_model():
-    print("Loading model...")
-    no_cuda = options["device"] == torch.device('cpu')
-    training_args = TrainingArguments(  # no trg is done
-        output_dir=options["save_dir"],
-        no_cuda=no_cuda,
-        logging_dir='./logs',  # directory for storing logs
-    )
-
-    trainer = Trainer(
-        model=MODEL,  # the instantiated 🤗 Transformers model to be trained
-        args=training_args,
-        compute_metrics=compute_metrics  # accuracy metric
-    )
-
-    return trainer
-
-
 def main():
     print("Preparing data...")
     # Setting seeds to control randomness
     np.random.seed(options["SEED"])
     torch.manual_seed(options["SEED"])
 
-    # clear dir
-    if os.path.exists(options["save_dir"]):
-        shutil.rmtree(options["save_dir"])
-    os.makedirs(options["save_dir"])
-
     # Load data
     train_data = load_dataframe_from_pickle(options["load_train_path"])
-    test_data = load_dataframe_from_pickle(options["load_test_path"])
+    if options["test_mode"]:
+        train_data = train_data[:20]
 
     # Retrieve features
     print("Retrieving features...")
     train_data['X'] = ''
-    test_data['X'] = ''
     for feature in options["features"]:
         train_data['X'] += train_data[feature] + " "
-        test_data['X'] += test_data[feature] + " "
 
     # Preprocess
     print("Preprocessing...")
     train_data['X'] = preprocess(train_data['X'])
-    test_data['X'] = preprocess(test_data['X'])
 
     # Preparing model
     print("Preparing model...")
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    if options["test_mode"]:
-        train_dataset = prep_single_dataset(train_data[:10])
-        test_lite_dataset = prep_datasets(test_data[:10])  # for dev testing
-        assert len(test_lite_dataset) == 4
-    else:
-        training_length = math.ceil(len(train_data.index) * options["train_test_split"])
-        if not bool(options["load_dir"]): train_dataset = prep_single_dataset(train_data[:training_length])
-        test_seen_datasets = prep_datasets(train_data[training_length:])  # all, code, url, log
-        test_unseen_datasets = prep_datasets(test_data)
-        assert len(test_seen_datasets) == 4
-        assert len(test_unseen_datasets) == 4
-        del train_data
-        del test_data
-
+    training_length = math.ceil(len(train_data.index) * options["train_test_split"])
+    train_dataset = prep_single_dataset(train_data[:training_length])
+    del train_data
 
     # Building model
-    if bool(options["load_dir"]):
-        trainer = load_model()
-    else:  # train from scratch
-        trainer = train_model(train_dataset)
-        print("Saving the good stuff in case they get lost...")
-        trainer.save_model(options["save_dir"])
-        TOKENIZER.save_pretrained(options["save_dir"])
+    trainer = train_model(train_dataset)
+    print("Saving the good stuff in case they get lost...")
+    trainer.save_model(options["save_dir"])
+    TOKENIZER.save_pretrained(options["save_dir"])
 
-    print("Evaluating...")
-    info = options
-    ds_type = ["all", "code", "url", "log"]
-    if options["test_mode"]:
-        for idx, ds in enumerate(test_lite_dataset):
-            result = trainer.evaluate(ds)
-            result["dataset size"] = len(ds)
-            info[f"results on {ds_type[idx]} unseen lite repos"] = result
-    else:
-        all_test_ds = [test_seen_datasets, test_unseen_datasets]
-        all_test_ds_type = ["seen", "unseen"]
-        for i, test_ds in enumerate(all_test_ds):
-            for j, ds in enumerate(test_ds):
-                result = trainer.evaluate(ds)
-                result["dataset size"] = len(ds)
-                info[f"results on {all_test_ds_type[i]} {ds_type[j]} repos"] = result
-
-    # saving results and model
+    # saving options
     print("Saving all the good stuff...")
-    data_file = open(f'{options["save_dir"]}/data.txt', "w+")
-    data_file.write(pretty_dict(info))
+    data_file = open(f'{options["save_dir"]}/train_data.txt', "w+")
+    data_file.write(pretty_dict(options))
     data_file.close()
 
 
