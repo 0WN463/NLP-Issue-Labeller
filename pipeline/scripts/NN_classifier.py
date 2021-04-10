@@ -12,6 +12,11 @@ import tensorflow as tf
 import seaborn as sn
 import matplotlib.pyplot as plt
 
+# for imbalanced dataset
+from collections import Counter
+from imblearn.over_sampling import SMOTE
+from imblearn.over_sampling import RandomOverSampler
+
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 # Seen repos
@@ -67,6 +72,40 @@ def plot_confusion_matrix(y_true, y_pred):
     sn.heatmap(df_cm, annot=True, cmap='viridis_r', fmt='d')
     plt.show()
 
+# Only class with a probability above threshold will get a classification label
+def predict_with_threshold(model, X_test, threshold=0.5):
+    predictions = model(X_test).numpy()
+    predictions = tf.nn.softmax(predictions).numpy()
+    results = []
+    for row in predictions:
+        if np.amax(row) >= threshold:
+            results.append(np.argmax(row))
+        else:
+            results.append(-1) # -1 indicates no decision
+    
+    return results
+
+def accuracy_labelled(pred, y_test):
+    if len(pred) != len(y_test):
+        print("Wrong dimensions!")
+        return
+    total_labelled_instances = 0
+    total_correct_instances = 0
+    num_doc = 0
+    for i in range(len(pred)):
+        if pred[i] != -1:
+            total_labelled_instances += 1
+            if pred[i] == y_test[i]:
+                total_correct_instances += 1
+            if pred[i] == 2:
+                num_doc += 1
+    
+    print("total is ", total_labelled_instances)
+    print("total correct is ", total_correct_instances)
+    print("number of doc issues: ", num_doc)
+
+    return total_correct_instances / total_labelled_instances
+
 def main():
     # Load training data. NOTE: only pass in seen repos here
     print("Combining pickles...")
@@ -86,12 +125,19 @@ def main():
     X_test_seen = np.asarray(X_test_seen)
     y_test_seen = np.asarray(y_test_seen)
 
+    # RESAMPLE DATA
+    # oversample = SMOTE(sampling_strategy='minority', k_neighbors=2)
+    # oversample = RandomOverSampler(sampling_strategy={2 : 5000})
+    oversample = RandomOverSampler(sampling_strategy='not majority', random_state=1)
+    X_train, y_train = oversample.fit_resample(X_train, y_train)
+    print(sorted(Counter(y_train).items()))
+
     # Training
     input_length = len(X_train[0])
     model = tf.keras.models.Sequential([
         tf.keras.layers.InputLayer(input_shape=(input_length,)),
         tf.keras.layers.Dense(128, activation='relu'),
-        # tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dropout(0.2),
         tf.keras.layers.Dense(32, activation='relu'),
         tf.keras.layers.Dense(3, activation='softmax')
     ])
@@ -110,7 +156,18 @@ def main():
     # Testing for seen repos
     print("Testing model on testing set of SEEN repos now...")
     model.evaluate(X_test_seen, y_test_seen)
-    # plot_confusion_matrix(y_test_seen, model.predict(X_test_seen))
+    plot_confusion_matrix(y_test_seen, np.argmax(model.predict(X_test_seen), axis=1))
+
+    # Check accuracy if we set threshold above 50%
+    # predictions = model(X_test_seen[:30]).numpy()
+    # predictions = tf.nn.softmax(predictions).numpy()
+    adjusted_pred_seen = predict_with_threshold(model, X_test_seen, threshold=0.5)
+    # print("adjusted predictions:")
+    # print(predictions)
+    # print(adjusted_pred[:30])
+    print("adjusted accuracy:")
+    adjusted_accuracy_seen = accuracy_labelled(adjusted_pred_seen, y_test_seen)
+    print(adjusted_accuracy_seen)
 
     # sanity checks
     X_test_seen = None
@@ -124,7 +181,13 @@ def main():
     print("length of df_X_unseen: ", len(df_X_unseen)) # sanity check
     print("Testing model on UNSEEN repos now...")
     model.evaluate(df_X_unseen, df_y_unseen)
-    # plot_confusion_matrix(df_y_unseen, model.predict(df_X_unseen))
+    plot_confusion_matrix(df_y_unseen, np.argmax(model.predict(df_X_unseen), axis=1))
+
+    # Check accuracy if we set threshold above 50%
+    adjusted_pred_unseen = predict_with_threshold(model, df_X_unseen, threshold=0.5)
+    print("adjusted accuracy unseen:")
+    adjusted_accuracy_unseen = accuracy_labelled(adjusted_pred_unseen, df_y_unseen)
+    print(adjusted_accuracy_unseen)
 
 if __name__ == "__main__":
     main()
