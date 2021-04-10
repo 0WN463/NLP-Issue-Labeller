@@ -17,14 +17,14 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [remove_markdown, remove_log],  # remove_markdown, remove_code_block, remove_url, remove_log
+    "preprocess": [remove_url],  # remove_code_block, remove_url, remove_log
     "features": ["title", "body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
-    "save_dir": f"{ROOT}/results/log",
-    # load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
-    "load_dir": None,
-    "test_mode": False,
+    "save_dir": f"{ROOT}/results/test",
+    "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
+    # "load_dir": None,
+    "test_mode": True,
     "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
@@ -61,7 +61,7 @@ class Dataset(torch.utils.data.Dataset):
 
 def preprocess(df):
     for fn in options["preprocess"]:
-        df.apply(fn)
+        df = df.apply(fn)
     return df
 
 
@@ -86,15 +86,15 @@ def pretty_dict(dict):
 
 
 def prep_single_dataset(df):
-    encodings = TOKENIZER(df["X"].tolist(), truncation=True, padding=True)
+    df = df.copy(deep=True)
+    encodings = TOKENIZER(preprocess(df["X"]).tolist(), truncation=True, padding=True)
     dataset = Dataset(encodings, df["labels"].tolist())
     return dataset
 
 
 def prep_datasets(df):
-    """ Returns all, code, url, log dataset from list of training data (str) and list of labels (int). """
+    """ Returns all, code, url, log preprocessed dataset from list of training data (str) and list of labels (int). """
     all_ds = prep_single_dataset(df)
-
     result = [all_ds]
     fns = [has_code_block, has_url, has_log]
     print(f"Shape before filtering: {df.shape}")
@@ -192,27 +192,22 @@ def main():
         test_data['X'] += test_data[feature] + " "
 
     # Preprocess
-    print("Preprocessing...")
-    train_data['X'] = preprocess(train_data['X'])
-    test_data['X'] = preprocess(test_data['X'])
+    # print("Preprocessing...")
+    if options["test_mode"]:
+        train_data = train_data[:50]
+        test_data = test_data[:50]
 
     # Preparing model
     print("Preparing model...")
     # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
-    if options["test_mode"]:
-        train_dataset = prep_single_dataset(train_data[:10])
-        test_lite_dataset = prep_datasets(test_data[:10])  # for dev testing
-        assert len(test_lite_dataset) == 4
-    else:
-        training_length = math.ceil(len(train_data.index) * options["train_test_split"])
-        if not bool(options["load_dir"]): train_dataset = prep_single_dataset(train_data[:training_length])
-        test_seen_datasets = prep_datasets(train_data[training_length:])  # all, code, url, log
-        test_unseen_datasets = prep_datasets(test_data)
-        assert len(test_seen_datasets) == 4
-        assert len(test_unseen_datasets) == 4
-        del train_data
-        del test_data
-
+    training_length = math.ceil(len(train_data.index) * options["train_test_split"])
+    if not bool(options["load_dir"]): train_dataset = prep_single_dataset(train_data[:training_length])
+    test_seen_datasets = prep_datasets(train_data[training_length:])  # all, code, url, log
+    test_unseen_datasets = prep_datasets(test_data)
+    assert len(test_seen_datasets) == 4
+    assert len(test_unseen_datasets) == 4
+    del train_data
+    del test_data
 
     # Building model
     if bool(options["load_dir"]):
@@ -226,19 +221,13 @@ def main():
     print("Evaluating...")
     info = options
     ds_type = ["all", "code", "url", "log"]
-    if options["test_mode"]:
-        for idx, ds in enumerate(test_lite_dataset):
+    all_test_ds = [test_seen_datasets, test_unseen_datasets]
+    all_test_ds_type = ["seen", "unseen"]
+    for i, test_ds in enumerate(all_test_ds):
+        for j, ds in enumerate(test_ds):
             result = trainer.evaluate(ds)
             result["dataset size"] = len(ds)
-            info[f"results on {ds_type[idx]} unseen lite repos"] = result
-    else:
-        all_test_ds = [test_seen_datasets, test_unseen_datasets]
-        all_test_ds_type = ["seen", "unseen"]
-        for i, test_ds in enumerate(all_test_ds):
-            for j, ds in enumerate(test_ds):
-                result = trainer.evaluate(ds)
-                result["dataset size"] = len(ds)
-                info[f"results on {all_test_ds_type[i]} {ds_type[j]} repos"] = result
+            info[f"results on {all_test_ds_type[i]} {ds_type[j]} repos"] = result
 
     # saving results and model
     print("Saving all the good stuff...")
