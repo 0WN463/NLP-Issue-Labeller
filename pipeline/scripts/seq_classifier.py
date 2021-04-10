@@ -125,8 +125,14 @@ def compute_metrics(pred):
         'cm': cm,  # tensorboard may drop this but that's fine - tensorboard's a sep logging framework
     }
 
+def model_init():
+    if options["load_dir"]:
+        model = DistilBertForSequenceClassification.from_pretrained(options["load_dir"], num_labels=3)
+    else:
+        model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
+    return model
 
-def train_model(train_dataset, save_dir):
+def train_model(train_dataset, save_dir, seed):
     print("Training model...")
     no_cuda = options["device"] == torch.device('cpu')
     training_args = TrainingArguments(
@@ -139,14 +145,16 @@ def train_model(train_dataset, save_dir):
         logging_dir='./logs',  # directory for storing logs
         logging_steps=options["logging_steps"],
         no_cuda=no_cuda,
-        save_strategy="no"
+        save_strategy="no",
+        seed=seed
     )
 
     trainer = Trainer(
-        model=MODEL,  # the instantiated 🤗 Transformers model to be trained
+        model=None,  # the instantiated 🤗 Transformers model to be trained
         args=training_args,  # training arguments, defined above
         train_dataset=train_dataset,  # training dataset
-        compute_metrics=compute_metrics  # accuracy metric
+        compute_metrics=compute_metrics,  # accuracy metric
+        model_init=model_init  # control random weights in model
     )
 
     trainer.train()
@@ -164,9 +172,10 @@ def load_model(save_dir):
     )
 
     trainer = Trainer(
-        model=MODEL,  # the instantiated 🤗 Transformers model to be trained
+        model=None,  # the instantiated 🤗 Transformers model to be trained
         args=training_args,
-        compute_metrics=compute_metrics  # accuracy metric
+        compute_metrics=compute_metrics,  # accuracy metric
+        model_init=model_init  # control random weights in model
     )
 
     return trainer
@@ -185,8 +194,9 @@ def main():
 
     for i in range(options["n_repeat"]):
         # Setting seeds to control randomness
-        np.random.seed(i)
-        torch.manual_seed(i)
+        seed = i
+        np.random.seed(seed)
+        torch.manual_seed(seed)
 
         # clear dir
         save_dir_repeat = os.path.join(options["save_dir"], f"repeat_{i}")
@@ -228,7 +238,7 @@ def main():
         if bool(options["load_dir"]):
             trainer = load_model(save_dir_repeat)
         else:  # train from scratch
-            trainer = train_model(train_dataset, save_dir_repeat)
+            trainer = train_model(train_dataset, save_dir_repeat, seed)
             print("Saving the good stuff in case they get lost...")
             trainer.save_model(save_dir_repeat)
             TOKENIZER.save_pretrained(save_dir_repeat)
@@ -247,6 +257,7 @@ def main():
         for j, ds in enumerate(DS_TYPE):
             avg_results = average_results(results[i][j])
             info[f"avg results on {ALL_TEST_DS_TYPE[i]} {DS_TYPE[j]} repos"] = avg_results
+            info[f"all results on {ALL_TEST_DS_TYPE[i]} {DS_TYPE[j]} repos"] = results[i][j]
 
     # saving results and model
     print("Saving all the good stuff...")
