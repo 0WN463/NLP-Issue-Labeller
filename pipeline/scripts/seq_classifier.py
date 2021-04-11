@@ -17,15 +17,15 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [remove_url],  # remove_code_block, remove_url, remove_log
-    "features": ["title", "body"],  # title, body
+    "preprocess": [],  # remove_code_block, remove_url, remove_log
+    "features": ["title"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
-    "save_dir": f"{ROOT}/results/temp",
-    "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
-    "n_repeat": 2,
-    # "load_dir": None,
-    "test_mode": True,
+    "save_dir": f"{ROOT}/results/title",
+    # "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
+    "load_dir": None,
+    "n_repeat": 3,
+    "test_mode": False,
     "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
@@ -38,10 +38,8 @@ options = {
 
 # Consts
 if options["load_dir"]:
-    MODEL = DistilBertForSequenceClassification.from_pretrained(options["load_dir"], num_labels=3)
     TOKENIZER = DistilBertTokenizerFast.from_pretrained(options["load_dir"])
 else:
-    MODEL = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
     TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 ALL_TEST_DS_TYPE = ["seen", "unseen"]
 DS_TYPE = ["all", "code", "url", "log"]
@@ -105,7 +103,11 @@ def prep_datasets(df):
         df_ = df[df["X"].apply(fn)]
         print(f"Shape after {fn}: {df_.shape}")
         assert df_.size <= df.size, "filtered df should not be of bigger size than original one"
-        ds = prep_single_dataset(df_)
+        if df_.size > 0:
+            ds = prep_single_dataset(df_)
+        else:
+            ds = []
+            print(f"WARNING: dataset for {fn} empty. Ensure this is intended.")
         result.append(ds)
 
     return result
@@ -247,7 +249,7 @@ def main():
         all_test_ds = [test_seen_datasets, test_unseen_datasets]
         for i, test_ds in enumerate(all_test_ds):
             for j, ds in enumerate(test_ds):
-                result = trainer.evaluate(ds)
+                result = trainer.evaluate(ds) if len(ds) > 0 else {}
                 result["dataset size"] = len(ds)
                 results[i][j].append(result)
 
