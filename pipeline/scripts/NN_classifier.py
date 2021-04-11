@@ -6,16 +6,11 @@ import math
 import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from sklearn.metrics import confusion_matrix
 import tensorflow as tf
 import seaborn as sn
 import matplotlib.pyplot as plt
-
-# for imbalanced dataset
-from collections import Counter
-from imblearn.over_sampling import SMOTE
-from imblearn.over_sampling import RandomOverSampler
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -33,6 +28,9 @@ TITLE_EMBEDDINGS_UNSEEN = f"{ROOT}/pipeline/pickles/title_embeddings_unseen.pkl"
 WORD_COUNT_VECTORS_UNSEEN = f"{ROOT}/pipeline/pickles/word_count_vectors_unseen.pkl"
 TITLE_SENTENCE_EMBEDDINGS_UNSEEN= f"{ROOT}/pipeline/pickles/title_sentence_embeddings_unseen.pkl"
 BODY_SENTENCE_EMBEDDINGS_UNSEEN= f"{ROOT}/pipeline/pickles/body_sentence_embeddings_unseen.pkl"
+
+# Thresholds for making a classification decision
+THRESHOLDS = [0.33, 0.4, 0.5]
 
 def load_pickle(filename):
     retrieved_df = pd.read_pickle(filename)
@@ -73,7 +71,7 @@ def plot_confusion_matrix(y_true, y_pred):
     plt.show()
 
 # Only class with a probability above threshold will get a classification label
-def predict_with_threshold(model, X_test, threshold=0.5):
+def predict_with_threshold(model, X_test, threshold):
     predictions = model(X_test).numpy()
     predictions = tf.nn.softmax(predictions).numpy()
     results = []
@@ -84,6 +82,21 @@ def predict_with_threshold(model, X_test, threshold=0.5):
             results.append(-1) # -1 indicates no decision
     
     return results
+
+# Evaluates the model with various metrics at various thresholds of confidence, where `thresholds` is a list of floats from 0 to 1
+def evaluate(model, X_test, thresholds, y_test):
+    for threshold in thresholds:
+        adjusted_pred_seen = predict_with_threshold(model, X_test, threshold=threshold)
+        adjusted_accuracy = accuracy_labelled(adjusted_pred_seen, y_test) # only consider accuracy of those labelled
+        precision, recall, fscore, _ = precision_recall_fscore_support(y_test, adjusted_pred_seen, average="weighted", zero_division=0)  # weighted to account for label imbalance
+        results = {
+            'threshold': threshold,
+            'accuracy': adjusted_accuracy,
+            'precision': precision,
+            'recall': recall,
+            'fscore': fscore
+        }
+        print(results)
 
 def accuracy_labelled(pred, y_test):
     if len(pred) != len(y_test):
@@ -100,6 +113,7 @@ def accuracy_labelled(pred, y_test):
             if pred[i] == 2:
                 num_doc += 1
     
+    # The following stats are just FYI and for checking purposes
     print("total is ", total_labelled_instances)
     print("total correct is ", total_correct_instances)
     print("number of doc issues: ", num_doc)
@@ -124,13 +138,6 @@ def main():
     y_train = np.asarray(y_train)
     X_test_seen = np.asarray(X_test_seen)
     y_test_seen = np.asarray(y_test_seen)
-
-    # RESAMPLE DATA
-    # oversample = SMOTE(sampling_strategy='minority', k_neighbors=2)
-    # oversample = RandomOverSampler(sampling_strategy={2 : 5000})
-    oversample = RandomOverSampler(sampling_strategy='not majority', random_state=1)
-    X_train, y_train = oversample.fit_resample(X_train, y_train)
-    print(sorted(Counter(y_train).items()))
 
     # Training
     input_length = len(X_train[0])
@@ -158,16 +165,9 @@ def main():
     model.evaluate(X_test_seen, y_test_seen)
     plot_confusion_matrix(y_test_seen, np.argmax(model.predict(X_test_seen), axis=1))
 
-    # Check accuracy if we set threshold above 50%
-    # predictions = model(X_test_seen[:30]).numpy()
-    # predictions = tf.nn.softmax(predictions).numpy()
-    adjusted_pred_seen = predict_with_threshold(model, X_test_seen, threshold=0.5)
-    # print("adjusted predictions:")
-    # print(predictions)
-    # print(adjusted_pred[:30])
-    print("adjusted accuracy:")
-    adjusted_accuracy_seen = accuracy_labelled(adjusted_pred_seen, y_test_seen)
-    print(adjusted_accuracy_seen)
+    # Evaluating model on seen repos
+    print("Evaluating model on SEEN repos:")
+    evaluate(model, X_test_seen, THRESHOLDS, y_test_seen)
 
     # sanity checks
     X_test_seen = None
@@ -183,11 +183,9 @@ def main():
     model.evaluate(df_X_unseen, df_y_unseen)
     plot_confusion_matrix(df_y_unseen, np.argmax(model.predict(df_X_unseen), axis=1))
 
-    # Check accuracy if we set threshold above 50%
-    adjusted_pred_unseen = predict_with_threshold(model, df_X_unseen, threshold=0.5)
-    print("adjusted accuracy unseen:")
-    adjusted_accuracy_unseen = accuracy_labelled(adjusted_pred_unseen, df_y_unseen)
-    print(adjusted_accuracy_unseen)
+    # Evaluating model on seen repos
+    print("Evaluating model on SEEN repos:")
+    evaluate(model, df_X_unseen, THRESHOLDS, df_y_unseen)
 
 if __name__ == "__main__":
     main()
