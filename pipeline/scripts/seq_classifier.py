@@ -18,14 +18,14 @@ ROOT = os.environ.get("ROOT")
 
 options = {
     "preprocess": [],  # remove_code_block, remove_url, remove_log
-    "features": ["title"],  # title, body
+    "features": ["title", "body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
-    "save_dir": f"{ROOT}/results/title",
-    # "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
-    "load_dir": None,
+    "save_dir": f"{ROOT}/results/temp",
+    "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
+    # "load_dir": None,
     "n_repeat": 3,
-    "test_mode": False,
+    "test_mode": True,
     "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
@@ -37,10 +37,6 @@ options = {
 }
 
 # Consts
-if options["load_dir"]:
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained(options["load_dir"])
-else:
-    TOKENIZER = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 ALL_TEST_DS_TYPE = ["seen", "unseen"]
 DS_TYPE = ["all", "code", "url", "log"]
 
@@ -86,16 +82,16 @@ def pretty_dict(dict):
     return result
 
 
-def prep_single_dataset(df):
+def prep_single_dataset(df, tokenizer):
     df = df.copy(deep=True)
-    encodings = TOKENIZER(preprocess(df["X"]).tolist(), truncation=True, padding=True)
+    encodings = tokenizer(preprocess(df["X"]).tolist(), truncation=True, padding=True)
     dataset = Dataset(encodings, df["labels"].tolist())
     return dataset
 
 
-def prep_datasets(df):
+def prep_datasets(df, tokenizer):
     """ Returns all, code, url, log preprocessed dataset from list of training data (str) and list of labels (int). """
-    all_ds = prep_single_dataset(df)
+    all_ds = prep_single_dataset(df, tokenizer)
     result = [all_ds]
     fns = [has_code_block, has_url, has_log]
     print(f"Shape before filtering: {df.shape}")
@@ -104,7 +100,7 @@ def prep_datasets(df):
         print(f"Shape after {fn}: {df_.shape}")
         assert df_.size <= df.size, "filtered df should not be of bigger size than original one"
         if df_.size > 0:
-            ds = prep_single_dataset(df_)
+            ds = prep_single_dataset(df_, tokenizer)
         else:
             ds = []
             print(f"WARNING: dataset for {fn} empty. Ensure this is intended.")
@@ -128,10 +124,7 @@ def compute_metrics(pred):
     }
 
 def model_init():
-    if options["load_dir"]:
-        model = DistilBertForSequenceClassification.from_pretrained(options["load_dir"], num_labels=3)
-    else:
-        model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
+    model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=3)
     return model
 
 def train_model(train_dataset, save_dir, seed):
@@ -164,8 +157,9 @@ def train_model(train_dataset, save_dir, seed):
     return trainer
 
 
-def load_model(save_dir):
+def load_model(save_dir, load_path):
     print("Loading model...")
+    model = DistilBertForSequenceClassification.from_pretrained(load_path, num_labels=3)
     no_cuda = options["device"] == torch.device('cpu')
     training_args = TrainingArguments(  # no trg is done
         output_dir=save_dir,
@@ -174,10 +168,9 @@ def load_model(save_dir):
     )
 
     trainer = Trainer(
-        model=None,  # the instantiated 🤗 Transformers model to be trained
+        model=model,  # loading pre trained model
         args=training_args,
-        compute_metrics=compute_metrics,  # accuracy metric
-        model_init=model_init  # control random weights in model
+        compute_metrics=compute_metrics  # accuracy metric
     )
 
     return trainer
@@ -206,7 +199,13 @@ def main():
             shutil.rmtree(save_dir_repeat)
         os.makedirs(save_dir_repeat)
 
-        # Load data
+        # Load stuff
+        if options["load_dir"]:
+            load_path = os.path.join(options["load_dir"], f"repeat_{i}")
+            tokenizer = DistilBertTokenizerFast.from_pretrained(load_path)
+        else:
+            tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
+
         train_data = load_dataframe_from_pickle(options["load_train_path"])
         test_data = load_dataframe_from_pickle(options["load_test_path"])
 
@@ -228,9 +227,9 @@ def main():
         print("Preparing model...")
         # [NOTE: No need to randomise as randomisation has already been done in scripts/dataframe_generator.py]
         training_length = math.ceil(len(train_data.index) * options["train_test_split"])
-        if not bool(options["load_dir"]): train_dataset = prep_single_dataset(train_data[:training_length])
-        test_seen_datasets = prep_datasets(train_data[training_length:])  # all, code, url, log
-        test_unseen_datasets = prep_datasets(test_data)
+        if not bool(options["load_dir"]): train_dataset = prep_single_dataset(train_data[:training_length], tokenizer)
+        test_seen_datasets = prep_datasets(train_data[training_length:], tokenizer)  # all, code, url, log
+        test_unseen_datasets = prep_datasets(test_data, tokenizer)
         assert len(test_seen_datasets) == 4
         assert len(test_unseen_datasets) == 4
         del train_data
@@ -238,12 +237,12 @@ def main():
 
         # Building model
         if bool(options["load_dir"]):
-            trainer = load_model(save_dir_repeat)
+            trainer = load_model(save_dir_repeat, load_path)
         else:  # train from scratch
             trainer = train_model(train_dataset, save_dir_repeat, seed)
             print("Saving the good stuff in case they get lost...")
             trainer.save_model(save_dir_repeat)
-            TOKENIZER.save_pretrained(save_dir_repeat)
+            tokenizer.save_pretrained(save_dir_repeat)
 
         print("Evaluating...")
         all_test_ds = [test_seen_datasets, test_unseen_datasets]
