@@ -183,8 +183,8 @@ def main():
     model.evaluate(df_X_unseen, df_y_unseen)
     plot_confusion_matrix(df_y_unseen, np.argmax(model.predict(df_X_unseen), axis=1))
 
-    # Evaluating model on seen repos
-    print("Evaluating model on SEEN repos:")
+    # Evaluating model on unseen repos
+    print("Evaluating model on UNSEEN repos:")
     evaluate(model, df_X_unseen, THRESHOLDS, df_y_unseen)
 
 if __name__ == "__main__":
