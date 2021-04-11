@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 import math
 import numpy as np
 import pandas as pd
+from utils import accuracy_labelled
+
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from sklearn.metrics import confusion_matrix
@@ -98,27 +100,6 @@ def evaluate(model, X_test, thresholds, y_test):
         }
         print(results)
 
-def accuracy_labelled(pred, y_test):
-    if len(pred) != len(y_test):
-        print("Wrong dimensions!")
-        return
-    total_labelled_instances = 0
-    total_correct_instances = 0
-    num_doc = 0
-    for i in range(len(pred)):
-        if pred[i] != -1:
-            total_labelled_instances += 1
-            if pred[i] == y_test[i]:
-                total_correct_instances += 1
-            if pred[i] == 2:
-                num_doc += 1
-    
-    # The following stats are just FYI and for checking purposes
-    print("total is ", total_labelled_instances)
-    print("total correct is ", total_correct_instances)
-    print("number of doc issues: ", num_doc)
-
-    return total_correct_instances / total_labelled_instances
 
 def main():
     # Load training data. NOTE: only pass in seen repos here
