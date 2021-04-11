@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support, con
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification, Trainer, TrainingArguments
 
 from utils import remove_log, remove_code_block, remove_url, remove_markdown, has_log, has_code_block, \
-    has_url, average_results
+    has_url, average_results, accuracy_labelled
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -25,7 +25,8 @@ options = {
     "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
     # "load_dir": None,
     "n_repeat": 3,
-    "test_mode": True,
+    "test_mode": False,
+    "confidence": 4,  # [0, 2, 4]. Threshold for logit output. 0 is equivalent to argmax.
     "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
@@ -111,8 +112,11 @@ def prep_datasets(df, tokenizer):
 
 def compute_metrics(pred):
     labels = pred.label_ids
-    preds = pred.predictions.argmax(-1)
-    acc = accuracy_score(labels, preds)
+    preds = np.empty(labels.shape)
+    for i, pred in enumerate(pred.predictions):
+        preds[i] = np.argmax(pred) if np.amax(pred) > options["confidence"] else -1
+    acc = accuracy_labelled(preds, labels)
+    # acc = accuracy_score(labels, preds)
     precision, recall, fscore, _ = precision_recall_fscore_support(labels, preds, average="weighted")  # weighted to account for label imbalance
     cm = confusion_matrix(labels, preds)
     return {

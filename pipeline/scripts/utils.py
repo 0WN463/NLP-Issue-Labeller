@@ -82,6 +82,27 @@ def average_results(results):
     return avg_results
 
 
+def accuracy_labelled(pred, y_test):
+    assert len(pred) == len(y_test), "Wrong dimensions!"
+    total_labelled_instances = 0
+    total_correct_instances = 0
+    num_doc = 0
+    for i in range(len(pred)):
+        if pred[i] != -1:
+            total_labelled_instances += 1
+            if pred[i] == y_test[i]:
+                total_correct_instances += 1
+            if pred[i] == 2:
+                num_doc += 1
+
+    # The following stats are just FYI and for checking purposes
+    # print("total is ", total_labelled_instances)
+    # print("total correct is ", total_correct_instances)
+    # print("number of doc issues: ", num_doc)
+
+    return total_correct_instances / total_labelled_instances
+
+
 def test_average_results():
     results = [
         {'eval_loss': 0.37910524010658264, 'eval_accuracy': 0.8940754039497307, 'eval_precision': 0.8913983988380442,
