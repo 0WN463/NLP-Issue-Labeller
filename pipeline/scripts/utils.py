@@ -38,11 +38,11 @@ def has_code_block(text):
     return False
 
 
-def remove_code_block(text):
+def replace_code_block(text, replaced_text='code block'):
     CODE_REGEX = r'```.+?```'
     for match in re.findall(CODE_REGEX, text, flags=re.S):
         if not has_log(str(match)):
-            text = text.replace(str(match), '')
+            text = text.replace(str(match), replaced_text)
     return text
 
 
