@@ -9,7 +9,7 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 import seaborn as sn
 import matplotlib.pyplot as plt
 
@@ -29,6 +29,9 @@ TITLE_EMBEDDINGS_UNSEEN = f"{ROOT}/pipeline/pickles/title_embeddings_unseen.pkl"
 WORD_COUNT_VECTORS_UNSEEN = f"{ROOT}/pipeline/pickles/word_count_vectors_unseen.pkl"
 TITLE_SENTENCE_EMBEDDINGS_UNSEEN= f"{ROOT}/pipeline/pickles/title_sentence_embeddings_unseen.pkl"
 BODY_SENTENCE_EMBEDDINGS_UNSEEN= f"{ROOT}/pipeline/pickles/body_sentence_embeddings_unseen.pkl"
+
+# Thresholds for making a classification decision
+THRESHOLDS = [0.33, 0.4, 0.5]
 
 def load_pickle(filename):
     retrieved_df = pd.read_pickle(filename)
@@ -68,6 +71,59 @@ def plot_confusion_matrix(y_true, y_pred):
     sn.heatmap(df_cm, annot=True, cmap='viridis_r', fmt='d')
     plt.show()
 
+# Only class with a probability above threshold will get a classification label
+def predict_with_threshold(model, X_test, threshold):
+    predictions = model.predict_proba(X_test)
+    results = []
+    for row in predictions:
+        if np.amax(row) >= threshold:
+            results.append(np.argmax(row))
+        else:
+            results.append(-1) # -1 indicates no decision
+    
+    return results
+
+# Evaluates the model with various metrics at various thresholds of confidence, where `thresholds` is a list of floats from 0 to 1
+def evaluate(model, X_test, thresholds, y_test):
+    for threshold in thresholds:
+        adjusted_pred_seen = predict_with_threshold(model, X_test, threshold=threshold)
+        adjusted_accuracy = accuracy_labelled(adjusted_pred_seen, y_test) # only consider accuracy of those labelled
+        precision, recall, fscore, _ = precision_recall_fscore_support(y_test, adjusted_pred_seen, average="weighted", zero_division=0)  # weighted to account for label imbalance
+        results = {
+            'threshold': threshold,
+            'accuracy': adjusted_accuracy,
+            'precision': precision,
+            'recall': recall,
+            'fscore': fscore
+        }
+        print(results)
+
+def accuracy_labelled(pred, y_test):
+    # fix type issue
+    y_test = y_test.to_numpy(dtype=int)
+
+    if len(pred) != len(y_test):
+        print("Wrong dimensions!")
+        return
+    
+    total_labelled_instances = 0
+    total_correct_instances = 0
+    num_doc = 0
+    for i in range(len(pred)):
+        if pred[i] != -1:
+            total_labelled_instances += 1
+            if pred[i] == y_test[i]:
+                total_correct_instances += 1
+            if pred[i] == 2:
+                num_doc += 1
+    
+    # The following stats are just FYI and for checking purposes
+    print("total is ", total_labelled_instances)
+    print("total correct is ", total_correct_instances)
+    print("number of doc issues: ", num_doc)
+
+    return total_correct_instances / total_labelled_instances
+
 def main():
     # Load training data. NOTE: only pass in seen repos here
     print("Combining pickles...")
@@ -82,7 +138,7 @@ def main():
     y_test_seen = df_y_seen[training_length:]
 
     # Training
-    model = LogisticRegression(C=1.3, max_iter=2000)
+    model = LogisticRegression(C=1.3, max_iter=2000, multi_class='multinomial')
     print("Training model now...")
     print("X_train length: ", len(X_train))
     # print("10 examples of X_train: ", X_train[:10])
@@ -98,6 +154,10 @@ def main():
     score_seen = accuracy_score(y_test_seen, y_pred_seen)
     print('Accurracy score on test set for seen repos = {}'.format(score_seen))
     # plot_confusion_matrix(y_test_seen, y_pred_seen)
+
+    # Evaluating model on seen repos
+    print("Evaluating model on SEEN repos:")
+    evaluate(model, X_test_seen, THRESHOLDS, y_test_seen)
 
     # sanity checks
     y_pred_seen = None
@@ -115,6 +175,10 @@ def main():
     score_unseen = accuracy_score(y_test_unseen, y_pred_unseen)
     print('Accurracy score on entire unseen repos = {}'.format(score_unseen))
     # plot_confusion_matrix(y_test_unseen, y_pred_unseen)
+
+    # Evaluating model on unseen repos
+    print("Evaluating model on UNSEEN repos:")
+    evaluate(model, df_X_unseen, THRESHOLDS, df_y_unseen)
 
 if __name__ == "__main__":
     main()
