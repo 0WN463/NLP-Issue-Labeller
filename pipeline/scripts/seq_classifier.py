@@ -10,14 +10,14 @@ from dotenv import load_dotenv
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification, Trainer, TrainingArguments
 
-from utils import remove_log, remove_code_block, remove_url, remove_markdown, has_log, has_code_block, \
+from utils import remove_log, replace_code_block, remove_url, remove_markdown, has_log, has_code_block, \
     has_url, average_results, accuracy_labelled
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [],  # remove_code_block, remove_url, remove_log
+    "preprocess": [],  # replace_code_block, remove_url, remove_log
     "features": ["title", "body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
@@ -26,7 +26,7 @@ options = {
     # "load_dir": None,
     "n_repeat": 3,
     "test_mode": False,
-    "confidence": 4,  # [0, 2, 4]. Threshold for logit output. 0 is equivalent to argmax.
+    "confidence": 0,  # [0, 2, 4]. Threshold for logit output. 0 is equivalent to argmax.
     "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
