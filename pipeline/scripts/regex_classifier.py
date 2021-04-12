@@ -23,7 +23,8 @@ import shutil
 
 import pandas as pd
 from dotenv import load_dotenv
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_recall_fscore_support
+from utils import accuracy_labelled
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
@@ -76,7 +77,7 @@ def compute_regex_class(sentence):
              len(re.findall(docs, sentence, re.IGNORECASE)),
              len(re.findall(features, sentence, re.IGNORECASE))]  # bug, doc, feature counts
     if max(count) == 0:
-        return 0
+        return -1  # not confident
     else:
         return count.index(max(count))
 
@@ -103,18 +104,27 @@ def main():
 
     # Regex matching
     print("Matching regex...")
-    scores = []
+    results = []
     for ds in datasets:
         ds["pred"] = ds['X'].apply(compute_regex_class)
         Y_pred_np = ds["pred"].to_numpy()
         Y_np = ds["labels"].to_numpy()
-        scores.append(accuracy_score(Y_np, Y_pred_np))
+        acc = accuracy_labelled(Y_pred_np, Y_np)
+        precision, recall, fscore, _ = precision_recall_fscore_support(Y_np, Y_pred_np,
+                                                                       average="weighted")  # weighted to account for label imbalance
+        result = {
+            'accuracy': acc,
+            'precision': precision,
+            'recall': recall,
+            'fscore': fscore,
+        }
+        results.append(result)
 
     # saving results and model
     print("Saving the good stuff...")
     info = {
-        "Accuracy for seen repos": scores[0],
-        "Accuracy for unseen repos": scores[1],
+        "Results for seen repos": results[0],
+        "Results for unseen repos": results[1],
         "Bug regex": bug_regex(),
         "Doc regex": docs_regex(),
         "Feature regex": features_regex(),
