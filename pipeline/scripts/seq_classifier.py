@@ -17,16 +17,16 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [],  # replace_code_block, remove_url, remove_log
-    "features": ["title", "body"],  # title, body
+    "preprocess": [remove_code_block, remove_url, remove_log],  # remove_code_block, remove_url, remove_log
+    "features": ["body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
-    "save_dir": f"{ROOT}/results/temp",
-    "load_dir": f"{ROOT}/results/title-body",  # If None, will train from scratch,
+    "save_dir": f"{ROOT}/results/final-body",
+    "load_dir": f"{ROOT}/results/final-body",  # If None, will train from scratch,
     # "load_dir": None,
     "n_repeat": 3,
     "test_mode": False,
-    "confidence": 0,  # [0, 2, 4]. Threshold for logit output. 0 is equivalent to argmax.
+    "confidence": -10,  # [-10, 2, 4]. Threshold for logit output. -10 is ~= argmax.
     "device": torch.device("cuda"),  # cpu, cuda
     "train_test_split": 0.8,
     "num_train_epochs": 3,
@@ -118,13 +118,12 @@ def compute_metrics(pred):
     acc = accuracy_labelled(preds, labels)
     # acc = accuracy_score(labels, preds)
     precision, recall, fscore, _ = precision_recall_fscore_support(labels, preds, average="weighted")  # weighted to account for label imbalance
-    cm = confusion_matrix(labels, preds)
+    # cm = confusion_matrix(labels, preds)
     return {
         'accuracy': acc,
         'precision': precision,
         'recall': recall,
-        'fscore': fscore,
-        'cm': cm,  # tensorboard may drop this but that's fine - tensorboard's a sep logging framework
+        'fscore': fscore
     }
 
 def model_init():
@@ -197,11 +196,10 @@ def main():
         np.random.seed(seed)
         torch.manual_seed(seed)
 
-        # clear dir
+        # create dir
         save_dir_repeat = os.path.join(options["save_dir"], f"repeat_{i}")
-        if os.path.exists(save_dir_repeat):
-            shutil.rmtree(save_dir_repeat)
-        os.makedirs(save_dir_repeat)
+        if not os.path.exists(save_dir_repeat):
+            os.makedirs(save_dir_repeat)
 
         # Load stuff
         if options["load_dir"]:
