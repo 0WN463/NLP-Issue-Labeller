@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification, Trainer, TrainingArguments
 
-from utils import remove_log, replace_code_block, remove_url, remove_markdown, has_log, has_code_block, \
+from utils import remove_log, remove_code_block, remove_url, remove_markdown, has_log, has_code_block, \
     has_url, average_results, accuracy_labelled
 
 load_dotenv()
