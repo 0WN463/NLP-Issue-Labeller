@@ -1,21 +1,23 @@
 import datetime
 import os
 import time
-import torch
-import numpy as np
 
+import numpy as np
 import requests
+import torch
 from dotenv import load_dotenv
-from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification, Trainer, TrainingArguments
+from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
+
+from utils import remove_code_block, remove_url
 
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 SECRET_TOKEN = os.environ.get("GITHUB_TOKEN")
 
 options = {
-    "load_dir": f"{ROOT}/results/title-body/repeat_1",
+    "load_dir": f"{ROOT}/results/final-log/repeat_0",
     "confidence": 2,  # [0, 2, 4]. Threshold for logit output. 0 is equivalent to argmax.
-    "device": torch.device("cuda"),  # cpu, cuda
+    "device": torch.device("cpu"),  # cpu, cuda
 }
 
 LABELS = ["feature", "bug", "documentation", "others"]
@@ -23,8 +25,11 @@ TOKENIZER = DistilBertTokenizerFast.from_pretrained(options["load_dir"])
 MODEL = DistilBertForSequenceClassification.from_pretrained(options["load_dir"], num_labels=3)
 MODEL.eval()
 
+
 def preprocess(text):
-    return text  # identity for now
+    preprocessed_text = remove_url(remove_code_block(text))
+    return preprocessed_text
+
 
 def classify(title, body):
     ''' Returns one of "bug", "documentation", "feature" '''
@@ -52,26 +57,31 @@ def add_label(issue_num, label):
     res = s.put(f'https://api.github.com/repos/0WN463/CS4248-Project/issues/{issue_num}/labels', headers=headers,
                 json={"labels": [label]})
 
+def main():
+    print("Starting labeller...")
 
-## For some reasons, when set to now(), the REST API returns nothing.
-## So we add some interval
-payload = {
-    "since": (datetime.datetime.now() - datetime.timedelta(days=1)).isoformat()
-}
+    ## For some reasons, when set to now(), the REST API returns nothing.
+    ## So we add some interval
+    payload = {
+        "since": (datetime.datetime.now() - datetime.timedelta(days=1)).isoformat()
+    }
 
-past_issues = set()
+    past_issues = set()
 
-while True:
-    res = s.get(f'https://api.github.com/repos/0WN463/CS4248-Project/issues', headers=headers, params=payload)
-    time.sleep(3)
+    while True:
+        res = s.get(f'https://api.github.com/repos/0WN463/CS4248-Project/issues', headers=headers, params=payload)
+        time.sleep(3)
 
-    res = res.json()
-    if len(res):
-        for issue in res:
-            issue_num = int(issue['url'].split('/')[-1])
+        res = res.json()
+        if len(res):
+            for issue in res:
+                issue_num = int(issue['url'].split('/')[-1])
 
-            if issue_num not in past_issues:
-                label = classify(issue['title'], issue['body'])
-                add_label(issue_num, label)
-                print(f"Classified issue {issue_num} as {label}.")
-                past_issues.add(issue_num)
+                if issue_num not in past_issues:
+                    label = classify(issue['title'], issue['body'])
+                    add_label(issue_num, label)
+                    print(f"Classified issue {issue_num} as {label}.")
+                    past_issues.add(issue_num)
+
+if __name__ == "__main__":
+    main()
