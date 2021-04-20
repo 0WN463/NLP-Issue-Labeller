@@ -1,27 +1,20 @@
-# CS4248 Natural Language Processing Project
+# NLP Issue Labeller
+Automatically labelling your github issues with NLP! Code accompanying our [paper](LINK).
 
-## ML Model Logs
-Please refer to this Google Doc [https://docs.google.com/document/d/1gbVSwV-hOVDH6KOhZyQZVdEpqOnWA63lkSm7FQlKa70/edit](https://docs.google.com/document/d/1gbVSwV-hOVDH6KOhZyQZVdEpqOnWA63lkSm7FQlKa70/edit) for current model performance.
+![Demo](./resources/demo.gif)
 
-## Note
-1. The feature engineering and ML model files are in the ``pipeline/scripts`` directory. The pickled data files are in ``pipeline/pickles``. Note that the pickle files are separated based on the type of features so that it's easier to try experimenting with and combining different features during ML training.
-2. Some pickle files in the directory ``pipeline/pickles`` are not committed/pushed to GitHub due to their large size. You may run the corresponding scripts in ``pipeline/scripts`` to obtain the same dataframe pickle files when you need them.
-
-## Installation
-Set your ROOT path via 
-
+## Quickstart
+We use python version 3.6.5. 
+1. Download the final model [https://drive.google.com/drive/u/1/folders/1Eiz4iG6SduEoUCJEIqcPg7-K-Vw7nJ7j](here).
+2. Create a `.env` file in the root repository with the following details.
 ```
-echo "ROOT = %path-to-proj-root-dir" >> .env  # for absolute pathing that's independent of machine  
-```
-
-To run `seq_classifer.py`, use python version 3.7+ and install based on versioning stated in `requirements.txt`. You can either install on demand (i.e. only when you need it to run a script) or install all dependencies using
-
-
-```
-pip install -r requirements.txt  # install dependencies
+ROOT = 
+GITHUB_TOKEN = 
+REPOSITORY = 0WN463/CS4248-Project
 ```
 
-If you're comfortable, you can use [pyenv](https://github.com/pyenv/pyenv) to manage python versions
-and [pyvenv](https://github.com/pyenv/pyenv-virtualenv) to manage virtual environments.
-
-Feel free to add your dependencies on top of mine using `pip freeze`.
+3. Run the following steps to start labelling!
+```
+pip install -r requirement.txt
+python pipeline/scripts/labeller.py
+```

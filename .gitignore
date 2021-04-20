@@ -11,3 +11,4 @@ runs
 .python-version
 src/__pycache__
 pipeline/scripts/__pycache__
+final_model
