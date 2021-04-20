@@ -13,9 +13,10 @@ from utils import remove_code_block, remove_url
 load_dotenv()
 ROOT = os.environ.get("ROOT")
 SECRET_TOKEN = os.environ.get("GITHUB_TOKEN")
+REPOSITORY = os.environ.get("REPOSITORY")
 
 options = {
-    "load_dir": f"{ROOT}/results/final-log/repeat_0",
+    "load_dir": f"{ROOT}/final_model",
     "confidence": 2,  # [0, 2, 4]. Threshold for logit output. 0 is equivalent to argmax.
     "device": torch.device("cpu"),  # cpu, cuda
 }
@@ -54,8 +55,9 @@ headers = {
 
 
 def add_label(issue_num, label):
-    res = s.put(f'https://api.github.com/repos/0WN463/CS4248-Project/issues/{issue_num}/labels', headers=headers,
+    res = s.put(f'https://api.github.com/repos/{REPOSITORY}/issues/{issue_num}/labels', headers=headers,
                 json={"labels": [label]})
+
 
 def main():
     print("Starting labeller...")
@@ -69,7 +71,7 @@ def main():
     past_issues = set()
 
     while True:
-        res = s.get(f'https://api.github.com/repos/0WN463/CS4248-Project/issues', headers=headers, params=payload)
+        res = s.get(f'https://api.github.com/repos/{REPOSITORY}/issues', headers=headers, params=payload)
         time.sleep(3)
 
         res = res.json()
@@ -82,6 +84,7 @@ def main():
                     add_label(issue_num, label)
                     print(f"Classified issue {issue_num} as {label}.")
                     past_issues.add(issue_num)
+
 
 if __name__ == "__main__":
     main()
