@@ -17,13 +17,13 @@ load_dotenv()
 ROOT = os.environ.get("ROOT")
 
 options = {
-    "preprocess": [remove_code_block, remove_url, remove_log],  # remove_code_block, remove_url, remove_log
-    "features": ["body"],  # title, body
+    "preprocess": [remove_url, remove_log],  # remove_code_block, remove_url, remove_log
+    "features": ["title", "body"],  # title, body
     "load_train_path": f"{ROOT}/pipeline/pickles/dataframe_train.pkl",
     "load_test_path": f"{ROOT}/pipeline/pickles/dataframe_test.pkl",
-    "save_dir": f"{ROOT}/results/final-body",
-    "load_dir": f"{ROOT}/results/final-body",  # If None, will train from scratch,
-    # "load_dir": None,
+    "save_dir": f"{ROOT}/results/final-code",
+    # "load_dir": f"{ROOT}/results/final-log",  # If None, will train from scratch,
+    "load_dir": None,
     "n_repeat": 3,
     "test_mode": False,
     "confidence": -10,  # [-10, 2, 4]. Threshold for logit output. -10 is ~= argmax.
