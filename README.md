@@ -15,6 +15,6 @@ REPOSITORY = 0WN463/CS4248-Project
 
 3. Run the following steps to start labelling!
 ```
-pip install -r requirement.txt
+pip install -r requirements.txt
 python pipeline/scripts/labeller.py
 ```
